@@ -41,7 +41,7 @@ function! UserInit()
 	Plug 'alvan/vim-closetag'
 	Plug 'lepture/vim-jinja'
 	Plug 'aperezdc/vim-template'
-	Plug 'elzr/vim-json'
+	Plug 'elzr/vim-json', { 'for': 'json' }
 	Plug 'andymass/vim-matchup'
 	Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 	Plug 'davidhalter/jedi-vim', { 'for': 'python' }
