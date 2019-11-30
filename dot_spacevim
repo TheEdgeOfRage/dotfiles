@@ -232,6 +232,7 @@ function! UserConfig()
 		autocmd Filetype c,cpp setl noet ts=4 sts=4 sw=4
 		autocmd Filetype rst setl autoindent& cindent& smartindent& indentexpr& noet ts=3 sts=3 sw=3
 		autocmd Filetype tex setl et ts=4 sts=4 sw=4
+		autocmd Filetype nginx setl noet ts=4 sts=4 sw=4
 	augroup END
 
 	augroup filetypedetect
