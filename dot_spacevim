@@ -89,7 +89,7 @@ function! UserConfig()
 	set undodir=~/.local/share/nvim/undodir
 
 	" Set default LICENSE
-	let g:license = 'BSD-3-Clause'
+	let g:license = 'BSD 3-Clause'
 	let g:email = 'pavle.portic@tilda.center'
 
 	" Set python path
