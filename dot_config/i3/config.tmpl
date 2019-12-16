@@ -176,6 +176,7 @@ for_window [class="Lxappearance"] floating enable
 new_window pixel 2
 hide_edge_borders smart
 
+exec xcape -e 'Control_L=Escape'
 exec_always python ~/.config/i3/i3-autoname-workspaces.py &
 exec telegram-desktop >/dev/null 2>/dev/null &
 exec roxterm -e cmus >/dev/null 2>/dev/null &

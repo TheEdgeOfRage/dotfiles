@@ -19,7 +19,6 @@ xset s 30000 30000
 xhost +localhost
 xhost +calcium
 xhost +neon
-xcape -e 'Control_L=Escape'
 xbindkeys
 feh --bg-fill /home/pavle/pictures/wallpapers/arboreal_serenity.jpg
 dunst &
