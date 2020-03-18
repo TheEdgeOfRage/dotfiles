@@ -2,46 +2,46 @@
 
 function usage()
 {
-  local just_help=$1
-  local missing_required=$2
-  local invalid_argument=$3
-  local invalid_option=$4
+	local just_help=$1
+	local missing_required=$2
+	local invalid_argument=$3
+	local invalid_option=$4
 
-  local help="Usage: genpass -c COUNT [OPTION] [SET]
+	local help="Usage: genpass -c COUNT [OPTION] [SET]
 
 Generate random password from /dev/urandom using the character set chosen
 
 Option (pick one character set):"
-  local help_options="    \-a ,\--all\ all printable characters, not including space
-    \-lt ,\--limited\ all except special characters [A-Za-z0-9%+,-./:=@^_]
-    \-an ,\--alphanumeric\ letters and digits
-    \-al ,\--alpha\ letters
-    \-u ,\--upper\ upper case letters
-    \-l ,\--lower\ lower case letters
-    \-n ,\--numeric\ digits
-    \-h ,\--hex\ hexadecimal digits
-    \-c ,\--count <length>\ Length of password to generate
-    \[SET]\ \ Other character SET compatible with tr
+local help_options="\t\-a ,\--all\ all printable characters, not including space
+	\t\-lt ,\--limited\ all except special characters [A-Za-z0-9%+,-./:=@^_]
+	\t\-an ,\--alphanumeric\ letters and digits
+	\t\-al ,\--alpha\ letters
+	\t\-u ,\--upper\ upper case letters
+	\t\-l ,\--lower\ lower case letters
+	\t\-n ,\--numeric\ digits
+	\t\-h ,\--hex\ hexadecimal digits
+	\t\-c ,\--count <length>\ Length of password to generate
+	\t\[SET]\ \ Other character SET compatible with tr
 "
 
-  if [ "$missing_required" != "" ]
-  then
-    echo "Missing required argument: $missing_required"
-  fi
+	if [ "$missing_required" != "" ]
+	then
+		echo "Missing required argument: $missing_required"
+	fi
 
-  if [ "$invalid_option" != "" ] && [ "$invalid_value" = "" ]
-  then
-    echo "Invalid option: $invalid_option"
-  elif [ "$invalid_value" != "" ]
-  then
-    echo "Invalid value: $invalid_value for option: --$invalid_option"
-  fi
+	if [ "$invalid_option" != "" ] && [ "$invalid_value" = "" ]
+	then
+		echo "Invalid option: $invalid_option"
+	elif [ "$invalid_value" != "" ]
+	then
+		echo "Invalid value: $invalid_value for option: --$invalid_option"
+	fi
 
-  echo -e "
+	echo -e "
 "
-  echo "$help"
-  echo "$help_options" | column -t -s'\'
-  return
+	echo "$help"
+	echo "$help_options" | column -t -s'\'
+	return
 }
 function init_args()
 {
@@ -54,80 +54,79 @@ do
 key="$1"
 
 case $key in
-  -a|--all)
-    all="true"
-    characters="[:graph:]"
-    shift
-    ;;
-  -lt|--limited)
-    special="true"
-    characters="A-Za-z0-9%+,-./:=@^_"
-    shift
-    ;;
-  -an|--alphanumeric)
-    alphanumeric="true"
-    characters="[:alnum:]"
-    shift
-    ;;
-  -al|--alpha)
-    alpha="true"
-    characters="[:alpha:]"
-    shift
-    ;;
-  -u|--upper)
-    upper="true"
-    characters="[:upper:]"
-    shift
-    ;;
-  -l|--lower)
-    lower="true"
-    characters="[:lower:]"
-    shift
-    ;;
-  -n|--numeric)
-    numeric="true"
-    characters="[:digit:]"
-    shift
-    ;;
-  -h|--hex)
-    hex="true"
-    characters="0-9a-f"
-    shift
-    ;;
-  -c|--count)
-    count="$2"
-    shift 2
-    ;;
-  *)
-    POSITIONAL+=("$1") # saves unknown option in array
-    shift
-    ;;
+	-a|--all)
+		all="true"
+		characters="[:graph:]"
+		shift
+		;;
+	-lt|--limited)
+		special="true"
+		characters="A-Za-z0-9%+,-./:=@^_"
+		shift
+		;;
+	-an|--alphanumeric)
+		alphanumeric="true"
+		characters="[:alnum:]"
+		shift
+		;;
+	-al|--alpha)
+		alpha="true"
+		characters="[:alpha:]"
+		shift
+		;;
+	-u|--upper)
+		upper="true"
+		characters="[:upper:]"
+		shift
+		;;
+	-l|--lower)
+		lower="true"
+		characters="[:lower:]"
+		shift
+		;;
+	-n|--numeric)
+		numeric="true"
+		characters="[:digit:]"
+		shift
+		;;
+	-h|--hex)
+		hex="true"
+		characters="0-9a-f"
+		shift
+		;;
+	-c|--count)
+		count="$2"
+		shift 2
+		;;
+	*)
+		POSITIONAL+=("$1") # saves unknown option in array
+		shift
+		;;
 esac
 done
 
 for i in "${REQ_ARGS[@]}"; do
-  # $i is the string of the variable name
-  # ${!i} is a parameter expression to get the value
-  # of the variable whose name is i.
-  req_var=${!i}
-  if [ "$req_var" = "" ]
-  then
-    usage "" "--$i"
-    exit
-  fi
+	# $i is the string of the variable name
+	# ${!i} is a parameter expression to get the value
+	# of the variable whose name is i.
+	req_var=${!i}
+	if [ "$req_var" = "" ]
+	then
+		usage "" "--$i"
+		exit
+	fi
 done
 }
 
 init_args $@
 
 if [ -z $characters ]; then
-  if [ -z $POSITIONAL ]; then
-    echo "Missing at least one character set"
-    exit 2
-  else
-    characters=$POSITIONAL
-  fi
+	if [ -z $POSITIONAL ]; then
+		echo "Missing at least one character set"
+		exit 2
+	else
+		characters=$POSITIONAL
+	fi
 fi
 
 < /dev/urandom tr -dc $characters | head -c $count
-

@@ -18,4 +18,3 @@ if (( XRES > YRES )); then
 else
 	convert $1 -resize x$2 $1
 fi
-

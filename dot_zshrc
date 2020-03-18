@@ -152,4 +152,3 @@ export FZF_DEFAULT_OPTS='
 '
 
 source ~/.local/bin/start-ssh-agent
-
