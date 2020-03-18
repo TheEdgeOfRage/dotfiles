@@ -20,8 +20,7 @@ xhost +localhost
 xhost +calcium
 xhost +neon
 xbindkeys
-feh --bg-fill /home/pavle/pictures/wallpapers/ltt.png
+sh $HOME/.fehbg &
 dunst &
 
 exec i3
-
