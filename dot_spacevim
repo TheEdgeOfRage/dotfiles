@@ -3,16 +3,14 @@
 " e.g., Layer 'better-defaults', { 'exclude': 'itchyny/vim-cursorword' }
 function! Layers()
 
-	Layer 'better-defaults', { 'exclude': [
+	Layer 'better-defaults', {'exclude': [
 				\ 'kshenoy/vim-signature',
 				\ 'google/vim-searchindex',
 				\ 'mhinz/vim-startify',
 				\ ] }
 	Layer 'unite'
 	Layer 'airline'
-	Layer 'programming', { 'exclude': [
-				\ 'luochen1990/rainbow',
-				\ ] }
+	Layer 'programming', {'exclude': ['luochen1990/rainbow']}
 	Layer 'editing'
 	Layer 'fzf'
 	Layer 'git'
@@ -27,9 +25,6 @@ function! Layers()
 	Layer 'html'
 	Layer 'javascript'
 	Layer 'markdown'
-	Layer 'python', {'exclude': [
-				\ 'python-mode/python-mode',
-				\ ]}
 
 endfunction
 
@@ -39,17 +34,13 @@ function! UserInit()
 	Plug 'chr4/nginx.vim'
 	Plug 'Firef0x/PKGBUILD.vim'
 	Plug 'alvan/vim-closetag'
-	Plug 'lepture/vim-jinja'
 	Plug 'aperezdc/vim-template'
 	Plug 'elzr/vim-json', { 'for': 'json' }
 	Plug 'andymass/vim-matchup'
 	Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 	Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-	Plug 'idbrii/vim-remarkjs'
-	Plug 'idbrii/vim-gogo'
-	Plug 'edkolev/tmuxline.vim'
 	Plug 'tpope/vim-repeat'
-	Plug 'diepm/vim-rest-console'
+	Plug 'TheEdgeOfRage/vim-pythonsense'
 
 endfunction
 
@@ -211,9 +202,6 @@ function! UserConfig()
 	let g:airline_powerline_fonts = 1
 	let g:airline_theme='gruvbox'
 
-	" Tmuxline settings
-	let g:airline#extensions#tmuxline#enabled = 0
-
 	" Emmet settings
 	let g:user_emmet_mode='nv'
 	let g:user_emmet_leader_key='<Leader>e'
@@ -253,8 +241,6 @@ function! UserConfig()
 	autocmd! spacevimStart
 
 	" Strip trailing whitespaces on save
-	" autocmd Filetype * autocmd BufWritePre <buffer> :StripWhitespace
-	" Remove trailing spaces
 	fun! <SID>StripTrailingWhitespaces()
 		let l = line('.')
 		let c = col('.')
@@ -262,12 +248,6 @@ function! UserConfig()
 		call cursor(l, c)
 	endfun
 	autocmd FileType * autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-
-	" Py-mode settings
-	" let g:pymode_virtualenv = 1
-	" let g:pymode_virtualenv_enabled = 1
-	" let g:pymode_doc_bind = 'E'
-	" nnoremap E <NOP>
 
 	" Jedi completion settings
 	let g:jedi#completions_enabled = 0
@@ -307,19 +287,10 @@ function! UserConfig()
 	" Configure vim-template directory
 	let g:templates_directory = ['~/.local/share/nvim/templates']
 
-	" Vim rest console settings
-	let g:vrc_curl_opts = {
-		\ '-s' : '',
-		\ '-i' : '',
-	\ }
-
 	" NERDCommenter configuration
 	let g:NERDCustomDelimiters = { 'vue': { 'left': '//' }, 'systemd': { 'left': '#' } }
 
 	" Polyglot configuration
 	let g:polyglot_disabled = ['systemd']
-
-	" Hexokinase configuration
-	let g:Hexokinase_ftAutoload = ['css', 'scss', 'sass', 'stylus']
 
 endfunction
