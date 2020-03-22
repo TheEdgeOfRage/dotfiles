@@ -1,5 +1,0 @@
-"cmus-remote -n"
-  b:9 # mouse button next
-
-"cmus-remote -r"
-  b:8 # mouse button previous

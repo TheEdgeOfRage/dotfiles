@@ -159,9 +159,9 @@ bindsym Shift+XF86MonBrightnessUp exec light -A 2
 bindsym Shift+XF86MonBrightnessDown exec light -U 2
 
 # Cmus controls
-bindsym XF86AudioPlay exec "cmus-remote --server localhost:3000 --passwd {{ .i3.bumblebee.cmus.passwd }} -u"
-bindsym XF86AudioNext exec "cmus-remote --server localhost:3000 --passwd {{ .i3.bumblebee.cmus.passwd }} -n"
-bindsym XF86AudioPrev exec "cmus-remote --server localhost:3000 --passwd {{ .i3.bumblebee.cmus.passwd }} -r"
+bindsym XF86AudioPlay exec "cmus-remote --server localhost:3000 --passwd {{ .cmus.passwd }} -u"
+bindsym XF86AudioNext exec "cmus-remote --server localhost:3000 --passwd {{ .cmus.passwd }} -n"
+bindsym XF86AudioPrev exec "cmus-remote --server localhost:3000 --passwd {{ .cmus.passwd }} -r"
 
 # Take screenshot
 bindsym Print exec pyazo
@@ -217,7 +217,7 @@ bar {
 		time \
 		-p engine.workspacewheel=False \
 		cmus.server="localhost:3000" \
-		cmus.passwd="{{ .i3.bumblebee.cmus.passwd }}" \
+		cmus.passwd="{{ .cmus.passwd }}" \
 		date.format="%a, %Y-%m-%d" \
 		time.format="%H:%M:%S" \
 		-t gruvbox-powerline
