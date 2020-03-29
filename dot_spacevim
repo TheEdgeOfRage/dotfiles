@@ -148,9 +148,12 @@ function! UserConfig()
 	" Unhighlight search results with \
 	noremap <silent> \ :let @/ = ""<CR>
 
+	" Use n / e / tab for autocomplete
+	inoremap <expr> n ((pumvisible())?("\<C-n>"):("n"))
+	inoremap <expr> e ((pumvisible())?("\<C-p>"):("e"))
+	inoremap <expr> <tab> ((pumvisible())?("\<Cr>"):("<Cr>"))
 
-	if !exists('g:vim_better_default_window_key_mapping') ||
-				\ g:vim_better_default_window_key_mapping
+	if !exists('g:vim_better_default_window_key_mapping') || g:vim_better_default_window_key_mapping
 		nnoremap <Leader>wn <C-W>j
 		nnoremap <Leader>we <C-W>k
 		nnoremap <Leader>wh <C-W>h
@@ -160,21 +163,6 @@ function! UserConfig()
 		nnoremap <Leader>wN :resize +5<CR>
 		nnoremap <Leader>wE :resize -5<CR>
 	endif
-
-	" Easymotion colemak bindings
-	map  <Leader>nn <Plug>(easymotion-bd-f)
-	nmap <Leader>nn <Plug>(easymotion-overwin-f)
-
-	" s{char}{char} to move to {char}{char}
-	nmap <Leader>nN <Plug>(easymotion-overwin-f2)
-
-	" Jump to line
-	map <Leader>ne <Plug>(easymotion-bd-jk)
-	nmap <Leader>ne <Plug>(easymotion-overwin-line)
-
-	" Jump to word
-	map  <Leader>nw <Plug>(easymotion-bd-w)
-	nmap <Leader>nw <Plug>(easymotion-overwin-w)
 
 	" FZF mappings
 	noremap <C-P> :GFiles<CR>
