@@ -56,7 +56,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export MAKEFLAGS="-j $(nproc --all)"
 export GPG_TTY=$(tty)
 export ANDROID_HOME="$HOME/.android/sdk"
-export PATH="$HOME/.local/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/.local/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export LC_ALL="en_DK.UTF-8"
 
