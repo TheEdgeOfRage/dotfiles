@@ -49,16 +49,18 @@ autoload -Uz ~/.config/zsh/functions/*
 source ~/.aliases
 
 # Variable exports
+export PATH="$HOME/.local/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
 export VISUAL="nvim"
 export EDITOR="nvim"
 export BROWSER='firefox'
 export XDG_CONFIG_HOME="$HOME/.config"
 export MAKEFLAGS="-j $(nproc --all)"
 export GPG_TTY=$(tty)
-export ANDROID_HOME="$HOME/.android/sdk"
-export PATH="$HOME/.local/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export LC_ALL="en_DK.UTF-8"
+
+# Valve shader compiler
+export RADV_PERFTEST="aco"
 
 # Bind home and end
 bindkey "\033[H" beginning-of-line
