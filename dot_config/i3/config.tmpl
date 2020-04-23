@@ -237,13 +237,17 @@ bar {
 	status_command ~/.local/share/bumblebee-status/bumblebee-status -m \
 		traffic \
 		nic \
-		cpu \
+		load \
+		cpu2 \
 		memory \
 		-p engine.workspacewheel=False \
 		traffic.hide_down=True \
 		traffic.exclude="lo,virbr,docker,vboxnet,veth,br-" \
 		nic.exclude="lo,virbr,docker,vboxnet,veth,br-" \
 		nic.states="^down" \
+		cpu2.layout="cpu2.coresload" \
+		cpu2.colored=1 \
+		--markup=pango \
 		-t gruvbox-powerline
 	bindsym button4 nop
 	bindsym button5 nop
