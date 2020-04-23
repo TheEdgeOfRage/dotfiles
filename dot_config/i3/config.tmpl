@@ -218,6 +218,7 @@ bar {
 		-p engine.workspacewheel=False \
 		cmus.server="localhost:3000" \
 		cmus.passwd="{{ .cmus.passwd }}" \
+		{{ .i3.bumblebee.parameters }} \
 		date.format="%a, %Y-%m-%d" \
 		time.format="%H:%M:%S" \
 		-t gruvbox-powerline
