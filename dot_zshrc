@@ -11,7 +11,7 @@ setopt autocd extendedglob notify
 unsetopt beep nomatch
 bindkey -v
 
-source ~/.config/zsh/antigen.zsh
+source ~/.local/share/antigen.zsh
 export DEFAULT_USER="pavle"
 
 # Load the oh-my-zsh's library.
