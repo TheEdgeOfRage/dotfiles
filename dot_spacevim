@@ -41,6 +41,7 @@ function! UserInit()
 	Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 	Plug 'tpope/vim-repeat'
 	Plug 'TheEdgeOfRage/vim-pythonsense'
+	Plug 'google/vim-jsonnet'
 
 endfunction
 
@@ -206,6 +207,7 @@ function! UserConfig()
 		autocmd Filetype tex setl et ts=4 sts=4 sw=4
 		autocmd Filetype nginx setl noet ts=4 sts=4 sw=4
 		autocmd Filetype terraform setl et ts=2 sts=2 sw=2
+		autocmd Filetype jsonnet setl et ts=2 sts=2 sw=2
 	augroup END
 
 	augroup filetypedetect
