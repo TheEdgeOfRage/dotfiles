@@ -216,8 +216,11 @@ bar {
 		date \
 		time \
 		-p engine.workspacewheel=False \
+		pasource.showbars="1" \
+		pasink.showbars="1" \
 		cmus.server="localhost:3000" \
 		cmus.passwd="{{ .cmus.passwd }}" \
+		cmus.layout="cmus.prev cmus.main cmus.next cmus.shuffle" \
 		{{ .i3.bumblebee.parameters }} \
 		date.format="%a, %Y-%m-%d" \
 		time.format="%H:%M:%S" \
@@ -248,7 +251,6 @@ bar {
 		nic.states="^down" \
 		cpu2.layout="cpu2.coresload" \
 		cpu2.colored=1 \
-		--markup=pango \
 		-t gruvbox-powerline
 	bindsym button4 nop
 	bindsym button5 nop
