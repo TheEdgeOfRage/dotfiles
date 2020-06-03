@@ -29,8 +29,8 @@ import signal
 import subprocess as proc
 import sys
 
-import fontawesome as fa
-import i3ipc
+import fontawesome as fa  # type: ignore
+import i3ipc  # type: ignore
 
 # Add icons here for common programs you use.  The keys are the X window class
 # (WM_CLASS) names (lower-cased) and the icons can be any text you want to
