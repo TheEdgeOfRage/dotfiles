@@ -48,7 +48,7 @@ WINDOW_ICONS = {
 	'calibre-gui': fa.icons['book'],
 	'chromium': fa.icons['chrome'],
 	'cities.x64': fa.icons['city'],
-	'code': fa.icons['code'],
+	'code-oss': fa.icons['code'],
 	'cutter': fa.icons['bug'],
 	'darktable': fa.icons['camera'],
 	'discord': fa.icons['comment'],
