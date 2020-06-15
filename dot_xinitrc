@@ -8,18 +8,14 @@ if [ -f "$userresources" ]; then
 fi
 
 if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
+    xmodmap "$usermodmap" &
 fi
 
-source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
-
-xset fp rehash
-xset dpms 30000 30000 30000
-xset s 30000 30000
-xhost +localhost
-xhost +calcium
-xhost +neon
-xbindkeys
+xset fp rehash &
+xset dpms 30000 30000 30000 &
+xset s 30000 30000 &
+xcape -e 'Control_L=Escape' &
+xbindkeys &
 sh $HOME/.fehbg &
 dunst &
 
