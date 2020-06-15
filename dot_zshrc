@@ -72,7 +72,8 @@ TRAPWINCH() {
 }
 
 # Load fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ $- == *i* ]] && source "/usr/share/fzf/completion.zsh" NO
+source "/usr/share/fzf/key-bindings.zsh" NO
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git,node_modules,__pycache__}/*" 2> /dev/null'
 export FZF_DEFAULT_OPTS='
 	--color fg:#928374,bg:#282828,hl:#fb4934
