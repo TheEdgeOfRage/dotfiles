@@ -1,5 +1,5 @@
-"cmus-remote -n"
+"playerctl next"
   b:9 # mouse button next
 
-"cmus-remote -r"
+"playerctl previous"
   b:8 # mouse button previous
