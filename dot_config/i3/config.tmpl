@@ -158,40 +158,29 @@ bindsym XF86MonBrightnessDown exec light -U 10
 bindsym Shift+XF86MonBrightnessUp exec light -A 2
 bindsym Shift+XF86MonBrightnessDown exec light -U 2
 
-# Cmus controls
-bindsym XF86AudioPlay exec "cmus-remote -u"
-bindsym XF86AudioNext exec "cmus-remote -n"
-bindsym XF86AudioPrev exec "cmus-remote -r"
+bindsym XF86AudioPlay exec "playerctl play-pause"
+bindsym XF86AudioNext exec "playerctl next"
+bindsym XF86AudioPrev exec "playerctl previous"
 
-# Take screenshot
 bindsym Print exec pyazo
 
 assign [class="(?i)firefox"] 
 assign [class="(?i)chromium"] 
 assign [class="Telegram"] 
-assign [class="(?i)riot"] 
+assign [class="(?i)spotify"] 
 assign [class="Thunderbird"] 
 for_window [class="Lxappearance"] floating enable
 
 new_window pixel 2
 hide_edge_borders smart
 
-exec xcape -e 'Control_L=Escape'
-exec_always python ~/.config/i3/i3-autoname-workspaces.py &
-exec telegram-desktop >/dev/null 2>/dev/null &
-exec roxterm -e cmus >/dev/null 2>/dev/null &
-exec env GTK_THEME=Arc-Solid gtk-launch firefox >/dev/null 2>/dev/null &
-exec gtk-launch thunderbird >/dev/null 2>/dev/null &
-
-set $mode_power (1) shutdown, (2) reboot, (3) exit i3, (4) reload i3
-mode "$mode_power" {
-	bindsym 1 exec --no-startup-id "shutdown now", mode "default"
-	bindsym 2 exec --no-startup-id "reboot", mode "default"
-	bindsym 3 exec --no-startup-id "i3-msg exit", mode "default"
-	bindsym 4 exec --no-startup-id "~/sbin/i3-reload", mode "default"
-	bindsym Escape mode "default"
-}
-bindsym $mod+Shift+x mode "$mode_power"
+exec_always python ~/.config/i3/i3-autoname-workspaces.py >/dev/null 2>&1 &
+exec telegram-desktop >/dev/null 2>&1 &
+exec spotify >/dev/null 2>&1 &
+exec blueman-applet >/dev/null 2>&1 &
+exec nm-applet >/dev/null 2>&1 &
+exec gtk-launch firefox >/dev/null 2>&1 &
+exec gtk-launch thunderbird >/dev/null 2>&1 &
 
 set $mode_kb_select (1) US, (2) Colemak, (3) Latin, (4) Cyrillic, (5) DE
 mode "$mode_kb_select" {
@@ -208,17 +197,16 @@ bar {
 	position top
 	tray_output none
 	status_command ~/.local/share/bumblebee-status/bumblebee-status -m \
-		cmus {{ .i3.bumblebee.modules }} \
+		spotify {{ .i3.bumblebee.modules }} \
 		sensors \
 		layout \
 		pasource \
 		pasink \
 		date \
 		time \
-		-p engine.workspacewheel=False \
+		-p workspacewheel=False \
 		pasource.showbars="1" \
 		pasink.showbars="1" \
-		cmus.layout="cmus.prev cmus.main cmus.next cmus.shuffle" \
 		{{ .i3.bumblebee.parameters }} \
 		date.format="%a, %Y-%m-%d" \
 		date.interval="30" \
