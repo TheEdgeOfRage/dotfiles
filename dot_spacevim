@@ -22,8 +22,6 @@ function! Layers()
 				\ ]}
 	Layer 'c-c++'
 	Layer 'docker'
-	Layer 'html'
-	Layer 'javascript'
 	Layer 'markdown'
 
 endfunction
@@ -35,13 +33,13 @@ function! UserInit()
 	Plug 'Firef0x/PKGBUILD.vim'
 	Plug 'alvan/vim-closetag'
 	Plug 'aperezdc/vim-template'
-	Plug 'elzr/vim-json', { 'for': 'json' }
 	Plug 'andymass/vim-matchup'
+	Plug 'tpope/vim-repeat'
+	Plug 'elzr/vim-json', { 'for': 'json' }
 	Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 	Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-	Plug 'tpope/vim-repeat'
-	Plug 'TheEdgeOfRage/vim-pythonsense'
-	Plug 'google/vim-jsonnet'
+	Plug 'TheEdgeOfRage/vim-pythonsense', { 'for': 'python' }
+	Plug 'hashivim/vim-terraform'
 
 endfunction
 
