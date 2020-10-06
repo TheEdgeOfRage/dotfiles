@@ -75,3 +75,8 @@ unalias -m 'ff'
 unalias -m '_'
 unalias -m 'please'
 unalias -m 'rm'
+unset -f 'ggf'
+unset -f 'ggfl'
+
+# xorg exit aliases
+alias i3exit='i3-msg exit'
