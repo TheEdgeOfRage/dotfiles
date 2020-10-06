@@ -43,63 +43,64 @@ import i3ipc  # type: ignore
 # xprop (https://linux.die.net/man/1/xprop). Run `xprop | grep WM_CLASS`
 # then click on the application you want to inspect.
 WINDOW_ICONS = {
-	'blender': fa.icons['cube'],
-	'blueman-manager': fa.icons['bluetooth'],
-	'calibre-gui': fa.icons['book'],
-	'chromium': fa.icons['chrome'],
-	'cities.x64': fa.icons['city'],
-	'code-oss': fa.icons['code'],
-	'cutter': fa.icons['bug'],
-	'darktable': fa.icons['camera'],
-	'discord': fa.icons['comment'],
-	'dwarf_fortress': fa.icons['fort-awesome'],
-	'evince': fa.icons['file-pdf'],
-	'factorio': fa.icons['cog'],
-	'feh': fa.icons['image'],
-	'firefox': fa.icons['firefox'],
-	'firefox-developer': fa.icons['firefox'],
-	'ghb': fa.icons['video'],
-	'gimp': fa.icons['file-image'],
-	'gimp-2.10': fa.icons['file-image'],
-	'gparted': fa.icons['hdd'],
-	'gpicview': fa.icons['image'],
-	'gsmartcontrol': fa.icons['hdd'],
-	'inkscape': fa.icons['pen-nib'],
-	'jetbrains-studio': fa.icons['code'],
-	'kicad': fa.icons['microchip'],
-	'roxterm': fa.icons['terminal'],
-	'ksp.x86_64': fa.icons['space-shuttle'],
-	'libreoffice-impress': fa.icons['file-powerpoint'],
-	'libreoffice-writer': fa.icons['file-alt'],
-	'lutris': fa.icons['gamepad'],
-	'mirage': fa.icons['image'],
-	'mpv': fa.icons['video'],
-	'multimc': fa.icons['cube'],
-	'mupdf': fa.icons['file-pdf'],
-	'nemiver': fa.icons['bug'],
-	'nm-connection-editor': fa.icons['wifi'],
-	'org-openstreetmap-josm-gui-mainapplication': fa.icons['map'],
-	'pavucontrol': fa.icons['volume-up'],
-	'picard': fa.icons['music'],
-	'qbittorrent': fa.icons['download'],
-	'qtcreator': fa.icons['code'],
-	'rambox': fa.icons['comments'],
-	'seahorse': fa.icons['lock'],
-	'slack': fa.icons['slack'],
-	'spotify': fa.icons['spotify'],
-	'sqlitebrowser': fa.icons['database'],
-	'steam': fa.icons['steam'],
-	'surviving mars': fa.icons['rocket'],
-	'telegram-desktop': fa.icons['telegram'],
-	'terraria.bin.x86_64': fa.icons['tree'],
-	'thunderbird': fa.icons['envelope'],
-	'vim': fa.icons['code'],
-	'virtualbox manager': fa.icons['desktop'],
-	'vlc': fa.icons['video'],
-	'wire': fa.icons['comments'],
-	'wireshark': fa.icons['network-wired'],
-	'zathura': fa.icons['file-pdf'],
-	'zenity': fa.icons['window-maximize'],
+    'blender': fa.icons['cube'],
+    'blueman-manager': fa.icons['bluetooth'],
+    'calibre-gui': fa.icons['book'],
+    'chromium': fa.icons['chrome'],
+    'cities.x64': fa.icons['city'],
+    'code-oss': fa.icons['code'],
+    'cutter': fa.icons['bug'],
+    'darktable': fa.icons['camera'],
+    'discord': fa.icons['comment'],
+    'dwarf_fortress': fa.icons['fort-awesome'],
+    'evince': fa.icons['file-pdf'],
+    'factorio': fa.icons['cog'],
+    'feh': fa.icons['image'],
+    'firefox': fa.icons['firefox'],
+    'firefoxdeveloperedition': fa.icons['firefox'],
+    'ghb': fa.icons['video'],
+    'gimp': fa.icons['file-image'],
+    'gimp-2.10': fa.icons['file-image'],
+    'gparted': fa.icons['hdd'],
+    'gpicview': fa.icons['image'],
+    'gsmartcontrol': fa.icons['hdd'],
+    'inkscape': fa.icons['pen-nib'],
+    'jetbrains-studio': fa.icons['code'],
+    'kicad': fa.icons['microchip'],
+    'roxterm': fa.icons['terminal'],
+    'ksp.x86_64': fa.icons['space-shuttle'],
+    'libreoffice-impress': fa.icons['file-powerpoint'],
+    'libreoffice-writer': fa.icons['file-alt'],
+    'libreoffice-calc': fa.icons['file-excel'],
+    'lutris': fa.icons['gamepad'],
+    'mirage': fa.icons['image'],
+    'mpv': fa.icons['video'],
+    'multimc': fa.icons['cube'],
+    'mupdf': fa.icons['file-pdf'],
+    'nemiver': fa.icons['bug'],
+    'nm-connection-editor': fa.icons['wifi'],
+    'org-openstreetmap-josm-gui-mainapplication': fa.icons['map'],
+    'pavucontrol': fa.icons['volume-up'],
+    'picard': fa.icons['music'],
+    'qbittorrent': fa.icons['download'],
+    'qtcreator': fa.icons['code'],
+    'rambox': fa.icons['comments'],
+    'seahorse': fa.icons['lock'],
+    'slack': fa.icons['slack'],
+    'spotify': fa.icons['spotify'],
+    'sqlitebrowser': fa.icons['database'],
+    'steam': fa.icons['steam'],
+    'surviving mars': fa.icons['rocket'],
+    'telegram-desktop': fa.icons['telegram'],
+    'terraria.bin.x86_64': fa.icons['tree'],
+    'thunderbird': fa.icons['envelope'],
+    'vim': fa.icons['code'],
+    'virtualbox manager': fa.icons['desktop'],
+    'vlc': fa.icons['video'],
+    'wire': fa.icons['comments'],
+    'wireshark': fa.icons['network-wired'],
+    'zathura': fa.icons['file-pdf'],
+    'zenity': fa.icons['window-maximize'],
 }
 
 # This icon is used for any application not in the list above
@@ -110,88 +111,97 @@ DEFAULT_ICON = '*'
 # Returns a dictionary with the following keys: 'num', 'shortname', and 'icons'
 # Any field that's missing in @name will be None in the returned dict
 def parse_workspace_name(name):
-	match = re.match(r'(?P<num>\d+):?(?P<shortname>\w+)? ?(?P<icons>.+)?', name)
-	return match.groupdict()
+    match = re.match(r'(?P<num>\d+):?(?P<shortname>\w+)? ?(?P<icons>.+)?', name)
+    return match.groupdict()
 
 
 # Given a dictionary with 'num', 'shortname', 'icons', return the formatted name
 # by concatenating them together.
 def construct_workspace_name(parts):
-	new_name = str(parts['num'])
-	if parts['shortname'] or parts['icons']:
-		new_name += ':'
+    new_name = str(parts['num'])
+    if parts['shortname'] or parts['icons']:
+        new_name += ':'
 
-		if parts['shortname']:
-			new_name += parts['shortname']
+        if parts['shortname']:
+            new_name += parts['shortname']
 
-		if parts['icons']:
-			new_name += ' ' + parts['icons']
+        if parts['icons']:
+            new_name += ' ' + parts['icons']
 
-	return new_name
+    return new_name
 
 
 # Returns an array of the values for the given property from xprop.  This
 # requires xorg-xprop to be installed.
 def xprop(win_id, property):
-	try:
-		prop = proc.check_output(['xprop', '-id', str(win_id), property], stderr=proc.DEVNULL)
-		prop = prop.decode('utf-8')
-		print(re.findall('"([^"]+)"', prop))
-		return re.findall('"([^"]+)"', prop)
+    try:
+        prop = proc.check_output(
+            ['xprop', '-id', str(win_id), property],
+            stderr=proc.DEVNULL,
+        )
+        prop = prop.decode('utf-8')
+        print(re.findall('"([^"]+)"', prop))
+        return re.findall('"([^"]+)"', prop)
 
-	except proc.CalledProcessError:
-		print("Unable to get property for window '%d'" % win_id)
-		return None
+    except proc.CalledProcessError:
+        print("Unable to get property for window '%d'" % win_id)
+        return None
 
 
 def icon_for_window(window):
-	classes = xprop(window.window, 'WM_CLASS')
-	if classes is not None and len(classes) > 0:
-		for cls in classes:
-			cls = cls.lower()  # case-insensitive matching
-			if cls in WINDOW_ICONS:
-				return WINDOW_ICONS[cls]
+    classes = xprop(window.window, 'WM_CLASS')
+    if classes is not None and len(classes) > 0:
+        for cls in classes:
+            cls = cls.lower()  # case-insensitive matching
+            if cls in WINDOW_ICONS:
+                return WINDOW_ICONS[cls]
 
-		print('No icon available for: %s' % str(classes))
+        print('No icon available for: %s' % str(classes))
 
-	return DEFAULT_ICON
+    return DEFAULT_ICON
 
 
 # renames all workspaces based on the windows present
 def rename_workspaces(i3):
-	for workspace in i3.get_tree().workspaces():
-		if '' not in workspace.name and '' not in workspace.name and '' not in workspace.name:
-			name_parts = parse_workspace_name(workspace.name)
-			name_parts['icons'] = ' '.join([icon_for_window(w) for w in workspace.leaves()])
-			new_name = construct_workspace_name(name_parts)
-			i3.command('rename workspace "%s" to "%s"' % (workspace.name, new_name))
+    for workspace in i3.get_tree().workspaces():
+        if (
+            '' not in workspace.name
+            and '' not in workspace.name
+            and '' not in workspace.name
+        ):
+            name_parts = parse_workspace_name(workspace.name)
+            name_parts['icons'] = ' '.join(
+                icon_for_window(w) for w in workspace.leaves()
+            )
+            new_name = construct_workspace_name(name_parts)
+            i3.command(f'rename workspace "{workspace.name}" to "{new_name}"')
 
 
 # rename workspaces to just numbers and shortnames.
 # called on exit to indicate that this script is no longer running.
 def undo_window_renaming(i3):
-	for workspace in i3.get_tree().workspaces():
-		name_parts = parse_workspace_name(workspace.name)
-		name_parts['icons'] = None
-		new_name = construct_workspace_name(name_parts)
-		i3.command('rename workspace "%s" to "%s"' % (workspace.name, new_name))
+    for workspace in i3.get_tree().workspaces():
+        name_parts = parse_workspace_name(workspace.name)
+        name_parts['icons'] = None
+        new_name = construct_workspace_name(name_parts)
+        i3.command('rename workspace "%s" to "%s"' % (workspace.name, new_name))
 
-	i3.main_quit()
-	sys.exit(0)
+    i3.main_quit()
+    sys.exit(0)
 
 
 if __name__ == '__main__':
-	i3 = i3ipc.Connection()
+    i3 = i3ipc.Connection()
 
-	# exit gracefully when ctrl+c is pressed
-	for sig in [signal.SIGINT, signal.SIGTERM]:
-		signal.signal(sig, lambda signal, frame: undo_window_renaming(i3))
+    # exit gracefully when ctrl+c is pressed
+    for sig in [signal.SIGINT, signal.SIGTERM]:
+        signal.signal(sig, lambda signal, frame: undo_window_renaming(i3))
 
-	# call rename_workspaces() for relevant window events
-	def window_event_handler(i3, e):
-		if e.change in ['new', 'close', 'move']:
-			rename_workspaces(i3)
+    # call rename_workspaces() for relevant window events
+    def window_event_handler(i3, e):
+        if e.change in ['new', 'close', 'move']:
+            rename_workspaces(i3)
 
-	i3.on('window', window_event_handler)
-	rename_workspaces(i3)
-	i3.main()
+    i3.on('window', window_event_handler)
+    rename_workspaces(i3)
+    i3.main()
