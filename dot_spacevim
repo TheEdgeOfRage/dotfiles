@@ -198,7 +198,7 @@ function! UserConfig()
 		autocmd Filetype html,jinja.html,blade setl noet ts=2 sts=2 sw=2
 		autocmd Filetype javascript,js,vue,jsx setl et ts=2 sts=2 sw=2
 		autocmd Filetype json setl et ts=4 sts=4 sw=4
-		autocmd Filetype python setl noet ts=4 sw=4 sts=4 tw=0
+		autocmd Filetype python setl et ts=4 sw=4 sts=4 tw=0
 		autocmd Filetype php setl et ts=4 sw=4 sts=4 tw=0
 		autocmd Filetype c,cpp setl noet ts=4 sts=4 sw=4
 		autocmd Filetype rst setl autoindent& cindent& smartindent& indentexpr& et ts=4 sts=4 sw=4
@@ -274,6 +274,7 @@ function! UserConfig()
 
 	" NERDCommenter configuration
 	let g:NERDCustomDelimiters = { 'vue': { 'left': '//' }, 'systemd': { 'left': '#' } }
+	let g:NERDDefaultAlign = 'left'
 
 	" Polyglot configuration
 	let g:polyglot_disabled = ['systemd']
