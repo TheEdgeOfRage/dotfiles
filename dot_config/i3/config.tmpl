@@ -234,8 +234,8 @@ bar {
 		memory \
 		-p engine.workspacewheel=False \
 		traffic.hide_down=True \
-		traffic.exclude="lo,virbr,docker,vboxnet,veth,br-" \
-		nic.exclude="lo,virbr,docker,vboxnet,veth,br-" \
+		traffic.exclude="lo,virbr,docker,vboxnet,veth,br-,cni,flannel" \
+		nic.exclude="lo,virbr,docker,vboxnet,veth,br-,cni,flannel" \
 		nic.states="^down" \
 		cpu2.layout="cpu2.coresload" \
 		cpu2.colored=1 \
