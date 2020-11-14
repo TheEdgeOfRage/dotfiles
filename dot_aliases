@@ -22,7 +22,7 @@ alias -g NO='>/dev/null 2>&1'
 alias -g clip='xclip -selection c'
 alias db='sudo duplicity-backup -c /etc/duplicity/duplicity-backup.conf'
 alias wakerouter='wol 18:a9:05:39:c4:4d'
-alias myip='curl icanhazip.com'
+alias myip='curl https://ifconfig.co'
 alias -g vim='nvim'
 alias manage='python manage.py'
 alias zpool='sudo zpool'
@@ -80,3 +80,9 @@ unset -f 'ggfl'
 
 # xorg exit aliases
 alias i3exit='i3-msg exit'
+
+# terraform aliases
+alias tf='terraform'
+alias tfp='terraform plan -out tfplan'
+alias tfa='terraform apply tfplan'
+alias tfd='terraform destroy'
