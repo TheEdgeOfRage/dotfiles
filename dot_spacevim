@@ -211,8 +211,9 @@ function! UserConfig()
 	" Don't insert title into new files
 	autocmd! spacevimNewFile BufNewFile *.py,*.cpp,*.c,*.sh,*.java,*.pl
 
-	" Format json file
+	" Format files
 	command! FormatJSON %!python -m json.tool
+	command! FormatPython %!yapf
 
 	" Format braces in C file
 	command! FormatBraces %s/\n\s*{/ {/g
@@ -236,6 +237,9 @@ function! UserConfig()
 
 	" Vue syntax highlight speedup
 	let g:vue_disable_pre_processors=1
+
+	" JSON disable quote conceal
+	let g:vim_json_syntax_conceal = 0
 
 	" Ale settings
 	let g:airline#extensions#ale#enabled = 1
