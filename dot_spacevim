@@ -31,7 +31,6 @@ function! UserInit()
 	Plug 'morhetz/gruvbox'
 	Plug 'chr4/nginx.vim'
 	Plug 'Firef0x/PKGBUILD.vim'
-	Plug 'alvan/vim-closetag'
 	Plug 'aperezdc/vim-template'
 	Plug 'andymass/vim-matchup'
 	Plug 'tpope/vim-repeat'
@@ -188,9 +187,6 @@ function! UserConfig()
 	let g:user_emmet_mode='nv'
 	let g:user_emmet_leader_key='<Leader>e'
 
-	" Closetag config
-	let g:closetag_filenames = '*.html,*.xhtml,*.hbs,*.vue'
-
 	" Per filetype indentation settings
 	let g:jsx_ext_required = 1
 	augroup filetypeDefinitions
@@ -244,12 +240,11 @@ function! UserConfig()
 	" Ale settings
 	let g:airline#extensions#ale#enabled = 1
 	let g:ale_linters = {
-				\ 'c': ['gcc'],
-				\ 'cpp': ['gcc'],
-				\ 'vue': ['eslint'],
-				\ 'javascript': ['eslint'],
-				\ 'cloudformation': ['cloudformation'],
-				\ }
+		\ 'c': ['gcc'],
+		\ 'cpp': ['gcc'],
+		\ 'javascript': ['eslint'],
+		\ 'python': ['flake8', 'mypy'],
+		\ }
 	let g:ale_lint_on_insert_leave = 1
 	let g:ale_fix_on_save = 1
 
