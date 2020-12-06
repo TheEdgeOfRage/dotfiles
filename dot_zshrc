@@ -83,3 +83,8 @@ export FZF_DEFAULT_OPTS='
 '
 
 source ~/.local/bin/start-ssh-agent
+
+# startx on tty1
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx -- vt1; fi
+
+eval "$(pyenv init -)"
