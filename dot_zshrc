@@ -82,6 +82,9 @@ export FZF_DEFAULT_OPTS='
 	--color pointer:#fb4934,marker:#fb4934,spinner:#ffff60
 '
 
+# jq color config
+export JQ_COLORS="1;31:0;35:0;35:0;39:0;32:1;39:1;39"
+
 source ~/.local/bin/start-ssh-agent
 
 # startx on tty1
