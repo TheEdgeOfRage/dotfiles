@@ -28,7 +28,6 @@ alias zpool='sudo zpool'
 alias 'zpool import'='zpool import -d /dev/disk/by-id'
 alias fdisk='sudo fdisk'
 alias diff='diff -y --suppress-common-lines'
-alias -g HASH='| sha256sum | base64 H -n1 | clip'
 alias cz=chezmoi
 alias dockre=docker
 alias unbound='cd ~/dev/docker/unbound; dcrestart; -'
@@ -62,7 +61,6 @@ alias pgp='pass git push'
 alias pgl='pass git pull'
 
 # Oh my zsh alias override
-alias yar='yay'
 alias -g du='du -sh'
 alias -g duf='du -sh * | sort -h'
 alias -g dufa='du -sh * .* | sort -h'
