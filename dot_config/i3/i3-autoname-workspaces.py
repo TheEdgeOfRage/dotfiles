@@ -82,6 +82,7 @@ WINDOW_ICONS = {
     'mupdf': fa.icons['file-pdf'],
     'nemiver': fa.icons['bug'],
     'nm-connection-editor': fa.icons['wifi'],
+    'obs': fa.icons['video'],
     'org-openstreetmap-josm-gui-mainapplication': fa.icons['map'],
     'pavucontrol': fa.icons['volume-up'],
     'picard': fa.icons['music'],
