@@ -58,6 +58,7 @@ export MAKEFLAGS="-j $(nproc --all)"
 export GPG_TTY=$(tty)
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export LC_ALL="en_DK.UTF-8"
+export MOZ_WEBRENDER=1
 
 # Valve shader compiler
 export RADV_PERFTEST="aco"
