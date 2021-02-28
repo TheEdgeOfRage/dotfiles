@@ -36,7 +36,7 @@ antigen bundle MichaelAquilina/zsh-you-should-use
 antigen bundle zsh-users/zsh-completions
 
 # Load theme
-antigen theme https://gitlab.theedgeofrage.com/TheEdgeOfRage/boban-zsh.git
+antigen theme https://gitea.theedgeofrage.com/TheEdgeOfRage/boban-zsh.git
 antigen apply
 
 # Completion options
