@@ -2,43 +2,44 @@
 " Use exclude option if you don't want the full Layer,
 " e.g., Layer 'better-defaults', { 'exclude': 'itchyny/vim-cursorword' }
 function! Layers()
+	let g:spacevim_lsp_engine = 'coc'
 
+	Layer 'airline'
 	Layer 'better-defaults', {'exclude': [
 				\ 'kshenoy/vim-signature',
 				\ 'google/vim-searchindex',
 				\ 'mhinz/vim-startify',
 				\ ] }
-	Layer 'unite'
-	Layer 'airline'
-	Layer 'programming', {'exclude': ['luochen1990/rainbow']}
+	" Layer 'deoplete', {'exclude': [
+	"       \ 'eagletmt/neco-ghc',
+	"       \ 'sebastianmarkow/deoplete-rust',
+	"       \ 'zchee/deoplete-go',
+	"       \ ]}
+	Layer 'docker'
 	Layer 'editing'
 	Layer 'fzf'
 	Layer 'git'
-	Layer 'syntax-checking'
-	Layer 'deoplete', {'exclude': [
-				\ 'eagletmt/neco-ghc',
-				\ 'sebastianmarkow/deoplete-rust',
-				\ 'zchee/deoplete-go',
-				\ ]}
-	Layer 'c-c++'
-	Layer 'docker'
+	Layer 'lsp'
 	Layer 'markdown'
+	Layer 'programming', {'exclude': ['luochen1990/rainbow']}
+	Layer 'unite'
+	Layer 'syntax-checking'
 
 endfunction
 
 function! UserInit()
 
-	Plug 'morhetz/gruvbox'
-	Plug 'chr4/nginx.vim'
-	Plug 'Firef0x/PKGBUILD.vim'
-	Plug 'aperezdc/vim-template'
 	Plug 'andymass/vim-matchup'
 	Plug 'tpope/vim-repeat'
+	Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+	" Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+	" Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+	Plug 'chr4/nginx.vim'
+	Plug 'Firef0x/PKGBUILD.vim'
 	Plug 'elzr/vim-json', { 'for': 'json' }
-	Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-	Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 	Plug 'TheEdgeOfRage/vim-pythonsense', { 'for': 'python' }
 	Plug 'hashivim/vim-terraform'
+	Plug 'morhetz/gruvbox'
 
 endfunction
 
@@ -191,6 +192,9 @@ function! UserConfig()
 	let g:user_emmet_mode='nv'
 	let g:user_emmet_leader_key='<Leader>e'
 
+	" LSP configuration
+	let g:spacevim_lsp_engine = 'coc'
+
 	" Per filetype indentation settings
 	let g:jsx_ext_required = 1
 	augroup filetypeDefinitions
@@ -250,7 +254,7 @@ function! UserConfig()
 		\ 'c': ['gcc'],
 		\ 'cpp': ['gcc'],
 		\ 'javascript': ['eslint'],
-		\ 'python': ['flake8', 'mypy'],
+		\ 'python': ['pyright'],
 		\ }
 	let g:ale_lint_on_insert_leave = 1
 	let g:ale_fix_on_save = 1
