@@ -88,7 +88,7 @@ export JQ_COLORS="1;31:0;35:0;35:0;39:0;32:1;39:1;39"
 
 source ~/.local/bin/start-ssh-agent
 
+eval "$(pyenv init -)"
+
 # startx on tty1
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx -- vt1; fi
-
-eval "$(pyenv init -)"
