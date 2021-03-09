@@ -15,5 +15,5 @@ make neovim
 cd -
 
 git clone https://github.com/nikita-skobov/create-bash-script ~/.local/share/create-bash-script
-git clone https://gitlab.theedgeofrage.com/TheEdgeOfRage/rpn ~/.local/share/rpn
+git clone https://gitea.theedgeofrage.com/TheEdgeOfRage/rpn ~/.local/share/rpn
 git clone https://github.com/tobi-wan-kenobi/bumblebee-status ~/.local/share/bumblebee-status
