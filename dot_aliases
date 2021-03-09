@@ -74,11 +74,5 @@ unalias -m 'rm'
 unset -f 'ggf'
 unset -f 'ggfl'
 
-# xorg exit aliases
+# i3 aliases
 alias i3exit='i3-msg exit'
-
-# terraform aliases
-alias tf='terraform'
-alias tfp='terraform plan -out tfplan'
-alias tfa='terraform apply tfplan'
-alias tfd='terraform destroy'
