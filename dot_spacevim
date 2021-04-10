@@ -10,11 +10,6 @@ function! Layers()
 				\ 'google/vim-searchindex',
 				\ 'mhinz/vim-startify',
 				\ ] }
-	" Layer 'deoplete', {'exclude': [
-	"       \ 'eagletmt/neco-ghc',
-	"       \ 'sebastianmarkow/deoplete-rust',
-	"       \ 'zchee/deoplete-go',
-	"       \ ]}
 	Layer 'docker'
 	Layer 'editing'
 	Layer 'fzf'
@@ -32,8 +27,6 @@ function! UserInit()
 	Plug 'andymass/vim-matchup'
 	Plug 'tpope/vim-repeat'
 	Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
-	" Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-	" Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 	Plug 'chr4/nginx.vim'
 	Plug 'Firef0x/PKGBUILD.vim'
 	Plug 'elzr/vim-json', { 'for': 'json' }
@@ -148,6 +141,14 @@ function! UserConfig()
 	" Unhighlight search results with \
 	noremap <silent> \ :let @/ = ""<CR>
 
+	" Quickfix window mapping
+	nnoremap <Leader>cq :cclose<CR>
+	nnoremap <Leader>cn :cnext<CR>
+	nnoremap <Leader>cp :cprev<CR>
+	nnoremap <Leader>cf :cfirst<CR>
+	nnoremap <Leader>cl :clast<CR>
+
+	" Window keymapping
 	if !exists('g:vim_better_default_window_key_mapping') || g:vim_better_default_window_key_mapping
 		nnoremap <Leader>wn <C-W>j
 		nnoremap <Leader>we <C-W>k
