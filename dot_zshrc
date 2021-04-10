@@ -59,6 +59,7 @@ export GPG_TTY=$(tty)
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export LC_ALL="en_DK.UTF-8"
 export MOZ_WEBRENDER=1
+export AWS_PROFILE="edifice-dev"
 
 # Valve shader compiler
 export RADV_PERFTEST="aco"
@@ -85,8 +86,6 @@ export FZF_DEFAULT_OPTS='
 
 # jq color config
 export JQ_COLORS="1;31:0;35:0;35:0;39:0;32:1;39:1;39"
-
-source ~/.local/bin/start-ssh-agent
 
 eval "$(pyenv init -)"
 
