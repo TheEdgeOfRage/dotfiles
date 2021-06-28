@@ -21,7 +21,6 @@ antigen use oh-my-zsh
 antigen bundle archlinux
 antigen bundle aws
 antigen bundle colored-man-pages
-antigen bundle colorize
 antigen bundle common-aliases
 antigen bundle copybuffer
 antigen bundle docker
@@ -60,6 +59,7 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export LC_ALL="en_DK.UTF-8"
 export MOZ_WEBRENDER=1
 export AWS_PROFILE="edifice-dev"
+export MINIKUBE_IN_STYLE=false
 
 # Valve shader compiler
 export RADV_PERFTEST="aco"
@@ -87,6 +87,10 @@ export FZF_DEFAULT_OPTS='
 # jq color config
 export JQ_COLORS="1;31:0;35:0;35:0;39:0;32:1;39:1;39"
 
+# Pyenv settings
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
 # startx on tty1
