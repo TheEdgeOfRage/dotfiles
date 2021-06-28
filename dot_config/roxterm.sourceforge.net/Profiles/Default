@@ -12,3 +12,4 @@ vspacing=20
 hide_menubar=1
 scroll_on_keystroke=1
 scroll_on_output=0
+kinetic_scrolling=0
