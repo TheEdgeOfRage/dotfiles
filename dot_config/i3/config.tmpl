@@ -170,6 +170,7 @@ bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 
 bindsym Print exec pyazo
+bindsym $mod+Print exec "pyazo -d"
 
 assign [class="(?i)firefox"] 
 assign [class="(?i)chromium"] 
@@ -242,7 +243,7 @@ bar {
 		memory \
 		-p engine.workspacewheel=False \
 		traffic.hide_down=True \
-		traffic.exclude="lo,virbr,docker,vboxnet,veth,br-,cni,flannel" \
+		traffic.exclude="lo,virbr,docker,vboxnet,veth,br-,cni,flannel,tun" \
 		nic.exclude="lo,virbr,docker,vboxnet,veth,br-,cni,flannel" \
 		nic.states="^down" \
 		cpu2.layout="cpu2.coresload" \
