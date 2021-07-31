@@ -1,12 +1,14 @@
 # vim: ft=zsh
 
 # General
-alias '...'='../..'
-alias '....'='../../..'
-alias '.....'='../../../..'
-alias '......'='../../../../..'
-alias '.......'='../../../../../..'
-alias '........'='../../../../../../..'
+alias '..'='cd ..'
+alias '...'='cd ../..'
+alias '....'='cd ../../..'
+alias '.....'='cd ../../../..'
+alias '......'='cd ../../../../..'
+alias '.......'='cd ../../../../../..'
+alias '........'='cd ../../../../../../..'
+alias '.........'='cd ../../../../../../../..'
 alias ls='ls --group-directories-first --color=always --time-style=long-iso'
 alias cl=clear
 alias cdl='cd ~/ && cl'
