@@ -1,5 +1,0 @@
-"playerctl next"
-  b:9 # mouse button next
-
-"playerctl previous"
-  b:8 # mouse button previous
