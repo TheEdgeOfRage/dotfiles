@@ -3,12 +3,16 @@
 " e.g., Layer 'better-defaults', { 'exclude': 'itchyny/vim-cursorword' }
 function! Layers()
 	let g:spacevim_lsp_engine = 'coc'
+	let g:spacevim_speed_up_via_timer = 0
+	let g:spacevim_enable_startify = 0
+
+	" Polyglot configuration
+	let g:polyglot_disabled = ['systemd']
 
 	Layer 'airline'
 	Layer 'better-defaults', {'exclude': [
 				\ 'kshenoy/vim-signature',
 				\ 'google/vim-searchindex',
-				\ 'mhinz/vim-startify',
 				\ ] }
 	Layer 'docker'
 	Layer 'editing'
@@ -77,7 +81,7 @@ function! UserConfig()
 	let g:email = 'pavle.portic@tilda.center'
 
 	" Set python path
-	let g:python_host_prog = '/usr/bin/python'
+	" let g:python_host_prog = '/usr/bin/python'
 
 	" Backspace and Enter as G and gg
 	nnoremap <CR> G
@@ -190,21 +194,13 @@ function! UserConfig()
 	" Signify settings
 	let g:signify_sign_delete_first_line = '-'
 
-	" Emmet settings
-	let g:user_emmet_mode='nv'
-	let g:user_emmet_leader_key='<Leader>e'
-
-	" LSP configuration
-	let g:spacevim_lsp_engine = 'coc'
-
 	" Per filetype indentation settings
-	let g:jsx_ext_required = 1
 	augroup filetypeDefinitions
 		autocmd Filetype i3 setl noet ts=2 sts=2 sw=2
-		autocmd Filetype html,jinja.html,blade setl noet ts=2 sts=2 sw=2
-		autocmd Filetype javascript,js,vue,jsx setl et ts=4 sts=4 sw=4
+		autocmd Filetype html setl noet ts=2 sts=2 sw=2
+		autocmd Filetype javascript,js setl et ts=4 sts=4 sw=4
 		autocmd Filetype typescript setl et ts=2 sts=2 sw=2
-		autocmd Filetype json setl et ts=4 sts=4 sw=4
+		autocmd Filetype json,jsonnet setl et ts=4 sts=4 sw=4
 		autocmd Filetype python setl et ts=4 sw=4 sts=4 tw=0
 		autocmd Filetype php setl et ts=4 sw=4 sts=4 tw=0
 		autocmd Filetype c,cpp setl noet ts=4 sts=4 sw=4
@@ -212,7 +208,6 @@ function! UserConfig()
 		autocmd Filetype tex setl et ts=4 sts=4 sw=4
 		autocmd Filetype nginx setl noet ts=4 sts=4 sw=4
 		autocmd Filetype terraform setl et ts=2 sts=2 sw=2
-		autocmd Filetype jsonnet setl et ts=2 sts=2 sw=2
 	augroup END
 
 	augroup filetypedetect
@@ -225,13 +220,9 @@ function! UserConfig()
 	" Format files
 	command! FormatJSON %!python -m json.tool
 	command! FormatPython %!yapf
-
-	" Format braces in C file
-	command! FormatBraces %s/\n\s*{/ {/g
-
 	command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
-	autocmd! spacevimStart
+	" autocmd! spacevimStart
 
 	" Strip trailing whitespaces on save
 	fun! <SID>StripTrailingWhitespaces()
@@ -241,13 +232,6 @@ function! UserConfig()
 		call cursor(l, c)
 	endfun
 	autocmd FileType * autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-
-	" Jedi completion settings
-	let g:jedi#completions_enabled = 0
-	let g:jedi#documentation_command = 'E'
-
-	" Vue syntax highlight speedup
-	let g:vue_disable_pre_processors=1
 
 	" JSON disable quote conceal
 	let g:vim_json_syntax_conceal = 0
@@ -278,14 +262,7 @@ function! UserConfig()
 				\ 'spinner': ['fg', 'Statement'],
 				\ }
 
-	" Configure vim-template directory
-	let g:templates_directory = ['~/.local/share/nvim/templates']
-
 	" NERDCommenter configuration
 	let g:NERDCustomDelimiters = { 'vue': { 'left': '//' }, 'systemd': { 'left': '#' } }
 	let g:NERDDefaultAlign = 'left'
-
-	" Polyglot configuration
-	let g:polyglot_disabled = ['systemd']
-
 endfunction
