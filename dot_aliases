@@ -23,7 +23,7 @@ alias grep='grep -Hn --color=always'
 alias -g NO='>/dev/null 2>&1'
 alias -g clip='xclip -selection c'
 alias db='duplicity-backup -c ~/.config/duplicity-backup.conf'
-alias myip='curl https://icanhazip.com'
+alias myip='curl -s https://icanhazip.com'
 alias -g vim='nvim'
 alias -g vimdiff='nvim -d'
 alias zfs='sudo zfs'
@@ -34,6 +34,8 @@ alias diff='diff -y --suppress-common-lines'
 alias cz=chezmoi
 alias dockre=docker
 alias unbound='cd ~/dev/docker/unbound; dcrestart; -'
+alias i3exit='i3-msg exit'
+alias mpv='mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best"'
 
 # Systemctl aliases
 alias sctl='sudo systemctl'
@@ -76,6 +78,3 @@ unalias -m 'please'
 unalias -m 'rm'
 unset -f 'ggf'
 unset -f 'ggfl'
-
-# i3 aliases
-alias i3exit='i3-msg exit'
