@@ -263,6 +263,6 @@ function! UserConfig()
 				\ }
 
 	" NERDCommenter configuration
-	let g:NERDCustomDelimiters = { 'vue': { 'left': '//' }, 'systemd': { 'left': '#' } }
+	let g:NERDCustomDelimiters = {'systemd': {'left': '#'}}
 	let g:NERDDefaultAlign = 'left'
 endfunction
