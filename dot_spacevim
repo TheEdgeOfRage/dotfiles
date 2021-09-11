@@ -212,6 +212,7 @@ function! UserConfig()
 
 	augroup filetypedetect
 		autocmd BufNew,BufNewFile,BufRead *.network,*.netdev :setfiletype systemd
+		autocmd BufNew,BufNewFile,BufRead *.rasi setf css
 	augroup END
 
 	" Don't insert title into new files

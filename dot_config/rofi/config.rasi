@@ -1,0 +1,14 @@
+configuration {
+	modi: "drun,ssh";
+	fixed-num-lines: true;
+	font: "Pragmata Pro 13";
+	location: 0;
+	show-icons: false;
+	terminal: "terminator";
+	ssh-command: "{terminal} -x "{ssh-client} {host}"";
+	run-command: "{cmd}";
+	run-shell-command: "{terminal} -c "{cmd}"";
+	matching: "fuzzy";
+}
+
+@import "gruvbox.rasi"
