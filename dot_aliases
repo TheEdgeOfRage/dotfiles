@@ -65,6 +65,12 @@ alias pse='pass edit'
 alias pgp='pass git push'
 alias pgl='pass git pull'
 
+# Terraform aliases
+alias tf='terraform'
+alias tfa='terraform apply'
+alias tfp='terraform plan'
+alias tfs='terraform state'
+
 # Oh my zsh alias override
 alias -g du='du -sh'
 alias -g duf='du -sh * | sort -h'
