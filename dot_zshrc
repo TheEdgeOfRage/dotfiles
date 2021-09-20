@@ -50,7 +50,6 @@ source ~/.aliases
 export PATH="$HOME/.local/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
 export VISUAL="nvim"
 export EDITOR="nvim"
-export BROWSER='firefox'
 export XDG_CONFIG_HOME="$HOME/.config"
 export MAKEFLAGS="-j $(nproc --all)"
 export GPG_TTY=$(tty)
