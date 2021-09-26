@@ -23,10 +23,11 @@ antigen bundle extract
 antigen bundle git
 
 # Additional antigen plugins
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle MichaelAquilina/zsh-you-should-use
+antigen bundle TheEdgeOfRage/zsh-autoswitch-virtualenv
+antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load theme
 antigen theme https://gitea.theedgeofrage.com/TheEdgeOfRage/boban-zsh.git
