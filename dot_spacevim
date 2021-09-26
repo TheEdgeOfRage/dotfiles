@@ -265,6 +265,9 @@ function! UserConfig()
 				\ }
 
 	" NERDCommenter configuration
-	let g:NERDCustomDelimiters = {'systemd': {'left': '#'}}
+	let g:NERDCustomDelimiters = {'vue': {'left': '//'}, 'systemd': {'left': '#'}}
 	let g:NERDDefaultAlign = 'left'
+
+	" Coc extensions
+	let g:coc_global_extensions = ['coc-json', 'coc-jedi', 'coc-tsserver', 'coc-vetur']
 endfunction
