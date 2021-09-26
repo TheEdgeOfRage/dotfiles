@@ -35,7 +35,7 @@ alias cz=chezmoi
 alias dockre=docker
 alias unbound='cd ~/dev/docker/unbound; dcrestart; -'
 alias i3exit='i3-msg exit'
-alias mpv='mpv --ytdl-format="bestvideo[height<=?1080]+bestaudio/best"'
+alias mpv='mpv --ytdl-format="bestvideo[height<=?1440]+bestaudio/best"'
 
 # Systemctl aliases
 alias sctl='sudo systemctl'
