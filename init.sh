@@ -1,12 +1,4 @@
-#!/bin/bash
-#
-# init.sh
-# Copyright (C) 2020 pavle <pavle.portic@tilda.center>
-#
-# Distributed under terms of the BSD 3-Clause license.
-#
-
-curl -L git.io/antigen > ~/.local/share/antigen.zsh
+#!/bin/sh
 
 git clone https://github.com/liuchengxu/space-vim.git ~/.space-vim
 cd ~/.space-vim
@@ -17,3 +9,16 @@ cd -
 git clone https://github.com/nikita-skobov/create-bash-script ~/.local/share/create-bash-script
 git clone https://gitea.theedgeofrage.com/TheEdgeOfRage/rpn ~/.local/share/rpn
 git clone https://github.com/TheEdgeOfRage/bumblebee-status ~/.local/share/bumblebee-status
+
+mkdir -p ~/.config/zsh/plugins
+cd ~/.config/zsh
+git clone https://github.com/TheEdgeOfRage/ohmyzsh oh-my-zsh
+cd -
+
+cd ~/.config/zsh/plugins
+git clone https://github.com/MichaelAquilina/zsh-you-should-use you-should-use
+git clone https://github.com/TheEdgeOfRage/zsh-autoswitch-virtualenv autoswitch-virtualenv
+git clone https://github.com/zsh-users/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting
+cd -

@@ -1,64 +1,64 @@
-# vim: ft=zsh
-# History settings
 HISTFILE=~/.histfile
 HISTSIZE=40000
 SAVEHIST=40000
+HIST_STAMPS="yyyy-mm-dd"
 setopt HIST_IGNORE_DUPS
 
-source ~/.local/share/antigen.zsh
-export DEFAULT_USER="pavle"
+export ZSH="$HOME/.config/zsh/oh-my-zsh"
+ZSH_CUSTOM="$HOME/.config/zsh"
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+ZSH_THEME="boban"
+HYPHEN_INSENSITIVE="true"
+DISABLE_AUTO_UPDATE="true"
 
-# Load plugins from oh-my-zsh
-antigen bundle archlinux
-antigen bundle aws
-antigen bundle colored-man-pages
-antigen bundle common-aliases
-antigen bundle copybuffer
-antigen bundle docker
-antigen bundle docker-compose
-antigen bundle extract
-antigen bundle git
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
-# Additional antigen plugins
-antigen bundle MichaelAquilina/zsh-you-should-use
-antigen bundle TheEdgeOfRage/zsh-autoswitch-virtualenv
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-syntax-highlighting
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+COMPLETION_WAITING_DOTS="true"
 
-# Load theme
-antigen theme https://gitea.theedgeofrage.com/TheEdgeOfRage/boban-zsh.git
-antigen apply
+plugins=(
+	archlinux
+	aws
+	colored-man-pages
+	common-aliases
+	docker
+	docker-compose
+	git
+	autoswitch-virtualenv
+	you-should-use
+	zsh-autosuggestions
+	zsh-completions
+	zsh-syntax-highlighting
+)
 
-# Completion options
+source $ZSH/oh-my-zsh.sh
+
 zstyle :compinstall filename '$HOME/.zshrc'
-zstyle ':completion:*' menu select
-fpath=(~/.config/zsh/completions ~/.config/zsh/functions $fpath)
+# zstyle ':completion:*' menu select
+fpath=(~/.config/zsh/functions $fpath)
 autoload -Uz compinit && compinit
 autoload -Uz ~/.config/zsh/functions/*
 
 # Misc options
 setopt extendedglob notify
-unsetopt autocd beep nomatch
+unsetopt beep nomatch
 bindkey -v
 
 source ~/.aliases
 
 # Variable exports
-export PATH="$HOME/.local/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
-export VISUAL="nvim"
+export DEFAULT_USER="pavle"
 export EDITOR="nvim"
-export XDG_CONFIG_HOME="$HOME/.config"
-export MAKEFLAGS="-j $(nproc --all)"
 export GPG_TTY=$(tty)
-export QT_QPA_PLATFORMTHEME="qt5ct"
+export LANG="en_US.UTF-8"
 export LC_ALL="en_DK.UTF-8"
+export MAKEFLAGS="-j $(nproc --all)"
 export MOZ_WEBRENDER=1
-export AWS_PROFILE="edifice-dev"
-export MINIKUBE_IN_STYLE=false
+export PATH="$HOME/.local/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export VISUAL="nvim"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Valve shader compiler
 export RADV_PERFTEST="aco"
