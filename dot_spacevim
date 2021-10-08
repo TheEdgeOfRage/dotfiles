@@ -265,7 +265,11 @@ function! UserConfig()
 				\ }
 
 	" NERDCommenter configuration
-	let g:NERDCustomDelimiters = {'vue': {'left': '//'}, 'systemd': {'left': '#'}}
+	let g:NERDCustomDelimiters = {
+				\ 'requirements': {'left': '#'},
+				\ 'systemd': {'left': '#'},
+				\ 'vue': {'left': '//'},
+				\ }
 	let g:NERDDefaultAlign = 'left'
 
 	" Coc extensions
