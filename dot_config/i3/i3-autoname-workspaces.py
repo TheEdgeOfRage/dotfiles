@@ -138,7 +138,6 @@ def xprop(win_id, property):
             stderr=proc.DEVNULL,
         )
         prop = prop.decode('utf-8')
-        print(re.findall('"([^"]+)"', prop))
         return re.findall('"([^"]+)"', prop)
 
     except proc.CalledProcessError:
@@ -163,17 +162,18 @@ def icon_for_window(window):
 def rename_workspaces(i3):
     for workspace in i3.get_tree().workspaces():
         if (
-            '' not in workspace.name
-            and '' not in workspace.name
-            and '' not in workspace.name
+            workspace.name == ''
+            or workspace.name == ''
+            or workspace.name == ''
         ):
-            name_parts = parse_workspace_name(workspace.name)
-            name_parts['icons'] = ' '.join(
-                icon_for_window(w) for w in workspace.leaves()
-            )
-            new_name = construct_workspace_name(name_parts)
-            i3.command(f'rename workspace "{workspace.name}" to "{new_name}"')
+            continue
 
+        name_parts = parse_workspace_name(workspace.name)
+        name_parts['icons'] = ' '.join(
+            icon_for_window(w) for w in workspace.leaves()
+        )
+        new_name = construct_workspace_name(name_parts)
+        i3.command(f'rename workspace "{workspace.name}" to "{new_name}"')
 
 # rename workspaces to just numbers and shortnames.
 # called on exit to indicate that this script is no longer running.
