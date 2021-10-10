@@ -11,9 +11,6 @@ ZSH_THEME="boban"
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
 plugins=(
 	archlinux
 	aws
@@ -22,9 +19,9 @@ plugins=(
 	docker
 	docker-compose
 	git
-	autoswitch-virtualenv
 	you-should-use
 	zsh-autosuggestions
+	zsh-autoswitch-virtualenv
 	zsh-completions
 	zsh-syntax-highlighting
 )
@@ -56,6 +53,7 @@ export PATH="$HOME/.local/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export VISUAL="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
+export VIRTUAL_ENV_DISABLE_PROMPT="true"
 
 # Valve shader compiler
 export RADV_PERFTEST="aco"
