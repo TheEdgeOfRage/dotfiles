@@ -38,6 +38,7 @@ function! UserInit()
 	Plug 'hashivim/vim-terraform'
 	Plug 'morhetz/gruvbox'
 	Plug 'mbbill/undotree'
+	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': ['markdown', 'vim-plug'] }
 
 endfunction
 
