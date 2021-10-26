@@ -20,7 +20,7 @@
 
     ### Geometry ###
     # dynamic width from 0 to 300
-    width = (0, 300)
+    width = (0, 800)
 
     # The maximum height of a single notification, excluding the frame.
     height = 300
@@ -29,7 +29,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 10x50
+    offset = 16x32
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -72,10 +72,10 @@
     separator_height = 2
 
     # Padding between text and separator.
-    padding = 8
+    padding = 14
 
     # Horizontal padding.
-    horizontal_padding = 8
+    horizontal_padding = 16
 
     # Padding between text and icon.
     text_icon_padding = 0
