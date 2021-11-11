@@ -130,11 +130,9 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Screen locking
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -e -i ~/pictures/wallpapers/blue_screen.png -t --nofork
-# bindsym $mod+Control+l exec "i3lock -e -i ~/pictures/wallpapers/blue_screen.png -t"
-bindsym $mod+Control+l exec loginctl lock-session
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -e -i ~/pictures/wallpapers/blue_screen.png -t --nofork
+# bindsym $mod+Control+l exec loginctl lock-session
+bindsym $mod+Control+l exec "i3lock -e -i ~/pictures/wallpapers/blue_screen.png -t"
 
 mode "resize" {
 	bindsym h resize shrink width 10 px or 10 ppt
