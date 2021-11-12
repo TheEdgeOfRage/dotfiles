@@ -39,6 +39,7 @@ function! UserInit()
 	Plug 'morhetz/gruvbox'
 	Plug 'mbbill/undotree'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': ['markdown', 'vim-plug'] }
+	Plug 'mboughaba/i3config.vim'
 
 endfunction
 
@@ -197,7 +198,6 @@ function! UserConfig()
 
 	" Per filetype indentation settings
 	augroup filetypeDefinitions
-		autocmd Filetype i3 setl noet ts=2 sts=2 sw=2
 		autocmd Filetype html setl noet ts=2 sts=2 sw=2
 		autocmd Filetype javascript,js setl et ts=4 sts=4 sw=4
 		autocmd Filetype typescript setl et ts=2 sts=2 sw=2
