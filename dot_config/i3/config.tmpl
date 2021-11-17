@@ -181,6 +181,7 @@ new_window pixel 2
 hide_edge_borders smart
 
 exec_always python ~/.config/i3/i3-autoname-workspaces.py >/dev/null 2>&1 &
+exec {{ .i3.xrandr }} &
 exec telegram-desktop >/dev/null 2>&1 &
 exec spotify >/dev/null 2>&1 &
 exec blueman-applet >/dev/null 2>&1 &
