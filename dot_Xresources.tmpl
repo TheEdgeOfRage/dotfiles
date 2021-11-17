@@ -27,4 +27,18 @@
 *color7:	#dbae93
 *color15:	#fbf1c7
 
-Xcursor.theme: Human
+Xcursor.theme: Breeze
+
+! Font options
+Xft.autohint: 1
+Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.dpi: 96
+Xft.lcdfilter: lcddefault
+
+{{ range $key, $val := .xresources.rgba }}
+#if SCREEN_NUM == {{ $key }}
+Xft.rgba: {{ $val }}
+#endif
+{{end}}
