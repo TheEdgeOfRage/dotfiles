@@ -37,6 +37,7 @@ alias virtualenv='python -m venv'
 alias zfs='sudo zfs'
 alias zpool='sudo zpool'
 alias 'zpool import'='zpool import -d /dev/disk/by-id'
+alias kubectl='echo k'
 
 # Systemctl aliases
 alias sctl='sudo systemctl'
