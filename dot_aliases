@@ -30,7 +30,7 @@ alias mkdir='mkdir -p'
 alias mpv='mpv --ytdl-format="bestvideo[height<=?1440]+bestaudio/best"'
 alias myip='curl -s https://icanhazip.com'
 alias ran=ranger
-alias rcp='rsync -rPv'
+alias rcp='rsync -aPv'
 alias rmr='rm -rIf'
 alias unbound='cd ~/dev/docker/unbound; dcrestart; -'
 alias virtualenv='python -m venv'
