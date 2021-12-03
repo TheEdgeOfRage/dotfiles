@@ -163,9 +163,9 @@ bindsym XF86MonBrightnessDown exec light -U 10
 bindsym Shift+XF86MonBrightnessUp exec light -A 2
 bindsym Shift+XF86MonBrightnessDown exec light -U 2
 
-bindsym XF86AudioPlay exec "playerctl play-pause"
-bindsym XF86AudioNext exec "playerctl next"
-bindsym XF86AudioPrev exec "playerctl previous"
+bindsym XF86AudioPlay exec "playerctl-wrapper play-pause"
+bindsym XF86AudioNext exec "playerctl-wrapper next"
+bindsym XF86AudioPrev exec "playerctl-wrapper previous"
 
 bindsym Print exec pyazo
 bindsym $mod+Print exec "pyazo -d"
