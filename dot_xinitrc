@@ -27,8 +27,6 @@ xset fp rehash &
 xset dpms 30000 30000 30000 &
 xset s 30000 30000 &
 xcape -e 'Control_L=Escape' &
-xbindkeys &
-sh $HOME/.fehbg &
 dunst &
 
 exec i3
