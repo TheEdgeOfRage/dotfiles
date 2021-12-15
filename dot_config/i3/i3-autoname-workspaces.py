@@ -4,15 +4,10 @@
 # for running programs.  It contains icons for a few programs, but more can
 # easily be added by inserting them into WINDOW_ICONS below.
 #
-# Dependencies
-# * xorg-xprop - install through system package manager
-# * i3ipc - install with pip
-# * fontawesome - install with pip
+# Dependencies: xorg-xprop i3ipc fontawesome
 #
 # Installation:
-# * Download this script and place it in ~/.config/i3/ (or anywhere you want)
-# * Add "exec_always ~/.config/i3/i3-autoname-workspaces.py &" to your i3 config
-# * Restart i3: "$ i3-msg restart"
+# Add "exec_always ~/.config/i3/i3-autoname-workspaces.py &" to the i3 config
 #
 # Configuration:
 # The default i3 config's keybingings reference workspaces by name, which is an
@@ -22,7 +17,6 @@
 #   bindsym $mod+1 workspace 1
 # To:
 #   bindsym $mod+1 workspace number 1
-
 
 import re
 import signal
@@ -69,6 +63,7 @@ WINDOW_ICONS = {
     'jetbrains-studio': fa.icons['code'],
     'kicad': fa.icons['microchip'],
     'ksp.x86_64': fa.icons['space-shuttle'],
+    'ledger live': fa.icons['wallet'],
     'libreoffice-calc': fa.icons['file-excel'],
     'libreoffice-impress': fa.icons['file-powerpoint'],
     'libreoffice-writer': fa.icons['file-alt'],
@@ -85,6 +80,7 @@ WINDOW_ICONS = {
     'qtcreator': fa.icons['code'],
     'roxterm': fa.icons['terminal'],
     'seahorse': fa.icons['lock'],
+    'simplescreenrecorder': fa.icons['video'],
     'slack': fa.icons['slack'],
     'spotify': fa.icons['spotify'],
     'sqlitebrowser': fa.icons['database'],
@@ -109,12 +105,15 @@ DEFAULT_ICON = '*'
 # Returns a dictionary with the following keys: 'num', 'shortname', and 'icons'
 # Any field that's missing in @name will be None in the returned dict
 def parse_workspace_name(name):
-    match = re.match(r'(?P<num>\d+):?(?P<shortname>\w+)? ?(?P<icons>.+)?', name)
+    match = re.match(
+        r'(?P<num>\d+):?(?P<shortname>\w+)? ?(?P<icons>.+)?',
+        name,
+    )
     return match.groupdict()
 
 
-# Given a dictionary with 'num', 'shortname', 'icons', return the formatted name
-# by concatenating them together.
+# Given a dictionary with 'num', 'shortname', 'icons',
+# return the formatted name by concatenating them together.
 def construct_workspace_name(parts):
     new_name = str(parts['num'])
     if parts['shortname'] or parts['icons']:
@@ -141,7 +140,7 @@ def xprop(win_id, property):
         return re.findall('"([^"]+)"', prop)
 
     except proc.CalledProcessError:
-        print("Unable to get property for window '%d'" % win_id)
+        print(f'Unable to get property for window "{win_id}"')
         return None
 
 
@@ -153,7 +152,7 @@ def icon_for_window(window):
             if cls in WINDOW_ICONS:
                 return WINDOW_ICONS[cls]
 
-        print('No icon available for: %s' % str(classes))
+        print(f'No icon available for: {classes}')
 
     return DEFAULT_ICON
 
@@ -175,6 +174,7 @@ def rename_workspaces(i3):
         new_name = construct_workspace_name(name_parts)
         i3.command(f'rename workspace "{workspace.name}" to "{new_name}"')
 
+
 # rename workspaces to just numbers and shortnames.
 # called on exit to indicate that this script is no longer running.
 def undo_window_renaming(i3):
@@ -182,7 +182,7 @@ def undo_window_renaming(i3):
         name_parts = parse_workspace_name(workspace.name)
         name_parts['icons'] = None
         new_name = construct_workspace_name(name_parts)
-        i3.command('rename workspace "%s" to "%s"' % (workspace.name, new_name))
+        i3.command(f'rename workspace "{workspace.name}" to "{new_name}"')
 
     i3.main_quit()
     sys.exit(0)
