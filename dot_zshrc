@@ -84,10 +84,12 @@ export FZF_DEFAULT_OPTS='
 export JQ_COLORS="1;31:0;35:0;35:0;39:0;32:1;39:1;39"
 
 # Pyenv settings
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+if which pyenv &> /dev/null; then
+	export PYENV_ROOT="$HOME/.pyenv"
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init --path)"
+	eval "$(pyenv init -)"
+fi
 
 # Nvm settings
 [[ -f /usr/share/nvm/init-nvm.sh ]] && source /usr/share/nvm/init-nvm.sh
