@@ -1,5 +1,5 @@
 configuration {
-	modi: "drun,ssh";
+	modi: "drun,ssh,emoji";
 	fixed-num-lines: true;
 	font: "Pragmata Pro 13";
 	location: 0;
