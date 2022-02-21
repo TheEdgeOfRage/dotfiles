@@ -1,0 +1,23 @@
+# vim: ft=zsh
+# rsync files to Dune EC2 instance
+
+SSH_KEY="$HOME/.ssh/id_dune"
+SSH_USER=ubuntu
+AWS_DEFAULT_REGION=eu-west-1
+export AWS_PROFILE=dune
+INSTANCE_NAME=$(echo $2 | cut -d ":" -f 1)
+
+if [ -z "$INSTANCE_NAME" ]; then echo "Usage: dssh instance-name" && return 1; fi
+INSTANCE_DETAILS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$INSTANCE_NAME" --output text --query 'Reservations[0].Instances[0].[InstanceId,Placement.AvailabilityZone]')
+if [ $? -ne 0 ] ; then echo "Failed to describe instances. Check you are logged into AWS with MFA." && return 1; fi
+if [ "$INSTANCE_DETAILS" = "None" ] ; then echo "Cannot find instance $INSTANCE_NAME. Check you are logged in to the correct AWS account and the instance exists." && return 1; fi
+
+aws ec2-instance-connect send-ssh-public-key \
+--instance-id $(echo "$INSTANCE_DETAILS" | awk '{print $1}') \
+--availability-zone $(echo "$INSTANCE_DETAILS" | awk '{print $2}') \
+--instance-os-user "$SSH_USER" \
+--ssh-public-key "file://$SSH_KEY.pub" \
+|| (echo "Failed to send public key file://$SSH_KEY.pub to AWS" && return 1)
+
+# scp -i "$SSH_KEY" -r $1 "$SSH_USER@$2"
+rsync -azP -e "ssh -i $SSH_KEY" $1 "$SSH_USER@$2"
