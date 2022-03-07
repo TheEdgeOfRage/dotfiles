@@ -37,6 +37,7 @@ alias virtualenv='python -m venv'
 alias zfs='sudo zfs'
 alias zpool='sudo zpool'
 alias 'zpool import'='zpool import -d /dev/disk/by-id'
+alias tailscale='sudo tailscale'
 
 # Systemctl aliases
 alias sctl='sudo systemctl'
@@ -83,3 +84,4 @@ unalias -m 'ff'
 unalias -m '_'
 unalias -m 'please'
 unalias -m 'rm'
+unalias -m 'gsts'
