@@ -18,3 +18,5 @@ git clone https://github.com/TheEdgeOfRage/zsh-autoswitch-virtualenv ${ohmyzsh_c
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ohmyzsh_custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-completions ${ohmyzsh_custom}/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ohmyzsh_custom}/plugins/zsh-syntax-highlighting
+
+sudo cp ./custom_colemak /usr/share/X11/xkb/symbols/custom
