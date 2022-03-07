@@ -1,7 +1,7 @@
 [user]
 	name = Pavle Portic
 	email = git@theedgeofrage.com
-	signingkey = F2AB38285780DE3D
+	signingkey = 66AD4BA646FBC0D2
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [diff]
