@@ -11,7 +11,7 @@ git clone https://github.com/nikita-skobov/create-bash-script ~/.local/share/cre
 git clone https://gitea.theedgeofrage.com/TheEdgeOfRage/rpn ~/.local/share/rpn
 git clone https://github.com/TheEdgeOfRage/bumblebee-status ~/.local/share/bumblebee-status
 
-ohmyzsh_dir="~/.config/zsh/oh-my-zsh"
+ohmyzsh_dir="$HOME/.config/zsh/oh-my-zsh"
 ohmyzsh_custom="${ohmyzsh_dir}/custom"
 git clone https://github.com/TheEdgeOfRage/ohmyzsh ${ohmyzsh_dir}
 git clone https://github.com/MichaelAquilina/zsh-you-should-use ${ohmyzsh_custom}/plugins/you-should-use
