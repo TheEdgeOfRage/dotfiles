@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# playerctl wrapper that controls the currently playing player
+handler() {
+	players=$(playerctl -l)
+	for player in $players; do
+		player_status=$(playerctl -p $player status)
+		if [ $player_status == 'Playing' ]; then
+			playerctl -p $player $@
+			echo -n $player > /tmp/last_player
+			return
+		fi
+	done
+	last_player=$(cat /tmp/last_player)
+	playerctl -p $last_player $@
+}
+
+handler $@
