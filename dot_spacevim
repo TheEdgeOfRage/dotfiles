@@ -274,5 +274,5 @@ function! UserConfig()
 	let g:NERDDefaultAlign = 'left'
 
 	" Coc extensions
-	let g:coc_global_extensions = ['coc-json', 'coc-jedi', 'coc-tsserver', 'coc-vetur']
+	let g:coc_global_extensions = ['coc-json', 'coc-jedi', 'coc-tsserver', 'coc-vetur', 'coc-go']
 endfunction

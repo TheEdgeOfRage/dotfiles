@@ -4,7 +4,6 @@
 SSH_KEY=~/.ssh/id_dune
 SSH_USER=ubuntu
 AWS_DEFAULT_REGION=eu-west-1
-export AWS_PROFILE=dune
 if [ -z "$1" ]; then echo "Usage: dssh instance-name" && return 1; fi
 INSTANCE_DETAILS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$1" --output text --query 'Reservations[0].Instances[0].[InstanceId,Placement.AvailabilityZone]')
 if [ $? -ne 0 ] ; then echo "Failed to describe instances. Check you are logged into AWS with MFA." && return 1; fi
