@@ -32,11 +32,14 @@ source $ZSH/oh-my-zsh.sh
 fpath=( ${CUSTOM}/functions "${fpath[@]}" )
 autoload -Uz ${CUSTOM}/functions/*
 
+zle_highlight+=(paste:none)
+
 # Misc options
 setopt extendedglob notify
 unsetopt beep nomatch
 bindkey -v
 
+source ${CUSTOM}/completions/*.zsh
 source ~/.aliases
 
 # Variable exports
