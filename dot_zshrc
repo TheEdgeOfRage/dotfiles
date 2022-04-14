@@ -55,6 +55,7 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export VISUAL="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export VIRTUAL_ENV_DISABLE_PROMPT="true"
+export GDK_DPI_SCALE=1.1
 
 # Valve shader compiler
 export RADV_PERFTEST="aco"
