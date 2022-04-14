@@ -30,15 +30,16 @@
 Xcursor.theme: Breeze
 
 ! Font options
-Xft.autohint: 1
+Xft.autohint: 0
 Xft.antialias: 1
-Xft.hinting: true
-Xft.hintstyle: hintslight
-Xft.dpi: 96
+Xft.hinting: 1
+Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
+
 
 {{ range $key, $val := .xresources.rgba }}
 #if SCREEN_NUM == {{ $key }}
-Xft.rgba: {{ $val }}
+Xft.rgba: {{ $val.rgba }}
+Xft.dpi: {{ $val.dpi }}
 #endif
 {{end}}
