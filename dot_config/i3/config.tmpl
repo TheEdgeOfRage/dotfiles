@@ -176,6 +176,7 @@ assign [class="(?i)chromium"] 
 assign [class="Telegram"] 
 assign [class="(?i)spotify"] 
 assign [class="Thunderbird"] 
+assign [class="(?i)element"] 
 for_window [class="Lxappearance"] floating enable
 
 new_window pixel 2
@@ -190,6 +191,7 @@ exec blueman-applet >/dev/null 2>&1 &
 exec nm-applet >/dev/null 2>&1 &
 exec gtk-launch firefox >/dev/null 2>&1 &
 exec gtk-launch thunderbird >/dev/null 2>&1 &
+exec gtk-launch element-desktop >/dev/null 2>&1 &
 
 set $mode_kb_select (1) US, (2) Colemak, (3) Latin, (4) Cyrillic, (5) DE
 mode "$mode_kb_select" {
