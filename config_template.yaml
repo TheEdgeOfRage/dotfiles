@@ -1,0 +1,19 @@
+data:
+  i3:
+    font_size: 13
+    xrandr: ''
+    tray_output: ''
+    bumblebee:
+      modules: 'ytrssil'
+      parameters: >-
+        sensors.path="coretemp-isa-0000/Package id 0/temp1_input"
+  xresources:
+    rgba:
+      - rgba: rgb
+        dpi: 96
+  roxterm:
+    font:
+      size: 14
+  zshrc:
+    gdk_scale: '1.0'
+    env_vars: []

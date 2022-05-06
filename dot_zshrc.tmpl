@@ -1,3 +1,4 @@
+# vim: set ft=zsh:
 # History
 HISTFILE=~/.histfile
 HISTSIZE=40000
@@ -55,8 +56,9 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export VISUAL="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export VIRTUAL_ENV_DISABLE_PROMPT="true"
-export GDK_DPI_SCALE=1.1
-
+export GDK_DPI_SCALE={{ or .zshrc.gdk_scale "1.0" }}
+{{ range $_, $env := .zshrc.env_vars }}export {{ $env.name }}={{ $env.value }}
+{{end}}
 # Valve shader compiler
 export RADV_PERFTEST="aco"
 

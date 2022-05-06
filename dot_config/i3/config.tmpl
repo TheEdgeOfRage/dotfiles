@@ -208,7 +208,8 @@ bar {
 	position top
 	tray_output none
 	status_command ~/.local/share/bumblebee-status/bumblebee-status -m \
-		spotify {{ .i3.bumblebee.modules }} \
+		spotify \
+		dunst {{ .i3.bumblebee.modules }} \
 		sensors \
 		layout \
 		pasource \
@@ -218,6 +219,8 @@ bar {
 		-p workspacewheel=False \
 		pasource.showbars="1" \
 		pasink.showbars="1" \
+		sensors.use_sensors="true" \
+		sensors.json="true" \
 		{{ .i3.bumblebee.parameters }} \
 		date.format="%a, %Y-%m-%d" \
 		date.interval="30" \
