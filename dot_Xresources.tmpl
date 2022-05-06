@@ -37,9 +37,8 @@ Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 
 
-{{ range $key, $val := .xresources.rgba }}
+{{ range $key, $val := .xresources.per_screen }}
 #if SCREEN_NUM == {{ $key }}
-Xft.rgba: {{ $val.rgba }}
 Xft.dpi: {{ $val.dpi }}
 #endif
 {{end}}
