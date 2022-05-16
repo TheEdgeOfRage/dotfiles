@@ -183,15 +183,15 @@ new_window pixel 2
 hide_edge_borders smart
 
 exec_always python ~/.config/i3/i3-autoname-workspaces.py >/dev/null 2>&1 &
+exec_always ~/.fehbg >/dev/null 2>&1 &
 exec {{ .i3.xrandr }} >/dev/null 2>&1 &
-exec ~/.fehbg >/dev/null 2>&1 &
 exec telegram-desktop >/dev/null 2>&1 &
-exec spotify >/dev/null 2>&1 &
 exec blueman-applet >/dev/null 2>&1 &
 exec nm-applet >/dev/null 2>&1 &
 exec gtk-launch firefox >/dev/null 2>&1 &
 exec gtk-launch thunderbird >/dev/null 2>&1 &
-exec gtk-launch element-desktop >/dev/null 2>&1 &
+exec element-desktop >/dev/null 2>&1 &
+exec spotify >/dev/null 2>&1 &
 
 set $mode_kb_select (1) US, (2) Colemak, (3) Latin, (4) Cyrillic, (5) DE
 mode "$mode_kb_select" {
