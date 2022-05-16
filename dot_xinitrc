@@ -1,7 +1,5 @@
 #!/bin/bash
 
-/usr/bin/prime-offload &
-
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 
