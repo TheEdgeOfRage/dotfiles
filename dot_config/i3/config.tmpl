@@ -139,10 +139,6 @@ mode "resize" {
 	bindsym n resize shrink height 10 px or 10 ppt
 	bindsym e resize grow height 10 px or 10 ppt
 	bindsym i resize grow width 10 px or 10 ppt
-	bindsym Left resize shrink width 10 px or 10 ppt
-	bindsym Down resize shrink height 10 px or 10 ppt
-	bindsym Up resize grow height 10 px or 10 ppt
-	bindsym Right resize grow width 10 px or 10 ppt
 
 	# back to normal: Enter or Escape
 	bindsym Return mode "default"
@@ -164,12 +160,15 @@ bindsym Shift+XF86MonBrightnessUp exec light -A 2
 bindsym Shift+XF86MonBrightnessDown exec light -U 2
 
 bindsym XF86AudioPlay exec "playerctl-wrapper play-pause"
+bindsym XF86AudioPause exec "playerctl-wrapper play-pause"
 bindsym XF86AudioNext exec "playerctl-wrapper next"
 bindsym XF86AudioPrev exec "playerctl-wrapper previous"
 
 bindsym Print exec "pyazo --no-save"
 bindsym Shift+Print exec "maim /home/pavle/pictures/screenshot.png"
 bindsym $mod+Print exec "pyazo -d"
+
+{{ .i3.additional_bindings }}
 
 assign [class="(?i)firefox"] 
 assign [class="(?i)chromium"] 
