@@ -134,6 +134,8 @@ bindsym $mod+Shift+r restart
 # bindsym $mod+Control+l exec loginctl lock-session
 bindsym $mod+Control+l exec "i3lock -e -i ~/pictures/wallpapers/blue_screen.png -t"
 
+bindsym $mod+semicolon exec "systemctl suspend"
+
 mode "resize" {
 	bindsym h resize shrink width 10 px or 10 ppt
 	bindsym n resize shrink height 10 px or 10 ppt
@@ -210,7 +212,6 @@ bar {
 		spotify \
 		dunst {{ .i3.bumblebee.modules }} \
 		sensors \
-		layout \
 		pasource \
 		pasink \
 		date \
