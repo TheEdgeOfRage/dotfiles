@@ -25,6 +25,7 @@ xset fp rehash &
 xset dpms 30000 30000 30000 &
 xset s 30000 30000 &
 xcape -e 'Control_L=Escape' &
+{{ .xinitrc.additional_commands }}
 dunst &
 
 exec i3
