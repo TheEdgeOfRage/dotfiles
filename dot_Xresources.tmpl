@@ -37,9 +37,6 @@ Xft.hinting: 1
 Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 
-
-{{ range $key, $val := .xresources.per_screen }}
-#if SCREEN_NUM == {{ $key }}
+{{ range $key, $val := .xresources.per_screen }}#if SCREEN_NUM == {{ $key }}
 Xft.dpi: {{ $val.dpi }}
-#endif
-{{end}}
+#endif{{end}}
