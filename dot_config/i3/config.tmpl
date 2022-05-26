@@ -188,7 +188,7 @@ exec_always ~/.fehbg >/dev/null 2>&1 &
 exec {{ .i3.xrandr }} >/dev/null 2>&1 &
 exec telegram-desktop >/dev/null 2>&1 &
 exec blueman-applet >/dev/null 2>&1 &
-exec nm-applet >/dev/null 2>&1 &
+{{ if .i3.nm_applet }}exec nm-applet >/dev/null 2>&1 &{{end}}
 exec gtk-launch firefox >/dev/null 2>&1 &
 exec gtk-launch thunderbird >/dev/null 2>&1 &
 exec element-desktop >/dev/null 2>&1 &
