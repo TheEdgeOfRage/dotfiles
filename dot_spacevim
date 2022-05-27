@@ -78,13 +78,6 @@ function! UserConfig()
 	set undofile
 	set undodir=~/.local/share/nvim/undodir
 
-	" Set default LICENSE
-	let g:license = 'BSD 3-Clause'
-	let g:email = 'pavle.portic@tilda.center'
-
-	" Set python path
-	" let g:python_host_prog = '/usr/bin/python'
-
 	" Backspace and Enter as G and gg
 	nnoremap <CR> G
 	nnoremap <BS> gg
@@ -198,18 +191,19 @@ function! UserConfig()
 
 	" Per filetype indentation settings
 	augroup filetypeDefinitions
+		autocmd Filetype c,cpp setl noet ts=4 sts=4 sw=4
 		autocmd Filetype html setl noet ts=2 sts=2 sw=2
 		autocmd Filetype javascript,js setl et ts=4 sts=4 sw=4
-		autocmd Filetype typescript setl et ts=2 sts=2 sw=2
 		autocmd Filetype json,jsonnet setl et ts=4 sts=4 sw=4
-		autocmd Filetype yaml,helm setl et ts=2 sts=2 sw=2
-		autocmd Filetype python setl et ts=4 sw=4 sts=4 tw=0
-		autocmd Filetype php setl et ts=4 sw=4 sts=4 tw=0
-		autocmd Filetype c,cpp setl noet ts=4 sts=4 sw=4
-		autocmd Filetype rst setl autoindent& cindent& smartindent& indentexpr& et ts=4 sts=4 sw=4
-		autocmd Filetype tex setl et ts=4 sts=4 sw=4
+		autocmd Filetype lua setl noet ts=2 sts=2 sw=2
 		autocmd Filetype nginx setl noet ts=4 sts=4 sw=4
+		autocmd Filetype php setl et ts=4 sw=4 sts=4 tw=0
+		autocmd Filetype python setl et ts=4 sw=4 sts=4 tw=0
+		autocmd Filetype rst setl autoindent& cindent& smartindent& indentexpr& et ts=4 sts=4 sw=4
 		autocmd Filetype terraform setl et ts=2 sts=2 sw=2
+		autocmd Filetype tex setl et ts=4 sts=4 sw=4
+		autocmd Filetype typescript setl et ts=2 sts=2 sw=2
+		autocmd Filetype yaml,helm setl et ts=2 sts=2 sw=2
 	augroup END
 
 	augroup filetypedetect
