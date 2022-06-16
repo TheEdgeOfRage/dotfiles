@@ -44,6 +44,7 @@ WINDOW_ICONS = {
     'cities.x64': fa.icons['city'],
     'clonehero': fa.icons['guitar'],
     'code-oss': fa.icons['code'],
+    'vscodium': fa.icons['code'],
     'cutter': fa.icons['bug'],
     'darktable': fa.icons['camera'],
     'discord': fa.icons['comment'],
