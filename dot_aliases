@@ -38,6 +38,8 @@ alias zfs='sudo zfs'
 alias zpool='sudo zpool'
 alias 'zpool import'='zpool import -d /dev/disk/by-id'
 alias tailscale='sudo tailscale'
+alias wgup='sudo wg-quick up wg0'
+alias wgdown='sudo wg-quick down wg0'
 
 # Systemctl aliases
 alias sctl='sudo systemctl'
