@@ -4,6 +4,7 @@
 	signingkey = 66AD4BA646FBC0D2
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	slg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' --abbrev-commit
 [diff]
 	tool = nvimdiff
 [difftool]
