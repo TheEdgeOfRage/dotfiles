@@ -37,6 +37,7 @@ import i3ipc  # type: ignore
 # xprop (https://linux.die.net/man/1/xprop). Run `xprop | grep WM_CLASS`
 # then click on the application you want to inspect.
 WINDOW_ICONS = {
+    'alacritty': fa.icons['terminal'],
     'blender': fa.icons['cube'],
     'blueman-manager': fa.icons['bluetooth'],
     'calibre-gui': fa.icons['book'],
