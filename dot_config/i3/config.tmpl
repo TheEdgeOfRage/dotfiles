@@ -45,17 +45,8 @@ client.background			$background
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec roxterm
-
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# rofi bindings
-bindsym $mod+space exec "rofi -show drun"
-bindsym $mod+BackSpace exec "rofi -show drun"
-bindsym $mod+j exec "rofi -show emoji"
-bindsym $mod+k exec "bwmenu"
 
 # change focus
 bindsym $mod+$left focus left
@@ -129,6 +120,15 @@ bindsym $mod+Shift+m move container to workspace 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
+# start a terminal
+bindsym $mod+Return exec alacritty
+
+# rofi bindings
+bindsym $mod+space exec "rofi -show drun"
+bindsym $mod+BackSpace exec "rofi -show drun"
+bindsym $mod+j exec "rofi -show emoji"
+bindsym $mod+k exec "bwmenu"
+
 # Screen locking
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -e -i ~/pictures/wallpapers/blue_screen.png -t --nofork
 # bindsym $mod+Control+l exec loginctl lock-session
@@ -161,17 +161,21 @@ bindsym XF86MonBrightnessDown exec light -U 10
 bindsym Shift+XF86MonBrightnessUp exec light -A 2
 bindsym Shift+XF86MonBrightnessDown exec light -U 2
 
+# Media controls
 bindsym XF86AudioPlay exec "playerctl-wrapper play-pause"
 bindsym XF86AudioPause exec "playerctl-wrapper play-pause"
 bindsym XF86AudioNext exec "playerctl-wrapper next"
 bindsym XF86AudioPrev exec "playerctl-wrapper previous"
 
+# Screenshot controls
 bindsym Print exec "pyazo --no-save"
 bindsym Shift+Print exec "maim /home/pavle/pictures/screenshot.png"
 bindsym $mod+Print exec "pyazo -d"
 
+# Additional bindings
 {{ .i3.additional_bindings }}
 
+# Auto-assign programs to certain workspaces
 assign [class="(?i)firefox"] 
 assign [class="(?i)chromium"] 
 assign [class="Telegram"] 
@@ -183,6 +187,7 @@ for_window [class="Lxappearance"] floating enable
 new_window pixel 2
 hide_edge_borders smart
 
+# Startup
 exec_always python ~/.config/i3/i3-autoname-workspaces.py >/dev/null 2>&1 &
 exec_always ~/.fehbg >/dev/null 2>&1 &
 exec {{ .i3.xrandr }} >/dev/null 2>&1 &
@@ -194,6 +199,7 @@ exec gtk-launch thunderbird >/dev/null 2>&1 &
 exec element-desktop >/dev/null 2>&1 &
 exec spotify >/dev/null 2>&1 &
 
+# Keyboard layout controls
 set $mode_kb_select (1) US, (2) Colemak, (3) Latin, (4) Cyrillic, (5) DE
 mode "$mode_kb_select" {
 	bindsym 1 exec --no-startup-id "setxkbmap -layout us", mode "default"
