@@ -240,9 +240,10 @@ function! UserConfig()
 		\ 'javascript': ['eslint'],
 		\ 'python': ['flake8', 'isort', 'mypy'],
 		\ }
-	let b:ale_fixers = {
+	let g:ale_fixers = {
 		\ '*': ['remove_trailing_lines', 'trim_whitespace'],
 		\ 'go': ['gofmt', 'goimports', 'golines'],
+		\ 'terraform': ['terraform'],
 		\ }
 	let g:ale_lint_on_insert_leave = 1
 	let g:ale_fix_on_save = 1
