@@ -1,0 +1,14 @@
+# vim: ft=zsh
+# Update and switch to master and delete current branch
+
+current=$(git branch --show-current)
+
+if [ "$current" == "$(git_main_branch)" ]; then
+	echo "Cannot delete $(git_main_branch) branch"
+	return 1
+fi
+
+git switch $(git_main_branch)
+git fetch --all --prune --jobs=10
+git branch -D $current
+unset current
