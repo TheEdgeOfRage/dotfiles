@@ -14,4 +14,6 @@ aws ec2-instance-connect send-ssh-public-key \
 --instance-os-user "$SSH_USER" \
 --ssh-public-key "file://$SSH_KEY.pub" \
 || (echo "Failed to send public key file://$SSH_KEY.pub to AWS" && return 1)
-ssh -i "$SSH_KEY" "$SSH_USER@$1"
+HOST=$1
+shift 1
+ssh -i "$SSH_KEY" "$SSH_USER@$HOST" $@
