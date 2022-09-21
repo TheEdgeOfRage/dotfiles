@@ -58,7 +58,6 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export VISUAL="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export VIRTUAL_ENV_DISABLE_PROMPT="true"
-export CALIBRE_USE_DARK_PALETTE=1
 {{ range $_, $env := .zshrc.env_vars }}export {{ $env.name }}={{ $env.value }}
 {{end}}
 # Valve shader compiler
