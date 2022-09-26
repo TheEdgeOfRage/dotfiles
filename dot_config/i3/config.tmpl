@@ -185,8 +185,9 @@ assign [class="thunderbird"] 
 assign [class="(?i)element"] 
 for_window [class="Lxappearance"] floating enable
 
-new_window pixel 2
-hide_edge_borders smart
+# default_border pixel 2
+hide_edge_borders both
+for_window [all] default_border pixel 2
 
 # Startup
 exec_always python ~/.config/i3/i3-autoname-workspaces.py >/dev/null 2>&1 &
