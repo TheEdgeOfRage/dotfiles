@@ -8,7 +8,8 @@ if [ "$current" == "$(git_main_branch)" ]; then
 	return 1
 fi
 
-git switch $(git_main_branch)
 git fetch --all --prune --jobs=10
+git branch -f $(git_main_branch) origin/$(git_main_branch)
+git switch $(git_main_branch)
 git branch -D $current
 unset current
