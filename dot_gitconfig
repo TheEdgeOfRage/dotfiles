@@ -15,3 +15,5 @@
 	rebase = true
 [url "github.com:"]
 	insteadOf = https://github.com/
+[init]
+	defaultBranch = main
