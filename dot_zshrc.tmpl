@@ -42,6 +42,7 @@ bindkey -v
 
 source ${CUSTOM}/completions/*.zsh
 source ~/.aliases
+source ~/.config/zsh/kc.zsh
 
 # Variable exports
 export DEFAULT_USER="pavle"
@@ -93,9 +94,6 @@ if which pyenv &> /dev/null; then
 	eval "$(pyenv init --path)"
 	eval "$(pyenv init -)"
 fi
-
-# Nvm settings
-[[ -f /usr/share/nvm/init-nvm.sh ]] && source /usr/share/nvm/init-nvm.sh
 
 # startx on tty1
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx -- vt1; fi

@@ -1,10 +1,4 @@
-#!/usr/bin/env bash
-
-[[ -n $DEBUG ]] && set -x
-
-set -eou pipefail
-IFS=$'\n\t'
-
+#!/bin/zsh
 
 usage() {
   local SELF
@@ -32,7 +26,7 @@ current_context() {
 
 get_configs() {
   #kubectl config get-contexts -o=name | sort -n
-  ls -p --color=never -1 $HOME/.kube | grep -v '/$'
+  ls -p --color=never -1 $HOME/.kube | \grep -v '/$'
 }
 
 list_configs() {
@@ -77,19 +71,15 @@ choose_context_interactive() {
 }
 
 set_context() {
-  echo "Set context to ${1}." >&2
   export KUBECONFIG="$HOME/.kube/${1}"
-  echo -e "\n\nYou are in a subshell. Press Ctrl+d for exit!\n\n"
-  $SHELL
 }
 
 unset_context() {
-  echo "Unsetting current context." >&2
+  unset $KUBECONFIG
   kubectl config unset current-context
-  echo "Ctrl+d for exiting subshell." >&2
 }
 
-main() {
+kc() {
   if [[ "$#" -eq 0 ]]; then
     if [[ -t 1 &&  -z "${KUBECTX_IGNORE_FZF:-}" && "$(type fzf &>/dev/null; echo $?)" -eq 0 ]]; then
       choose_context_interactive
@@ -124,5 +114,3 @@ main() {
     exit 1
   fi
 }
-
-main "$@"
