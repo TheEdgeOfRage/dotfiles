@@ -182,7 +182,7 @@ assign [class="Telegram"] 
 assign [class="spotify"] 
 assign [class="Spotify"] 
 assign [class="thunderbird"] 
-assign [class="(?i)element"] 
+assign [class="(?i)slack"] 
 for_window [class="Lxappearance"] floating enable
 
 new_window pixel 2
@@ -197,7 +197,7 @@ exec blueman-applet >/dev/null 2>&1 &
 {{ if .i3.nm_applet }}exec nm-applet >/dev/null 2>&1 &{{end}}
 exec gtk-launch firefox >/dev/null 2>&1 &
 exec gtk-launch thunderbird >/dev/null 2>&1 &
-exec element-desktop >/dev/null 2>&1 &
+exec slack >/dev/null 2>&1 &
 exec spotify >/dev/null 2>&1 &
 
 # Keyboard layout controls
