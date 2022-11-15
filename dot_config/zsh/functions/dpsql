@@ -1,0 +1,4 @@
+# vim: ft=zsh
+# connect to dune RDS instance
+
+PGPASSWORD=$(aws secretsmanager get-secret-value --secret-id ${1}_${2}_db_${2}_user_password --output text --query SecretString) psql -U ${2} -h ${1}-${2}-db.dune.com.beta.tailscale.net ${2}
