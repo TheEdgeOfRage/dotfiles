@@ -30,7 +30,6 @@ function! UserInit()
 
 	Plug 'andymass/vim-matchup'
 	Plug 'tpope/vim-repeat'
-	Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 	Plug 'chr4/nginx.vim'
 	Plug 'Firef0x/PKGBUILD.vim'
 	Plug 'elzr/vim-json', { 'for': 'json' }
@@ -285,5 +284,5 @@ function! UserConfig()
 	let g:NERDDefaultAlign = 'left'
 
 	" Coc extensions
-	let g:coc_global_extensions = ['coc-json', 'coc-jedi', 'coc-tsserver', 'coc-vetur', 'coc-go']
+	let g:coc_global_extensions = ['coc-json', 'coc-pyright', 'coc-tsserver', 'coc-vetur', 'coc-go']
 endfunction
