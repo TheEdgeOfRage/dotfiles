@@ -35,6 +35,7 @@ alias ran=ranger
 alias rcp='rsync -aPv'
 alias rmr='rm -rIf'
 alias sops_secret="sops --encrypted-regex '^(data|stringData)$'"
+alias ssh='TERM=xterm-256color ssh'
 alias tailscale='sudo tailscale'
 alias unbound='cd /opt/docker/unbound; dcrestart; -'
 alias virtualenv='python -m venv'
