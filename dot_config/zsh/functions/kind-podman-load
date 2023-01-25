@@ -1,0 +1,6 @@
+# vim: ft=zsh
+# Function to load a podman image into a kind cluster
+
+podman save -o /tmp/$1.tar $1
+kind load image-archive /tmp/$1.tar
+rm /tmp/$1.tar
