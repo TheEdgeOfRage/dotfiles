@@ -175,15 +175,17 @@ bindsym $mod+Print exec "pyazo -d"
 # Additional bindings
 {{ .i3.additional_bindings }}
 
+# Set default workspace layout to tabbed
+workspace_layout tabbed
+
 # Auto-assign programs to certain workspaces
 assign [class="(?i)firefox"] 
 assign [class="(?i)chromium"] 
 assign [class="Telegram"] 
-assign [class="spotify"] 
-assign [class="Spotify"] 
 assign [class="thunderbird"] 
 assign [class="(?i)slack"] 
 for_window [class="Lxappearance"] floating enable
+for_window [class="Spotify"] move to workspace 
 
 new_window pixel 2
 hide_edge_borders smart
