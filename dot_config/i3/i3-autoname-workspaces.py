@@ -21,7 +21,8 @@
 import re
 import signal
 import subprocess as proc
-import sys
+from sys import exit
+from typing import Any, NoReturn
 
 import fontawesome as fa  # type: ignore
 import i3ipc  # type: ignore
@@ -36,7 +37,7 @@ import i3ipc  # type: ignore
 # If you're not sure what the WM_CLASS is for your application, you can use
 # xprop (https://linux.die.net/man/1/xprop). Run `xprop | grep WM_CLASS`
 # then click on the application you want to inspect.
-WINDOW_ICONS = {
+WINDOW_ICONS: dict[str, str] = {
     'alacritty': fa.icons['terminal'],
     'blender': fa.icons['cube'],
     'blueman-manager': fa.icons['bluetooth'],
@@ -106,18 +107,21 @@ DEFAULT_ICON = '*'
 # Used so that we can keep the workspace's name when we add icons to it.
 # Returns a dictionary with the following keys: 'num', 'shortname', and 'icons'
 # Any field that's missing in @name will be None in the returned dict
-def parse_workspace_name(name):
+def parse_workspace_name(name) -> dict[str, Any]:
     match = re.match(
         r'(?P<num>\d+):?(?P<shortname>\w+)? ?(?P<icons>.+)?',
         name,
     )
+    if match is None:
+        return {}
+
     return match.groupdict()
 
 
 # Given a dictionary with 'num', 'shortname', 'icons',
 # return the formatted name by concatenating them together.
-def construct_workspace_name(parts):
-    new_name = str(parts['num'])
+def construct_workspace_name(parts) -> str:
+    new_name: str = str(parts['num'])
     if parts['shortname'] or parts['icons']:
         new_name += ':'
 
@@ -146,27 +150,23 @@ def xprop(win_id, property):
         return None
 
 
-def icon_for_window(window):
-    classes = xprop(window.window, 'WM_CLASS')
-    if classes is not None and len(classes) > 0:
-        for cls in classes:
-            cls = cls.lower()  # case-insensitive matching
-            if cls in WINDOW_ICONS:
-                return WINDOW_ICONS[cls]
-
+def icon_for_window(window) -> str:
+    classes: list[str] | None = xprop(window.window, 'WM_CLASS')
+    if classes is None or len(classes) == 0:
         print(f'No icon available for: {classes}')
+        return DEFAULT_ICON
+
+    for cls in map(lambda x: x.lower(), classes):
+        if cls in WINDOW_ICONS:
+            return WINDOW_ICONS[cls]
 
     return DEFAULT_ICON
 
 
 # renames all workspaces based on the windows present
-def rename_workspaces(i3):
+def rename_workspaces(i3) -> None:
     for workspace in i3.get_tree().workspaces():
-        if (
-            workspace.name == ''
-            or workspace.name == ''
-            or workspace.name == ''
-        ):
+        if workspace.name in ['', '', '']:
             continue
 
         name_parts = parse_workspace_name(workspace.name)
@@ -179,7 +179,7 @@ def rename_workspaces(i3):
 
 # rename workspaces to just numbers and shortnames.
 # called on exit to indicate that this script is no longer running.
-def undo_window_renaming(i3):
+def undo_window_renaming(i3) -> NoReturn:
     for workspace in i3.get_tree().workspaces():
         name_parts = parse_workspace_name(workspace.name)
         name_parts['icons'] = None
@@ -187,7 +187,7 @@ def undo_window_renaming(i3):
         i3.command(f'rename workspace "{workspace.name}" to "{new_name}"')
 
     i3.main_quit()
-    sys.exit(0)
+    exit(0)
 
 
 if __name__ == '__main__':
@@ -198,7 +198,7 @@ if __name__ == '__main__':
         signal.signal(sig, lambda signal, frame: undo_window_renaming(i3))
 
     # call rename_workspaces() for relevant window events
-    def window_event_handler(i3, e):
+    def window_event_handler(i3, e) -> None:
         if e.change in ['new', 'close', 'move']:
             rename_workspaces(i3)
 
