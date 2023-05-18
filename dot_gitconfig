@@ -13,7 +13,9 @@
 	gpgsign = true
 [pull]
 	rebase = true
-[url "github.com:"]
-	insteadOf = https://github.com/
+[url "github.com:duneanalytics"]
+	insteadOf = https://github.com/duneanalytics
 [init]
 	defaultBranch = main
+[color]
+	ui = auto
