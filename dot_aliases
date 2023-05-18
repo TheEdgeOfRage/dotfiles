@@ -33,7 +33,9 @@ alias myip='curl -s https://icanhazip.com'
 alias qrscan='maim -s 2>/dev/null | zbarimg -1 -q - | sed "s/QR-Code://" | xclip -selection c'
 alias ran=ranger
 alias rcp='rsync -aPv'
-alias rmr='rm -rIf'
+alias rm='trash'
+alias rmdir='trash -d'
+alias rmr='trash -rIf'
 alias sops_secret="sops --encrypted-regex '^(data|stringData)$'"
 alias ssh='TERM=xterm-256color ssh'
 alias tailscale='sudo tailscale'
