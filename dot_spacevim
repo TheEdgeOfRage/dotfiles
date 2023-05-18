@@ -39,6 +39,7 @@ function! UserInit()
 	Plug 'mbbill/undotree'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': ['markdown', 'vim-plug'] }
 	Plug 'mboughaba/i3config.vim'
+	Plug 'github/copilot.vim'
 
 endfunction
 
@@ -176,12 +177,17 @@ function! UserConfig()
 	" Undotree maps
 	nnoremap <F3> :UndotreeToggle<cr>
 
+	" LSP mappings
+	nnoremap gr :call spacevim#lang#util#FindReferences()<CR>
+	nnoremap gi :call spacevim#lang#util#Implementation()<CR>
+	nnoremap E :call spacevim#plug#coc#show_documentation()<CR>
+
 	" CoC mapping
 	" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 	inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 	inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
 	" remap for complete to use tab and <cr>
-	inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
+	inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
 	inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 	inoremap <silent><expr> <c-space> coc#refresh()
 
