@@ -186,6 +186,7 @@ assign [class="thunderbird"] 
 assign [class="(?i)slack"] 
 for_window [class="Lxappearance"] floating enable
 for_window [class="Spotify"] move to workspace 
+for_window [class="tidal-hifi"] move to workspace 
 
 new_window pixel 2
 hide_edge_borders smart
@@ -200,7 +201,7 @@ exec blueman-applet >/dev/null 2>&1 &
 exec gtk-launch firefox >/dev/null 2>&1 &
 exec gtk-launch thunderbird >/dev/null 2>&1 &
 exec slack >/dev/null 2>&1 &
-exec spotify >/dev/null 2>&1 &
+exec tidal-hifi >/dev/null 2>&1 &
 
 # Keyboard layout controls
 set $mode_kb_select (1) US, (2) Colemak, (3) Latin, (4) Cyrillic, (5) DE
@@ -218,7 +219,7 @@ bar {
 	position top
 	tray_output none
 	status_command ~/.local/share/bumblebee-status/bumblebee-status -m \
-		spotify \
+		playerctl \
 		dunst {{ .i3.bumblebee.modules }} \
 		sensors \
 		pasource \
@@ -226,6 +227,10 @@ bar {
 		date \
 		time \
 		-p workspacewheel=False \
+		playerctl.args="-p tidal-hifi" \
+		playerctl.layout="playerctl.song,playerctl.prev,playerctl.pause,playerctl.next" \
+		playerctl.format="{{`{{artist}}`}} - {{`{{title}}`}}" \
+		playerctl.hide="true" \
 		pasource.showbars="1" \
 		pasink.showbars="1" \
 		sensors.use_sensors="true" \
