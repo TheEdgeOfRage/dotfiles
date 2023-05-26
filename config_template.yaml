@@ -1,19 +1,29 @@
+---
 data:
   i3:
     font_size: 13
     xrandr: ''
     tray_output: ''
+    nm_applet: true
     bumblebee:
       modules: 'ytrssil'
       parameters: >-
         sensors.path="coretemp-isa-0000/Package id 0/temp1_input"
+    additional_bindings: ''
   xresources:
-    rgba:
-      - rgba: rgb
-        dpi: 96
-  roxterm:
+    per_screen: []
+  alacritty:
     font:
-      size: 14
+      size: '7.5'
+      offset:
+        x: 0
+        y: 3
+  rofi:
+    font:
+      size: '15'
   zshrc:
-    gdk_scale: '1.0'
-    env_vars: []
+    env_vars:
+      - name: 'NAME'
+        value: 'VALUE'
+  xinitrc:
+    additional_commands: ''
