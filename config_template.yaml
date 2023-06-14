@@ -6,9 +6,10 @@ data:
     tray_output: ''
     nm_applet: true
     bumblebee:
-      modules: 'ytrssil'
-      parameters: >-
-        sensors.path="coretemp-isa-0000/Package id 0/temp1_input"
+      modules: 'ytrssil,'
+      parameters:
+        - key: "sensors.path"
+          value: "coretemp-isa-0000/Package id 0/temp1_input"
     additional_bindings: ''
   xresources:
     per_screen: []

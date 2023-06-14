@@ -219,29 +219,7 @@ bindsym $mod+F12 mode "$mode_kb_select"
 bar {
 	position top
 	tray_output none
-	status_command ~/.local/share/bumblebee-status/bumblebee-status -m \
-		playerctl \
-		dunst {{ .i3.bumblebee.modules }} \
-		sensors \
-		pasource \
-		pasink \
-		date \
-		time \
-		-p workspacewheel=False \
-		playerctl.args="-p Deezer" \
-		playerctl.layout="playerctl.song,playerctl.prev,playerctl.pause,playerctl.next" \
-		playerctl.format="{{`{{artist}}`}} - {{`{{title}}`}}" \
-		playerctl.hide="true" \
-		pasource.showbars="1" \
-		pasink.showbars="1" \
-		sensors.use_sensors="true" \
-		sensors.json="true" \
-		{{ .i3.bumblebee.parameters }} \
-		date.format="%a, %Y-%m-%d" \
-		date.interval="30" \
-		time.format="%H:%M:%S" \
-		time.interval="1" \
-		-t gruvbox-powerline
+	status_command ~/.local/share/bumblebee-status/bumblebee-status -c ~/.config/bumblebee-status/top.toml
 	bindsym button4 nop
 	bindsym button5 nop
 	colors {
@@ -256,20 +234,7 @@ bar {
 bar {
 	position bottom
 	tray_output {{ .i3.tray_output }}
-	status_command ~/.local/share/bumblebee-status/bumblebee-status -m \
-		traffic \
-		nic \
-		load \
-		cpu2 \
-		memory \
-		-p engine.workspacewheel=False \
-		traffic.hide_down=True \
-		traffic.exclude="lo,virbr,docker,vboxnet,veth,br-,cni,flannel,podman,tun,wg,tailscale,wt" \
-		nic.exclude="lo,virbr,docker,vboxnet,veth,br-,cni,flannel,podman" \
-		nic.states="^down" \
-		cpu2.layout="cpu2.coresload" \
-		cpu2.colored=1 \
-		-t gruvbox-powerline
+	status_command ~/.local/share/bumblebee-status/bumblebee-status -c ~/.config/bumblebee-status/bottom.toml
 	bindsym button4 nop
 	bindsym button5 nop
 	colors {

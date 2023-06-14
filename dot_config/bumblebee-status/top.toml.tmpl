@@ -1,0 +1,24 @@
+[core]
+modules=playerctl, dunst, {{ .i3.bumblebee.modules }} sensors, pulsein, pulseout, date, time
+autohide=#comma-separated list of modules to hide, unless in warning/error state
+theme=gruvbox-powerline
+
+[module-parameters]
+workspacewheel=False
+playerctl.args=-p Deezer
+playerctl.layout=playerctl.song,playerctl.prev,playerctl.pause,playerctl.next
+playerctl.format={{`{{artist}}`}} - {{`{{title}}`}}
+playerctl.hide=true
+pulsein.showbars=1
+pulseout.showbars=1
+pulsectl.alsa_output.pci-0000_00_1f.3.analog-stereo=
+pulsectl.alsa_output.usb-Topping_DX3_Pro_-00.iec958-stereo=🎧
+pulsectl.left-click=select_default_device_popup
+sensors.use_sensors=true
+sensors.json=true
+date.format=%a, %Y-%m-%d
+date.interval=30
+time.format=%H:%M:%S
+time.interval=1
+{{ range $_, $param := .i3.bumblebee.parameters -}}{{ $param.key }}={{ $param.value }}
+{{end}}
