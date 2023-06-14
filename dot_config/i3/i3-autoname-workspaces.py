@@ -72,7 +72,8 @@ WINDOW_ICONS: dict[str, str] = {
     'libreoffice-writer': fa.icons['file-alt'],
     'lutris': fa.icons['gamepad'],
     'mpv': fa.icons['video'],
-    'multimc': fa.icons['cube'],
+    'polymc': fa.icons['cube'],
+    'minecraft': fa.icons['cube'],
     'mupdf': fa.icons['file-pdf'],
     'nemiver': fa.icons['bug'],
     'nm-connection-editor': fa.icons['wifi'],
@@ -157,8 +158,13 @@ def icon_for_window(window) -> str:
         return DEFAULT_ICON
 
     for cls in map(lambda x: x.lower(), classes):
+        if 'minecraft' in cls:
+            return WINDOW_ICONS['minecraft']
+
         if cls in WINDOW_ICONS:
             return WINDOW_ICONS[cls]
+        else:
+            print(f'No icon available for: {classes}')
 
     return DEFAULT_ICON
 
