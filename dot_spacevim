@@ -40,6 +40,7 @@ function! UserInit()
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': ['markdown', 'vim-plug'] }
 	Plug 'mboughaba/i3config.vim'
 	Plug 'github/copilot.vim'
+	Plug 'vim-test/vim-test'
 
 endfunction
 
@@ -158,6 +159,13 @@ function! UserConfig()
 		nnoremap <Leader>wN :resize +5<CR>
 		nnoremap <Leader>wE :resize -5<CR>
 	endif
+
+	" vim-test mappings
+	nmap <silent> <leader>Tt :TestNearest<CR>
+	nmap <silent> <leader>Tf :TestFile<CR>
+	nmap <silent> <leader>Ta :TestSuite<CR>
+	nmap <silent> <leader>Tl :TestLast<CR>
+	nmap <silent> <leader>Tg :TestVisit<CR>
 
 	" FZF mappings
 	noremap <C-P> :GFiles<CR>
