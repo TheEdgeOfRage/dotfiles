@@ -24,7 +24,7 @@ alias df='df -h'
 alias diff='diff -y --suppress-common-lines'
 alias dockre=docker
 alias fdisk='sudo fdisk'
-alias grep='grep -Hn --color=always'
+alias grep='grep --color=always'
 alias i3exit='i3-msg exit'
 alias ksops="sops --encrypted-regex '^(data|stringData)$'"
 alias ls='ls --group-directories-first --color=always --time-style=long-iso'
