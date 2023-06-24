@@ -62,7 +62,7 @@ WINDOW_ICONS: dict[str, str] = {
     'gparted': fa.icons['hdd'],
     'gsmartcontrol': fa.icons['hdd'],
     'inkscape': fa.icons['pen-nib'],
-    'jack-rack': fa.icons['volume-up'],
+    'jetbrains-idea-ce': fa.icons['code'],
     'jetbrains-studio': fa.icons['code'],
     'kicad': fa.icons['microchip'],
     'ksp.x86_64': fa.icons['space-shuttle'],
