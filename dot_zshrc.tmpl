@@ -98,5 +98,9 @@ if which pyenv &> /dev/null; then
 	eval "$(pyenv init -)"
 fi
 
+# nvm setup
+export NVM_DIR="$HOME/.local/share/nvm"
+source /usr/share/nvm/init-nvm.sh
+
 # startx on tty1
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx -- vt1; fi
