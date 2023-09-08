@@ -51,6 +51,7 @@ WINDOW_ICONS: dict[str, str] = {
     'darktable': fa.icons['camera'],
     'discord': fa.icons['comment'],
     'dwarf_fortress': fa.icons['fort-awesome'],
+    'easyeffects': fa.icons['music'],
     'evince': fa.icons['file-pdf'],
     'factorio': fa.icons['cog'],
     'feh': fa.icons['image'],
