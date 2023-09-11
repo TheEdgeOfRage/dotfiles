@@ -15,6 +15,7 @@ alias -g WC='| wc -l'
 alias -g clip='xclip -selection c'
 alias -g vim='nvim'
 alias -g vimdiff='nvim -d'
+alias adb='adb -d'
 alias cal='cal -m'
 alias cdl='cd ~/ && cl'
 alias cl=clear
