@@ -264,11 +264,13 @@ function! UserConfig()
 		\ 'cpp': ['gcc'],
 		\ 'javascript': ['eslint'],
 		\ 'python': ['flake8', 'isort', 'mypy'],
+		\ 'typescript': ['prettier', 'eslint'],
 		\ }
 	let g:ale_fixers = {
 		\ '*': ['remove_trailing_lines', 'trim_whitespace'],
 		\ 'go': ['gofmt', 'goimports', 'golines'],
 		\ 'terraform': ['terraform'],
+		\ 'typescript': ['prettier'],
 		\ }
 	let g:ale_lint_on_insert_leave = 1
 	let g:ale_fix_on_save = 1
