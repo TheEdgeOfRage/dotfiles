@@ -265,6 +265,7 @@ function! UserConfig()
 		\ 'javascript': ['eslint'],
 		\ 'python': ['flake8', 'isort', 'mypy'],
 		\ 'typescript': ['prettier', 'eslint'],
+		\ 'go': ['gofmt', 'golangci-lint', 'gopls', 'govet']
 		\ }
 	let g:ale_fixers = {
 		\ '*': ['remove_trailing_lines', 'trim_whitespace'],
