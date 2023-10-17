@@ -1,5 +1,32 @@
-# vim: ft=yaml
-# Configuration for Alacritty, the GPU enhanced terminal emulator.
+# Font configuration
+font:
+  # Normal (roman) font face
+  normal:
+    family: MonoFont
+    style: Regular
+
+  size: {{ .alacritty.font.size }}
+
+  # Offset is the extra space around each character. `offset.y` can be thought
+  # of as modifying the line spacing, and `offset.x` as modifying the letter
+  # spacing.
+  offset:
+   x: {{ .alacritty.font.offset.x }}
+   y: {{ .alacritty.font.offset.y }}
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increasing `x` moves the glyph to the
+  # right, increasing `y` moves the glyph upward.
+  # glyph_offset:
+  #  x: 0
+  #  y: 26
+
+  # Use built-in font for box drawing characters.
+  #
+  # If `true`, Alacritty will use a custom built-in font for box drawing
+  # characters (Unicode points 2500 - 259f).
+  #
+  #builtin_box_drawing: true
 
 # Import additional configuration files
 #
@@ -56,36 +83,6 @@ scrolling:
 
   # Scrolling distance multiplier.
   #multiplier: 3
-
-# Font configuration
-font:
-  # Normal (roman) font face
-  normal:
-    family: MonoFont
-    style: Regular
-
-  size: {{ .alacritty.font.size }}
-
-  # Offset is the extra space around each character. `offset.y` can be thought
-  # of as modifying the line spacing, and `offset.x` as modifying the letter
-  # spacing.
-  offset:
-   x: {{ .alacritty.font.offset.x }}
-   y: {{ .alacritty.font.offset.y }}
-
-  # Glyph offset determines the locations of the glyphs within their cells with
-  # the default being at the bottom. Increasing `x` moves the glyph to the
-  # right, increasing `y` moves the glyph upward.
-  # glyph_offset:
-  #  x: 0
-  #  y: 26
-
-  # Use built-in font for box drawing characters.
-  #
-  # If `true`, Alacritty will use a custom built-in font for box drawing
-  # characters (Unicode points 2500 - 259f).
-  #
-  #builtin_box_drawing: true
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
