@@ -8,8 +8,8 @@
 
 window {
     background-color: @background;
-    border:           2;
-    padding:          2;
+    border:           0;
+    padding:          6;
 }
 
 mainbox {
