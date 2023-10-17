@@ -4,7 +4,7 @@
 # for running programs.  It contains icons for a few programs, but more can
 # easily be added by inserting them into WINDOW_ICONS below.
 #
-# Dependencies: xorg-xprop i3ipc nerdfonts
+# Dependencies: xorg-xprop i3ipc fontawesome
 #
 # Installation:
 # Add "exec_always ~/.config/i3/i3-autoname-workspaces.py &" to the i3 config
