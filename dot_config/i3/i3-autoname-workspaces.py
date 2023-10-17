@@ -4,7 +4,7 @@
 # for running programs.  It contains icons for a few programs, but more can
 # easily be added by inserting them into WINDOW_ICONS below.
 #
-# Dependencies: xorg-xprop i3ipc fontawesome
+# Dependencies: xorg-xprop i3ipc nerdfonts
 #
 # Installation:
 # Add "exec_always ~/.config/i3/i3-autoname-workspaces.py &" to the i3 config
@@ -24,7 +24,7 @@ import subprocess as proc
 from sys import exit
 from typing import Any, NoReturn
 
-import fontawesome as fa  # type: ignore
+import nerdfonts as nf  # type: ignore
 import i3ipc  # type: ignore
 
 # Add icons here for common programs you use.  The keys are the X window class
@@ -38,68 +38,70 @@ import i3ipc  # type: ignore
 # xprop (https://linux.die.net/man/1/xprop). Run `xprop | grep WM_CLASS`
 # then click on the application you want to inspect.
 WINDOW_ICONS: dict[str, str] = {
-    'alacritty': fa.icons['terminal'],
-    'blender': fa.icons['cube'],
-    'blueman-manager': fa.icons['bluetooth'],
-    'calibre-gui': fa.icons['book'],
-    'chromium': fa.icons['chrome'],
-    'cities.x64': fa.icons['city'],
-    'clonehero': fa.icons['guitar'],
-    'code-oss': fa.icons['code'],
-    'vscodium': fa.icons['code'],
-    'cutter': fa.icons['bug'],
-    'darktable': fa.icons['camera'],
-    'discord': fa.icons['comment'],
-    'dwarf_fortress': fa.icons['fort-awesome'],
-    'easyeffects': fa.icons['music'],
-    'evince': fa.icons['file-pdf'],
-    'factorio': fa.icons['cog'],
-    'feh': fa.icons['image'],
-    'firefox': fa.icons['firefox'],
-    'firefoxdeveloperedition': fa.icons['firefox'],
-    'ghb': fa.icons['video'],
-    'gimp': fa.icons['file-image'],
-    'gimp-2.10': fa.icons['file-image'],
-    'gparted': fa.icons['hdd'],
-    'gsmartcontrol': fa.icons['hdd'],
-    'inkscape': fa.icons['pen-nib'],
-    'jetbrains-idea-ce': fa.icons['code'],
-    'jetbrains-studio': fa.icons['code'],
-    'kicad': fa.icons['microchip'],
-    'ksp.x86_64': fa.icons['space-shuttle'],
-    'ledger live': fa.icons['wallet'],
-    'libreoffice-calc': fa.icons['file-excel'],
-    'libreoffice-impress': fa.icons['file-powerpoint'],
-    'libreoffice-writer': fa.icons['file-alt'],
-    'lutris': fa.icons['gamepad'],
-    'mpv': fa.icons['video'],
-    'polymc': fa.icons['cube'],
-    'minecraft': fa.icons['cube'],
-    'mupdf': fa.icons['file-pdf'],
-    'nemiver': fa.icons['bug'],
-    'nm-connection-editor': fa.icons['wifi'],
-    'obs': fa.icons['video'],
-    'pavucontrol': fa.icons['volume-up'],
-    'picard': fa.icons['music'],
-    'qbittorrent': fa.icons['download'],
-    'qtcreator': fa.icons['code'],
-    'roxterm': fa.icons['terminal'],
-    'seahorse': fa.icons['lock'],
-    'simplescreenrecorder': fa.icons['video'],
-    'slack': fa.icons['slack'],
-    'spotify': fa.icons['spotify'],
-    'sqlitebrowser': fa.icons['database'],
-    'steam': fa.icons['steam'],
-    'surviving mars': fa.icons['rocket'],
-    'telegram-desktop': fa.icons['telegram'],
-    'terraria.bin.x86_64': fa.icons['tree'],
-    'thunderbird': fa.icons['envelope'],
-    'vim': fa.icons['code'],
-    'virtualbox manager': fa.icons['desktop'],
-    'vlc': fa.icons['video'],
-    'wireshark': fa.icons['network-wired'],
-    'zathura': fa.icons['file-pdf'],
-    'zenity': fa.icons['window-maximize'],
+    'alacritty': nf.icons['fa_terminal'],
+    'blender': nf.icons['fa_cube'],
+    'blueman-manager': nf.icons['fa_bluetooth'],
+    'calibre-gui': nf.icons['fa_book'],
+    'chromium': nf.icons['fa_chrome'],
+    'cities.x64': nf.icons['md_city'],
+    'clonehero': nf.icons['md_guitar_electric'],
+    'code-oss': nf.icons['fa_code'],
+    'vscodium': nf.icons['fa_code'],
+    'cutter': nf.icons['fa_bug'],
+    'darktable': nf.icons['fa_camera'],
+    'discord': nf.icons['fa_comment'],
+    'dwarf_fortress': nf.icons['fa_fort_awesome'],
+    'easyeffects': nf.icons['fa_music'],
+    'evince': nf.icons['fa_file_pdf_o'],
+    'factorio': nf.icons['fa_cog'],
+    'feh': nf.icons['fa_image'],
+    'firefox': nf.icons['fa_firefox'],
+    'firefoxdeveloperedition': nf.icons['fa_firefox'],
+    'ghb': nf.icons['md_video'],
+    'gimp': nf.icons['cod_file_media'],
+    'gimp-2.10': nf.icons['cod_file_media'],
+    'gparted': nf.icons['fa_hdd_o'],
+    'gsmartcontrol': nf.icons['fa_hdd_o'],
+    'inkscape': nf.icons['md_fountain_pen_tip'],
+    'jetbrains-idea-ce': nf.icons['fa_code'],
+    'jetbrains-studio': nf.icons['fa_code'],
+    'kcharselect': nf.icons['fa_font'],
+    'kicad': nf.icons['fa_microchip'],
+    'ksp.x86_64': nf.icons['fa_space_shuttle'],
+    'ledger live': nf.icons['md_wallet'],
+    'libreoffice-calc': nf.icons['fa_file_excel_o'],
+    'libreoffice-impress': nf.icons['fa_file_powerpoint_o'],
+    'libreoffice-writer': nf.icons['fa_file_word_o'],
+    'lutris': nf.icons['fa_gamepad'],
+    'mpv': nf.icons['md_video'],
+    'polymc': nf.icons['fa_cube'],
+    'minecraft': nf.icons['fa_cube'],
+    'mupdf': nf.icons['fa_file_pdf_o'],
+    'nemiver': nf.icons['fa_bug'],
+    'nm-connection-editor': nf.icons['fa_wifi'],
+    'obs': nf.icons['md_video'],
+    'openlens': nf.icons['md_kubernetes'],
+    'pavucontrol': nf.icons['fa_volume_up'],
+    'picard': nf.icons['fa_music'],
+    'qbittorrent': nf.icons['fa_download'],
+    'qtcreator': nf.icons['fa_code'],
+    'roxterm': nf.icons['fa_terminal'],
+    'seahorse': nf.icons['fa_lock'],
+    'simplescreenrecorder': nf.icons['md_video'],
+    'slack': nf.icons['fa_slack'],
+    'spotify': nf.icons['fa_spotify'],
+    'sqlitebrowser': nf.icons['fa_database'],
+    'steam': nf.icons['fa_steam'],
+    'surviving mars': nf.icons['fa_rocket'],
+    'telegram-desktop': nf.icons['fa_telegram'],
+    'terraria.bin.x86_64': nf.icons['fa_tree'],
+    'thunderbird': nf.icons['fa_envelope'],
+    'vim': nf.icons['fa_code'],
+    'virtualbox manager': nf.icons['fa_desktop'],
+    'vlc': nf.icons['md_video'],
+    'wireshark': nf.icons['md_shark_fin'],
+    'zathura': nf.icons['fa_file_pdf_o'],
+    'zenity': nf.icons['fa_window_maximize'],
 }
 
 # This icon is used for any application not in the list above
@@ -133,7 +135,7 @@ def construct_workspace_name(parts) -> str:
         if parts['icons']:
             new_name += ' ' + parts['icons']
 
-    return new_name
+    return new_name + ' '
 
 
 # Returns an array of the values for the given property from xprop.  This
@@ -164,8 +166,8 @@ def icon_for_window(window) -> str:
 
         if cls in WINDOW_ICONS:
             return WINDOW_ICONS[cls]
-        else:
-            print(f'No icon available for: {classes}')
+    else:
+        print(f'No icon available for: {classes}')
 
     return DEFAULT_ICON
 
@@ -173,7 +175,7 @@ def icon_for_window(window) -> str:
 # renames all workspaces based on the windows present
 def rename_workspaces(i3) -> None:
     for workspace in i3.get_tree().workspaces():
-        if workspace.name in ['', '', '']:
+        if workspace.num == -1:
             continue
 
         name_parts = parse_workspace_name(workspace.name)
