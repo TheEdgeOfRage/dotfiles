@@ -135,7 +135,10 @@ def construct_workspace_name(parts) -> str:
         if parts['icons']:
             new_name += ' ' + parts['icons']
 
-    return new_name + ' '
+    if len(new_name) > 1:
+        new_name += ' '
+
+    return new_name
 
 
 # Returns an array of the values for the given property from xprop.  This
