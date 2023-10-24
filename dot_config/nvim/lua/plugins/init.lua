@@ -12,23 +12,47 @@ return {
     },
     "nvim-lualine/lualine.nvim",
 
-    -- keymaps and functionality
+    -- keymaps
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
         opts = {}
     },
-    "tpope/vim-surround",
+    {
+        "kylechui/nvim-surround",
+        version = "*",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    },
     "folke/which-key.nvim",
+
+    -- functionality
     'andymass/vim-matchup',
     'tpope/vim-repeat',
     'mbbill/undotree',
     'jdhao/whitespace.nvim',
     'lambdalisue/suda.vim',
     'xiyaowong/nvim-cursorword',
-
-    -- other
     'ahmedkhalf/project.nvim',
-    'folke/neodev.nvim',
     'github/copilot.vim',
+    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+    {
+        'folke/neodev.nvim',
+        dependencies = {
+            "rcarriga/nvim-dap-ui",
+        },
+        opts = {
+            library = {
+                plugins = {
+                    "nvim-dap-ui",
+                },
+                types = true,
+            },
+        },
+    },
 }

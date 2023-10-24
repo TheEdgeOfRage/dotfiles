@@ -1,32 +1,34 @@
--- Colemak bindings
-vim.keymap.set("", "n", "j")
-vim.keymap.set("", "e", "k")
-vim.keymap.set("", "i", "l")
-vim.keymap.set("", "I", "$")
-vim.keymap.set("", "H", "0")
-vim.keymap.set("", "l", "i")
-vim.keymap.set("", "L", "I")
-vim.keymap.set("n", "N", "mzJ`z")
-vim.keymap.set("", "k", "n")
-vim.keymap.set("", "K", "N")
-vim.keymap.set("", "J", "M")
-vim.keymap.set("", "j", "m")
-vim.keymap.set("", "m", "e")
-vim.keymap.set("", "M", "E")
+local opts = {noremap = true, silent = true}
 
-vim.keymap.set("v", "N", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "E", ":m '<-2<CR>gv=gv")
+-- Colemak bindings
+vim.keymap.set("", "n", "j", opts)
+vim.keymap.set("", "e", "k", opts)
+vim.keymap.set("", "i", "l", opts)
+vim.keymap.set("", "I", "$", opts)
+vim.keymap.set("", "H", "^", opts)
+vim.keymap.set("", "l", "i", opts)
+vim.keymap.set("", "L", "I", opts)
+vim.keymap.set("n", "N", "mzJ`z", opts)
+vim.keymap.set("", "k", "n", opts)
+vim.keymap.set("", "K", "N", opts)
+vim.keymap.set("", "J", "M", opts)
+vim.keymap.set("", "j", "m", opts)
+vim.keymap.set("", "m", "e", opts)
+vim.keymap.set("", "M", "E", opts)
+
+vim.keymap.set("v", "N", ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set("v", "E", ":m '<-2<CR>gv=gv", opts)
 
 -- General mappings
-vim.keymap.set("", "<BS>", "gg")
-vim.keymap.set("", "<CR>", "G")
-vim.keymap.set("", "<Space>", "<NOP>")
+vim.keymap.set("", "<BS>", "gg", opts)
+vim.keymap.set("", "<CR>", "G", opts)
+vim.keymap.set("", "<Space>", "<NOP>", opts)
 
-vim.keymap.set("x", "p", "\"_dP")
+vim.keymap.set("x", "p", "\"_dP", opts)
 
-vim.keymap.set("n", "<tab>", vim.cmd.bn)
-vim.keymap.set("n", "<s-tab>", vim.cmd.bp)
-vim.keymap.set("n", "U", vim.cmd.redo)
+vim.keymap.set("n", "<tab>", vim.cmd.bn, opts)
+vim.keymap.set("n", "<s-tab>", vim.cmd.bp, opts)
+vim.keymap.set("n", "U", vim.cmd.redo, opts)
 
 -- File operation maps
 vim.keymap.set("n", "<leader>fd", function ()
@@ -36,35 +38,50 @@ vim.keymap.set("n", "<leader>fd", function ()
         vim.cmd.normal('jzgg=G`z')
     end
 end)
-vim.keymap.set("n", "<leader>fs", vim.cmd.w)
-vim.keymap.set("n", "<leader>W", vim.cmd.SudaWrite)
-vim.keymap.set("n", "<leader>q", vim.cmd.q)
-vim.keymap.set("n", "<leader>Q", ":q!<cr>")
-vim.keymap.set("n", "<leader>wq", vim.cmd.wq)
-vim.keymap.set("n", "<leader>bd", ":bp | bd #<cr>")
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<leader>fs", vim.cmd.w, opts)
+vim.keymap.set("n", "<leader>W", vim.cmd.SudaWrite, opts)
+vim.keymap.set("n", "<leader>q", vim.cmd.q, opts)
+vim.keymap.set("n", "<leader>Q", ":q!<cr>", opts)
+vim.keymap.set("n", "<leader>wq", vim.cmd.wq, opts)
+vim.keymap.set("n", "<leader>bd", ":bp | bd #<cr>", opts)
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
 
-vim.keymap.set("", "\\", ":let @/ = \"\"<CR>")
+vim.keymap.set("", "\\", ":let @/ = \"\"<CR>", opts)
 
 -- Git
-vim.keymap.set("n", "<leader>gd", vim.cmd.Gvdiff)
+vim.keymap.set("n", "<leader>gd", vim.cmd.Gvdiff, opts)
 -- vim.keymap.set("n", "<leader>gb", vim.cmd('Gitsigns toggle_current_line_blame'))
 
 -- window movement
-vim.keymap.set("n", "<leader>wn", "<C-W>j")
-vim.keymap.set("n", "<leader>we", "<C-W>k")
-vim.keymap.set("n", "<leader>wh", "<C-W>h")
-vim.keymap.set("n", "<leader>wi", "<C-W>l")
-vim.keymap.set("n", "<leader>wH", "<C-W>5<")
-vim.keymap.set("n", "<leader>wI", "<C-W>5>")
-vim.keymap.set("n", "<leader>wN", ":resize +5<CR>")
-vim.keymap.set("n", "<leader>wE", ":resize -5<CR>")
+vim.keymap.set("n", "<leader>wn", "<C-W>j", opts)
+vim.keymap.set("n", "<leader>we", "<C-W>k", opts)
+vim.keymap.set("n", "<leader>wh", "<C-W>h", opts)
+vim.keymap.set("n", "<leader>wi", "<C-W>l", opts)
+vim.keymap.set("n", "<leader>wH", "<C-W>5<", opts)
+vim.keymap.set("n", "<leader>wI", "<C-W>5>", opts)
+vim.keymap.set("n", "<leader>wN", ":resize +5<CR>", opts)
+vim.keymap.set("n", "<leader>wE", ":resize -5<CR>", opts)
 
 -- Telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fp', builtin.git_files, {})
-vim.keymap.set('n', '<c-p>', builtin.git_files, {})
-vim.keymap.set('n', '<leader>rg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+require('telescope').setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<esc>"] = require('telescope.actions').close,
+            },
+        },
+    },
+})
+
+local telescope = require('telescope.builtin')
+
+local git_files = function()
+    telescope.git_files({show_untracked = true})
+end
+
+vim.keymap.set('n', '<leader>ff', git_files, opts)
+vim.keymap.set('n', '<c-p>', git_files, opts)
+vim.keymap.set('n', '<leader>fp', function() telescope.find_files({hidden=true}) end, opts)
+vim.keymap.set('n', '<leader>rg', telescope.live_grep, opts)
+vim.keymap.set('n', '<leader>fb', telescope.buffers, opts)
+vim.keymap.set('n', '<leader>fh', telescope.help_tags, opts)

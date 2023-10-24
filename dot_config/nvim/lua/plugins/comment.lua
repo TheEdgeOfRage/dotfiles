@@ -7,6 +7,12 @@ return {
             ---Block-comment toggle keymap
             block = '<leader>b/',
         },
+        opleader = {
+            ---Line-comment keymap
+            line = '<leader>/',
+            ---Block-comment keymap
+            block = '<leader>b/',
+        },
     },
     lazy = false,
 }

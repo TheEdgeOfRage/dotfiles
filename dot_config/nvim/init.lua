@@ -1,4 +1,5 @@
-require("sets")
+vim.g.mapleader = " "
+
 
 -- Lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -25,11 +26,12 @@ require("lazy").setup("plugins", {
 
 vim.cmd([[colorscheme gruvbox]])
 
-require('telescope').load_extension('projects')
-require('project_nvim').setup({})
-
 -- Import additional config files
+require("sets")
 require("mappings")
 require("git")
 require("lsp")
 require("line")
+
+require('telescope').load_extension('projects')
+require('project_nvim').setup({})

@@ -1,9 +1,11 @@
 -- Load default lsp-zero keymaps
-local lsp_zero = require('lsp-zero')
+local lsp_zero = require("lsp-zero")
+local telescope = require("telescope.builtin")
+require("mason").setup()
+require("mason-lspconfig").setup({ automatic_installation = true })
 
 lsp_zero.on_attach(function(_, bufnr)
-    -- see :help lsp-zero-keybindings
-    -- to learn the available actions
+    -- see :help lsp-zero-keybindings to learn the available actions
     lsp_zero.default_keymaps({buffer = bufnr})
 
     local opts = {buffer = bufnr, remap = false}
@@ -14,6 +16,20 @@ lsp_zero.on_attach(function(_, bufnr)
     vim.keymap.set("n", "<leader>en", function() vim.diagnostic.goto_next() end, opts)
     vim.keymap.set("n", "<leader>ep", function() vim.diagnostic.goto_prev() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+
+    vim.keymap.set("n", "gr", function() telescope.lsp_references({
+        include_declaration = false,
+        show_line = false,
+        fname_width = 64,
+    }) end, opts)
+    vim.keymap.set("n", "gd", function() telescope.lsp_definitions({
+        show_line = false,
+        fname_width = 64,
+    }) end, opts)
+    vim.keymap.set("n", "gi", function() telescope.lsp_implementations({
+        show_line = false,
+        fname_width = 64,
+    }) end, opts)
 end)
 
 lsp_zero.format_on_save({
@@ -22,47 +38,69 @@ lsp_zero.format_on_save({
         timeout_ms = 10000,
     },
     servers = {
-        ['prettier'] = {'javascript', 'typescript'},
-        ['gopls'] = {'go'},
-        ['stylua'] = {'lua'},
+        ["efm"] = {"javascript", "typescript"},
+        ["gopls"] = {"go"},
+        ["stylua"] = {"lua"},
     }
 })
 
 -- Setup LSP servers
-local lspconfig = require('lspconfig')
+local lspconfig = require("lspconfig")
+local prettier = {
+    formatCommand = 'prettierd "${INPUT}"',
+    formatStdin = true,
+    env = {
+        string.format('PRETTIERD_DEFAULT_CONFIG=%s', vim.fn.expand('~/.config/nvim/utils/linter-config/.prettierrc.json')),
+    },
+}
 -- go
 lspconfig.golangci_lint_ls.setup({})
 lspconfig.gopls.setup({})
 -- lua
-lspconfig.lua_ls.setup({})
+lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 -- python
-lspconfig.pylsp.setup{}
+lspconfig.pylsp.setup({})
 -- typescript
-lspconfig.tsserver.setup({})
 lspconfig.eslint.setup({})
+lspconfig.tsserver.setup({})
+local languages = {
+    -- lua = { stylua },
+    typescript = { prettier },
+    javascript = { prettier },
+    json = { prettier },
+    markdown = { prettier },
+}
+lspconfig.efm.setup({
+    -- capabilities = capabilities,
+    cmd = { "/home/pavle/.local/share/nvim/mason/bin/efm-langserver" },
+    -- on_attach = on_attach,
+    init_options = { documentFormatting = true },
+    root_dir = vim.loop.cwd,
+    filetypes = vim.tbl_keys(languages),
+    settings = {
+        rootMarkers = { ".git/", ".prettierignore" },
+        lintDebounce = 100,
+        logLevel = 5,
+        logFile = "/home/pavle/efm.log",
+        languages = languages,
+    },
+    single_file_support = true,
+})
 -- other
 lspconfig.terraformls.setup({})
 lspconfig.jsonls.setup({})
 
 -- Customize keymaps
-local cmp = require('cmp')
--- local cmp_action = require('lsp-zero').cmp_action()
-
+local cmp = require("cmp")
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
         -- `Enter` key to confirm completion
-        ['<CR>'] = cmp.mapping.confirm({select = false}),
+        ["<CR>"] = cmp.mapping.confirm({select = false}),
 
-        ['<C-Space>'] = cmp.mapping.complete(),
+        ["<C-Space>"] = cmp.mapping.complete(),
 
         -- Scroll up and down in the completion documentation
-        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-d>'] = cmp.mapping.scroll_docs(4),
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-d>"] = cmp.mapping.scroll_docs(4),
     })
 })
-
--- Fix lua lsp for nvim config
-local lua_opts = lsp_zero.nvim_lua_ls()
-require('lspconfig').lua_ls.setup(lua_opts)
-
-require("mason").setup()

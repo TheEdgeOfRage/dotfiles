@@ -1,57 +1,65 @@
 return {
-    "nvim-treesitter/nvim-treesitter",
-    version = false,
-    build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = {
-        {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-            init = function()
-                require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-                load_textobjects = true
-            end,
+    {
+        "nvim-treesitter/playground",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
         },
     },
-    cmd = { "TSUpdateSync" },
-    keys = {
-        { "<c-space>", desc = "Increment selection" },
-        { "<bs>", desc = "Decrement selection", mode = "x" },
-    },
-    opts = {
-        highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = false,
-        },
-        indent = { enable = true },
-        auto_install = true,
-        ensure_installed = {
-            "bash",
-            "go",
-            "javascript",
-            "json",
-            "lua",
-            "luadoc",
-            "luap",
-            "markdown",
-            "markdown_inline",
-            "python",
-            "query",
-            "regex",
-            "terraform",
-            "tsx",
-            "typescript",
-            "vim",
-            "vimdoc",
-            "yaml",
-        },
-        incremental_selection = {
-            enable = true,
-            keymaps = {
-                init_selection = "<C-space>",
-                node_incremental = "<C-space>",
-                scope_incremental = false,
-                node_decremental = "<bs>",
-            },
-        },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        version = false,
+        build = ":TSUpdate",
+        event = { "BufReadPost", "BufNewFile", "VeryLazy" },
+        cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+        config = function()
+            require'nvim-treesitter.configs'.setup({
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
+                indent = {
+                    enable = true,
+                },
+                auto_install = true,
+                ensure_installed = {
+                    "bash",
+                    "go",
+                    "javascript",
+                    "json",
+                    "lua",
+                    "luadoc",
+                    "luap",
+                    "markdown",
+                    "markdown_inline",
+                    "python",
+                    "query",
+                    "regex",
+                    "terraform",
+                    "tsx",
+                    "typescript",
+                    "vim",
+                    "vimdoc",
+                    "yaml",
+                },
+                playground = {
+                    enable = true,
+                    disable = {},
+                    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+                    persist_queries = false,
+                    keybindings = {
+                        toggle_query_editor = 'o',
+                        toggle_hl_groups = 'i',
+                        toggle_injected_languages = 't',
+                        toggle_anonymous_nodes = 'a',
+                        toggle_language_display = 'I',
+                        focus_language = 'f',
+                        unfocus_language = 'F',
+                        update = 'R',
+                        goto_node = '<cr>',
+                        show_help = '?',
+                    },
+                },
+            })
+        end,
     },
 }
