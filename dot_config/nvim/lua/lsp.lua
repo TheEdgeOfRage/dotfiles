@@ -9,7 +9,6 @@ lsp_zero.on_attach(function(_, bufnr)
     lsp_zero.default_keymaps({buffer = bufnr})
 
     local opts = {buffer = bufnr, remap = false}
-    vim.keymap.set("n", "<leader>vw", function() vim.lsp.buf.workspace_symbol() end, opts)
     vim.keymap.set("n", "<leader>vc", function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<leader>vr", function() vim.lsp.buf.rename() end, opts)
 
@@ -46,13 +45,6 @@ lsp_zero.format_on_save({
 
 -- Setup LSP servers
 local lspconfig = require("lspconfig")
-local prettier = {
-    formatCommand = 'prettierd "${INPUT}"',
-    formatStdin = true,
-    env = {
-        string.format('PRETTIERD_DEFAULT_CONFIG=%s', vim.fn.expand('~/.config/nvim/utils/linter-config/.prettierrc.json')),
-    },
-}
 -- go
 lspconfig.golangci_lint_ls.setup({})
 lspconfig.gopls.setup({})
@@ -61,8 +53,15 @@ lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 -- python
 lspconfig.pylsp.setup({})
 -- typescript
-lspconfig.eslint.setup({})
+-- lspconfig.eslint.setup({})
 lspconfig.tsserver.setup({})
+local prettier = {
+    formatCommand = 'prettierd "${INPUT}"',
+    formatStdin = true,
+    env = {
+        string.format('PRETTIERD_DEFAULT_CONFIG=%s', vim.fn.expand('~/.config/nvim/utils/linter-config/.prettierrc.json')),
+    },
+}
 local languages = {
     -- lua = { stylua },
     typescript = { prettier },

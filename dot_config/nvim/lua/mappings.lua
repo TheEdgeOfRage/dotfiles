@@ -76,7 +76,10 @@ require('telescope').setup({
 local telescope = require('telescope.builtin')
 
 local git_files = function()
-    telescope.git_files({show_untracked = true})
+    telescope.git_files({
+        show_untracked = true,
+        use_git_root = false,
+    })
 end
 
 vim.keymap.set('n', '<leader>ff', git_files, opts)
