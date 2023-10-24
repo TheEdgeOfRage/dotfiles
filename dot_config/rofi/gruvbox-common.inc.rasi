@@ -38,7 +38,7 @@ listview {
 
 element {
     border:  0;
-    padding: 2px;
+    padding: 0 2px;
 }
 
 element.normal.normal {
