@@ -33,4 +33,5 @@ require("lsp")
 require("line")
 
 require('telescope').load_extension('projects')
+require('telescope').load_extension('fzf')
 require('project_nvim').setup({})
