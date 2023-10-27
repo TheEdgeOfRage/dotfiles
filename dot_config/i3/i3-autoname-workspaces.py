@@ -62,6 +62,7 @@ WINDOW_ICONS: dict[str, str] = {
     'gimp-2.10': nf.icons['fa_paint_brush'],
     'gparted': nf.icons['fa_hdd_o'],
     'gsmartcontrol': nf.icons['fa_hdd_o'],
+    'hoppscotch-app': nf.icons['md_ufo'],
     'inkscape': nf.icons['md_fountain_pen_tip'],
     'jetbrains-idea-ce': nf.icons['fa_code'],
     'jetbrains-studio': nf.icons['fa_code'],
@@ -109,11 +110,11 @@ DEFAULT_ICON = '*'
 
 
 # Used so that we can keep the workspace's name when we add icons to it.
-# Returns a dictionary with the following keys: 'num', 'shortname', and 'icons'
+# Returns a dictionary with the 'num' and 'icons' keys
 # Any field that's missing in @name will be None in the returned dict
 def parse_workspace_name(name) -> dict[str, Any]:
     match = re.match(
-        r'(?P<num>\d+):?(?P<shortname>\w+)? ?(?P<icons>.+)?',
+        r'(?P<num>\d+):? ?(?P<icons>.+)?',
         name,
     )
     if match is None:
@@ -122,20 +123,16 @@ def parse_workspace_name(name) -> dict[str, Any]:
     return match.groupdict()
 
 
-# Given a dictionary with 'num', 'shortname', 'icons',
+# Given a dictionary with 'num', 'icons',
 # return the formatted name by concatenating them together.
 def construct_workspace_name(parts) -> str:
     new_name: str = str(parts['num'])
-    if parts['shortname'] or parts['icons']:
+    if parts['icons']:
         new_name += ':'
+        for icon in parts['icons']:
+            new_name += ' ' + icon
 
-        if parts['shortname']:
-            new_name += parts['shortname']
-
-        if parts['icons']:
-            new_name += ' ' + parts['icons']
-
-    if len(new_name) > 1:
+    if len(new_name) > 1 and not new_name.endswith('*'):
         new_name += ' '
 
     return new_name
@@ -160,12 +157,12 @@ def xprop(win_id, property):
 def icon_for_window(window) -> str:
     classes: list[str] | None = xprop(window.window, 'WM_CLASS')
     if classes is None or len(classes) == 0:
-        print(f'No icon available for: {classes}')
+        print(f'No class set for window: {xprop(window.window, "WM_NAME")}')
         return DEFAULT_ICON
 
     for cls in map(lambda x: x.lower(), classes):
         if 'minecraft' in cls:
-            return WINDOW_ICONS['minecraft']
+            return WINDOW_ICONS["minecraft"]
 
         if cls in WINDOW_ICONS:
             return WINDOW_ICONS[cls]
@@ -182,14 +179,14 @@ def rename_workspaces(i3) -> None:
             continue
 
         name_parts = parse_workspace_name(workspace.name)
-        name_parts['icons'] = ' '.join(
+        name_parts['icons'] = [
             icon_for_window(w) for w in workspace.leaves()
-        )
+        ]
         new_name = construct_workspace_name(name_parts)
         i3.command(f'rename workspace "{workspace.name}" to "{new_name}"')
 
 
-# rename workspaces to just numbers and shortnames.
+# rename workspaces to just numbers
 # called on exit to indicate that this script is no longer running.
 def undo_window_renaming(i3) -> NoReturn:
     for workspace in i3.get_tree().workspaces():
