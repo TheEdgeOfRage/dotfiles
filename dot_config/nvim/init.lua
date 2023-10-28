@@ -16,6 +16,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+require("sets")
+
 require("lazy").setup("plugins", {
     change_detection = {
         enabled = true,

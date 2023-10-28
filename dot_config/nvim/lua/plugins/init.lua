@@ -42,6 +42,12 @@ return {
     "mfussenegger/nvim-dap",
     "rcarriga/nvim-dap-ui",
     {
+        "norcalli/nvim-colorizer.lua",
+        config = function ()
+            require("colorizer").setup()
+        end
+    },
+    {
         'folke/neodev.nvim',
         dependencies = {
             "rcarriga/nvim-dap-ui",
