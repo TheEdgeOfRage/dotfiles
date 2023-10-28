@@ -42,29 +42,6 @@ source ${CUSTOM}/completions/*.zsh
 source ~/.aliases
 source ~/.config/zsh/kc.zsh
 
-# Variable exports
-export DEFAULT_USER="pavle"
-export EDITOR="nvim"
-export GPG_TTY=$(tty)
-export LANG="en_US.UTF-8"
-export LC_ALL="en_DK.UTF-8"
-export MAKEFLAGS="-j $(nproc --all)"
-export MOZ_WEBRENDER="1"
-export MOZ_USE_XINPUT2="1"
-export GOPRIVATE="github.com/duneanalytics/*"
-export GOPATH="$HOME/dev/go"
-export PATH="$HOME/.local/bin:$PATH:$GOPATH/bin"
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export QT_STYLE_OVERRIDE="kvantum"
-export GTK_THEME="Breeze-Dark"
-export VISUAL="nvim"
-export XDG_CONFIG_HOME="$HOME/.config"
-export VIRTUAL_ENV_DISABLE_PROMPT="true"
-{{ range $_, $env := .zshrc.env_vars }}export {{ $env.name }}="{{ $env.value }}"
-{{end}}
-# Valve shader compiler
-export RADV_PERFTEST="aco"
-
 # Bind home and end
 bindkey "\033[H" beginning-of-line
 bindkey "\033[F" end-of-line
@@ -77,17 +54,6 @@ TRAPWINCH() {
 # Load fzf
 [[ $- == *i* ]] && source "/usr/share/fzf/completion.zsh" NO
 source "/usr/share/fzf/key-bindings.zsh" NO
-export FZF_CTRL_T_COMMAND="fd -tf -td -tl"
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/null'
-export FZF_DEFAULT_OPTS='
-	--color fg:#928374,bg:#282828,hl:#fb4934
-	--color fg+:#b8bb26,bg+:#3c3836,hl+:#fb4934
-	--color info:#fe8019,prompt:#83a598,header:#83a598
-	--color pointer:#fb4934,marker:#fb4934,spinner:#ffff60
-'
-
-# jq color config
-export JQ_COLORS="1;31:0;35:0;35:0;39:0;32:1;39:1;39"
 
 # Pyenv settings
 if which pyenv &> /dev/null; then
