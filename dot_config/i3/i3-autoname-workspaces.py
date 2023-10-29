@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # This script listens for i3 events and updates workspace names to show icons
-# for running programs.  It contains icons for a few programs, but more can
+# for running programs. It contains icons for a few programs, but more can
 # easily be added by inserting them into WINDOW_ICONS below.
 #
 # Dependencies: xorg-xprop i3ipc fontawesome
@@ -12,8 +12,8 @@
 # Configuration:
 # The default i3 config's keybingings reference workspaces by name, which is an
 # issue when using this script because the "names" are constantaly changing to
-# show window icons.  Instead, you'll need to change the keybindings to
-# reference workspaces by number.  Change lines like:
+# show window icons. Instead, you'll need to change the keybindings to
+# reference workspaces by number. Change lines like:
 #   bindsym $mod+1 workspace 1
 # To:
 #   bindsym $mod+1 workspace number 1
@@ -21,18 +21,18 @@
 import re
 import signal
 import subprocess as proc
-from sys import exit
-from typing import Any, NoReturn
+from types import FrameType
+from typing import Any, Callable
 
-import nerdfonts as nf  # type: ignore
-import i3ipc  # type: ignore
+import nerdfonts as nf
+from i3ipc import Connection
 
-# Add icons here for common programs you use.  The keys are the X window class
+# Add icons here for common programs you use. The keys are the X window class
 # (WM_CLASS) names (lower-cased) and the icons can be any text you want to
 # display.
 #
-# Most of these are character codes for font awesome:
-#   http://fortawesome.github.io/Font-Awesome/icons/
+# These icons are from the Nerd Font patch set.
+# You can find a list of all here: https://www.nerdfonts.com/cheat-sheet
 #
 # If you're not sure what the WM_CLASS is for your application, you can use
 # xprop (https://linux.die.net/man/1/xprop). Run `xprop | grep WM_CLASS`
@@ -82,6 +82,7 @@ WINDOW_ICONS: dict[str, str] = {
     'nm-connection-editor': nf.icons['fa_wifi'],
     'obs': nf.icons['md_video'],
     'openlens': nf.icons['md_kubernetes'],
+    'org.gnome.nautilus': nf.icons['fa_folder'],
     'pavucontrol': nf.icons['fa_volume_up'],
     'picard': nf.icons['fa_music'],
     'qbittorrent': nf.icons['fa_download'],
@@ -112,28 +113,25 @@ DEFAULT_ICON = '*'
 # Used so that we can keep the workspace's name when we add icons to it.
 # Returns a dictionary with the 'num' and 'icons' keys
 # Any field that's missing in @name will be None in the returned dict
-def parse_workspace_name(name) -> dict[str, Any]:
+def parse_workspace_number(name: str) -> str | None:
     match = re.match(
         r'(?P<num>\d+):? ?(?P<icons>.+)?',
         name,
     )
     if match is None:
-        return {}
+        return None
 
-    return match.groupdict()
+    return match.groupdict()['num']
 
 
 # Given a dictionary with 'num', 'icons',
 # return the formatted name by concatenating them together.
-def construct_workspace_name(parts) -> str:
-    new_name: str = str(parts['num'])
-    if parts['icons']:
+def construct_workspace_name(num: str, icons: list[str] | None) -> str:
+    new_name: str = str(num)
+    if icons:
         new_name += ':'
-        for icon in parts['icons']:
+        for icon in icons:
             new_name += ' ' + icon
-
-    if len(new_name) > 1 and not new_name.endswith('*'):
-        new_name += ' '
 
     return new_name
 
@@ -162,10 +160,10 @@ def icon_for_window(window) -> str:
 
     for cls in map(lambda x: x.lower(), classes):
         if 'minecraft' in cls:
-            return WINDOW_ICONS["minecraft"]
+            return WINDOW_ICONS["minecraft"] + ' '
 
         if cls in WINDOW_ICONS:
-            return WINDOW_ICONS[cls]
+            return WINDOW_ICONS[cls] + ' '
     else:
         print(f'No icon available for: {classes}')
 
@@ -178,33 +176,47 @@ def rename_workspaces(i3) -> None:
         if workspace.num == -1:
             continue
 
-        name_parts = parse_workspace_name(workspace.name)
-        name_parts['icons'] = [
+        num = parse_workspace_number(workspace.name)
+        icons = [
             icon_for_window(w) for w in workspace.leaves()
         ]
-        new_name = construct_workspace_name(name_parts)
+        if num is None:
+            new_name = str(workspace.num)
+        else:
+            new_name = construct_workspace_name(num, icons)
+
         i3.command(f'rename workspace "{workspace.name}" to "{new_name}"')
 
 
 # rename workspaces to just numbers
 # called on exit to indicate that this script is no longer running.
-def undo_window_renaming(i3) -> NoReturn:
+def undo_window_renaming(i3) -> None:
     for workspace in i3.get_tree().workspaces():
-        name_parts = parse_workspace_name(workspace.name)
-        name_parts['icons'] = None
-        new_name = construct_workspace_name(name_parts)
+        num = parse_workspace_number(workspace.name)
+        icons = None
+        if num is None:
+            new_name = str(workspace.num)
+        else:
+            new_name = construct_workspace_name(num, icons)
+
         i3.command(f'rename workspace "{workspace.name}" to "{new_name}"')
 
     i3.main_quit()
-    exit(0)
 
 
-if __name__ == '__main__':
-    i3 = i3ipc.Connection()
+def get_signal_handler(i3) -> Callable[[int, FrameType | None], Any]:
+    def signal_handler(*_) -> None:
+        undo_window_renaming(i3)
+
+    return signal_handler
+
+
+def main():
+    i3 = Connection()
 
     # exit gracefully when ctrl+c is pressed
     for sig in [signal.SIGINT, signal.SIGTERM]:
-        signal.signal(sig, lambda signal, frame: undo_window_renaming(i3))
+        signal.signal(sig, get_signal_handler(i3))
 
     # call rename_workspaces() for relevant window events
     def window_event_handler(i3, e) -> None:
@@ -214,3 +226,7 @@ if __name__ == '__main__':
     i3.on('window', window_event_handler)
     rename_workspaces(i3)
     i3.main()
+
+
+if __name__ == '__main__':
+    main()
