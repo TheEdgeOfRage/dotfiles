@@ -1,4 +1,4 @@
-vim.api.nvim_create_autocmd({"FocusGained"}, {
-  pattern = {"*"},
-  command = "checktime",
+vim.api.nvim_create_autocmd({ "FocusGained" }, {
+	pattern = { "*" },
+	command = "checktime",
 })
