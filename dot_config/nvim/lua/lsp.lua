@@ -2,7 +2,6 @@
 local lsp_zero = require("lsp-zero")
 local telescope = require("telescope.builtin")
 require("mason").setup()
-require("mason-lspconfig").setup({ automatic_installation = true })
 
 lsp_zero.on_attach(function(_, bufnr)
 	-- see :help lsp-zero-keybindings to learn the available actions
@@ -107,6 +106,8 @@ lspconfig.efm.setup({
 lspconfig.terraformls.setup({})
 -- json
 lspconfig.jsonls.setup({})
+
+require("mason-lspconfig").setup({ automatic_installation = true })
 
 -- Customize keymaps
 local cmp = require("cmp")
