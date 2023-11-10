@@ -59,7 +59,17 @@ lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 -- protobuf
 lspconfig.bufls.setup({})
 -- python
-lspconfig.pylsp.setup({})
+lspconfig.pylsp.setup({
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					maxLineLength = 100,
+				},
+			},
+		},
+	},
+})
 lspconfig.pyright.setup({})
 -- typescript
 lspconfig.eslint.setup({})
@@ -107,6 +117,7 @@ lspconfig.terraformls.setup({})
 -- json
 lspconfig.jsonls.setup({})
 
+-- Install LSP servers automatically
 require("mason-lspconfig").setup({ automatic_installation = true })
 
 -- Customize keymaps
