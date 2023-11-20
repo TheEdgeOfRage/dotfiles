@@ -75,6 +75,7 @@ lspconfig.pyright.setup({})
 lspconfig.eslint.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.prismals.setup({})
+lspconfig.graphql.setup({})
 -- efm
 local stylua = {
 	formatCommand = "stylua -",
