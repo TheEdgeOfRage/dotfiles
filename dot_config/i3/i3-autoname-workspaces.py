@@ -160,10 +160,10 @@ def icon_for_window(window) -> str:
 
     for cls in map(lambda x: x.lower(), classes):
         if 'minecraft' in cls:
-            return WINDOW_ICONS["minecraft"] + ' '
+            return WINDOW_ICONS["minecraft"]
 
         if cls in WINDOW_ICONS:
-            return WINDOW_ICONS[cls] + ' '
+            return WINDOW_ICONS[cls]
     else:
         print(f'No icon available for: {classes}')
 
