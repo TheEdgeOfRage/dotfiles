@@ -65,4 +65,5 @@ fi
 
 # startx on tty1
 [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && exec startx -- vt1
-# [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && exec sway --unsupported-gpu
+# sway on tty2
+[[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty2 ]] && exec sway --unsupported-gpu
