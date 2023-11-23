@@ -116,8 +116,9 @@ lspconfig.efm.setup({
 })
 -- terraform
 lspconfig.terraformls.setup({})
--- json
+-- json & yaml
 lspconfig.jsonls.setup({})
+lspconfig.yamlls.setup({})
 
 -- Install LSP servers automatically
 require("mason-lspconfig").setup({ automatic_installation = true })
