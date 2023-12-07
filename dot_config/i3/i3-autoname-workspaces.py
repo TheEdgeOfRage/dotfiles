@@ -41,6 +41,7 @@ WINDOW_ICONS: dict[str, str] = {
     'alacritty': nf.icons['fa_terminal'],
     'blender': nf.icons['fa_cube'],
     'blueman-manager': nf.icons['fa_bluetooth'],
+    'brave-browser': nf.icons['fa_globe'],
     'calibre-gui': nf.icons['fa_book'],
     'chromium': nf.icons['fa_chrome'],
     'cities.x64': nf.icons['md_city'],
