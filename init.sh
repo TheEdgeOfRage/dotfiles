@@ -1,12 +1,5 @@
 #!/bin/sh
 
-git clone https://github.com/liuchengxu/space-vim.git ~/.space-vim
-cd ~/.space-vim
-make vim
-make neovim
-cd -
-
-
 git clone https://gitea.theedgeofrage.com/TheEdgeOfRage/rpn ~/.local/share/rpn
 git clone https://github.com/TheEdgeOfRage/bumblebee-status ~/.local/share/bumblebee-status
 
