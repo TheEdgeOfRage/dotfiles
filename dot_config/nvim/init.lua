@@ -31,6 +31,7 @@ require("mappings")
 require("git")
 require("lsp")
 require("line")
+require("comment")
 
 require("telescope").load_extension("projects")
 require("telescope").load_extension("fzf")

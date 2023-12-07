@@ -45,7 +45,9 @@ lsp_zero.format_on_save({
 	servers = {
 		["efm"] = { "javascript", "typescript", "lua" },
 		["gopls"] = { "go" },
-		-- ["stylua"] = {"lua"},
+		["terraformls"] = { "terraform" },
+		["yamlls"] = { "yaml" },
+		["jsonls"] = { "json" },
 	},
 })
 
@@ -53,7 +55,13 @@ lsp_zero.format_on_save({
 local lspconfig = require("lspconfig")
 -- go
 lspconfig.golangci_lint_ls.setup({})
-lspconfig.gopls.setup({})
+lspconfig.gopls.setup({
+	settings = {
+		gopls = {
+			gofumpt = true,
+		},
+	},
+})
 -- lua
 lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 -- protobuf
