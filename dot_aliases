@@ -46,6 +46,9 @@ alias virtualenv='python -m venv'
 alias wgdown='sudo wg-quick down wg0'
 alias wgup='sudo wg-quick up wg0'
 
+# Git aliases
+alias gdp='g lg $(gtv T -n1)..main | grep -v "<Flux>"'
+
 # Systemctl aliases
 alias sctl='sudo systemctl'
 alias sstatus='sudo systemctl status'
@@ -65,14 +68,6 @@ alias sureload='systemctl --user reload'
 alias sustop='systemctl --user stop'
 alias suenable='systemctl --user enable'
 alias sudisable='systemctl --user disable'
-
-# Pass aliases
-alias psh='pass show'
-alias psc='pass show --clip'
-alias psi='pass insert'
-alias pse='pass edit'
-alias pgp='pass git push'
-alias pgl='pass git pull'
 
 # Terraform aliases
 alias tf='terraform'
