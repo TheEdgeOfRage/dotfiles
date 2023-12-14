@@ -28,6 +28,7 @@ vim.cmd([[colorscheme gruvbox]])
 
 require("sets")
 require("mappings")
+require("autocmd")
 require("git")
 require("lsp")
 require("line")

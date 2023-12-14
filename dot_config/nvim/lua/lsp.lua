@@ -127,6 +127,14 @@ lspconfig.terraformls.setup({})
 -- json & yaml
 lspconfig.jsonls.setup({})
 lspconfig.yamlls.setup({})
+-- helm
+-- lspconfig.helm_ls.setup({
+-- 	filetypes = { "helm" },
+-- 	cmd = { "helm_ls", "serve" },
+-- 	root_dir = function(fname)
+-- 		return require("lspconfig.util").root_pattern("Chart.yaml")(fname)
+-- 	end,
+-- })
 
 -- Install LSP servers automatically
 require("mason-lspconfig").setup({ automatic_installation = true })

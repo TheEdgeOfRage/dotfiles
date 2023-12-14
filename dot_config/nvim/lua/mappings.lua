@@ -51,7 +51,7 @@ vim.keymap.set("", "\\", ':let @/ = ""<CR>', opts)
 
 -- Git
 vim.keymap.set("n", "<leader>gd", vim.cmd.Gvdiff, opts)
--- vim.keymap.set("n", "<leader>gb", vim.cmd('Gitsigns toggle_current_line_blame'))
+vim.keymap.set("n", "<leader>gb", function() vim.cmd("Gitsigns toggle_current_line_blame") end, opts)
 
 -- window movement
 vim.keymap.set("n", "<leader>wn", "<C-W>j", opts)

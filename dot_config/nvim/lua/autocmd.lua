@@ -1,4 +1,11 @@
-vim.api.nvim_create_autocmd({ "FocusGained" }, {
-	pattern = { "*" },
-	command = "checktime",
-})
+-- vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+-- 	pattern = { "*.yaml", "*.yml" },
+-- 	callback = function()
+-- 		local fname = vim.fn.expand("%:p")
+-- 		if require("lspconfig.util").root_pattern("Chart.yaml")(fname) then
+-- 			vim.opt_local.filetype = "helm"
+-- 		else
+-- 			vim.opt_local.filetype = "yaml"
+-- 		end
+-- 	end,
+-- })
