@@ -1,7 +1,10 @@
 -- Load default lsp-zero keymaps
 local lsp_zero = require("lsp-zero")
 local telescope = require("telescope.builtin")
+
+-- Install LSP servers automatically through Mason
 require("mason").setup()
+require("mason-lspconfig").setup({ automatic_installation = true })
 
 lsp_zero.on_attach(function(_, bufnr)
 	-- see :help lsp-zero-keybindings to learn the available actions
@@ -54,11 +57,31 @@ lsp_zero.format_on_save({
 -- Setup LSP servers
 local lspconfig = require("lspconfig")
 -- go
-lspconfig.golangci_lint_ls.setup({})
+lspconfig.golangci_lint_ls.setup({
+	root_dir = require("lspconfig.util").root_pattern(
+		"go.mod",
+		"go.work",
+		".golangci.yml",
+		".golangci.yaml",
+		".golangci.toml",
+		".golangci.json",
+		".git"
+	),
+})
 lspconfig.gopls.setup({
 	settings = {
 		gopls = {
 			gofumpt = true,
+		},
+	},
+})
+-- rust
+lspconfig.rust_analyzer.setup({
+	settings = {
+		["rust-analyzer"] = {
+			diagnostics = {
+				enable = false,
+			},
 		},
 	},
 })
@@ -135,9 +158,6 @@ lspconfig.yamlls.setup({})
 -- 		return require("lspconfig.util").root_pattern("Chart.yaml")(fname)
 -- 	end,
 -- })
-
--- Install LSP servers automatically
-require("mason-lspconfig").setup({ automatic_installation = true })
 
 -- Customize keymaps
 local cmp = require("cmp")
