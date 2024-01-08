@@ -95,6 +95,7 @@ WINDOW_ICONS: dict[str, str] = {
     'sqlitebrowser': nf.icons['fa_database'],
     'steam': nf.icons['md_steam'],
     'steam_app_671860': nf.icons['md_pistol'],  # battlebit
+    'steam_app_1336490': nf.icons['fae_storm'],  # against the storm
     'surviving mars': nf.icons['fa_rocket'],
     'telegram-desktop': nf.icons['fa_telegram'],
     'terraria.bin.x86_64': nf.icons['fa_tree'],
