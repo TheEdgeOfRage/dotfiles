@@ -1,7 +1,8 @@
 #!/bin/sh
 
-git clone https://gitea.theedgeofrage.com/TheEdgeOfRage/rpn ~/.local/share/rpn
 git clone https://github.com/TheEdgeOfRage/bumblebee-status ~/.local/share/bumblebee-status
+
+go install gitea.theedgeofrage.com/theedgeofrage/rpn
 
 ohmyzsh_dir="$HOME/.config/zsh/oh-my-zsh"
 ohmyzsh_custom="${ohmyzsh_dir}/custom"
