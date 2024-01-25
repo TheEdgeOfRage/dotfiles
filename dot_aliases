@@ -38,7 +38,7 @@ alias rcp='rsync -aPv'
 alias rm='trash'
 alias rmdir='trash -d'
 alias rmr='trash -rIf'
-alias rmrf='rm -rf'
+alias -g rmrf='\rm -rf'
 alias sops_secret="sops --encrypted-regex '^(data|stringData)$'"
 alias ssh='TERM=xterm-256color ssh'
 alias tailscale='sudo tailscale'
