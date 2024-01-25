@@ -33,6 +33,7 @@ return {
 	-- functionality
 	"andymass/vim-matchup",
 	"tpope/vim-repeat",
+	"tpope/vim-speeddating",
 	"mbbill/undotree",
 	"jdhao/whitespace.nvim",
 	"lambdalisue/suda.vim",

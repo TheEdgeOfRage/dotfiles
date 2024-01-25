@@ -47,11 +47,16 @@ vim.keymap.set("n", "<leader>wq", vim.cmd.wq, opts)
 vim.keymap.set("n", "<leader>bd", ":bp | bd #<cr>", opts)
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
 
+-- Snippets
+vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>return err<CR>}<ESC>k$", opts)
+
 vim.keymap.set("", "\\", ':let @/ = ""<CR>', opts)
 
 -- Git
 vim.keymap.set("n", "<leader>gd", vim.cmd.Gvdiff, opts)
-vim.keymap.set("n", "<leader>gb", function() vim.cmd("Gitsigns toggle_current_line_blame") end, opts)
+vim.keymap.set("n", "<leader>gb", function()
+	vim.cmd("Gitsigns toggle_current_line_blame")
+end, opts)
 
 -- window movement
 vim.keymap.set("n", "<leader>wn", "<C-W>j", opts)
