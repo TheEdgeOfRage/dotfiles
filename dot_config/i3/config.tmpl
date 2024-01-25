@@ -189,7 +189,7 @@ assign [class="Telegram"] $telegram
 assign [class="thunderbird"] $thunderbird
 assign [class="(?i)slack"] $telegram
 for_window [class="Lxappearance"] floating enable
-for_window [class="{{- .i3.tidal_class -}}"] move to workspace $telegram
+for_window [class="tidal-hifi"] move to workspace $telegram
 
 new_window pixel 2
 hide_edge_borders smart
@@ -204,7 +204,7 @@ exec blueman-applet >/dev/null 2>&1 &
 exec gtk-launch firefox >/dev/null 2>&1 &
 exec thunderbird >/dev/null 2>&1 &
 exec slack >/dev/null 2>&1 &
-exec gio launch ~/.local/share/applications/tidal.desktop >/dev/null 2>&1 &
+exec tidal-hifi >/dev/null 2>&1 &
 
 # Keyboard layout controls
 set $mode_kb_select (1) US, (2) Colemak, (3) Latin, (4) Cyrillic, (5) DE
