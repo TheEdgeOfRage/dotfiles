@@ -16,6 +16,8 @@ export QT_STYLE_OVERRIDE="kvantum"
 export GTK_THEME="Breeze-Dark"
 export VISUAL="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
 export VIRTUAL_ENV_DISABLE_PROMPT="true"
 {{ range $_, $env := .zshrc.env_vars }}export {{ $env.name }}="{{ $env.value }}"
 {{end}}
