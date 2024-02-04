@@ -17,6 +17,7 @@ export GTK_THEME="Breeze-Dark"
 export VISUAL="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export VIRTUAL_ENV_DISABLE_PROMPT="true"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 {{ range $_, $env := .zshrc.env_vars }}export {{ $env.name }}="{{ $env.value }}"
 {{ end }}
 # Wayland env vars
