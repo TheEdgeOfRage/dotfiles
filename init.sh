@@ -17,4 +17,4 @@ git clone https://gitea.theedgeofrage.com/TheEdgeOfRage/boban-zsh ${ohmyzsh_cust
 sudo cp ./custom_colemak /usr/share/X11/xkb/symbols/custom
 
 sudo pacman -S gcr
-systemctl enable --now gcr-ssh-agent.socket
+systemctl enable --user --now gcr-ssh-agent.socket
