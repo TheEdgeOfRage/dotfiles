@@ -24,7 +24,6 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty2 ]]; then
     export MOZ_ENABLE_WAYLAND="1"
     export XDG_SESSION_TYPE=wayland
-    export XDG_CURRENT_DESKTOP=sway
     export QT_QPA_PLATFORM=wayland-egl
 fi
 
