@@ -1,0 +1,264 @@
+# vim: ft=swayconfig ts=4 sts=4 sw=4 noet
+
+set $foreground	#ebdbb2
+set $background	#282828
+set $color0		#1d2021
+set $color1		#cc241d
+set $color2		#98971a
+set $color3		#d79921
+set $color4		#458588
+set $color5		#b16286
+set $color6		#689d6a
+set $color7		#a89984
+set $color8		#665c54
+set $color9		#fb4934
+set $color10	#b8bb26
+set $color11	#fabd2f
+set $color12	#83a598
+set $color13	#d3869b
+set $color14	#8ec07c
+set $color15	#fbf1c7
+set $color16	#d65d0e
+set $color17	#fe8019
+
+set $mod Mod4
+set $left h
+set $down n
+set $up e
+set $right i
+
+set $telegram ""
+set $firefox ""
+set $thunderbird ""
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:MonoFont {{ .sway.font_size }}
+
+#class						background		border			text			split
+client.focused				$color8			$color8			$foreground		$color7
+client.focused_inactive		$background		$background		$color7			$color0
+client.unfocused			$color0			$background		$color8			$color0
+client.urgent				$color1			$color1			$foreground		$color1
+client.background			$background
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# move workspace to other outputs
+bindsym $mod+Control+$left move workspace to output left
+bindsym $mod+Control+$down move workspace to output down
+bindsym $mod+Control+$up move workspace to output up
+bindsym $mod+Control+$right move workspace to output right
+
+# split in horizontal orientation
+bindsym $mod+c split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (tabbed, toggle split)
+bindsym $mod+s layout toggle split
+bindsym $mod+t layout tabbed
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+BackSpace floating toggle
+bindsym $mod+g focus mode_toggle
+bindsym $mod+a focus parent
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+bindsym $mod+p workspace $telegram
+bindsym $mod+w workspace $firefox
+bindsym $mod+m workspace $thunderbird
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+Shift+p move container to workspace $telegram
+bindsym $mod+Shift+w move container to workspace $firefox
+bindsym $mod+Shift+m move container to workspace $thunderbird
+bindsym $mod+Shift+r reload
+
+# start a terminal
+bindsym $mod+Return exec alacritty
+
+# rofi bindings
+bindsym $mod+space exec "rofi -show drun"
+bindsym $mod+BackSpace exec "rofi -show drun"
+bindsym $mod+j exec "rofi -show emoji"
+
+# Screen locking
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -e -i ~/pictures/wallpapers/blue_screen.png -t --nofork
+# bindsym $mod+Control+l exec loginctl lock-session
+bindsym $mod+Control+l exec "i3lock -i ~/pictures/wallpapers/oslo_radhus.png -t"
+
+bindsym $mod+semicolon exec "systemctl suspend"
+
+mode "resize" {
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym n resize shrink height 10 px or 10 ppt
+	bindsym e resize grow height 10 px or 10 ppt
+	bindsym i resize grow width 10 px or 10 ppt
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pactl info | \grep "Default Sink:" | cut -d ' ' -f 3) +2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pactl info | \grep "Default Sink:" | cut -d ' ' -f 3) -2%
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pactl info | \grep "Default Sink:" | cut -d ' ' -f 3) +8%
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pactl info | \grep "Default Sink:" | cut -d ' ' -f 3) -8%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pactl info | \grep "Default Sink:" | cut -d ' ' -f 3) toggle
+bindsym XF86AudioMedia exec --no-startup-id pactl set-source-mute $(pactl info | \grep "Default Source:" | cut -d ' ' -f 3) toggle
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+bindsym Shift+XF86MonBrightnessUp exec light -A 1
+bindsym Shift+XF86MonBrightnessDown exec light -U 1
+
+# Media controls
+bindsym XF86AudioPlay exec "playerctl-wrapper play-pause"
+bindsym XF86AudioPause exec "playerctl-wrapper play-pause"
+bindsym XF86AudioNext exec "playerctl-wrapper next"
+bindsym XF86AudioPrev exec "playerctl-wrapper previous"
+
+# Screenshot controls
+bindsym Print exec "pyazo --no-save"
+bindsym Shift+Print exec "maim /home/pavle/pictures/screenshot.png"
+bindsym $mod+Print exec "pyazo -d"
+
+# Additional bindings
+{{ .sway.additional_bindings }}
+
+# Set default workspace layout to tabbed
+workspace_layout tabbed
+
+# Auto-assign programs to certain workspaces
+assign [app_id="(?i)firefox"] $firefox
+assign [app_id="(?i)chromium"] $firefox
+assign [app_id="org.telegram.desktop"] $telegram
+assign [app_id="thunderbird"] $thunderbird
+assign [app_id="(?i)slack"] $telegram
+for_window [app_id="Lxappearance"] floating enable
+for_window [app_id="tidal-hifi"] move to workspace $telegram
+
+# new_window pixel 2
+default_border pixel 2
+# default_border none
+hide_edge_borders --i3 smart
+
+output HDMI-A-1 {
+	mode 1920x1080@60.00Hz
+	pos 2560 535
+	bg /home/pavle/pictures/wallpapers/oslo_radhus.jpg fill
+}
+
+output DP-1 {
+	mode 2560x1440@169.83Hz
+	transform 180
+	pos 0 0
+	bg /home/pavle/pictures/wallpapers/oslo_radhus.jpg fill
+}
+
+input 1133:16505:Logitech_G_Pro {
+	accel_profile flat
+	pointer_accel 0
+}
+
+
+# Startup
+exec_always python ~/.config/sway/autoname-workspaces.py >/dev/null 2>&1 &
+exec telegram-desktop >/dev/null 2>&1 &
+{{ if .sway.nm_applet }}exec nm-applet >/dev/null 2>&1 &{{end}}
+exec gtk-launch firefox >/dev/null 2>&1 &
+exec thunderbird >/dev/null 2>&1 &
+exec slack >/dev/null 2>&1 &
+exec flatpak run com.mastermindzh.tidal-hifi >/dev/null 2>&1 &
+
+# Keyboard layout controls
+set $mode_kb_select (1) US, (2) Colemak, (3) Latin, (4) Cyrillic, (5) DE
+mode "$mode_kb_select" {
+	bindsym 1 exec --no-startup-id "setxkbmap -layout us", mode "default"
+	bindsym 2 exec --no-startup-id "setxkbmap -layout custom -variant colemak -option ctrl:swapcaps", mode "default"
+	bindsym 3 exec --no-startup-id "setxkbmap -layout rs -variant latin", mode "default"
+	bindsym 4 exec --no-startup-id "setxkbmap -layout rs", mode "default"
+	bindsym 5 exec --no-startup-id "setxkbmap -layout de", mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+F12 mode "$mode_kb_select"
+
+bar {
+	position top
+	# padding -2px 0 -1px
+	tray_output none
+	status_command ~/.local/share/bumblebee-status/bumblebee-status -c ~/.config/bumblebee-status/top.toml
+	bindsym button4 nop
+	bindsym button5 nop
+	colors {
+		background			$color0
+		focused_workspace	$color8		$color8		$foreground
+		active_workspace	$color8		$color8		$foreground
+		inactive_workspace	$color8		$color0		$foreground
+		urgent_workspace	$color9		$color1		$foreground
+	}
+}
+
+bar {
+	position bottom
+	# padding -2px 0 -1px
+	tray_output {{ .sway.tray_output }}
+	status_command ~/.local/share/bumblebee-status/bumblebee-status -c ~/.config/bumblebee-status/bottom.toml
+	bindsym button4 nop
+	bindsym button5 nop
+	colors {
+		background			$color0
+		focused_workspace	$color8		$color8		$foreground
+		active_workspace	$color8		$color8		$foreground
+		inactive_workspace	$color8		$color0		$foreground
+		urgent_workspace	$color9		$color1		$foreground
+	}
+}
