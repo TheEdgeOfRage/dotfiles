@@ -6,23 +6,27 @@ export LC_ALL="en_DK.UTF-8"
 export MAKEFLAGS="-j $(nproc --all)"
 export MOZ_WEBRENDER="1"
 export MOZ_USE_XINPUT2="1"
-export MOZ_ENABLE_WAYLAND="1"
 export WLR_NO_HARDWARE_CURSORS="1"
 export GOPRIVATE="github.com/duneanalytics/*"
 export GOPATH="$HOME/dev/go"
 export PATH="$HOME/.local/bin:$PATH:$GOPATH/bin:$HOME/.cargo/bin"
-export QT_QPA_PLATFORM=wayland-egl
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_STYLE_OVERRIDE="kvantum"
 export QT_WAYLAND_FORCE_DPI="physical"
 export GTK_THEME="Breeze-Dark"
 export VISUAL="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_SESSION_TYPE=wayland
-export XDG_CURRENT_DESKTOP=sway
 export VIRTUAL_ENV_DISABLE_PROMPT="true"
 {{ range $_, $env := .zshrc.env_vars }}export {{ $env.name }}="{{ $env.value }}"
-{{end}}
+{{ end }}
+# Wayland env vars
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty2 ]]; then
+    export MOZ_ENABLE_WAYLAND="1"
+    export XDG_SESSION_TYPE=wayland
+    export XDG_CURRENT_DESKTOP=sway
+    export QT_QPA_PLATFORM=wayland-egl
+fi
+
 # Valve shader compiler
 export RADV_PERFTEST="aco"
 
