@@ -63,9 +63,9 @@ if which pyenv &> /dev/null; then
 	eval "$(pyenv init -)"
 fi
 
-# startx on tty1
-[[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && exec startx -- vt1
-# sway on tty2
-if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty2 ]]; then
+# sway on tty1
+if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
   exec sway
 fi
+# startx on tty2
+[[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty2 ]] && exec startx -- vt1
