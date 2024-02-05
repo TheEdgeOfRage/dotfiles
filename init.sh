@@ -10,7 +10,7 @@ rm -rf /tmp/yay
 
 # Install packages
 git clone https://github.com/TheEdgeOfRage/bumblebee-status ~/.local/share/bumblebee-status
-go install gitea.theedgeofrage.com/theedgeofrage/rpn
+GOPATH=$HOME/dev/go go install gitea.theedgeofrage.com/theedgeofrage/rpn
 
 # Oh My Zsh
 ohmyzsh_dir="$HOME/.config/zsh/oh-my-zsh"
