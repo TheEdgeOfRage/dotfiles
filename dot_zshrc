@@ -65,7 +65,8 @@ fi
 
 # sway on tty1
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
-  exec sway
+	date=$(date +%Y-%m-%d-%H:%M:%S)
+	exec sway -d > ~/.local/share/sway-$date.log 2>&1
 fi
 # startx on tty2
 [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty2 ]] && exec startx -- vt1
