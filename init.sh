@@ -24,7 +24,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ohmyzsh_custom}
 git clone https://gitea.theedgeofrage.com/TheEdgeOfRage/boban-zsh ${ohmyzsh_custom}/themes/boban
 
 # Keyboard layout
-sudo cp ./custom_colemak /usr/share/X11/xkb/symbols/custom
+cat ./custom_colemak | sudo tee -a /usr/share/X11/xkb/symbols/us
 
 # SSH agent
 sudo pacman -S gcr
