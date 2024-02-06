@@ -193,24 +193,9 @@ default_border pixel 2
 # default_border none
 hide_edge_borders --i3 smart
 
-output HDMI-A-1 {
-	mode 1920x1080@60.00Hz
-	pos 2560 535
-	bg /home/pavle/pictures/wallpapers/oslo_radhus.jpg fill
-}
+{{ .sway.outputs }}
 
-output DP-1 {
-	mode 2560x1440@169.83Hz
-	transform 180
-	pos 0 0
-	bg /home/pavle/pictures/wallpapers/oslo_radhus.jpg fill
-}
-
-input 1133:16505:Logitech_G_Pro {
-	accel_profile flat
-	pointer_accel 0
-}
-
+{{ .sway.inputs }}
 
 # Startup
 exec_always python ~/.config/sway/autoname-workspaces.py >/dev/null 2>&1 &
