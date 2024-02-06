@@ -5,14 +5,23 @@ data:
     xrandr: ''
     tray_output: ''
     nm_applet: true
-    bumblebee:
-      modules: 'ytrssil,'
-      parameters:
-        - key: "sensors.path"
-          value: "coretemp-isa-0000/Package id 0/temp1_input"
     additional_bindings: ''
-  xresources:
-    per_screen: []
+  sway:
+    font_size: 13
+    tray_output: 'eDP-1'
+    nm_applet: true
+    additional_bindings: ''
+    inputs: |-
+      input <identifier> {
+      }
+    outputs: |-
+      output <identifier> {
+      }
+  bumblebee:
+    modules: 'ytrssil,'
+    parameters:
+      - key: "sensors.path"
+        value: "coretemp-isa-0000/Package id 0/temp1_input"
   alacritty:
     font:
       size: '7.5'
