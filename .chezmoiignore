@@ -4,3 +4,4 @@ go.mod
 go.sum
 custom_colemak
 config_template.yaml
+.config/nvim/lazy-lock.json
