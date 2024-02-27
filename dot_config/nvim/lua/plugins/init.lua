@@ -39,7 +39,15 @@ return {
 	"lambdalisue/suda.vim",
 	"xiyaowong/nvim-cursorword",
 	"ahmedkhalf/project.nvim",
-	"github/copilot.vim",
+	{
+		"github/copilot.vim",
+		config = function()
+			vim.g.copilot_filetypes = {
+				["*"] = true,
+				["markdown"] = true,
+			}
+		end,
+	},
 	"mfussenegger/nvim-dap",
 	"rcarriga/nvim-dap-ui",
 	{
