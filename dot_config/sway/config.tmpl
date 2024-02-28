@@ -207,18 +207,6 @@ exec thunderbird >/dev/null 2>&1 &
 exec electron /usr/lib/slack/resources/app.asar --ozone-platform-hint=auto --enable-features=WebRTCPipeWireCapturer -s >/dev/null 2>&1 &
 exec flatpak run com.mastermindzh.tidal-hifi >/dev/null 2>&1 &
 
-# Keyboard layout controls
-set $mode_kb_select (1) US, (2) Colemak, (3) Latin, (4) Cyrillic, (5) DE
-mode "$mode_kb_select" {
-	bindsym 1 exec --no-startup-id "setxkbmap -layout us", mode "default"
-	bindsym 2 exec --no-startup-id "setxkbmap -layout custom -variant colemak -option ctrl:swapcaps", mode "default"
-	bindsym 3 exec --no-startup-id "setxkbmap -layout rs -variant latin", mode "default"
-	bindsym 4 exec --no-startup-id "setxkbmap -layout rs", mode "default"
-	bindsym 5 exec --no-startup-id "setxkbmap -layout de", mode "default"
-	bindsym Escape mode "default"
-}
-bindsym $mod+F12 mode "$mode_kb_select"
-
 bar {
 	position top
 	# padding -2px 0 -1px
