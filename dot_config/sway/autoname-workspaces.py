@@ -52,7 +52,7 @@ WINDOW_ICONS: dict[str, str] = {
     'darktable': nf.icons['md_camera'],
     'discord': nf.icons['fa_comment'],
     'dwarf_fortress': nf.icons['fa_fort_awesome'],
-    'easyeffects': nf.icons['fa_music'],
+    'com.github.wwmm.easyeffects': nf.icons['fa_music'],
     'evince': nf.icons['fa_file_pdf_o'],
     'factorio': nf.icons['fa_cog'],
     'feh': nf.icons['md_image'],
