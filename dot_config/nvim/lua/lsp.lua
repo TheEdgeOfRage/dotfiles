@@ -150,15 +150,18 @@ lspconfig.terraformls.setup({})
 -- json & yaml
 lspconfig.jsonls.setup({})
 lspconfig.yamlls.setup({})
--- helm
--- lspconfig.helm_ls.setup({
--- 	filetypes = { "helm" },
--- 	cmd = { "helm_ls", "serve" },
--- 	root_dir = function(fname)
--- 		return require("lspconfig.util").root_pattern("Chart.yaml")(fname)
--- 	end,
--- })
-
+-- c/c++
+lspconfig.ccls.setup({
+	init_options = {
+		compilationDatabaseDirectory = "build",
+		index = {
+			threads = 0,
+		},
+		clang = {
+			excludeArgs = { "-frounding-math" },
+		},
+	},
+})
 -- Customize keymaps
 local cmp = require("cmp")
 cmp.setup({
