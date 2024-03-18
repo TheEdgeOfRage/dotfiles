@@ -154,6 +154,7 @@ lspconfig.yamlls.setup({})
 lspconfig.ccls.setup({
 	init_options = {
 		compilationDatabaseDirectory = "build",
+		-- compilationDatabaseDirectory = ".",
 		index = {
 			threads = 0,
 		},
@@ -162,6 +163,7 @@ lspconfig.ccls.setup({
 		},
 	},
 })
+
 -- Customize keymaps
 local cmp = require("cmp")
 cmp.setup({
