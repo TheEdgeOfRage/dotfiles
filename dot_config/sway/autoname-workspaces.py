@@ -58,6 +58,7 @@ WINDOW_ICONS: dict[str, str] = {
     'feh': nf.icons['md_image'],
     'firefox': nf.icons['fa_firefox'],
     'firefoxdeveloperedition': nf.icons['fa_firefox'],
+    'gamescope': nf.icons['md_steam'],
     'ghb': nf.icons['md_video'],
     'gimp': nf.icons['fa_paint_brush'],
     'gimp-2.10': nf.icons['fa_paint_brush'],
@@ -83,6 +84,7 @@ WINDOW_ICONS: dict[str, str] = {
     'obs': nf.icons['md_video'],
     'openlens': nf.icons['md_kubernetes'],
     'org.gnome.nautilus': nf.icons['fa_folder'],
+    'oversteer': nf.icons['md_gamepad_variant'],
     'pavucontrol': nf.icons['fa_volume_up'],
     'picard': nf.icons['fa_music'],
     'qbittorrent': nf.icons['fa_download'],
@@ -95,6 +97,9 @@ WINDOW_ICONS: dict[str, str] = {
     'steam': nf.icons['md_steam'],
     'steam_app_671860': nf.icons['md_pistol'],  # battlebit
     'steam_app_1336490': nf.icons['fae_storm'],  # against the storm
+    'steam_app_599140': nf.icons['md_coffin'],  # graveyard keeper
+    'steam_app_284160': nf.icons['md_car'],  # beamng.drive
+    'steam_app_1250410': nf.icons['md_airplane'],  # microsoft flight simulator
     'surviving mars': nf.icons['fa_rocket'],
     'telegram-desktop': nf.icons['fa_telegram'],
     'terraria.bin.x86_64': nf.icons['fa_tree'],
@@ -106,6 +111,7 @@ WINDOW_ICONS: dict[str, str] = {
     'zathura': nf.icons['fa_file_pdf_o'],
     'zenity': nf.icons['fa_window_maximize'],
 }
+
 
 # This icon is used for any application not in the list above
 DEFAULT_ICON = '*'
@@ -186,6 +192,7 @@ def rename_workspaces(i3) -> None:
         icons = [
             icon_for_window(w) for w in workspace.leaves()
         ]
+        icons += [icon_for_window(w) for w in workspace.floating_nodes]
         if num is None:
             new_name = str(workspace.num)
         else:
@@ -198,6 +205,9 @@ def rename_workspaces(i3) -> None:
 # called on exit to indicate that this script is no longer running.
 def undo_window_renaming(i3) -> None:
     for workspace in i3.get_tree().workspaces():
+        if workspace.num == -1:
+            continue
+
         num = parse_workspace_number(workspace.name)
         icons = None
         if num is None:
@@ -219,6 +229,7 @@ def get_signal_handler(i3) -> Callable[[int, FrameType | None], Any]:
 
 def main():
     i3 = Connection()
+    i3.get_tree()
 
     # exit gracefully when ctrl+c is pressed
     for sig in [signal.SIGINT, signal.SIGTERM]:
