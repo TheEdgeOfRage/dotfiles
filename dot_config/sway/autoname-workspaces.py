@@ -229,7 +229,6 @@ def get_signal_handler(i3) -> Callable[[int, FrameType | None], Any]:
 
 def main():
     i3 = Connection()
-    i3.get_tree()
 
     # exit gracefully when ctrl+c is pressed
     for sig in [signal.SIGINT, signal.SIGTERM]:
