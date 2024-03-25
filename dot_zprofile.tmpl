@@ -11,8 +11,7 @@ export GOPRIVATE="github.com/duneanalytics/*"
 export GOPATH="$HOME/dev/go"
 export GOBIN="$HOME/dev/go/bin"
 export PATH="$HOME/.local/bin:$PATH:$GOBIN:$HOME/.cargo/bin"
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export QT_STYLE_OVERRIDE="kvantum"
+export QT_QPA_PLATFORMTHEME="qt6ct"
 export QT_WAYLAND_FORCE_DPI="physical"
 export GTK_THEME="Breeze-Dark"
 export VISUAL="nvim"
@@ -25,7 +24,6 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
     export MOZ_ENABLE_WAYLAND="1"
     export XDG_SESSION_TYPE=wayland
-    export QT_QPA_PLATFORM=wayland-egl
 fi
 
 # Valve shader compiler
