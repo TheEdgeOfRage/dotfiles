@@ -51,6 +51,7 @@ WINDOW_ICONS: dict[str, str] = {
     'cutter': nf.icons['fa_bug'],
     'darktable': nf.icons['md_camera'],
     'discord': nf.icons['fa_comment'],
+    'dk.gqrx.gqrx': nf.icons['cod_radio_tower'],
     'dwarf_fortress': nf.icons['fa_fort_awesome'],
     'com.github.wwmm.easyeffects': nf.icons['fa_music'],
     'evince': nf.icons['fa_file_pdf_o'],
