@@ -46,6 +46,7 @@ alias unbound='cd /opt/docker/unbound; dcrestart; -'
 alias virtualenv='python -m venv'
 alias wgdown='sudo wg-quick down wg0'
 alias wgup='sudo wg-quick up wg0'
+alias wifi='nmcli radio wifi'
 
 # Git aliases
 alias gdp='g lg $(gtv T -n1)..main | grep -v "<Flux>"'
