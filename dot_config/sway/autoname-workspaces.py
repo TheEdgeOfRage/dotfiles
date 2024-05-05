@@ -54,7 +54,7 @@ WINDOW_ICONS: dict[str, str] = {
     'dk.gqrx.gqrx': nf.icons['cod_radio_tower'],
     'dwarf_fortress': nf.icons['fa_fort_awesome'],
     'com.github.wwmm.easyeffects': nf.icons['fa_music'],
-    'evince': nf.icons['fa_file_pdf_o'],
+    'evince': nf.icons['seti_pdf'],
     'factorio': nf.icons['fa_cog'],
     'feh': nf.icons['md_image'],
     'firefox': nf.icons['fa_firefox'],
@@ -79,7 +79,7 @@ WINDOW_ICONS: dict[str, str] = {
     'mpv': nf.icons['md_video'],
     'polymc': nf.icons['md_minecraft'],
     'minecraft': nf.icons['md_minecraft'],
-    'mupdf': nf.icons['fa_file_pdf_o'],
+    'mupdf': nf.icons['seti_pdf'],
     'nemiver': nf.icons['fa_bug'],
     'nm-connection-editor': nf.icons['fa_wifi'],
     'obs': nf.icons['md_video'],
@@ -109,7 +109,7 @@ WINDOW_ICONS: dict[str, str] = {
     'virtualbox manager': nf.icons['fa_desktop'],
     'vlc': nf.icons['md_video'],
     'wireshark': nf.icons['md_shark_fin'],
-    'zathura': nf.icons['fa_file_pdf_o'],
+    'org.pwmt.zathura': nf.icons['seti_pdf'],
     'zenity': nf.icons['fa_window_maximize'],
 }
 
