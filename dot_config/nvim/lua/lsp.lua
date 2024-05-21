@@ -75,6 +75,8 @@ lspconfig.gopls.setup({
 		},
 	},
 })
+-- gleam
+lspconfig.gleam.setup({})
 -- rust
 lspconfig.rust_analyzer.setup({
 	settings = {
