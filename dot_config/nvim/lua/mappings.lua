@@ -24,7 +24,7 @@ vim.keymap.set("", "<BS>", "gg", opts)
 vim.keymap.set("", "<CR>", "G", opts)
 vim.keymap.set("", "<Space>", "<NOP>", opts)
 
-vim.keymap.set("x", "p", '"_dP', opts)
+vim.keymap.set("x", "p", "pgvy", opts)
 
 vim.keymap.set("n", "<tab>", vim.cmd.bn, opts)
 vim.keymap.set("n", "<s-tab>", vim.cmd.bp, opts)
@@ -32,7 +32,7 @@ vim.keymap.set("n", "U", vim.cmd.redo, opts)
 
 -- File operation maps
 vim.keymap.set("n", "<leader>fd", function()
-	if vim.inspect(vim.lsp.get_active_clients()) then
+	if vim.inspect(vim.lsp.get_clients()) then
 		vim.lsp.buf.format()
 	else
 		vim.cmd.normal("jzgg=G`z")
