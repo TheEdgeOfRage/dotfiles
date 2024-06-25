@@ -28,6 +28,7 @@ alias fdisk='sudo fdisk'
 alias grep='grep --color=always'
 alias i3exit='i3-msg exit'
 alias kak='kubectl apply -k'
+alias kdk='kubectl diff -k'
 alias ksops="sops --encrypted-regex '^(data|stringData)$'"
 alias ls='ls --group-directories-first --color=always --time-style=long-iso'
 alias mkdir='mkdir -p'
