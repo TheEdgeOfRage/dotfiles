@@ -84,6 +84,9 @@ lspconfig.rust_analyzer.setup({
 			diagnostics = {
 				enable = false,
 			},
+			cargo = {
+				allFeatures = true,
+			},
 		},
 	},
 })
