@@ -46,11 +46,13 @@ lsp_zero.format_on_save({
 		timeout_ms = 10000,
 	},
 	servers = {
+		["bashls"] = { "sh" },
 		["efm"] = { "javascript", "typescript", "lua" },
 		["gopls"] = { "go" },
+		["jsonls"] = { "json" },
+		["rust_analyzer"] = { "rust" },
 		["terraformls"] = { "terraform" },
 		["yamlls"] = { "yaml" },
-		["jsonls"] = { "json" },
 	},
 })
 
@@ -168,6 +170,8 @@ lspconfig.ccls.setup({
 		},
 	},
 })
+-- bash
+lspconfig.bashls.setup({})
 
 -- Customize keymaps
 local cmp = require("cmp")
