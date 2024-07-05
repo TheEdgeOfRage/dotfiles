@@ -63,10 +63,13 @@ if which pyenv &> /dev/null; then
 	eval "$(pyenv init -)"
 fi
 
-# sway on tty1
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
-	date=$(date +%Y-%m-%d-%H:%M:%S)
+    # sway on tty1
 	exec sway
+elif [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty2 ]]; then
+    # startx on tty2
+    exec startx -- vt1
+elif [[ $(tty) =~ "/dev/tty[0-9]" ]]; then
+    # Enable unicode characters in the tty
+    unicode_start
 fi
-# startx on tty2
-[[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty2 ]] && exec startx -- vt1
