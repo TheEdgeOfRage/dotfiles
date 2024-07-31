@@ -52,6 +52,7 @@ alias wifi='nmcli radio wifi'
 
 # Git aliases
 alias gdp='g lg $(gtv T -n1)..main | grep -v "<Flux>"'
+alias gt='g tag'
 
 # Systemctl aliases
 alias sctl='sudo systemctl'
