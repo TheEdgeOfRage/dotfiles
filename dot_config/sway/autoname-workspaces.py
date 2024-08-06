@@ -90,6 +90,7 @@ WINDOW_ICONS: dict[str, str] = {
     'picard': nf.icons['fa_music'],
     'qbittorrent': nf.icons['fa_download'],
     'qtcreator': nf.icons['fa_code'],
+    'sdl application': nf.icons['md_steam'],
     'seahorse': nf.icons['fa_lock'],
     'simplescreenrecorder': nf.icons['md_video'],
     'slack': nf.icons['fa_slack'],
