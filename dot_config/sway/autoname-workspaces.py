@@ -86,7 +86,7 @@ WINDOW_ICONS: dict[str, str] = {
     'openlens': nf.icons['md_kubernetes'],
     'org.gnome.nautilus': nf.icons['fa_folder'],
     'oversteer': nf.icons['md_gamepad_variant'],
-    'pavucontrol': nf.icons['fa_volume_up'],
+    'org.pulseaudio.pavucontrol': nf.icons['fa_volume_up'],
     'picard': nf.icons['fa_music'],
     'qbittorrent': nf.icons['fa_download'],
     'qtcreator': nf.icons['fa_code'],
