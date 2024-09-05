@@ -63,6 +63,9 @@ if which pyenv &> /dev/null; then
 	eval "$(pyenv init -)"
 fi
 
+# NVM setup
+[[ -f /usr/share/nvm/init-nvm.sh ]] && source /usr/share/nvm/init-nvm.sh
+
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
     # sway on tty1
 	exec sway

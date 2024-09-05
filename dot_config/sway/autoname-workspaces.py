@@ -102,6 +102,7 @@ WINDOW_ICONS: dict[str, str] = {
     'steam_app_599140': nf.icons['md_coffin'],  # graveyard keeper
     'steam_app_284160': nf.icons['md_car'],  # beamng.drive
     'steam_app_1250410': nf.icons['md_airplane'],  # microsoft flight simulator
+    'steam_app_1422450': nf.icons['md_eye_circle'],  # deadlock
     'surviving mars': nf.icons['fa_rocket'],
     'telegram-desktop': nf.icons['fa_telegram'],
     'terraria.bin.x86_64': nf.icons['fa_tree'],
