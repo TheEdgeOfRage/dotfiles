@@ -74,6 +74,7 @@ lspconfig.gopls.setup({
 	settings = {
 		gopls = {
 			gofumpt = true,
+			staticcheck = true,
 		},
 	},
 })
