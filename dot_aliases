@@ -19,21 +19,23 @@ alias adb='adb -d'
 alias cal='cal -m'
 alias cdl='cd ~/ && cl'
 alias cl=clear
+alias -g cp=xcp
 alias cz=chezmoi
 alias db='duplicity-backup -c ~/.config/duplicity-backup.conf'
-alias df='df -h'
+alias df=dysk
 alias diff='diff -y --suppress-common-lines'
 alias dockre=docker
+alias drill='echo use dog'
 alias fdisk='sudo fdisk'
 alias grep='grep --color=always'
 alias i3exit='i3-msg exit'
 alias kak='kubectl apply -k'
 alias kdk='kubectl diff -k'
-alias ksops="sops --encrypted-regex '^(data|stringData)$'"
-alias ls='ls --group-directories-first --color=always --time-style=long-iso'
+alias ls='eza --group-directories-first --time-style=long-iso'
 alias mkdir='mkdir -p'
 alias mpv='mpv --ytdl-format="bestvideo[height<=?1440]+bestaudio/best"'
 alias myip='curl -s https://icanhazip.com'
+alias ps=procs
 alias qrscan='grimshot save area - 2>/dev/null | zbarimg -1 -q - | sed "s/QR-Code://" | wl-copy'
 alias ran=ranger
 alias rcp='rsync -aPv'
@@ -41,7 +43,7 @@ alias rm='trash'
 alias rmdir='trash -d'
 alias rmr='trash -rIf'
 alias -g rmrf='\rm -rf'
-alias sops_secret="sops --encrypted-regex '^(data|stringData)$'"
+alias sed='echo use sd'
 alias ssh='TERM=xterm-256color ssh'
 alias tailscale='sudo tailscale'
 alias unbound='cd /opt/docker/unbound; dcrestart; -'
@@ -81,11 +83,12 @@ alias tfp='terraform plan'
 alias tfs='terraform state'
 
 # Oh my zsh alias override
-alias -g du='du -sh'
-alias -g duf='du -sh * | sort -h'
-alias -g dufa='du -sh * .* | sort -h'
+alias -g du=dust
+alias -g duf=dust
+alias -g dufa=dust
+alias l='ls -l -F=auto'
 alias la='ls -a'
-alias ll='ls -lah'
+alias ll='ls -la'
 unalias -m 'fd'
 unalias -m 'ff'
 unalias -m '_'
