@@ -109,10 +109,10 @@ lspconfig.pylsp.setup({
 		},
 	},
 })
-lspconfig.pyright.setup({})
+lspconfig.basedpyright.setup({})
 -- typescript
 lspconfig.eslint.setup({})
-lspconfig.tsserver.setup({})
+lspconfig.ts_ls.setup({})
 lspconfig.prismals.setup({})
 lspconfig.graphql.setup({})
 -- efm
