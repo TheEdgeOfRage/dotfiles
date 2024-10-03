@@ -50,6 +50,7 @@ lsp_zero.format_on_save({
 		["efm"] = { "javascript", "typescript", "lua" },
 		["gopls"] = { "go" },
 		["jsonls"] = { "json" },
+		["basedpyright"] = { "python" },
 		["rust_analyzer"] = { "rust" },
 		["terraformls"] = { "terraform" },
 		["yamlls"] = { "yaml" },
