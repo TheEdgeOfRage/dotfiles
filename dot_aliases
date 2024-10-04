@@ -9,6 +9,7 @@ alias '......'='cd ../../../../..'
 alias '.......'='cd ../../../../../..'
 alias '........'='cd ../../../../../../..'
 alias '.........'='cd ../../../../../../../..'
+alias cd=z
 alias -g NO='>/dev/null 2>&1'
 alias -g NOD='>/dev/null 2>&1 & disown %1'
 alias -g WC='| wc -l'
@@ -25,7 +26,7 @@ alias db='duplicity-backup -c ~/.config/duplicity-backup.conf'
 alias df=dysk
 alias diff='diff -y --suppress-common-lines'
 alias dockre=docker
-alias drill='echo use dog'
+alias drill='dog'
 alias fdisk='sudo fdisk'
 alias grep='grep --color=always'
 alias i3exit='i3-msg exit'
