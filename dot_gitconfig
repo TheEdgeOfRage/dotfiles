@@ -23,7 +23,9 @@
     diffFilter = delta --color-only
 [delta]
     navigate = true
-[merge]
-    conflictstyle = diff3
+    side-by-side = true
+    line-numbers = true
+    true-color = always
+    syntax-theme = gruvbox-dark
 [diff]
-    colorMoved = default
+    colorMoved = no
