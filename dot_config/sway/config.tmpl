@@ -24,6 +24,7 @@ set $color16	#d65d0e
 set $color17	#fe8019
 
 set $mod Mod4
+set $alt Mod1
 set $left h
 set $down n
 set $up e
@@ -120,6 +121,12 @@ bindsym $mod+Shift+p move container to workspace $telegram
 bindsym $mod+Shift+w move container to workspace $firefox
 bindsym $mod+Shift+m move container to workspace $thunderbird
 bindsym $mod+Shift+r reload
+
+# Alt + hnei to arrow keys
+bindsym $alt+h exec wtype -k left
+bindsym $alt+n exec wtype -k down
+bindsym $alt+e exec wtype -k up
+bindsym $alt+i exec wtype -k right
 
 # start a terminal
 bindsym $mod+Return exec alacritty
