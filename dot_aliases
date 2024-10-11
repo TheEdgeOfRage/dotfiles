@@ -37,6 +37,7 @@ alias mkdir='mkdir -p'
 alias mpv='mpv --ytdl-format="bestvideo[height<=?1440]+bestaudio/best"'
 alias myip='curl -s https://icanhazip.com'
 alias ps=procs
+alias psql=pgcli
 alias qrscan='grimshot save area - 2>/dev/null | zbarimg -1 -q - | sed "s/QR-Code://" | wl-copy'
 alias ran=ranger
 alias rcp='rsync -aPv'
