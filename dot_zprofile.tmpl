@@ -22,10 +22,9 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 {{ range $_, $env := .zshrc.env_vars }}export {{ $env.name }}="{{ $env.value }}"
 {{ end }}
 # Wayland env vars
-if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
-    export MOZ_ENABLE_WAYLAND="1"
-    export XDG_SESSION_TYPE=wayland
-fi
+export MOZ_ENABLE_WAYLAND="1"
+export XDG_SESSION_TYPE=wayland
+export SDL_VIDEODRIVER=wayland
 
 # Valve shader compiler
 export RADV_PERFTEST="aco"
