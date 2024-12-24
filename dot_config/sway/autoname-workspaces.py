@@ -68,6 +68,7 @@ WINDOW_ICONS: dict[str, str] = {
     'hoppscotch-app': nf.icons['md_ufo'],
     'inkscape': nf.icons['md_fountain_pen_tip'],
     'insomnium': nf.icons['md_graphql'],
+    'jetbrains-idea-ce': nf.icons['fa_code'],
     'kcharselect': nf.icons['fa_font'],
     'kicad': nf.icons['fa_microchip'],
     'ksp.x86_64': nf.icons['fa_space_shuttle'],

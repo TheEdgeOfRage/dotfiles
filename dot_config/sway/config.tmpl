@@ -193,8 +193,7 @@ assign [app_id="(?i)chromium"] $firefox
 assign [app_id="org.telegram.desktop"] $telegram
 assign [app_id="thunderbird"] $thunderbird
 for_window [app_id="Lxappearance"] floating enable
-for_window [app_id="tidal-hifi"] move to workspace $telegram
-for_window [class="tidal-hifi"] move to workspace $telegram
+for_window [class="deezer-enhanced"] move to workspace $telegram
 
 # new_window pixel 2
 default_border pixel 2
@@ -211,7 +210,7 @@ exec telegram-desktop >/dev/null 2>&1 &
 {{ if .sway.nm_applet }}exec nm-applet >/dev/null 2>&1 &{{end}}
 exec gtk-launch firefox >/dev/null 2>&1 &
 exec thunderbird >/dev/null 2>&1 &
-exec flatpak run com.mastermindzh.tidal-hifi >/dev/null 2>&1 &
+exec deezer-enhanced >/dev/null 2>&1 &
 
 bar {
 	position top
