@@ -97,7 +97,7 @@ lspconfig.rust_analyzer.setup({
 -- lua
 lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 -- protobuf
-lspconfig.bufls.setup({})
+lspconfig.buf_ls.setup({})
 -- python
 lspconfig.pylsp.setup({
 	settings = {
