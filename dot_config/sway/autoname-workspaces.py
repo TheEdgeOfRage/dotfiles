@@ -61,6 +61,7 @@ WINDOW_ICONS: dict[str, str] = {
     'firefoxdeveloperedition': nf.icons['fa_firefox'],
     'gamescope': nf.icons['md_steam'],
     'ghb': nf.icons['md_video'],
+    'com.mitchellh.ghostty': nf.icons['fa_terminal'],
     'gimp': nf.icons['fa_paint_brush'],
     'gimp-2.10': nf.icons['fa_paint_brush'],
     'gparted': nf.icons['fa_hdd_o'],

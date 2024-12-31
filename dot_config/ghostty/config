@@ -1,0 +1,32 @@
+# Font
+font-family = "IosevkaTerm NF"
+font-style = "Regular"
+font-size = 14
+adjust-cell-width = -1
+adjust-cell-height = 1
+
+# Theme
+theme = "GruvboxDark"
+
+# Cursor
+cursor-style = "block"
+cursor-style-blink = false
+shell-integration-features = no-cursor
+cursor-click-to-move = true
+
+# Scroll
+mouse-scroll-multiplier = 1
+scrollback-limit = 20000
+
+# Window
+window-decoration = false
+window-padding-x = 0
+window-padding-y = 0
+resize-overlay = never
+gtk-titlebar = false
+
+# Update
+auto-update = off
+
+# Keybindings
+# keybind = ctrl+shift+u=unbind
