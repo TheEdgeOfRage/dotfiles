@@ -159,19 +159,6 @@ lspconfig.terraformls.setup({})
 -- json & yaml
 lspconfig.jsonls.setup({})
 lspconfig.yamlls.setup({})
--- c/c++
-lspconfig.ccls.setup({
-	init_options = {
-		compilationDatabaseDirectory = "build",
-		-- compilationDatabaseDirectory = ".",
-		index = {
-			threads = 0,
-		},
-		clang = {
-			excludeArgs = { "-frounding-math" },
-		},
-	},
-})
 -- bash
 lspconfig.bashls.setup({})
 
