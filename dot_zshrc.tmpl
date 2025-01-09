@@ -6,6 +6,38 @@ SAVEHIST=40000
 HIST_STAMPS="yyyy-mm-dd"
 setopt HIST_IGNORE_DUPS
 
+# Common config
+export DEFAULT_USER="pavle"
+export EDITOR="nvim"
+export VISUAL="nvim"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_DK.UTF-8"
+export PATH="$HOME/.local/bin:$PATH:$GOBIN:$HOME/.cargo/bin"
+export XDG_CONFIG_HOME="$HOME/.config"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
+
+# CLI tools
+export MAKEFLAGS="-j $(nproc --all)"
+export LESS="-SRF --mouse"
+export GPG_TTY=$(tty)
+export GOPRIVATE="github.com/duneanalytics/*"
+export GOPATH="$HOME/dev/go"
+export GOBIN="$HOME/dev/go/bin"
+export VIRTUAL_ENV_DISABLE_PROMPT="true"
+export FZF_CTRL_T_COMMAND="fd -tf -td -tl"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/null'
+export FZF_DEFAULT_OPTS='
+	--color fg:#928374,bg:#282828,hl:#fb4934
+	--color fg+:#b8bb26,bg+:#3c3836,hl+:#fb4934
+	--color info:#fe8019,prompt:#83a598,header:#83a598
+	--color pointer:#fb4934,marker:#fb4934,spinner:#ffff60
+'
+export JQ_COLORS="1;31:0;35:0;35:0;39:0;32:1;39:1;39"
+
+# Additional env vars
+{{ range $_, $env := .zshrc.env_vars }}export {{ $env.name }}="{{ $env.value }}"
+{{ end }}
+
 # oh-my-zsh
 export ZSH="$HOME/.config/zsh/oh-my-zsh"
 CUSTOM="$HOME/.config/zsh"
@@ -70,11 +102,11 @@ fi
 eval "$(zoxide init zsh)"
 
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
-    # sway on tty1
+	# hyprland on tty1
+    exec uwsm start hyprland.desktop
+elif [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]] && uwsm check may-start; then
+	# sway on tty2
 	exec sway
-elif [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty2 ]]; then
-    # startx on tty2
-    exec startx -- vt1
 elif [[ $(tty) =~ "/dev/tty[0-9]" ]]; then
     # Enable unicode characters in the tty
     unicode_start
