@@ -1,0 +1,182 @@
+@keyframes blink-critical {
+	to {
+		color: @red;
+	}
+}
+
+@define-color bg_dark #1d2021;
+@define-color bg      #282828;
+@define-color bg_alt  #3c3836;
+@define-color bg2     #504945;
+@define-color bg3     #665c54;
+@define-color bg4     #7c6f64;
+
+@define-color gray0   #928374;
+@define-color gray1   #a89984;
+
+@define-color fg      #fbf1c7;
+@define-color fg1     #ebdbb2;
+@define-color fg2     #d5c4a1;
+@define-color fg3     #bdae93;
+@define-color fg4     #a89984;
+
+@define-color red     #cc241d;
+@define-color green   #98971a;
+@define-color yellow  #d79921;
+@define-color blue    #458588;
+@define-color purple  #b16286;
+@define-color aqua    #689d6a;
+@define-color orange  #d65d0e;
+
+@define-color red_bright     #fb4934;
+@define-color green_bright   #b8bb26;
+@define-color yellow_bright  #fabd2f;
+@define-color blue_bright    #83a598;
+@define-color purple_bright  #d3869b;
+@define-color aqua_bright    #8ec07c;
+@define-color orange_bright  #fe8019;
+
+* {
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	box-shadow: none;
+	text-shadow: none;
+	-gtk-icon-shadow: none;
+}
+
+#waybar {
+	background: @bg_dark;
+	color: @fg;
+	font-family: IosevkaTerm NFP;
+	font-size: 14pt;
+}
+
+#battery,
+#privacy,
+#clock,
+#cpu,
+#language,
+#memory,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#backlight,
+#idle_inhibitor,
+#disk,
+#user,
+#mpris {
+	padding-left: 8pt;
+	padding-right: 8pt;
+}
+
+#memory.critical,
+#cpu.critical,
+#temperature.critical,
+#battery.critical.discharging {
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-name: blink-critical;
+	animation-duration: 1s;
+}
+
+#network.disconnected,
+#memory.warning,
+#cpu.warning,
+#temperature.warning,
+#battery.warning.discharging {
+	color: @yellow_bright;
+}
+
+#workspaces button {
+	padding-left: 5pt;
+	padding-right: 4pt;
+	margin-right: 3pt;
+	color: @fg;
+	background: @bg;
+	border: 1pt solid @fg2;
+}
+#workspaces button:hover {
+	background: @bg2;
+}
+
+
+#workspaces button.visible {
+	color: @bg;
+	background: @fg2;
+	border: 1pt solid @fg2;
+}
+
+#workspaces button.visible:hover {
+	color: @bg;
+	background: @fg;
+	border: 1pt solid @fg;
+}
+
+#workspaces button.focused {
+	color: @fg;
+	background: @red;
+	border: 1pt solid @red;
+}
+
+#workspaces button.urgent {
+	color: @bg;
+	background: @yellow;
+	border: 1pt solid @yellow;
+}
+
+#workspaces button.urgent:hover {
+	color: @bg;
+	background: @yellow_bright;
+	border: 1pt solid @yellow_bright;
+}
+
+#network,
+#cpu,
+#battery,
+#privacy,
+#clock.date,
+#mpris {
+	background: @bg;
+	color: @fg;
+}
+
+#memory,
+#temperature,
+#language,
+#clock.time,
+#pulseaudio {
+	background: @bg_alt;
+	color: @fg;
+}
+
+#tray {
+	background: @bg;
+}
+
+#custom-arrow_left {
+	color: @bg_alt;
+	background: @bg;
+}
+#custom-arrow_left_alt {
+	color: @bg;
+	background: @bg_alt;
+}
+#custom-arrow_left_end {
+	color: @bg;
+	background: transparent;
+}
+
+#custom-arrow_right {
+	color: @bg_alt;
+	background: @bg;
+}
+
+#custom-arrow_right_end {
+	color: @bg;
+	background: transparent;
+}

@@ -1,0 +1,270 @@
+{
+	"layer": "top",
+	"position": "top",
+	"reload_style_on_change": true,
+	"modules-left": [
+		"hyprland/workspaces"
+	],
+	"modules-right": [
+		"custom/arrow_left_end",
+		"mpris",
+		"custom/arrow_left",
+		"pulseaudio",
+		"custom/arrow_left_alt",
+		"network",
+		"custom/arrow_left",
+		"memory",
+		"custom/arrow_left_alt",
+		"cpu",
+		"custom/arrow_left",
+		"temperature",
+		"custom/arrow_left_alt",
+		"battery",
+		"custom/arrow_left",
+		"hyprland/language",
+		"custom/arrow_left_alt",
+		"clock#date",
+		"custom/arrow_left",
+		"clock#time"
+	],
+	"mpris": {
+		"format": "{player_icon} {dynamic}",
+		"format-paused": "{status_icon} {dynamic}",
+		"player-icons": {
+			"default": ""
+		},
+		"status-icons": {
+			"paused": ""
+		},
+		"player": "Deezer"
+	},
+	"battery": {
+		"interval": 10,
+		"states": {
+			"warning": 30,
+			"critical": 10
+		},
+		"format-time": "{H}:{M:02}",
+		"format": "{icon} {capacity}% ({time})",
+		"format-charging": " {capacity}% ({time})",
+		"format-charging-full": " {capacity}%",
+		"format-full": "{icon} {capacity}%",
+		"format-alt": "{icon} {power}W",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"tooltip": false
+	},
+	"clock#time": {
+		"interval": 1,
+		"format": "{:%H:%M:%S}",
+		"tooltip": false
+	},
+	"clock#date": {
+		"interval": 20,
+		"format": "{:%a %Y-%m-%e}",
+		"tooltip": true,
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "month",
+			"mode-mon-col": 3,
+			"weeks-pos": "",
+			"on-scroll": 1,
+			"format": {
+				"months": "<span color='#ebdbb2'><b>{}</b></span>",
+				"days": "<span color='#ebdbb2'><b>{}</b></span>",
+				"weekdays": "<span color='#d79921'><b>{}</b></span>",
+				"today": "<span color='#cc241d'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-click-middle": "shift_reset",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+	},
+	"cpu": {
+		"interval": 5,
+		"tooltip": false,
+		"format": " {usage}%",
+		"format-alt": " {load}",
+		"states": {
+			"warning": 70,
+			"critical": 90
+		}
+	},
+	"hyprland/language": {
+		"format": " {}",
+		"keyboard-name": "at-translated-set-2-keyboard",
+		"tooltip": false,
+		"on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
+		"format-en": "EN",
+		"format-sr(latinunicode)": "SR",
+		"format-sr": "SR",
+		"format-de": "DE"
+	},
+	"memory": {
+		"interval": 5,
+		"format": " {used:0.1f}G/{total:0.1f}G",
+		"states": {
+			"warning": 70,
+			"critical": 90
+		},
+		"tooltip": false
+	},
+	"network": {
+		"interval": 5,
+		"format-wifi": " {essid} ({signalStrength}%)",
+		"format-ethernet": " {ifname}",
+		"format-disconnected": "No connection",
+		"format-alt": " {ipaddr}/{cidr}",
+		"tooltip": false
+	},
+	"hyprland/window": {
+		"format": "{}",
+		"max-length": 30,
+		"tooltip": false
+	},
+	"hyprland/workspaces": {
+		"disable-scroll-wraparound": true,
+		"smooth-scrolling-threshold": 4,
+		"enable-bar-scroll": true,
+		"format": "{icon}: {windows}",
+		"format-icons": {
+			"11": "󰈹",
+			"12": "",
+			"13": "󰇮"
+		},
+		"window-rewrite": {
+			"class<alacritty>": "",
+			"class<blender>": "",
+			"class<blueman-manager>": "",
+			"class<brave-browser>": "",
+			"class<calibre-gui>": "",
+			"class<chromium>": "",
+			"class<cities.x64>": "󰅆",
+			"class<clonehero>": "󰋄",
+			"class<code-oss>": "",
+			"class<vscodium>": "",
+			"class<cutter>": "",
+			"class<darktable>": "󰄀",
+			"class<discord>": "",
+			"class<dk.gqrx.gqrx>": "",
+			"class<dwarf_fortress>": "",
+			"class<com.github.wwmm.easyeffects>": "",
+			"class<evince>": "",
+			"class<factorio>": "",
+			"class<feh>": "󰋩",
+			"class<firefox>": "󰈹",
+			"class<gamescope>": "󰓓",
+			"class<ghb>": "󰕧",
+			"class<com.mitchellh.ghostty>": "",
+			"class<gimp-2.10>": "",
+			"class<gparted>": "",
+			"class<gsmartcontrol>": "",
+			"class<hoppscotch-app>": "󱃄",
+			"class<inkscape>": "󰴓",
+			"class<insomnium>": "󰡷",
+			"class<jetbrains-idea-ce>": "",
+			"class<kcharselect>": "",
+			"class<kicad>": "",
+			"class<ksp.x86_64>": "",
+			"class<ledger live>": "󰖄",
+			"class<libreoffice-calc>": "",
+			"class<libreoffice-impress>": "",
+			"class<libreoffice-writer>": "",
+			"class<lutris>": "",
+			"class<mpv>": "󰕧",
+			"class<polymc>": "󰍳",
+			"class<minecraft>": "󰍳",
+			"class<mupdf>": "",
+			"class<nemiver>": "",
+			"class<nm-connection-editor>": "",
+			"class<obs>": "󰕧",
+			"class<openlens>": "󱃾",
+			"class<org.gnome.nautilus>": "",
+			"class<oversteer>": "󰊗",
+			"class<org.pulseaudio.pavucontrol>": "",
+			"class<picard>": "",
+			"class<qbittorrent>": "",
+			"class<qtcreator>": "",
+			"class<seahorse>": "",
+			"class<simplescreenrecorder>": "󰕧",
+			"class<slack>": "",
+			"class<spotify>": "",
+			"class<sqlitebrowser>": "",
+			"class<steam>": "󰓓",
+			"class<steam_app_671860>": "󰜃",
+			"class<steam_app_1336490>": "",
+			"class<steam_app_599140>": "󰭿",
+			"class<steam_app_284160>": "󰄋",
+			"class<steam_app_1250410>": "󰀝",
+			"class<steam_app_1422450>": "󰮔",
+			"class<surviving mars>": "",
+			"class<org.telegram.desktop>": "",
+			"class<terraria.bin.x86_64>": "",
+			"class<thunderbird>": "",
+			"class<virtualbox manager>": "",
+			"class<vlc>": "󰕧",
+			"class<wireshark>": "󱙳",
+			"class<org.pwmt.zathura>": "",
+			"class<zenity>": ""
+		}
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{icon} {volume}%",
+		"format-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"",
+				"",
+				""
+			]
+		},
+		"scroll-step": 2,
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"tooltip": false
+	},
+	"temperature": {
+		"critical-threshold": 90,
+		"interval": 5,
+		"hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+		"format": "{icon} {temperatureC}°",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"tooltip": false
+	},
+	// "tray": {
+	// 	"icon-size": 18
+	// 	//"spacing": 10
+	// },
+	"custom/arrow_left": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/arrow_left_alt": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/arrow_left_end": {
+		"format": "",
+		"tooltip": false
+	}
+}

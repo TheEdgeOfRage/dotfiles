@@ -1,0 +1,284 @@
+# vim: set ft=hyprlang:
+# See https://wiki.hyprland.org/Configuring/Monitors/
+{{ range $id, $settings := .hyprland.monitors }}monitor = {{ $id }}, {{ $settings }}
+{{ end }}
+
+# See https://wiki.hyprland.org/Configuring/Keywords/
+# Set programs that you use
+$terminal = ghostty
+$fileManager = dolphin
+$menu = rofi -show drun
+$animation_speed = 1.5
+
+# Autostart necessary processes (like notifications daemons, status bars, etc.)
+# Or execute your favorite apps at launch like this:
+
+# exec-once = $terminal
+# exec-once = nm-applet &
+# exec-once = waybar & hyprpaper & firefox
+exec-once = waybar -c ~/.config/waybar/config.jsonc
+exec-once = hyprpm reload -n
+
+# LOOK AND FEEL
+# Refer to https://wiki.hyprland.org/Configuring/Variables/
+
+# https://wiki.hyprland.org/Configuring/Variables/#general
+general {
+    layout = hy3
+    gaps_in = 0
+    gaps_out = 0
+    border_size = 2
+
+    # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
+    col.active_border = rgba(504945ff)
+    col.inactive_border = rgba(282828ff)
+
+    # Set to true enable resizing windows by clicking and dragging on borders and gaps
+    resize_on_border = false
+
+    # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
+    allow_tearing = true
+}
+
+plugin {
+  hy3 {
+    # policy controlling what happens when a node is removed from a group,
+    # leaving only a group
+    # 0 = remove the nested group
+    # 1 = keep the nested group
+    # 2 = keep the nested group only if its parent is a tab group
+    node_collapse_policy = 2
+
+    # offset from group split direction when only one window is in a group
+    group_inset = 10
+
+    # if a tab group will automatically be created for the first window spawned in a workspace
+    tab_first_window = false
+
+    # tab group settings
+    tabs {
+      # height of the tab bar
+      height = 26
+
+      # padding between the tab bar and its focused node
+      padding = 0
+      # the tab bar should animate in/out from the top instead of below the window
+      from_top = true
+      radius = 0
+      blur = false
+      no_gaps_when_only = true
+
+      # Window title text
+      text_center = false
+      text_font = IosevkaTerm NFP
+      text_height = 14
+      # left padding
+      text_padding = 8
+
+      # active tab bar segment colors
+      col.active = rgba(504945ff)
+      col.border.active = rgba(504945ff)
+      col.text.active = rgba(ebdbb2ff)
+
+      # urgent tab bar segment colors
+      col.urgent = rgba(d79921ff)
+      col.border.urgent = rgba(d79921ff)
+      col.text.urgent = rgba(282828ff)
+
+      # inactive tab bar segment colors
+      col.inactive = rgba(282828ff)
+      col.border.inactive = rgba(282828ff)
+      col.text.inactive = rgba(a89984ff)
+    }
+  }
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#decoration
+decoration {
+    rounding = 0
+    active_opacity = 1.0
+    inactive_opacity = 1.0
+    shadow {
+        enabled = false
+    }
+    blur {
+        enabled = false
+    }
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#animations
+animations {
+    enabled = yes, please :)
+
+    # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+
+    bezier = easeOutQuint,0.23,1,0.32,1
+    bezier = easeInOutCubic,0.65,0.05,0.36,1
+    bezier = linear,0,0,1,1
+    bezier = almostLinear,0.5,0.5,0.75,1.0
+    bezier = quick,0.15,0,0.1,1
+
+    animation = global, 1, $animation_speed, default
+    animation = border, 1, $animation_speed, easeOutQuint
+    animation = windows, 1, $animation_speed, easeOutQuint
+    animation = windowsIn, 1, $animation_speed, easeOutQuint, popin 87%
+    animation = windowsOut, 1, $animation_speed, linear, popin 87%
+    animation = fadeIn, 1, $animation_speed, almostLinear
+    animation = fadeOut, 1, $animation_speed, almostLinear
+    animation = fade, 1, $animation_speed, quick
+    animation = layers, 1, $animation_speed, easeOutQuint
+    animation = layersIn, 1, $animation_speed, easeOutQuint, fade
+    animation = layersOut, 1, $animation_speed, linear, fade
+    animation = fadeLayersIn, 1, $animation_speed, almostLinear
+    animation = fadeLayersOut, 1, $animation_speed, almostLinear
+    animation = workspaces, 1, $animation_speed, almostLinear, fade
+    animation = workspacesIn, 1, $animation_speed, almostLinear, fade
+    animation = workspacesOut, 1, $animation_speed, almostLinear, fade
+}
+
+# Ref https://wiki.hyprland.org/Configuring/Workspace-Rules/
+# No gaps when only window
+workspace = w[tv1], gapsout:0, gapsin:0
+workspace = f[1], gapsout:0, gapsin:0
+windowrulev2 = bordersize 0, floating:0, onworkspace:w[tv1]
+windowrulev2 = rounding 0, floating:0, onworkspace:w[tv1]
+windowrulev2 = bordersize 0, floating:0, onworkspace:f[1]
+windowrulev2 = rounding 0, floating:0, onworkspace:f[1]
+
+# https://wiki.hyprland.org/Configuring/Variables/#misc
+misc {
+    font_family = Noto Sans
+    force_default_wallpaper = 1
+    disable_hyprland_logo = true
+    vfr = true
+    enable_swallow = true
+    swallow_regex = com.mitchellh.ghostty
+}
+
+xwayland {
+    force_zero_scaling = true
+}
+
+ecosystem {
+    no_update_news = true
+}
+
+render {
+    direct_scanout = true
+}
+
+cursor {
+    hotspot_padding = 0
+}
+
+# experimental {
+#     hdr = true
+# }
+
+# https://wiki.hyprland.org/Configuring/Variables/#input
+input {
+    {{ .hyprland.input.keyboard_layouts }}
+
+    follow_mouse = 1
+    sensitivity = {{ .hyprland.input.sensitivity }}
+    touchpad {
+        natural_scroll = false
+    }
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#gestures
+gestures {
+    workspace_swipe = false
+}
+
+# See https://wiki.hyprland.org/Configuring/Keywords/
+$mod = SUPER
+
+# See https://wiki.hyprland.org/Configuring/Binds/
+bind = $mod SHIFT, Q, hy3:killactive,
+bind = $mod SHIFT, X, exec, uwsm stop
+bind = $mod, Space, exec, $menu
+bind = $mod, Backspace, exec, $menu
+bind = $mod, Return, exec, $terminal
+
+# Focus bindings
+bind = $mod, h, hy3:movefocus, l
+bind = $mod, i, hy3:movefocus, r
+bind = $mod, e, hy3:movefocus, u
+bind = $mod, n, hy3:movefocus, d
+
+# Move bindings
+bind = $mod SHIFT, h, hy3:movewindow, l
+bind = $mod SHIFT, i, hy3:movewindow, r
+bind = $mod SHIFT, e, hy3:movewindow, u
+bind = $mod SHIFT, n, hy3:movewindow, d
+
+# Layout bindings
+bind = $mod, f, fullscreen
+bind = $mod SHIFT, Space, togglefloating,
+bind = $mod SHIFT, Backspace, togglefloating,
+bind = $mod, s, hy3:changegroup, opposite
+bind = $mod, t, hy3:changegroup, toggletab
+bind = $mod, v, hy3:makegroup, v, ephemeral
+bind = $mod, c, hy3:makegroup, h, ephemeral
+
+# Workspace focus bindings
+bind = $mod, 1, workspace, 1
+bind = $mod, 2, workspace, 2
+bind = $mod, 3, workspace, 3
+bind = $mod, 4, workspace, 4
+bind = $mod, 5, workspace, 5
+bind = $mod, 6, workspace, 6
+bind = $mod, 7, workspace, 7
+bind = $mod, 8, workspace, 8
+bind = $mod, 9, workspace, 9
+bind = $mod, 0, workspace, 10
+bind = $mod, W, workspace, 11
+bind = $mod, P, workspace, 12
+bind = $mod, M, workspace, 13
+
+# Move active window to a workspace with mod + SHIFT + [0-9]
+bind = $mod SHIFT, 1, movetoworkspace, 1
+bind = $mod SHIFT, 2, movetoworkspace, 2
+bind = $mod SHIFT, 3, movetoworkspace, 3
+bind = $mod SHIFT, 4, movetoworkspace, 4
+bind = $mod SHIFT, 5, movetoworkspace, 5
+bind = $mod SHIFT, 6, movetoworkspace, 6
+bind = $mod SHIFT, 7, movetoworkspace, 7
+bind = $mod SHIFT, 8, movetoworkspace, 8
+bind = $mod SHIFT, 9, movetoworkspace, 9
+bind = $mod SHIFT, 0, movetoworkspace, 10
+bind = $mod SHIFT, W, movetoworkspace, 11
+bind = $mod SHIFT, P, movetoworkspace, 12
+bind = $mod SHIFT, M, movetoworkspace, 13
+
+# Move/resize windows with mod + LMB/RMB and dragging
+bindm = $mod, mouse:272, movewindow
+bindm = $mod, mouse:273, resizewindow
+
+# Volume, media, and brightness
+bindel = , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
+bindel = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
+bindel = SHIFT, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 8%+
+bindel = SHIFT, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 8%-
+bindl = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindl = , XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindl = , XF86AudioNext, exec, playerctl-wrapper next
+bindl = , XF86AudioPause, exec, playerctl-wrapper play-pause
+bindl = , XF86AudioPlay, exec, playerctl-wrapper play-pause
+bindl = , XF86AudioPrev, exec, playerctl-wrapper previous
+bindel = , XF86MonBrightnessUp, exec, light -A 10
+bindel = , XF86MonBrightnessDown, exec, light -U 10
+
+# Screenshot
+bind = , Print, exec, pyazo --no-save
+bind = Shift, Print, exec, grimshot save active /home/pavle/pictures/screenshot.png
+bind = Control, Print, exec, grimshot copy area
+bind = $mod, Print, exec, pyazo -d
+
+# See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
+
+# Ignore maximize requests from apps. You'll probably like this.
+windowrulev2 = suppressevent maximize, class:.*
+# Fix some dragging issues with XWayland
+windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0

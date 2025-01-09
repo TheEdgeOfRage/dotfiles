@@ -1,0 +1,36 @@
+# Localization
+export LANG="en_US.UTF-8"
+export LC_ALL="en_DK.UTF-8"
+
+# System config
+export PATH="$HOME/.local/bin:$PATH:$GOBIN:$HOME/.cargo/bin"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
+
+# Hyprland config
+export HYPRLAND_NO_SD_NOTIFY=1
+export HYPRLAND_NO_SD_VARS=1
+export AQ_MGPU_NO_EXPLICIT=1
+
+# Toolkit settings
+export GDK_BACKEND=wayland,x11,*
+export XCURSOR_THEME=Breeze_Light
+export XCURSOR_SIZE=24
+export HYPRCURSOR_SIZE=24
+export QT_QPA_PLATFORM=wayland;xcb
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_WAYLAND_FORCE_DPI="physical"
+export GTK_THEME=Breeze-Dark
+export SDL_VIDEODRIVER=wayland
+export CLUTTER_BACKEND=wayland
+
+# Mozilla
+export MOZ_ENABLE_WAYLAND="1"
+export MOZ_WEBRENDER="1"
+export MOZ_USE_XINPUT2="1"
+
+# Valve shader compiler
+export RADV_PERFTEST="aco"
