@@ -1,11 +1,5 @@
 ---
 data:
-  i3:
-    font_size: 13
-    xrandr: ''
-    tray_output: ''
-    nm_applet: true
-    additional_bindings: ''
   sway:
     font_size: 13
     tray_output: 'eDP-1'
@@ -17,6 +11,14 @@ data:
     outputs: |-
       output <identifier> {
       }
+  hyprland:
+    monitors:
+      identifier: "resolution@refresh_rate, auto, 1, vrr, 0"
+    input:
+      keyboard_layouts: |-
+        kb_layout = us,rs,rs,de
+        kb_variant = ,latinunicode,,
+      sensitivity: "1"
   bumblebee:
     modules: 'ytrssil,'
     parameters:
@@ -28,6 +30,11 @@ data:
       offset:
         x: 0
         y: 3
+  ghostty:
+    font:
+      size: '14'
+      cell_width: -1
+      cell_height: 1
   rofi:
     font:
       size: '15'
@@ -35,5 +42,3 @@ data:
     env_vars:
       - name: 'NAME'
         value: 'VALUE'
-  xinitrc:
-    additional_commands: ''

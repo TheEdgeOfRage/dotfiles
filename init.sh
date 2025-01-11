@@ -31,4 +31,4 @@ sudo pacman -S gcr
 systemctl enable --user --now gcr-ssh-agent.socket
 
 # Set cursor theme
-gsettings set org.gnome.desktop.interface cursor-theme Breeze_Snow
+gsettings set org.gnome.desktop.interface cursor-theme Breeze_Light
