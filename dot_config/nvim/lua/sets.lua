@@ -32,6 +32,7 @@ vim.opt.splitbelow = true
 vim.opt.undofile = true
 vim.opt.undodir = "/home/pavle/.local/share/nvim/undodir"
 vim.opt.scrolloff = 8
+vim.opt.mousescroll = "ver:1,hor:1"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.shell = "/usr/bin/zsh"
