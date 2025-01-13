@@ -1,26 +1,23 @@
 # vim: set ft=hyprlang:
+
+# See https://wiki.hyprland.org/Configuring/Keywords/
+
 # See https://wiki.hyprland.org/Configuring/Monitors/
 {{ range $id, $settings := .hyprland.monitors }}monitor = {{ $id }}, {{ $settings }}
 {{ end }}
-
-# See https://wiki.hyprland.org/Configuring/Keywords/
-# Set programs that you use
+# Refer to https://wiki.hyprland.org/Configuring/Variables/
 $terminal = ghostty
-$fileManager = dolphin
-$menu = rofi -show drun
+$menu = rofi -show drun -run-command "uwsm app -- {cmd}"
 $animation_speed = 1.5
 
-# Autostart necessary processes (like notifications daemons, status bars, etc.)
-# Or execute your favorite apps at launch like this:
-
-# exec-once = $terminal
-# exec-once = nm-applet &
-# exec-once = waybar & hyprpaper & firefox
-exec-once = waybar -c ~/.config/waybar/config.jsonc
+exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = waybar -c ~/.config/waybar/config-top.jsonc
+exec-once = waybar -c ~/.config/waybar/config-bottom.jsonc
 exec-once = hyprpm reload -n
 
-# LOOK AND FEEL
-# Refer to https://wiki.hyprland.org/Configuring/Variables/
+exec-once = uwsm app -- firefox.desktop
+exec-once = uwsm app -- org.telegram.desktop.desktop
+exec-once = uwsm app -- deezer-enhanced.desktop
 
 # https://wiki.hyprland.org/Configuring/Variables/#general
 general {
@@ -72,8 +69,7 @@ plugin {
       text_center = false
       text_font = IosevkaTerm NFP
       text_height = 14
-      # left padding
-      text_padding = 8
+      text_padding = 6 # left padding
 
       # active tab bar segment colors
       col.active = rgba(504945ff)
@@ -206,6 +202,8 @@ bind = $mod, h, hy3:movefocus, l
 bind = $mod, i, hy3:movefocus, r
 bind = $mod, e, hy3:movefocus, u
 bind = $mod, n, hy3:movefocus, d
+# binds hy3:focustab to lmb and still allows windows to receive clicks
+bindn = , mouse:272, hy3:focustab, mouse
 
 # Move bindings
 bind = $mod SHIFT, h, hy3:movewindow, l

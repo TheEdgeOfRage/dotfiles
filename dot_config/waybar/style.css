@@ -71,6 +71,26 @@
 #mpris {
 	padding-left: 8pt;
 	padding-right: 8pt;
+	color: @fg;
+}
+
+#network,
+#cpu,
+#battery,
+#privacy,
+#clock.date,
+#tray,
+#mpris {
+	background: @bg;
+}
+
+#memory,
+#temperature,
+#language,
+#clock.time,
+#network.wireguard,
+#pulseaudio {
+	background: @bg_alt;
 }
 
 #memory.critical,
@@ -84,12 +104,15 @@
 	animation-duration: 1s;
 }
 
-#network.disconnected,
 #memory.warning,
 #cpu.warning,
 #temperature.warning,
 #battery.warning.discharging {
 	color: @yellow_bright;
+}
+
+#network.disconnected {
+	color: @gray0;
 }
 
 #workspaces button {
@@ -135,48 +158,22 @@
 	border: 1pt solid @yellow_bright;
 }
 
-#network,
-#cpu,
-#battery,
-#privacy,
-#clock.date,
-#mpris {
-	background: @bg;
-	color: @fg;
-}
-
-#memory,
-#temperature,
-#language,
-#clock.time,
-#pulseaudio {
-	background: @bg_alt;
-	color: @fg;
-}
-
-#tray {
-	background: @bg;
-}
-
 #custom-arrow_left {
 	color: @bg_alt;
 	background: @bg;
 }
+
 #custom-arrow_left_alt {
 	color: @bg;
 	background: @bg_alt;
 }
+
 #custom-arrow_left_end {
 	color: @bg;
 	background: transparent;
 }
 
-#custom-arrow_right {
+#custom-arrow_left_end_alt {
 	color: @bg_alt;
-	background: @bg;
-}
-
-#custom-arrow_right_end {
-	color: @bg;
 	background: transparent;
 }
