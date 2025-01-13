@@ -6,16 +6,6 @@ SAVEHIST=40000
 HIST_STAMPS="yyyy-mm-dd"
 setopt HIST_IGNORE_DUPS
 
-# Common config
-export DEFAULT_USER="pavle"
-export EDITOR="nvim"
-export VISUAL="nvim"
-export LANG="en_US.UTF-8"
-export LC_ALL="en_DK.UTF-8"
-export PATH="$HOME/.local/bin:$PATH:$GOBIN:$HOME/.cargo/bin"
-export XDG_CONFIG_HOME="$HOME/.config"
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
-
 # CLI tools
 export MAKEFLAGS="-j $(nproc --all)"
 export LESS="-SRF --mouse"
@@ -33,6 +23,16 @@ export FZF_DEFAULT_OPTS='
 	--color pointer:#fb4934,marker:#fb4934,spinner:#ffff60
 '
 export JQ_COLORS="1;31:0;35:0;35:0;39:0;32:1;39:1;39"
+
+# Common config
+export DEFAULT_USER="pavle"
+export EDITOR="nvim"
+export VISUAL="nvim"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_DK.UTF-8"
+export PATH="$HOME/.local/bin:$PATH:$GOBIN:$HOME/.cargo/bin"
+export XDG_CONFIG_HOME="$HOME/.config"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 
 # Additional env vars
 {{ range $_, $env := .zshrc.env_vars }}export {{ $env.name }}="{{ $env.value }}"
