@@ -103,7 +103,7 @@ eval "$(zoxide init zsh)"
 
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
 	# hyprland on tty1
-	exec uwsm start hyprland.desktop
+	exec uwsm start -S hyprland.desktop
 elif [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]] && uwsm check may-start; then
 	# sway on tty2
 	source ~/.config/uwsm/env

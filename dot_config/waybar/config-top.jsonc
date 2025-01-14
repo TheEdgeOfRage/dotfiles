@@ -9,9 +9,9 @@
 		"custom/arrow_left_end",
 		"mpris",
 		"custom/arrow_left",
-		"pulseaudio",
+		"pulseaudio#mic",
 		"custom/arrow_left_alt",
-		"battery",
+		"pulseaudio",
 		"custom/arrow_left",
 		"hyprland/language",
 		"custom/arrow_left_alt",
@@ -55,7 +55,7 @@
 			"class<gamescope>": "󰓓",
 			"class<ghb>": "󰕧",
 			"class<com.mitchellh.ghostty>": "",
-			"class<gimp-2.10>": "",
+			"class<Gimp>": "",
 			"class<gparted>": "",
 			"class<gsmartcontrol>": "",
 			"class<hoppscotch-app>": "󱃄",
@@ -108,8 +108,15 @@
 		}
 	},
 	"mpris": {
+        "interval": 1,
 		"format": "{player_icon} {dynamic}",
 		"format-paused": "{status_icon} {dynamic}",
+		"dynamic-order": [
+			"artist",
+			"title",
+			"position",
+			"length"
+		],
 		"player-icons": {
 			"default": ""
 		},
@@ -196,8 +203,18 @@
 			]
 		},
 		"scroll-step": 2,
-		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-		"tooltip": false
+		"tooltip": true,
+		"tooltip-format": "{desc}",
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+	},
+	"pulseaudio#mic": {
+		"format": "{format_source}",
+		"format-source": " {volume}%",
+		"format-source-muted": "",
+		"tooltip": false,
+		"on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+		"on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +2%",
+		"on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -2%"
 	},
 	"custom/arrow_left": {
 		"format": "",

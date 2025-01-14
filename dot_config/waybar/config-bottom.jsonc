@@ -19,18 +19,18 @@
 		"tray"
 	],
 	"cpu": {
-		"interval": 5,
+		"interval": 1,
 		"tooltip": false,
 		"format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}{icon12}{icon13}{icon14}{icon15}",
 		"format-alt": "  {usage}% ({load})",
 		"format-icons": [
 			"<span color='#98971a'>▁</span>", // green
-			"<span color='#689d6a'>▂</span>", // blue
-			"<span color='#ebdbb2'>▃</span>", // white
-			"<span color='#ebdbb2'>▄</span>", // white
-			"<span color='#d79921'>▅</span>", // yellow
-			"<span color='#d79921'>▆</span>", // yellow
-			"<span color='#d65d0e'>▇</span>", // orange
+			"<span color='#98971a'>▂</span>", // green
+			"<span color='#d79921'>▃</span>", // yellow
+			"<span color='#d79921'>▄</span>", // yellow
+			"<span color='#d65d0e'>▅</span>", // orange
+			"<span color='#d65d0e'>▆</span>", // orange
+			"<span color='#cc241d'>▇</span>", // red
 			"<span color='#cc241d'>█</span>" // red
 		]
 	},
@@ -45,7 +45,7 @@
 	},
 	"temperature": {
 		"critical-threshold": 90,
-		"interval": 5,
+		"interval": 1,
 		"hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
 		"format": "{icon} {temperatureC}°",
 		"format-icons": [

@@ -14,8 +14,8 @@
 @define-color gray0   #928374;
 @define-color gray1   #a89984;
 
-@define-color fg      #fbf1c7;
-@define-color fg1     #ebdbb2;
+@define-color fg      #ebdbb2;
+@define-color fg1     #fbf1c7;
 @define-color fg2     #d5c4a1;
 @define-color fg3     #bdae93;
 @define-color fg4     #a89984;
@@ -80,7 +80,8 @@
 #privacy,
 #clock.date,
 #tray,
-#mpris {
+#mpris,
+#pulseaudio {
 	background: @bg;
 }
 
@@ -89,7 +90,7 @@
 #language,
 #clock.time,
 #network.wireguard,
-#pulseaudio {
+#pulseaudio.mic {
 	background: @bg_alt;
 }
 
