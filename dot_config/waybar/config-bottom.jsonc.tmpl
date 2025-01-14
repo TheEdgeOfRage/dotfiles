@@ -1,3 +1,5 @@
+// vim: set noet ft=chezmoitmpl.jsonc:
+{{- $cpuThreads := (output "sh" "-c" "lscpu --online --parse | grep --invert-match '^#' | wc --lines") | trim | atoi | add -1 | int }}
 {
 	"layer": "top",
 	"position": "bottom",
@@ -21,7 +23,7 @@
 	"cpu": {
 		"interval": 1,
 		"tooltip": false,
-		"format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}{icon12}{icon13}{icon14}{icon15}",
+		"format": "{{- range $i := splitList " " (seq 0 $cpuThreads) -}}{icon{{ $i }}}{{- end -}}",
 		"format-alt": "  {usage}% ({load})",
 		"format-icons": [
 			"<span color='#98971a'>▁</span>", // green

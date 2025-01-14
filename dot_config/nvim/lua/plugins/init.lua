@@ -39,6 +39,7 @@ return {
 	"lambdalisue/suda.vim",
 	"xiyaowong/nvim-cursorword",
 	"ahmedkhalf/project.nvim",
+	"alker0/chezmoi.vim",
 	-- {
 	-- 	"github/copilot.vim",
 	-- 	config = function()
