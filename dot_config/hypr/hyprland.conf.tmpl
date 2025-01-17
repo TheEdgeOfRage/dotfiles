@@ -15,9 +15,9 @@ exec-once = waybar -c ~/.config/waybar/config-top.jsonc
 exec-once = waybar -c ~/.config/waybar/config-bottom.jsonc
 exec-once = hyprpm reload -n
 
-exec-once = uwsm app -- firefox.desktop
-exec-once = uwsm app -- org.telegram.desktop.desktop
-exec-once = uwsm app -- deezer-enhanced.desktop
+# exec-once = firefox.desktop
+# exec-once = org.telegram.desktop.desktop
+# exec-once = deezer-enhanced.desktop
 
 # https://wiki.hyprland.org/Configuring/Variables/#general
 general {
@@ -238,19 +238,19 @@ bind = $mod, P, workspace, 12
 bind = $mod, M, workspace, 13
 
 # Move active window to a workspace with mod + SHIFT + [0-9]
-bind = $mod SHIFT, 1, movetoworkspace, 1
-bind = $mod SHIFT, 2, movetoworkspace, 2
-bind = $mod SHIFT, 3, movetoworkspace, 3
-bind = $mod SHIFT, 4, movetoworkspace, 4
-bind = $mod SHIFT, 5, movetoworkspace, 5
-bind = $mod SHIFT, 6, movetoworkspace, 6
-bind = $mod SHIFT, 7, movetoworkspace, 7
-bind = $mod SHIFT, 8, movetoworkspace, 8
-bind = $mod SHIFT, 9, movetoworkspace, 9
-bind = $mod SHIFT, 0, movetoworkspace, 10
-bind = $mod SHIFT, W, movetoworkspace, 11
-bind = $mod SHIFT, P, movetoworkspace, 12
-bind = $mod SHIFT, M, movetoworkspace, 13
+bind = $mod SHIFT, 1, movetoworkspacesilent, 1
+bind = $mod SHIFT, 2, movetoworkspacesilent, 2
+bind = $mod SHIFT, 3, movetoworkspacesilent, 3
+bind = $mod SHIFT, 4, movetoworkspacesilent, 4
+bind = $mod SHIFT, 5, movetoworkspacesilent, 5
+bind = $mod SHIFT, 6, movetoworkspacesilent, 6
+bind = $mod SHIFT, 7, movetoworkspacesilent, 7
+bind = $mod SHIFT, 8, movetoworkspacesilent, 8
+bind = $mod SHIFT, 9, movetoworkspacesilent, 9
+bind = $mod SHIFT, 0, movetoworkspacesilent, 10
+bind = $mod SHIFT, W, movetoworkspacesilent, 11
+bind = $mod SHIFT, P, movetoworkspacesilent, 12
+bind = $mod SHIFT, M, movetoworkspacesilent, 13
 
 # Move/resize windows with mod + LMB/RMB and dragging
 bindm = $mod, mouse:272, movewindow

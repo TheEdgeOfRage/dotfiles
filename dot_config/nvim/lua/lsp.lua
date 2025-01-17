@@ -149,7 +149,7 @@ lspconfig.efm.setup({
 		rootMarkers = { ".git/", ".prettierignore" },
 		lintDebounce = 100,
 		logLevel = 5,
-		logFile = "/home/pavle/efm.log",
+		logFile = "/home/pavle/.local/state/nvim/efm.log",
 		languages = languages,
 	},
 	single_file_support = true,
