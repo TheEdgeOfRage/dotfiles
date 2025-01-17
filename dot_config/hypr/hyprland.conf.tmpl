@@ -267,8 +267,8 @@ bindl = , XF86AudioNext, exec, playerctl-wrapper next
 bindl = , XF86AudioPause, exec, playerctl-wrapper play-pause
 bindl = , XF86AudioPlay, exec, playerctl-wrapper play-pause
 bindl = , XF86AudioPrev, exec, playerctl-wrapper previous
-bindel = , XF86MonBrightnessUp, exec, light -A 10
-bindel = , XF86MonBrightnessDown, exec, light -U 10
+bindel = , XF86MonBrightnessUp, exec, xbacklight -inc 10
+bindel = , XF86MonBrightnessDown, exec, xbacklight -dec 10
 
 # Screenshot
 bind = , Print, exec, pyazo --no-save
