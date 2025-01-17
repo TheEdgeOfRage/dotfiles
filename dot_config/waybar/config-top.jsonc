@@ -1,3 +1,4 @@
+// vim: set noet ft=chezmoitmpl.jsonc:
 {
 	"layer": "top",
 	"position": "top",
@@ -12,6 +13,10 @@
 		"pulseaudio#mic",
 		"custom/arrow_left_alt",
 		"pulseaudio",
+		"custom/arrow_left",
+		"backlight",
+		"custom/arrow_left_alt",
+		"battery",
 		"custom/arrow_left",
 		"hyprland/language",
 		"custom/arrow_left_alt",
@@ -109,7 +114,7 @@
 		}
 	},
 	"mpris": {
-        "interval": 1,
+		"interval": 1,
 		"format": "{player_icon} {dynamic}",
 		"format-paused": "{status_icon} {dynamic}",
 		"dynamic-order": [
@@ -125,6 +130,10 @@
 			"paused": ""
 		},
 		"player": "Deezer"
+	},
+	"backlight": {
+		"format": "{icon} {percent}%",
+		"format-icons": ["󰃞","󰃟","󰃠"]
 	},
 	"battery": {
 		"interval": 10,

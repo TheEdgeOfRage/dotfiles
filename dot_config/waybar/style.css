@@ -54,6 +54,7 @@
 	font-size: 14pt;
 }
 
+#backlight,
 #battery,
 #privacy,
 #clock,
@@ -85,6 +86,7 @@
 	background: @bg;
 }
 
+#backlight,
 #memory,
 #temperature,
 #language,
