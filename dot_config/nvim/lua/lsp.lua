@@ -76,6 +76,15 @@ lspconfig.gopls.setup({
 		gopls = {
 			gofumpt = true,
 			staticcheck = true,
+			hints = {
+				assignVariableTypes = false,
+				compositeLiteralFields = false,
+				compositeLiteralTypes = false,
+				constantValues = false,
+				functionTypeParameters = false,
+				parameterNames = false,
+				rangeVariableTypes = false,
+			},
 		},
 	},
 })
@@ -161,6 +170,8 @@ lspconfig.jsonls.setup({})
 lspconfig.yamlls.setup({})
 -- bash
 lspconfig.bashls.setup({})
+-- zig
+lspconfig.zls.setup({})
 
 -- Customize keymaps
 local cmp = require("cmp")
