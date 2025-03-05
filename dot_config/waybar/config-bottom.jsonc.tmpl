@@ -48,8 +48,9 @@
 	"temperature": {
 		"critical-threshold": 90,
 		"interval": 1,
-		"hwmon-path": "/sys/class/hwmon/{{ .waybar.bottom.cpu_temp_path}}",
-		"format": "{icon} {temperatureC}°",
+		"hwmon-path-abs": "/sys/devices/{{ .waybar.bottom.cpu_temp_path }}/hwmon",
+		"input-filename": "{{ .waybar.bottom.cpu_temp_filename }}",
+		"format": "{icon} {temperatureC}°C",
 		"format-icons": [
 			"",
 			"",
