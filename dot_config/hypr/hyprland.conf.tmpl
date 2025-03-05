@@ -1,11 +1,11 @@
 # vim: set ft=hyprlang:
 
-# See https://wiki.hyprland.org/Configuring/Keywords/
+# https://wiki.hyprland.org/Configuring/Keywords/
 
-# See https://wiki.hyprland.org/Configuring/Monitors/
+# https://wiki.hyprland.org/Configuring/Monitors/
 {{ range $id, $settings := .hyprland.monitors }}monitor = {{ $id }}, {{ $settings }}
 {{ end }}
-# Refer to https://wiki.hyprland.org/Configuring/Variables/
+# https://wiki.hyprland.org/Configuring/Variables/
 $terminal = ghostty
 $menu = rofi -show drun -run-command "uwsm app -- {cmd}"
 $animation_speed = 1.5
@@ -33,7 +33,7 @@ general {
     # Set to true enable resizing windows by clicking and dragging on borders and gaps
     resize_on_border = false
 
-    # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
+    # https://wiki.hyprland.org/Configuring/Tearing/
     allow_tearing = true
 }
 
@@ -73,18 +73,18 @@ plugin {
 
       # active tab bar segment colors
       col.active = rgba(504945ff)
-      col.border.active = rgba(504945ff)
-      col.text.active = rgba(ebdbb2ff)
+      col.active.border = rgba(504945ff)
+      col.active.text = rgba(ebdbb2ff)
 
       # urgent tab bar segment colors
       col.urgent = rgba(d79921ff)
-      col.border.urgent = rgba(d79921ff)
-      col.text.urgent = rgba(282828ff)
+      col.urgent.border = rgba(d79921ff)
+      col.urgent.text = rgba(282828ff)
 
       # inactive tab bar segment colors
       col.inactive = rgba(282828ff)
-      col.border.inactive = rgba(282828ff)
-      col.text.inactive = rgba(a89984ff)
+      col.inactive.border = rgba(282828ff)
+      col.inactive.text = rgba(a89984ff)
     }
   }
 }
@@ -106,8 +106,7 @@ decoration {
 animations {
     enabled = yes, please :)
 
-    # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
-
+    # https://wiki.hyprland.org/Configuring/Animations/
     bezier = easeOutQuint,0.23,1,0.32,1
     bezier = easeInOutCubic,0.65,0.05,0.36,1
     bezier = linear,0,0,1,1
@@ -131,15 +130,6 @@ animations {
     animation = workspacesIn, 1, $animation_speed, almostLinear, fade
     animation = workspacesOut, 1, $animation_speed, almostLinear, fade
 }
-
-# Ref https://wiki.hyprland.org/Configuring/Workspace-Rules/
-# No gaps when only window
-workspace = w[tv1], gapsout:0, gapsin:0
-workspace = f[1], gapsout:0, gapsin:0
-windowrulev2 = bordersize 0, floating:0, onworkspace:w[tv1]
-windowrulev2 = rounding 0, floating:0, onworkspace:w[tv1]
-windowrulev2 = bordersize 0, floating:0, onworkspace:f[1]
-windowrulev2 = rounding 0, floating:0, onworkspace:f[1]
 
 # https://wiki.hyprland.org/Configuring/Variables/#misc
 misc {
@@ -191,15 +181,16 @@ gestures {
     workspace_swipe = false
 }
 
-# See https://wiki.hyprland.org/Configuring/Keywords/
+# https://wiki.hyprland.org/Configuring/Keywords/
 $mod = SUPER
 
-# See https://wiki.hyprland.org/Configuring/Binds/
+# https://wiki.hyprland.org/Configuring/Binds/
 bind = $mod SHIFT, Q, hy3:killactive,
 bind = $mod SHIFT, X, exec, uwsm stop
 bind = $mod, Space, exec, $menu
 bind = $mod, Backspace, exec, $menu
 bind = $mod, Return, exec, $terminal
+bind = $mod, J, exec, rofimoji --clipboarder wl-copy --action copy --skin-tone neutral
 
 # Focus bindings
 bind = $mod, h, hy3:movefocus, l
@@ -278,9 +269,21 @@ bind = Shift, Print, exec, grimshot save active /home/pavle/pictures/screenshot.
 bind = Control, Print, exec, grimshot copy area
 bind = $mod, Print, exec, pyazo -d
 
-# See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
+# https://wiki.hyprland.org/Configuring/Workspace-Rules/
+
+# https://wiki.hyprland.org/Configuring/Window-Rules/
+windowrulev2 = bordersize 0, floating:0, onworkspace:w[tv1]
+windowrulev2 = rounding 0, floating:0, onworkspace:w[tv1]
+windowrulev2 = bordersize 0, floating:0, onworkspace:f[1]
+windowrulev2 = rounding 0, floating:0, onworkspace:f[1]
 
 # Ignore maximize requests from apps. You'll probably like this.
 windowrulev2 = suppressevent maximize, class:.*
 # Fix some dragging issues with XWayland
 windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+
+windowrule = workspace:[10], class:steam
+
+windowrulev2 = tile,title:(Ubisoft Connect)
+windowrulev2 = workspace special silent,title:(Wine System Tray)
+windowrulev2 = fullscreen,class:(steam_app*)
