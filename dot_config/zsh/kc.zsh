@@ -7,9 +7,9 @@ usage() {
   cat <<EOF
 USAGE:
   $SELF                       : list the configs
-  $SELF <NAME>                : switch to context <NAME>
+  $SELF <NAME>                : switch to config <NAME>
   $SELF -c, --current         : show the current context name
-  $SELF -u, --unset           : unset the current context, better use: Ctrl+d
+  $SELF -u, --unset           : unset the current kubeconfig
 
   $SELF -h,--help             : show this message
 EOF
@@ -26,7 +26,7 @@ current_context() {
 
 get_configs() {
   #kubectl config get-contexts -o=name | sort -n
-  ls -p --color=never -1 $HOME/.kube | \grep -v '/$'
+  \ls -p --color=never -1 $HOME/.kube | \grep -v '/$'
 }
 
 list_configs() {
@@ -75,8 +75,7 @@ set_context() {
 }
 
 unset_context() {
-  unset $KUBECONFIG
-  kubectl config unset current-context
+  unset KUBECONFIG
 }
 
 kc() {
@@ -91,12 +90,7 @@ kc() {
     usage
     exit 1
   elif [[ "$#" -eq 1 ]]; then
-    if [[ "${1}" == "-" ]]; then
-      swap_context
-    elif [[ "${1}" == '-c' || "${1}" == '--current' ]]; then
-      # we don't call current_context here for two reasons:
-      # - it does not fail when current-context property is not set
-      # - it does not return a trailing newline
+    if [[ "${1}" == '-c' || "${1}" == '--current' ]]; then
       kubectl config current-context
     elif [[ "${1}" == '-u' || "${1}" == '--unset' ]]; then
       unset_context
