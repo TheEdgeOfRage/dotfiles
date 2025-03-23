@@ -56,6 +56,7 @@ plugins=(
 	zsh-autoswitch-virtualenv
 	zsh-completions
 	zsh-syntax-highlighting
+	zsh-autopair
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -100,6 +101,7 @@ fi
 
 # zoxide setup
 eval "$(zoxide init zsh)"
+autopair-init
 
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
 	# hyprland on tty1
