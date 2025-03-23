@@ -2,6 +2,9 @@
 
 # https://wiki.hyprland.org/Configuring/Keywords/
 
+$active_bg = rgba(504945ff)
+$inactive_bg = rgba(282828ff)
+
 # https://wiki.hyprland.org/Configuring/Monitors/
 {{ range $id, $settings := .hyprland.monitors }}monitor = {{ $id }}, {{ $settings }}
 {{ end }}
@@ -27,8 +30,8 @@ general {
     border_size = 2
 
     # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-    col.active_border = rgba(504945ff)
-    col.inactive_border = rgba(282828ff)
+    col.active_border = $active_bg
+    col.inactive_border = $inactive_bg
 
     # Set to true enable resizing windows by clicking and dragging on borders and gaps
     resize_on_border = false
@@ -72,8 +75,8 @@ plugin {
       text_padding = 6 # left padding
 
       # active tab bar segment colors
-      col.active = rgba(504945ff)
-      col.active.border = rgba(504945ff)
+      col.active = $active_bg
+      col.active.border = $active_bg
       col.active.text = rgba(ebdbb2ff)
 
       # focused tab bar segment colors (focused node in unfocused container)
@@ -87,8 +90,8 @@ plugin {
       col.urgent.text = rgba(282828ff)
 
       # inactive tab bar segment colors
-      col.inactive = rgba(282828ff)
-      col.inactive.border = rgba(282828ff)
+      col.inactive = $inactive_bg
+      col.inactive.border = $inactive_bg
       col.inactive.text = rgba(a89984ff)
     }
   }
@@ -172,7 +175,7 @@ cursor {
 
 # https://wiki.hyprland.org/Configuring/Variables/#input
 input {
-    {{ .hyprland.input.keyboard_layouts }}
+{{ .hyprland.input.keyboard_layouts | indent 4 }}
 
     follow_mouse = 1
     sensitivity = {{ .hyprland.input.sensitivity }}
@@ -277,18 +280,16 @@ bind = $mod, Print, exec, pyazo -d
 # https://wiki.hyprland.org/Configuring/Workspace-Rules/
 
 # https://wiki.hyprland.org/Configuring/Window-Rules/
-windowrulev2 = bordersize 0, floating:0, onworkspace:w[tv1]
-windowrulev2 = rounding 0, floating:0, onworkspace:w[tv1]
-windowrulev2 = bordersize 0, floating:0, onworkspace:f[1]
-windowrulev2 = rounding 0, floating:0, onworkspace:f[1]
+windowrule = bordersize 0, floating:0, onworkspace:w[tv1]
+windowrule = rounding 0, floating:0, onworkspace:w[tv1]
+windowrule = bordersize 0, floating:0, onworkspace:f[1]
+windowrule = rounding 0, floating:0, onworkspace:f[1]
 
 # Ignore maximize requests from apps. You'll probably like this.
-windowrulev2 = suppressevent maximize, class:.*
+windowrule = suppressevent maximize, class:.*
 # Fix some dragging issues with XWayland
-windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
 
-windowrule = workspace:[10], class:steam
-
-windowrulev2 = tile,title:(Ubisoft Connect)
-windowrulev2 = workspace special silent,title:(Wine System Tray)
-windowrulev2 = fullscreen,class:(steam_app*)
+windowrule = tile,title:(Ubisoft Connect)
+windowrule = workspace special silent,title:(Wine System Tray)
+windowrule = fullscreen,class:(steam_app*)
