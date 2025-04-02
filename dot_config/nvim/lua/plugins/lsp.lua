@@ -1,8 +1,8 @@
 return {
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
-
-	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
+	{ "stevearc/conform.nvim" },
+	{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
 	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/nvim-cmp" },
@@ -14,13 +14,12 @@ return {
 			"ray-x/guihua.lua",
 			"neovim/nvim-lspconfig",
 			"nvim-treesitter/nvim-treesitter",
-			"theHamsta/nvim-dap-virtual-text",
 		},
 		config = function()
 			require("go").setup()
 		end,
 		event = { "CmdlineEnter" },
 		ft = { "go", "gomod" },
-		build = ":lua require('go.install').update_all_sync()",
+		build = ':lua require("go.install").update_all_sync()',
 	},
 }

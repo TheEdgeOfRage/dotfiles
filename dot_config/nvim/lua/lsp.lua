@@ -14,9 +14,13 @@ lsp_zero.on_attach(function(_, bufnr)
 	vim.keymap.set("n", "<leader>vc", vim.lsp.buf.code_action, opts)
 	vim.keymap.set("n", "<leader>vr", vim.lsp.buf.rename, opts)
 	vim.keymap.set("n", "<leader>vh", vim.lsp.buf.hover, opts)
-	vim.keymap.set("n", "<leader>en", vim.diagnostic.goto_next, opts)
-	vim.keymap.set("n", "<leader>ep", vim.diagnostic.goto_prev, opts)
-	vim.keymap.set("n", "<leader>ei", vim.diagnostic.open_float, opts)
+	vim.keymap.set("n", "<leader>en", function()
+		vim.diagnostic.jump({ count = 1 })
+	end, opts)
+	vim.keymap.set("n", "<leader>ep", function()
+		vim.diagnostic.jump({ count = -1 })
+	end, opts)
+	-- vim.keymap.set("n", "<leader>ei", vim.diagnostic.open_float, opts)
 	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 
 	vim.keymap.set("n", "gr", function()
@@ -40,20 +44,22 @@ lsp_zero.on_attach(function(_, bufnr)
 	end, opts)
 end)
 
-lsp_zero.format_on_save({
-	format_opts = {
-		async = true,
-		timeout_ms = 10000,
+require("conform").setup({
+	format_on_save = {
+		timeout_ms = 2000,
+		lsp_format = "fallback",
 	},
-	servers = {
-		["bashls"] = { "sh" },
-		["efm"] = { "javascript", "typescript", "lua" },
-		["gopls"] = { "go" },
-		["jsonls"] = { "json" },
-		["basedpyright"] = { "python" },
-		["rust_analyzer"] = { "rust" },
-		["terraformls"] = { "terraform" },
-		["yamlls"] = { "yaml" },
+	formatters_by_ft = {
+		lua = { "stylua", "efm" },
+		markdown = { "markdownlint" },
+		terraform = { "tflint" },
+		json = { "jsonlint", "prettierd" },
+		javascript = { "efm" },
+		typescript = { "efm" },
+		svelte = { "prettierd" },
+		go = { "golangci_lint_ls", "golangci-lint" },
+		html = { "htmlbeautifier", "htmlhint" },
+		tmpl = { "htmlbeautifier", "htmlhint" },
 	},
 })
 
@@ -70,6 +76,9 @@ lspconfig.golangci_lint_ls.setup({
 		".golangci.json",
 		".git"
 	),
+	init_options = {
+		command = { "golangci-lint", "run", "--output.json.path=stdout", "--show-stats=false" },
+	},
 })
 lspconfig.gopls.setup({
 	settings = {
@@ -176,6 +185,9 @@ lspconfig.zls.setup({})
 -- Customize keymaps
 local cmp = require("cmp")
 cmp.setup({
+	sources = {
+		{ name = "nvim_lsp" },
+	},
 	mapping = cmp.mapping.preset.insert({
 		-- `Enter` key to confirm completion
 		["<CR>"] = cmp.mapping.confirm({ select = false }),

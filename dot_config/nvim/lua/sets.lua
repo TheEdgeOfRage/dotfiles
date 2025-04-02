@@ -36,3 +36,5 @@ vim.opt.mousescroll = "ver:1,hor:1"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.shell = "/usr/bin/zsh"
+
+vim.diagnostic.config({ virtual_text = true })

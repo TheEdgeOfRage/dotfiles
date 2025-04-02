@@ -33,11 +33,11 @@ vim.keymap.set("n", "U", vim.cmd.redo, opts)
 -- File operation maps
 vim.keymap.set("n", "<leader>fd", function()
 	if vim.inspect(vim.lsp.get_clients()) then
-		vim.lsp.buf.format()
+		require("conform").format()
 	else
 		vim.cmd.normal("jzgg=G`z")
 	end
-end)
+end, opts)
 vim.keymap.set("n", "<leader>fs", vim.cmd.w, opts)
 vim.keymap.set("n", "<leader>fS", vim.cmd.SudaWrite, opts)
 vim.keymap.set("n", "<leader>W", vim.cmd.SudaWrite, opts)
@@ -101,3 +101,5 @@ vim.keymap.set("n", "<leader>rg", function()
 end, opts)
 vim.keymap.set("n", "<leader>fb", telescope.buffers, opts)
 vim.keymap.set("n", "<leader>fh", telescope.help_tags, opts)
+vim.keymap.set("n", "<leader>fp", telescope.builtin, opts)
+vim.keymap.set("n", "<leader>ei", telescope.diagnostics, opts)
