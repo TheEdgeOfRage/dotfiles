@@ -41,7 +41,7 @@ end, opts)
 vim.keymap.set("n", "<leader>fs", vim.cmd.w, opts)
 vim.keymap.set("n", "<leader>fS", vim.cmd.SudaWrite, opts)
 vim.keymap.set("n", "<leader>W", vim.cmd.SudaWrite, opts)
-vim.keymap.set("n", "<leader>q", vim.cmd.q, opts)
+vim.keymap.set("n", "<leader>q", vim.cmd.qa, opts)
 vim.keymap.set("n", "<leader>Q", ":q!<cr>", opts)
 vim.keymap.set("n", "<leader>wq", vim.cmd.wq, opts)
 vim.keymap.set("n", "<leader>bd", ":bp | bd #<cr>", opts)
@@ -81,7 +81,7 @@ require("telescope").setup({
 
 local telescope = require("telescope.builtin")
 
-local files = function()
+vim.keymap.set("n", "<leader>ff", function()
 	xpcall(function()
 		telescope.git_files({
 			show_untracked = true,
@@ -92,10 +92,7 @@ local files = function()
 			hidden = true,
 		})
 	end)
-end
-
-vim.keymap.set("n", "<leader>ff", files, opts)
-vim.keymap.set("n", "<c-p>", files, opts)
+end, opts)
 vim.keymap.set("n", "<leader>rg", function()
 	telescope.grep_string({ shorten_path = true, word_match = "-w", only_sort_text = true, search = "" })
 end, opts)
@@ -103,3 +100,43 @@ vim.keymap.set("n", "<leader>fb", telescope.buffers, opts)
 vim.keymap.set("n", "<leader>fh", telescope.help_tags, opts)
 vim.keymap.set("n", "<leader>fp", telescope.builtin, opts)
 vim.keymap.set("n", "<leader>ei", telescope.diagnostics, opts)
+
+-- LSP
+vim.keymap.set("n", "E", vim.lsp.buf.hover, opts)
+-- vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+-- vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+vim.keymap.set("n", "gr", function()
+	telescope.lsp_references({
+		include_declaration = false,
+		show_line = false,
+		fname_width = 64,
+	})
+end, opts)
+vim.keymap.set("n", "gd", function()
+	telescope.lsp_definitions({
+		show_line = false,
+		fname_width = 64,
+	})
+end, opts)
+vim.keymap.set("n", "gi", function()
+	telescope.lsp_implementations({
+		show_line = false,
+		fname_width = 64,
+	})
+end, opts)
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
+vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+
+vim.keymap.set("n", "<leader>vc", vim.lsp.buf.code_action, opts)
+vim.keymap.set("n", "<leader>vr", vim.lsp.buf.rename, opts)
+vim.keymap.set("n", "<leader>vh", vim.lsp.buf.hover, opts)
+vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+vim.keymap.set("n", "<leader>ei", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "<leader>en", function()
+	vim.diagnostic.jump({ count = 1 })
+end, opts)
+vim.keymap.set("n", "<leader>ep", function()
+	vim.diagnostic.jump({ count = -1 })
+end, opts)

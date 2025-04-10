@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
@@ -26,14 +26,7 @@ require("lazy").setup("plugins", {
 
 vim.cmd([[colorscheme gruvbox]])
 
-require("sets")
 require("mappings")
 require("autocmd")
 require("git")
-require("lsp")
 require("line")
-require("comment")
-
-require("telescope").load_extension("projects")
-require("telescope").load_extension("fzf")
-require("project_nvim").setup({})
