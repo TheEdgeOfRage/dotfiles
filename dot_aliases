@@ -86,7 +86,7 @@ alias tfs='terraform state'
 alias -g du=dust
 alias -g duf=dust
 alias -g dufa=dust
-alias l='ls -l -F=auto'
+alias l='ls -l -F auto'
 alias la='ls -a'
 alias ll='ls -la'
 unalias -m 'fd'
