@@ -23,9 +23,7 @@ return {
 		version = "*",
 		event = "VeryLazy",
 		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
+			require("nvim-surround").setup({})
 		end,
 	},
 	"folke/which-key.nvim",
@@ -33,22 +31,17 @@ return {
 	-- functionality
 	"andymass/vim-matchup",
 	"tpope/vim-repeat",
-	"tpope/vim-speeddating",
 	"mbbill/undotree",
 	"jdhao/whitespace.nvim",
 	"lambdalisue/suda.vim",
 	"xiyaowong/nvim-cursorword",
-	"ahmedkhalf/project.nvim",
+	{
+		"Zeioth/project.nvim",
+		config = function()
+			require("project_nvim").setup({})
+		end,
+	},
 	"alker0/chezmoi.vim",
-	-- {
-	-- 	"github/copilot.vim",
-	-- 	config = function()
-	-- 		vim.g.copilot_filetypes = {
-	-- 			["*"] = true,
-	-- 			["markdown"] = true,
-	-- 		}
-	-- 	end,
-	-- },
 	"mfussenegger/nvim-dap",
 	"rcarriga/nvim-dap-ui",
 	{
@@ -65,17 +58,26 @@ return {
 		end,
 	},
 	{
-		"folke/neodev.nvim",
-		dependencies = {
-			"rcarriga/nvim-dap-ui",
-		},
+		"numToStr/Comment.nvim",
 		opts = {
-			library = {
-				plugins = {
-					"nvim-dap-ui",
-				},
-				types = true,
+			toggler = {
+				---Line-comment toggle keymap
+				line = "<leader>/",
+				---Block-comment toggle keymap
+				block = "<leader>b/",
+			},
+			opleader = {
+				---Line-comment keymap
+				line = "<leader>/",
+				---Block-comment keymap
+				block = "<leader>b/",
 			},
 		},
+		lazy = false,
 	},
+
+	-- Git
+	"lewis6991/gitsigns.nvim",
+	"sindrets/diffview.nvim",
+	"tpope/vim-fugitive",
 }
