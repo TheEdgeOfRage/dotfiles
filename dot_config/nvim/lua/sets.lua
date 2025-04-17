@@ -69,4 +69,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.shell = "/usr/bin/zsh"
 
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({
+	virtual_text = true,
+	virtual_lines = false,
+	jump = { float = { border = "rounded" } },
+	update_in_insert = false,
+})
