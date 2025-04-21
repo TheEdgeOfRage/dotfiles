@@ -61,10 +61,19 @@ return {
 					settings = {
 						["rust-analyzer"] = {
 							diagnostics = {
-								enable = false,
+								enable = true,
 							},
 							cargo = {
-								allFeatures = true,
+								allFeatures = false,
+							},
+							imports = {
+								granularity = {
+									group = "module",
+								},
+								prefix = "self",
+							},
+							procMacro = {
+								enable = true,
 							},
 						},
 					},
@@ -140,7 +149,7 @@ return {
 		opts = {
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 			sources = {
-				default = { "lazydev", "lsp", "snippets", "path", "buffer" },
+				default = { "lazydev", "lsp", "snippets", "path" },
 				providers = {
 					lazydev = {
 						name = "LazyDev",
