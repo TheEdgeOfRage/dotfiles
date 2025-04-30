@@ -4,4 +4,4 @@
 env=${1}
 db=${2}
 shift 2
-PGPASSWORD=$(aws secretsmanager get-secret-value --secret-id ${env}_${db}_db_${db}_user_password --output text --query SecretString) pgcli --less-chatty $@ -U ${db} -h ${env}-${db}-db.tailf3b9f.ts.net ${db}
+PGPASSWORD=$(aws secretsmanager get-secret-value --secret-id ${env}_${db}_db_${db}_user_password --output text --query SecretString) pgcli --less-chatty $@ -U ${db} -h ${env}-${db}-db.ayu-decibel.ts.net ${db}

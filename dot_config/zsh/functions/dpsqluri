@@ -2,4 +2,4 @@
 # connect to dune RDS instance
 
 PGPASSWORD=$(aws secretsmanager get-secret-value --secret-id ${1}_${2}_db_${2}_user_password --output text --query SecretString)
-echo "postgres://${2}:${PGPASSWORD}@${1}-${2}-db.tailf3b9f.ts.net/${2}"
+echo "postgres://${2}:${PGPASSWORD}@${1}-${2}-db.ayu-decibel.ts.net/${2}"
