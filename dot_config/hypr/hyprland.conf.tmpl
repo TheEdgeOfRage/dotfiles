@@ -236,6 +236,7 @@ bind = $mod, 0, workspace, 10
 bind = $mod, W, workspace, 11
 bind = $mod, P, workspace, 12
 bind = $mod, M, workspace, 13
+bind = $mod, O, workspace, 14
 
 # Move active window to a workspace with mod + SHIFT + [0-9]
 bind = $mod SHIFT, 1, movetoworkspacesilent, 1
@@ -251,6 +252,7 @@ bind = $mod SHIFT, 0, movetoworkspacesilent, 10
 bind = $mod SHIFT, W, movetoworkspacesilent, 11
 bind = $mod SHIFT, P, movetoworkspacesilent, 12
 bind = $mod SHIFT, M, movetoworkspacesilent, 13
+bind = $mod SHIFT, O, movetoworkspacesilent, 14
 
 # Move/resize windows with mod + LMB/RMB and dragging
 bindm = $mod, mouse:272, movewindow
@@ -293,3 +295,5 @@ windowrule = tile,title:(Ubisoft Connect)
 windowrule = workspace special silent,title:(Wine System Tray)
 windowrule = fullscreen,class:(steam_app*)
 windowrule = workspace [10], class:(steam)
+windowrule = workspace [11], class:(deezer-enhanced)
+windowrule = workspace [11], class:(org.telegram.desktop)
