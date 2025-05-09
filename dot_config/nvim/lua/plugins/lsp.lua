@@ -24,6 +24,12 @@ return {
 					),
 				},
 			}
+			local efm_languages = {
+				typescript = { prettier },
+				javascript = { prettier },
+				json = { prettier },
+				markdown = { prettier },
+			}
 			local servers = {
 				golangci_lint_ls = {
 					root_dir = require("lspconfig.util").root_pattern(
@@ -90,6 +96,19 @@ return {
 						},
 					},
 				},
+				efm = {
+					cmd = { "/home/pavle/.local/share/nvim/mason/bin/efm-langserver" },
+					init_options = { documentFormatting = true },
+					filetypes = vim.tbl_keys(efm_languages),
+					settings = {
+						rootMarkers = { ".git/", ".prettierignore" },
+						lintDebounce = 100,
+						logLevel = 5,
+						logFile = "/home/pavle/.local/state/nvim/efm.log",
+						languages = efm_languages,
+					},
+					single_file_support = true,
+				},
 				eslint = {},
 				ts_ls = {},
 				prismals = {},
@@ -109,26 +128,6 @@ return {
 				vim.lsp.enable(server)
 				vim.lsp.config(server, config)
 			end
-
-			local efm_languages = {
-				typescript = { prettier },
-				javascript = { prettier },
-				json = { prettier },
-				markdown = { prettier },
-			}
-			require("lspconfig").efm.setup({
-				cmd = { "/home/pavle/.local/share/nvim/mason/bin/efm-langserver" },
-				init_options = { documentFormatting = true },
-				filetypes = vim.tbl_keys(efm_languages),
-				settings = {
-					rootMarkers = { ".git/", ".prettierignore" },
-					lintDebounce = 100,
-					logLevel = 5,
-					logFile = "/home/pavle/.local/state/nvim/efm.log",
-					languages = efm_languages,
-				},
-				single_file_support = true,
-			})
 		end,
 	},
 	{
