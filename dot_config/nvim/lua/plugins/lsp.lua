@@ -85,17 +85,7 @@ return {
 					},
 				},
 				basedpyright = {},
-				pylsp = {
-					settings = {
-						pylsp = {
-							plugins = {
-								pycodestyle = {
-									maxLineLength = 100,
-								},
-							},
-						},
-					},
-				},
+				ruff = {},
 				efm = {
 					cmd = { "/home/pavle/.local/share/nvim/mason/bin/efm-langserver" },
 					init_options = { documentFormatting = true },
@@ -113,14 +103,14 @@ return {
 				ts_ls = {},
 				prismals = {},
 				graphql = {},
-				gleam = {},
+				-- gleam = {},
 				buf_ls = {},
 				lua_ls = {},
 				terraformls = {},
 				jsonls = {},
 				yamlls = {},
 				bashls = {},
-				zls = {},
+				-- zls = {},
 			}
 
 			for server, config in pairs(servers) do
