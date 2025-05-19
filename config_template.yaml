@@ -1,16 +1,5 @@
 ---
 data:
-  sway:
-    font_size: 13
-    tray_output: 'eDP-1'
-    nm_applet: true
-    additional_bindings: ''
-    inputs: |-
-      input <identifier> {
-      }
-    outputs: |-
-      output <identifier> {
-      }
   hyprland:
     monitors:
       identifier: "resolution@refresh_rate, auto, 1, vrr, 0"
@@ -19,11 +8,12 @@ data:
         kb_layout = us,rs,rs,de
         kb_variant = ,latinunicode,,
       sensitivity: "1"
-  bumblebee:
-    modules: 'ytrssil,'
-    parameters:
-      - key: "sensors.path"
-        value: "coretemp-isa-0000/Package id 0/temp1_input"
+  waybar:
+    top:
+      extra_modules: ""
+    bottom:
+      cpu_temp_path: pci0000:00/0000:00:14.0/i2c-20/20-0050
+      cpu_temp_filename: temp1_input
   alacritty:
     font:
       size: '7.5'
