@@ -38,7 +38,9 @@ return {
 	{
 		"Zeioth/project.nvim",
 		config = function()
-			require("project_nvim").setup({})
+			require("project_nvim").setup({
+				ignore_lsp = { "efm" },
+			})
 		end,
 	},
 	"alker0/chezmoi.vim",
