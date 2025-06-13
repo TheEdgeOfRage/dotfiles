@@ -2,6 +2,6 @@ LICENSE
 init.sh
 go.mod
 go.sum
-custom_colemak
+us_colemak.patch
 config_template.yaml
 .config/nvim/lazy-lock.json

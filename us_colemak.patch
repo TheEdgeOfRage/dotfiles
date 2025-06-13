@@ -1,0 +1,22 @@
+--- og	2025-06-14 00:13:21.324848233 +0200
++++ colemak	2025-06-14 00:13:08.136756515 +0200
+@@ -862,6 +862,19 @@
+     key <CAPS> { [ BackSpace ] };
+ };
+ 
++// Custom colemak addition to map Control to Caps
++partial modifier_keys
++xkb_symbols "colemak_control" {
++
++    include "us(colemak_base)"
++
++    name[Group1] = "English (control, Colemak)";
++
++    key <CAPS> { [ Control_L ] };
++
++    modifier_map Control { <CAPS> };
++};
++
+ // Colemak-DH (ANSI) symbols for xkb on X.Org Server 7.x
+ // 2014-10-25 by SteveP, https://colemakmods.github.io/mod-dh/
+ 

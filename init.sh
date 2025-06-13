@@ -24,7 +24,7 @@ git clone https://gitea.theedgeofrage.com/TheEdgeOfRage/boban-zsh ${ohmyzsh_cust
 git clone https://github.com/hlissner/zsh-autopair ${ohmyzsh_custom}/plugins/zsh-autopair
 
 # Keyboard layout
-cat ./custom_colemak | sudo tee -a /usr/share/X11/xkb/symbols/us
+sudo patch /usr/share/X11/xkb/symbols/us < ./us_colemak.patch
 
 # SSH agent
 sudo pacman -S gcr
