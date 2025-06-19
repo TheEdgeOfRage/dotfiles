@@ -4,10 +4,10 @@ configuration {
 	font: "MonoFont {{ .rofi.font.size }}";
 	location: 0;
 	show-icons: false;
-	terminal: "terminator";
-	ssh-command: "{terminal} -x "{ssh-client} {host}"";
+	terminal: "ghostty";
+	ssh-command: "{terminal} -e "{ssh-client} {host}"";
 	run-command: "{cmd}";
-	run-shell-command: "{terminal} -c "{cmd}"";
+	run-shell-command: "{terminal} -e "{cmd}"";
 	matching: "fuzzy";
 }
 
