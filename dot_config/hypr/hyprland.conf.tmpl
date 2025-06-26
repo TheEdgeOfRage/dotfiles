@@ -275,9 +275,8 @@ bindel = SHIFT, XF86MonBrightnessUp, exec, light -A 1
 bindel = SHIFT, XF86MonBrightnessDown, exec, light -U 1
 
 # Screenshot
-bind = , Print, exec, pyazo --no-save
-bind = Shift, Print, exec, grimshot save active /home/pavle/pictures/screenshot.png
-bind = Control, Print, exec, grimshot copy area
+bind = , Print, exec, hyprshot -z -m region --clipboard-only
+bind = Shift, Print, exec, hyprshot -z -m region -o /home/pavle/pictures -f screenshot.png
 bind = $mod, Print, exec, pyazo -d
 
 # https://wiki.hyprland.org/Configuring/Workspace-Rules/
