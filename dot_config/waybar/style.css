@@ -91,7 +91,7 @@
 #temperature,
 #language,
 #clock.time,
-#network.wireguard,
+#network.tailscale,
 #pulseaudio.mic {
 	background: @bg_alt;
 }
