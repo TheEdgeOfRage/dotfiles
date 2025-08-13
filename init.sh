@@ -20,7 +20,7 @@ git clone https://github.com/TheEdgeOfRage/zsh-autoswitch-virtualenv ${ohmyzsh_c
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ohmyzsh_custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-completions ${ohmyzsh_custom}/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ohmyzsh_custom}/plugins/zsh-syntax-highlighting
-git clone https://gitea.theedgeofrage.com/TheEdgeOfRage/boban-zsh ${ohmyzsh_custom}/themes/boban
+git clone https://github.com/TheEdgeOfRage/boban-zsh ${ohmyzsh_custom}/themes/boban
 git clone https://github.com/hlissner/zsh-autopair ${ohmyzsh_custom}/plugins/zsh-autopair
 
 # Keyboard layout
