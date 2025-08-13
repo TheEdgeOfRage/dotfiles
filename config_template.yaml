@@ -14,12 +14,6 @@ data:
     bottom:
       cpu_temp_path: pci0000:00/0000:00:14.0/i2c-20/20-0050
       cpu_temp_filename: temp1_input
-  alacritty:
-    font:
-      size: '7.5'
-      offset:
-        x: 0
-        y: 3
   ghostty:
     font:
       size: '14'
