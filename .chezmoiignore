@@ -5,3 +5,15 @@ go.sum
 us_colemak.patch
 config_template.yaml
 .config/nvim/lazy-lock.json
+
+{{- if not .gui }}
+# GUI-related configurations - ignored when gui=false
+.config/hypr
+.config/waybar
+.config/rofi
+.config/mako
+.config/ghostty
+.config/uwsm
+.config/gtk-2.0
+.icons
+{{- end }}
