@@ -9,7 +9,7 @@ $inactive_bg = rgba(282828ff)
 {{ range $id, $settings := .hyprland.monitors }}monitor = {{ $id }}, {{ $settings }}
 {{ end }}
 # https://wiki.hyprland.org/Configuring/Variables/
-$terminal = ghostty
+$terminal = com.mitchellh.ghostty.desktop
 $menu = rofi -show drun -run-command "uwsm app -- {cmd}"
 $animation_speed = 1.5
 
@@ -197,7 +197,7 @@ bind = $mod SHIFT, Q, hy3:killactive,
 bind = $mod SHIFT, X, exec, uwsm stop
 bind = $mod, Space, exec, $menu
 bind = $mod, Backspace, exec, $menu
-bind = $mod, Return, exec, $terminal
+bind = $mod, Return, exec, uwsm app -- $terminal
 bind = $mod, J, exec, rofimoji --clipboarder wl-copy --action copy --skin-tone neutral
 
 # Focus bindings
