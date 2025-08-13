@@ -3,6 +3,8 @@
 {{ if (index . "modern_cli" | default false) -}}
 # Modern CLI tools
 alias ls='eza --hyperlink --group-directories-first --time-style=long-iso'
+alias l='ls --classify=auto -l'
+alias ll='ls -la'
 alias df=dysk
 alias -g du=dust
 alias -g duf=dust
@@ -15,6 +17,8 @@ alias rmr='trash -rIf'
 {{ else }}
 # Traditional CLI tools
 alias ls='ls --group-directories-first --color=auto --time-style=long-iso'
+alias l='ls --classify=auto -l'
+alias ll='ls -lah'
 alias df='df -h'
 alias -g du='du -sh'
 alias -g duf='du -sh * | sort -h'
@@ -99,10 +103,7 @@ alias tfa='terraform apply'
 alias tfp='terraform plan'
 alias tfs='terraform state'
 
-# Oh my zsh alias override
-alias l='ls --classify=auto -l'
-alias la='ls -a'
-alias ll='ls -lah'
+# Remove non-used  Oh my zsh aliases
 unalias -m 'fd'
 unalias -m 'ff'
 unalias -m '_'
