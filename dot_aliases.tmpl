@@ -1,5 +1,28 @@
 # vim: ft=zsh
 
+{{ if (index . "modern_cli" | default false) -}}
+# Modern CLI tools
+alias ls='eza --hyperlink --group-directories-first --time-style=long-iso'
+alias df=dysk
+alias -g du=dust
+alias -g duf=dust
+alias -g dufa=dust
+alias ps=procs
+alias psql=pgcli
+alias drill='dog'
+alias rmdir='trash -d'
+alias rmr='trash -rIf'
+{{ else }}
+# Traditional CLI tools
+alias ls='ls --group-directories-first --color=auto --time-style=long-iso'
+alias df='df -h'
+alias -g du='du -sh'
+alias -g duf='du -sh * | sort -h'
+alias -g dufa='du -sh * .* | sort -h'
+alias rmdir='trash'
+alias rmr='trash'
+{{- end }}
+
 # General
 alias '..'='cd ..'
 alias '...'='cd ../..'
@@ -22,27 +45,20 @@ alias cdl='cd ~/ && cl'
 alias cl=clear
 alias cz=chezmoi
 alias db='duplicity-backup -c ~/.config/duplicity-backup.conf'
-alias df=dysk
 alias diff='diff -y --suppress-common-lines'
 alias dockre=docker
-alias drill='dog'
 alias fdisk='sudo fdisk'
 alias grep='grep --color=auto'
 alias i3exit='i3-msg exit'
 alias kak='kubectl apply -k'
 alias kdk='kubectl diff -k'
-alias ls='eza --hyperlink --group-directories-first --time-style=long-iso'
 alias mkdir='mkdir -p'
 alias mpv='mpv --ytdl-format="bestvideo[height<=?1440]+bestaudio/best"'
 alias myip='curl -s https://icanhazip.com'
-alias ps=procs
-alias psql=pgcli
 alias qrscan='grimshot save area - 2>/dev/null | zbarimg -1 -q - | sed "s/QR-Code://" | wl-copy'
 alias ran=ranger
 alias rcp='rsync -aPv'
 alias rm='trash'
-alias rmdir='trash -d'
-alias rmr='trash -rIf'
 alias -g rmrf='\rm -rf'
 alias ssh='TERM=xterm-256color ssh'
 alias tailscale='sudo tailscale'
@@ -84,12 +100,9 @@ alias tfp='terraform plan'
 alias tfs='terraform state'
 
 # Oh my zsh alias override
-alias -g du=dust
-alias -g duf=dust
-alias -g dufa=dust
-alias l='ls -l -F auto'
+alias l='ls --classify=auto -l'
 alias la='ls -a'
-alias ll='ls -la'
+alias ll='ls -lah'
 unalias -m 'fd'
 unalias -m 'ff'
 unalias -m '_'

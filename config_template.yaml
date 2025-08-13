@@ -1,5 +1,7 @@
 ---
 data:
+  gui: true
+  modern_cli: true
   hyprland:
     monitors:
       identifier: "resolution@refresh_rate, auto, 1, vrr, 0"

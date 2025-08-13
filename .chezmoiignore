@@ -14,6 +14,7 @@ config_template.yaml
 .config/mako
 .config/rofi
 .config/uwsm
+.config/user-dirs.dirs
 .config/waybar
 .icons
 {{- end }}
