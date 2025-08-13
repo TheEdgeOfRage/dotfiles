@@ -114,7 +114,7 @@ fi
 type zoxide &> /dev/null && eval "$(zoxide init zsh)"
 type autopair-init &> /dev/null && autopair-init
 
-{{ if (index . "gui" | default false) }}
+{{ if (index . "gui" | default false) -}}
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
 	# hyprland on tty1
 	exec uwsm start hyprland.desktop

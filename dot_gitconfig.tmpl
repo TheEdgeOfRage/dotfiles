@@ -1,14 +1,18 @@
 [user]
 	name = TheEdgeOfRage
 	email = git@theedgeofrage.com
+	{{ if (index . "gui" | default false) -}}
 	signingkey = 66AD4BA646FBC0D2
+	{{- end }}
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	slg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' --abbrev-commit
 [difftool]
 	prompt = false
+{{ if (index . "gui" | default false) -}}
 [commit]
 	gpgsign = true
+{{- end }}
 [pull]
 	rebase = true
 [url "github.com:duneanalytics"]
@@ -18,14 +22,14 @@
 [color]
 	ui = auto
 [core]
-    pager = delta
+	pager = delta
 [interactive]
-    diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [delta]
-    navigate = true
-    side-by-side = true
-    line-numbers = true
-    true-color = always
-    syntax-theme = gruvbox-dark
+	navigate = true
+	side-by-side = true
+	line-numbers = true
+	true-color = always
+	syntax-theme = gruvbox-dark
 [diff]
-    colorMoved = no
+	colorMoved = no
