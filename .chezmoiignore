@@ -16,5 +16,6 @@ config_template.yaml
 .config/uwsm
 .config/user-dirs.dirs
 .config/waybar
+.config/waybar-crypto
 .icons
 {{- end }}
