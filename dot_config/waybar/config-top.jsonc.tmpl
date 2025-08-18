@@ -7,8 +7,10 @@
 		"hyprland/workspaces"
 	],
 	"modules-right": [
-		"custom/arrow_left_end",
+		"custom/arrow_left_end_alt",
 		"mpris",
+		"custom/arrow_left_alt",
+		"custom/crypto",
 		"custom/arrow_left",
 		"pulseaudio#mic",
 		"custom/arrow_left_alt",
@@ -234,6 +236,13 @@
 		"on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
 		"on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +2%",
 		"on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -2%"
+	},
+	"custom/crypto": {
+		"format": "{}",
+		"interval": 300,
+		"return-type": "json",
+		"exec": "waybar-crypto",
+		"exec-if": "ping pro-api.coinmarketcap.com -c1"
 	},
 	"custom/arrow_left": {
 		"format": "",

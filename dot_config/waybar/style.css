@@ -69,6 +69,7 @@
 #idle_inhibitor,
 #disk,
 #user,
+#custom-crypto,
 #mpris {
 	padding-left: 8pt;
 	padding-right: 8pt;
@@ -81,7 +82,7 @@
 #privacy,
 #clock.date,
 #tray,
-#mpris,
+#custom-crypto,
 #pulseaudio {
 	background: @bg;
 }
@@ -92,6 +93,7 @@
 #language,
 #clock.time,
 #network.tailscale,
+#mpris,
 #pulseaudio.mic {
 	background: @bg_alt;
 }
