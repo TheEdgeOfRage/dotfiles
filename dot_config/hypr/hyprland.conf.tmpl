@@ -194,7 +194,7 @@ $mod = SUPER
 
 # https://wiki.hyprland.org/Configuring/Binds/
 bind = $mod SHIFT, Q, hy3:killactive,
-bind = $mod SHIFT, X, exec, uwsm stop
+bind = $mod SHIFT, X, exec, loginctl terminate-session "$XDG_SESSION_ID"
 bind = $mod, Space, exec, $menu
 bind = $mod, Backspace, exec, $menu
 bind = $mod, d, exec, rofi -show drun -run-command "uwsm app -- {cmd}"
