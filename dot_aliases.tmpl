@@ -59,7 +59,7 @@ alias kdk='kubectl diff -k'
 alias mkdir='mkdir -p'
 alias mpv='mpv --ytdl-format="bestvideo[height<=?1440]+bestaudio/best"'
 alias myip='curl -s https://icanhazip.com'
-alias qrscan='grimshot save area - 2>/dev/null | zbarimg -1 -q - | sed "s/QR-Code://" | wl-copy'
+alias qrscan='hyprshot -m region --raw | zbarimg -1 -q - | sed "s/QR-Code://" | wl-copy'
 alias ran=ranger
 alias rcp='rsync -aPv'
 alias rm='trash'
