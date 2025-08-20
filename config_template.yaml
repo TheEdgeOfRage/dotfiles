@@ -21,7 +21,7 @@ data:
       size: '14'
       cell_width: -1
       cell_height: 1
-  rofi:
+  fuzzel:
     font:
       size: '15'
   zshrc:
