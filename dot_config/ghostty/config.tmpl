@@ -1,15 +1,15 @@
 # Font
-font-family = "IosevkaTerm NF"
-font-style = "Regular"
+font-family = IosevkaTerm NF
+font-style = Regular
 font-size = {{ .ghostty.font.size }}
 adjust-cell-width = {{ .ghostty.font.cell_width }}
 adjust-cell-height = {{ .ghostty.font.cell_height }}
 
 # Theme
-theme = "GruvboxDark"
+theme = GruvboxDark
 
 # Cursor
-cursor-style = "block"
+cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
 cursor-click-to-move = true
@@ -32,3 +32,7 @@ auto-update = off
 keybind = ctrl+enter=unbind
 keybind = ctrl+comma=unbind
 keybind = shift+enter=text:\n
+
+# Shell
+window-inherit-working-directory = false
+working-directory = home
