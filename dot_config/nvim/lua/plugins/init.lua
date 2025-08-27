@@ -32,7 +32,16 @@ return {
 	"andymass/vim-matchup",
 	"tpope/vim-repeat",
 	"mbbill/undotree",
-	"jdhao/whitespace.nvim",
+	{
+		"nvim-zh/whitespace.nvim",
+		config = function()
+			vim.api.nvim_create_autocmd({ "BufWritePre", nil }, {
+				callback = function()
+					vim.cmd(":StripTrailingWhitespace")
+				end,
+			})
+		end,
+	},
 	"lambdalisue/suda.vim",
 	"xiyaowong/nvim-cursorword",
 	{
