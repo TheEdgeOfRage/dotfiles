@@ -31,26 +31,15 @@ return {
 				markdown = { prettier },
 			}
 			local servers = {
-				golangci_lint_ls = {
-					root_dir = require("lspconfig.util").root_pattern(
-						"go.mod",
-						"go.work",
-						".golangci.yml",
-						".golangci.yaml",
-						".golangci.toml",
-						".golangci.json",
-						".git"
-					),
-					init_options = {
-						command = { "golangci-lint", "run", "--output.json.path=stdout", "--show-stats=false" },
-					},
-				},
+				golangci_lint_ls = {},
 				gopls = {
 					settings = {
 						gopls = {
-							gofumpt = true,
+							gofumpt = false,
 							staticcheck = true,
-							-- buildFlags = { "-tags=duckdb_arrow" },
+							analyses = {
+								ST1000 = false,
+							},
 							hints = {
 								assignVariableTypes = false,
 								compositeLiteralFields = false,
@@ -194,7 +183,7 @@ return {
 					javascript = { "efm" },
 					typescript = { "efm" },
 					svelte = { "prettierd" },
-					go = { "golangci_lint_ls", "golangci-lint" },
+					go = { "golines", "golangci-lint" },
 					html = { "htmlbeautifier", "htmlhint" },
 					tmpl = { "htmlbeautifier", "htmlhint" },
 				},
