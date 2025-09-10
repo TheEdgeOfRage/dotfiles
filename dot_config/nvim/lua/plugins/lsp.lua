@@ -187,6 +187,11 @@ return {
 					html = { "htmlbeautifier", "htmlhint" },
 					tmpl = { "htmlbeautifier", "htmlhint" },
 				},
+				formatters = {
+					golines = {
+						append_args = { "-m", "120" },
+					},
+				},
 			})
 		end,
 	},
