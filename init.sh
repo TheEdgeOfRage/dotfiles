@@ -30,5 +30,12 @@ sudo patch /usr/share/X11/xkb/symbols/us < ./us_colemak.patch
 sudo pacman -S gcr
 systemctl enable --user --now gcr-ssh-agent.socket
 
+# User systemd services
+systemctl enable --user --now waybar@config-top
+systemctl enable --user --now waybar@config-bottom
+systemctl enable --user --now hypridle
+systemctl enable --user --now hyprpaper
+systemctl enable --user --now hyprpolkitagent
+
 # Set cursor theme
 gsettings set org.gnome.desktop.interface cursor-theme Breeze_Light
