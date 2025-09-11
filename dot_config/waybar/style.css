@@ -70,33 +70,48 @@
 #disk,
 #user,
 #custom-crypto,
+#power-profiles-daemon,
 #mpris {
 	padding-left: 8pt;
 	padding-right: 8pt;
 	color: @fg;
 }
 
-#network,
 #cpu,
 #battery,
 #privacy,
 #clock.date,
 #tray,
 #custom-crypto,
+#temperature,
+#network.tailscale,
 #pulseaudio {
 	background: @bg;
 }
 
 #backlight,
+#network,
 #memory,
-#temperature,
 #language,
 #clock.time,
-#network.tailscale,
 #mpris,
+#power-profiles-daemon,
 #pulseaudio.mic {
 	background: @bg_alt;
 }
+
+
+#power-profiles-daemon.performance {
+    color: @yellow;
+}
+
+#power-profiles-daemon.balanced {
+}
+
+#power-profiles-daemon.power-saver {
+    color: @green;
+}
+
 
 #memory.critical,
 #cpu.critical,
@@ -128,10 +143,10 @@
 	background: @bg;
 	border: 1pt solid @fg2;
 }
+
 #workspaces button:hover {
 	background: @bg2;
 }
-
 
 #workspaces button.visible {
 	color: @bg;

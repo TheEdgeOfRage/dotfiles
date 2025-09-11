@@ -5,12 +5,14 @@
 	"position": "bottom",
 	"reload_style_on_change": true,
 	"modules-right": [
-		"custom/arrow_left_end_alt",
+		"custom/arrow_left_end",
 		"network#tailscale",
-		"custom/arrow_left_alt",
-		"network",
 		"custom/arrow_left",
+		"network",
+		"custom/arrow_left_alt",
 		"temperature",
+		"custom/arrow_left",
+		"power-profiles-daemon",
 		"custom/arrow_left_alt",
 		"cpu",
 		"custom/arrow_left",
@@ -18,6 +20,17 @@
 		"custom/arrow_left_alt",
 		"tray"
 	],
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+		"tooltip": true,
+		"format-icons": {
+			"default": "",
+			"performance": "",
+			"balanced": "",
+			"power-saver": ""
+		}
+	},
 	"cpu": {
 		"interval": 1,
 		"tooltip": false,
