@@ -274,6 +274,9 @@ bindel = , XF86MonBrightnessDown, exec, light -U 10
 bindel = SHIFT, XF86MonBrightnessUp, exec, light -A 1
 bindel = SHIFT, XF86MonBrightnessDown, exec, light -U 1
 
+# Lock
+bind = $mod CONTROL, L, exec, hyprlock
+
 # Screenshot
 bind = , Print, exec, hyprshot -z -m region --clipboard-only
 bind = Shift, Print, exec, hyprshot -z -m region -o /home/pavle/pictures -f screenshot.png
