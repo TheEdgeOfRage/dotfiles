@@ -36,6 +36,7 @@ systemctl enable --user --now waybar@config-bottom
 systemctl enable --user --now hypridle
 systemctl enable --user --now hyprpaper
 systemctl enable --user --now hyprpolkitagent
+systemctl enable --user app-com.mitchellh.ghostty.service
 
 # Set cursor theme
 gsettings set org.gnome.desktop.interface cursor-theme Breeze_Light

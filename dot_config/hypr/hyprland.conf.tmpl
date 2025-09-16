@@ -9,7 +9,7 @@ $inactive_bg = rgba(282828ff)
 {{ range $id, $settings := .hyprland.monitors }}monitor = {{ $id }}, {{ $settings }}
 {{ end }}
 # https://wiki.hyprland.org/Configuring/Variables/
-$terminal = com.mitchellh.ghostty.desktop
+$terminal = ghostty
 $menu = fuzzel "--launch-prefix=uwsm app --"
 $animation_speed = 1.5
 
@@ -196,7 +196,7 @@ bind = $mod SHIFT, X, exec, loginctl terminate-session "$XDG_SESSION_ID"
 bind = $mod, Space, exec, $menu
 bind = $mod, Backspace, exec, $menu
 bind = $mod, d, exec, rofi -show drun -run-command "uwsm app -- {cmd}"
-bind = $mod, Return, exec, uwsm app -- $terminal
+bind = $mod, Return, exec, uwsm app -- $terminal +new-window
 bind = $mod, J, exec, rofimoji --clipboarder wl-copy --action copy --skin-tone neutral
 
 # Focus bindings
