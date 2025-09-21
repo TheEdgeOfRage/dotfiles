@@ -74,6 +74,16 @@ source $ZSH/oh-my-zsh.sh
 fpath=( ${CUSTOM}/functions "${fpath[@]}" )
 autoload -Uz ${CUSTOM}/functions/*
 
+# Copy current prompt to clipboard with CTRL+Y
+if [[ -n ${WAYLAND_DISPLAY} ]]; then
+    copy_line_to_x_clipboard() {
+        echo -n ${BUFFER} | wl-copy
+        zle reset-prompt
+    }
+    zle -N copy_line_to_x_clipboard
+    bindkey '^Y' copy_line_to_x_clipboard
+fi
+
 zle_highlight+=(paste:none)
 
 # Misc options
