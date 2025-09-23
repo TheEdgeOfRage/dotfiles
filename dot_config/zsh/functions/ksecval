@@ -1,0 +1,4 @@
+# vim: ft=zsh
+# get k8s secret value and decode base64
+
+kubectl get secret -n ${1} ${2} -o jsonpath="{.data}" | jq 'to_entries|map("\(.key): \(.value|@base64d)")|.[]'
