@@ -97,7 +97,15 @@ return {
 				lua_ls = {},
 				terraformls = {},
 				jsonls = {},
-				yamlls = {},
+				yamlls = {
+					settings = {
+						yaml = {
+							format = {
+								enable = false,
+							},
+						},
+					},
+				},
 				bashls = {},
 				-- zls = {},
 			}
@@ -186,6 +194,7 @@ return {
 					go = { "golines", "golangci-lint" },
 					html = { "htmlbeautifier", "htmlhint" },
 					tmpl = { "htmlbeautifier", "htmlhint" },
+					yaml = {},
 				},
 				formatters = {
 					golines = {
