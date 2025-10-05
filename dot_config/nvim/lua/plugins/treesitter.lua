@@ -41,4 +41,5 @@ return {
 			})
 		end,
 	},
+	"alker0/chezmoi.vim",
 }

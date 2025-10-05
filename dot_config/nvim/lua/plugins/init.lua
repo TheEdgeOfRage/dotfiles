@@ -52,7 +52,6 @@ return {
 			})
 		end,
 	},
-	"alker0/chezmoi.vim",
 	"mfussenegger/nvim-dap",
 	"rcarriga/nvim-dap-ui",
 	{
