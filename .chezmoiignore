@@ -8,13 +8,14 @@ config_template.yaml
 
 {{ if not (index . "gui" | default false) }}
 .config/fontconfig
+.config/fuzzel
 .config/ghostty
 .config/gtk-2.0
 .config/hypr
 .config/mako
-.config/fuzzel
-.config/uwsm
+.config/systemd/user/waybar@.service
 .config/user-dirs.dirs
+.config/uwsm
 .config/waybar
 .config/waybar-crypto
 .icons
