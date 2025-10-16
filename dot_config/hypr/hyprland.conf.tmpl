@@ -2,6 +2,10 @@
 
 # https://wiki.hyprland.org/Configuring/Keywords/
 
+# debug {
+#     disable_logs = false
+# }
+
 $active_bg = rgba(504945ff)
 $inactive_bg = rgba(282828ff)
 
@@ -11,7 +15,7 @@ $inactive_bg = rgba(282828ff)
 # https://wiki.hyprland.org/Configuring/Variables/
 $terminal = ghostty
 $menu = fuzzel "--launch-prefix=uwsm app --"
-$animation_speed = 1.5
+$animation_speed = 1
 
 # exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec-once = hyprpm reload -n
