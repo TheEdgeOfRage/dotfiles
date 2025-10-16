@@ -198,7 +198,7 @@ return {
 				},
 				formatters = {
 					golines = {
-						append_args = { "-m", "120" },
+						append_args = { "-m", "120", "--no-reformat-tags" },
 					},
 				},
 			})
