@@ -52,6 +52,7 @@ return {
 						},
 					},
 				},
+				templ = {},
 				rust_analyzer = {
 					settings = {
 						["rust-analyzer"] = {
@@ -192,6 +193,7 @@ return {
 					typescript = { "efm" },
 					svelte = { "prettierd" },
 					go = { "golines", "golangci-lint" },
+					templ = { "templ" },
 					html = { "htmlbeautifier", "htmlhint" },
 					tmpl = { "htmlbeautifier", "htmlhint" },
 					yaml = {},

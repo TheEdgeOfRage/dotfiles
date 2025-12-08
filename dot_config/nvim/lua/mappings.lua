@@ -47,7 +47,11 @@ vim.keymap.set("n", "<leader>wq", vim.cmd.wq, opts)
 vim.keymap.set("n", "<leader>bd", ":bp | bd #<cr>", opts)
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
 vim.keymap.set("", "\\", ':let @/ = ""<CR>', opts)
-require("Comment.ft").set("resolv", "#%s")
+
+-- Comment strings
+local comment = require("Comment.ft")
+comment.resolv = "#%s"
+comment.templ = "//%s"
 
 -- Git
 vim.keymap.set("n", "<leader>gd", vim.cmd.Gvdiff, opts)
