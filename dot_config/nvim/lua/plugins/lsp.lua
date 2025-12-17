@@ -192,16 +192,11 @@ return {
 					javascript = { "efm" },
 					typescript = { "efm" },
 					svelte = { "prettierd" },
-					go = { "golines", "golangci-lint" },
+					go = { "golangci-lint" },
 					templ = { "templ" },
 					html = { "htmlbeautifier", "htmlhint" },
 					tmpl = { "htmlbeautifier", "htmlhint" },
 					yaml = {},
-				},
-				formatters = {
-					golines = {
-						append_args = { "-m", "120", "--no-reformat-tags" },
-					},
 				},
 			})
 		end,
