@@ -25,9 +25,6 @@ return {
 				},
 			}
 			local efm_languages = {
-				typescript = { prettier },
-				javascript = { prettier },
-				json = { prettier },
 				markdown = { prettier },
 			}
 			local servers = {
@@ -81,7 +78,7 @@ return {
 					init_options = { documentFormatting = true },
 					filetypes = vim.tbl_keys(efm_languages),
 					settings = {
-						rootMarkers = { ".git/", ".prettierignore" },
+						rootMarkers = { ".prettierrc", ".prettierignore", ".git/" },
 						lintDebounce = 100,
 						logLevel = 5,
 						logFile = "/home/pavle/.local/state/nvim/efm.log",
@@ -189,8 +186,8 @@ return {
 					markdown = { "markdownlint" },
 					terraform = { "tflint" },
 					json = { "jsonlint", "prettierd" },
-					javascript = { "efm" },
-					typescript = { "efm" },
+					javascript = { "prettierd" },
+					typescript = { "prettierd" },
 					svelte = { "prettierd" },
 					go = { "golangci-lint" },
 					templ = { "templ" },
