@@ -20,4 +20,5 @@ config_template.yaml
 .config/waybar-crypto
 .icons
 .claude
+.config/opencode
 {{- end }}
