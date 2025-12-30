@@ -19,4 +19,5 @@ config_template.yaml
 .config/waybar
 .config/waybar-crypto
 .icons
+.claude
 {{- end }}
