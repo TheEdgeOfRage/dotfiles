@@ -6,48 +6,50 @@ SAVEHIST=40000
 HIST_STAMPS="yyyy-mm-dd"
 setopt HIST_IGNORE_DUPS
 
-# CLI tools
-export MAKEFLAGS="-j $(nproc --all)"
-export LESS="-SRF --mouse"
-export GPG_TTY=$(tty)
-export GOPRIVATE="github.com/duneanalytics/*"
-export GOPATH="$HOME/dev/go"
-export GOBIN="$HOME/dev/go/bin"
-export VIRTUAL_ENV_DISABLE_PROMPT="true"
-export COMPOSE_BAKE="true"
-export FZF_CTRL_T_COMMAND="fd -tf -td -tl"
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/null'
-export FZF_DEFAULT_OPTS='
-	--color fg:#928374,bg:#282828,hl:#fb4934
-	--color fg+:#b8bb26,bg+:#3c3836,hl+:#fb4934
-	--color info:#fe8019,prompt:#83a598,header:#83a598
-	--color pointer:#fb4934,marker:#fb4934,spinner:#ffff60
-'
-export JQ_COLORS="1;31:0;35:0;35:0;39:0;32:1;39:1;39"
+set_env() {
+    # CLI tools
+    export MAKEFLAGS="-j $(nproc --all)"
+    export LESS="-SRF --mouse"
+    export GPG_TTY=$(tty)
+    export GOPRIVATE="github.com/duneanalytics/*"
+    export GOPATH="$HOME/dev/go"
+    export GOBIN="$HOME/dev/go/bin"
+    export VIRTUAL_ENV_DISABLE_PROMPT="true"
+    export COMPOSE_BAKE="true"
+    export FZF_CTRL_T_COMMAND="fd -tf -td -tl"
+    export FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.git}/*" 2> /dev/null'
+    export FZF_DEFAULT_OPTS='
+        --color fg:#928374,bg:#282828,hl:#fb4934
+        --color fg+:#b8bb26,bg+:#3c3836,hl+:#fb4934
+        --color info:#fe8019,prompt:#83a598,header:#83a598
+        --color pointer:#fb4934,marker:#fb4934,spinner:#ffff60
+    '
+    export JQ_COLORS="1;31:0;35:0;35:0;39:0;32:1;39:1;39"
 
-# Claude code
-export CLAUDE_CODE_USE_BEDROCK="1"
-export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC="1"
-export DISABLE_AUTOUPDATER="1"
-export ANTHROPIC_DEFAULT_OPUS_MODEL="arn:aws:bedrock:us-east-1:118330671040:inference-profile/global.anthropic.claude-opus-4-5-20251101-v1:0"
-export ANTHROPIC_DEFAULT_SONNET_MODEL="arn:aws:bedrock:us-east-1:118330671040:inference-profile/global.anthropic.claude-sonnet-4-5-20250929-v1:0"
-export ANTHROPIC_DEFAULT_HAIKU_MODEL="arn:aws:bedrock:us-east-1:118330671040:inference-profile/global.anthropic.claude-haiku-4-5-20251001-v1:0"
+    # Claude code
+    export CLAUDE_CODE_USE_BEDROCK="1"
+    export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC="1"
+    export DISABLE_AUTOUPDATER="1"
+    export ANTHROPIC_DEFAULT_OPUS_MODEL="arn:aws:bedrock:us-east-1:118330671040:inference-profile/global.anthropic.claude-opus-4-5-20251101-v1:0"
+    export ANTHROPIC_DEFAULT_SONNET_MODEL="arn:aws:bedrock:us-east-1:118330671040:inference-profile/global.anthropic.claude-sonnet-4-5-20250929-v1:0"
+    export ANTHROPIC_DEFAULT_HAIKU_MODEL="arn:aws:bedrock:us-east-1:118330671040:inference-profile/global.anthropic.claude-haiku-4-5-20251001-v1:0"
 
-# Common config
-export DEFAULT_USER="pavle"
-export EDITOR="nvim"
-export VISUAL="nvim"
-export LANG="en_US.UTF-8"
-export LC_ALL="en_DK.UTF-8"
-export PATH="$HOME/.local/bin:$PATH:$GOBIN:$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin"
-export XDG_CONFIG_HOME="$HOME/.config"
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
+    # Common config
+    export DEFAULT_USER="pavle"
+    export EDITOR="nvim"
+    export VISUAL="nvim"
+    export LANG="en_US.UTF-8"
+    export LC_ALL="en_DK.UTF-8"
+    export PATH="$HOME/.local/bin:$PATH:$GOBIN:$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin"
+    export XDG_CONFIG_HOME="$HOME/.config"
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 
-# Additional env vars
-{{- if and (hasKey . "zshrc") (kindIs "map" .zshrc) (hasKey .zshrc "env_vars") }}
-{{ range $_, $env := .zshrc.env_vars }}export {{ $env.name }}="{{ $env.value }}"
-{{ end }}
-{{- end }}
+    # Additional env vars
+    {{ if and (hasKey . "zshrc") (kindIs "map" .zshrc) (hasKey .zshrc "env_vars") }}
+    {{ range $_, $env := .zshrc.env_vars }}export {{ $env.name }}="{{ $env.value }}"
+    {{ end -}}
+    {{- end -}}
+}
 
 # oh-my-zsh
 export ZSH="$HOME/.config/zsh/oh-my-zsh"
@@ -56,18 +58,18 @@ ZSH_THEME="boban/boban"
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 plugins=(
-	archlinux
-	common-aliases
-	docker
-	docker-compose
-	git
-	kubectl
-	you-should-use
-	zsh-autosuggestions
-	zsh-autoswitch-virtualenv
-	zsh-completions
-	zsh-syntax-highlighting
-	zsh-autopair
+    archlinux
+    common-aliases
+    docker
+    docker-compose
+    git
+    kubectl
+    you-should-use
+    zsh-autosuggestions
+    zsh-autoswitch-virtualenv
+    zsh-completions
+    zsh-syntax-highlighting
+    zsh-autopair
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -102,21 +104,13 @@ bindkey "\033[F" end-of-line
 
 # zle -N zle-line-init
 TRAPWINCH() {
-	zle && { zle reset-prompt; zle -R }
+    zle && { zle reset-prompt; zle -R }
 }
 
 # Load fzf
 if [[ $- == *i* ]] && [[ -d /usr/share/fzf/ ]]; then
     source "/usr/share/fzf/completion.zsh" NO
     source "/usr/share/fzf/key-bindings.zsh" NO
-fi
-
-# Pyenv settings
-if type pyenv &> /dev/null; then
-	export PYENV_ROOT="$HOME/.pyenv"
-	export PATH="$PYENV_ROOT/bin:$PATH"
-	eval "$(pyenv init --path)"
-	eval "$(pyenv init -)"
 fi
 
 # NVM setup
@@ -127,10 +121,16 @@ type autopair-init &> /dev/null && autopair-init
 
 {{ if (index . "gui" | default false) -}}
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
-	# hyprland on tty1
-	exec uwsm start hyprland.desktop
+    # hyprland on tty1
+    set_env
+    exec uwsm start hyprland.desktop
 elif [[ $(tty) =~ "/dev/tty[0-9]" ]]; then
-	# Enable unicode characters in the tty
-	unicode_start
+    # Enable unicode characters in the tty
+    set_env
+    unicode_start
+elif [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_CLIENT" ]; then
+    set_env
 fi
+{{ else }}
+set_env
 {{- end }}
