@@ -10,7 +10,12 @@ $active_bg = rgba(504945ff)
 $inactive_bg = rgba(282828ff)
 
 # https://wiki.hyprland.org/Configuring/Monitors/
-{{ range $id, $settings := .hyprland.monitors }}monitor = {{ $id }}, {{ $settings }}
+{{ range $id, $settings := .hyprland.monitors }}monitorv2 {
+    output = {{$id}}
+    {{- range $key, $value := $settings }}
+    {{$key}} = {{$value}}
+    {{- end }}
+}
 {{ end }}
 # https://wiki.hyprland.org/Configuring/Variables/
 $terminal = ghostty
