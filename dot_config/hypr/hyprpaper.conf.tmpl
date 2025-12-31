@@ -1,0 +1,6 @@
+{{ range $id, $_ := .hyprland.monitors }}wallpaper {
+    monitor = {{ $id }}
+    path = {{ $.hyprland.wallpaper }}
+    fit_mode = cover
+}
+{{ end }}
