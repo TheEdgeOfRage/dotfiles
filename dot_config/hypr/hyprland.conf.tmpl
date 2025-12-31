@@ -295,19 +295,70 @@ bind = $mod, Print, exec, pyazo -d
 # https://wiki.hyprland.org/Configuring/Workspace-Rules/
 
 # https://wiki.hyprland.org/Configuring/Window-Rules/
-windowrule = bordersize 0, floating:0, onworkspace:w[tv1]
-windowrule = rounding 0, floating:0, onworkspace:w[tv1]
-windowrule = bordersize 0, floating:0, onworkspace:f[1]
-windowrule = rounding 0, floating:0, onworkspace:f[1]
+windowrule {
+  name = windowrule-1
+  border_size = 0
+  rounding = 0
+  match:float = 0
+  match:workspace = w[tv1]
+}
+
+windowrule {
+  name = windowrule-2
+  border_size = 0
+  rounding = 0
+  match:float = 0
+  match:workspace = f[1]
+}
+
 
 # Ignore maximize requests from apps. You'll probably like this.
-windowrule = suppressevent maximize, class:.*
-# Fix some dragging issues with XWayland
-windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+windowrule {
+  name = windowrule-3
+  suppress_event = maximize
+  match:class = .*
+}
 
-windowrule = tile,title:(Ubisoft Connect)
-windowrule = workspace special silent,title:(Wine System Tray)
-windowrule = fullscreen,class:(steam_app*)
-windowrule = workspace [10], class:(steam)
-windowrule = workspace [11], class:(deezer-enhanced)
-windowrule = workspace [11], class:(org.telegram.desktop)
+# Fix some dragging issues with XWayland
+windowrule {
+  name = windowrule-4
+  no_focus = on
+  match:class = ^$
+  match:title = ^$
+  match:xwayland = 1
+  match:float = 1
+  match:fullscreen = 0
+  match:pin = 0
+}
+
+
+windowrule {
+  name = windowrule-5
+  tile = on
+  match:title = (Ubisoft Connect)
+}
+
+windowrule {
+  name = windowrule-6
+  workspace = special silent
+  match:title = (Wine System Tray)
+}
+
+windowrule {
+  name = windowrule-7
+  fullscreen = on
+  match:class = (steam_app*)
+}
+
+windowrule {
+  name = windowrule-8
+  workspace = [10]
+  match:class = (steam)
+}
+
+windowrule {
+  name = windowrule-9
+  workspace = [11]
+  match:class = (org.telegram.desktop)
+}
+
