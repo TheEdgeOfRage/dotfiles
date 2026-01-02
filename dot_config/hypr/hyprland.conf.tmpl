@@ -19,7 +19,7 @@ $inactive_bg = rgba(282828ff)
 {{ end }}
 # https://wiki.hyprland.org/Configuring/Variables/
 $terminal = ghostty
-$menu = fuzzel "--launch-prefix=uwsm app --"
+$menu = vicinae toggle
 $animation_speed = 1
 
 # exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -205,11 +205,13 @@ $mod = SUPER
 # https://wiki.hyprland.org/Configuring/Binds/
 bind = $mod SHIFT, Q, hy3:killactive,
 bind = $mod SHIFT, X, exec, loginctl terminate-session "$XDG_SESSION_ID"
+
+# Launcher bindings
 bind = $mod, Space, exec, $menu
 bind = $mod, Backspace, exec, $menu
-bind = $mod, d, exec, rofi -show drun -run-command "uwsm app -- {cmd}"
+bind = $mod, j, exec, vicinae vicinae://extensions/vicinae/core/search-emojis
+bind = $mod, d, exec, fuzzel "--launch-prefix=uwsm app --"
 bind = $mod, Return, exec, uwsm app -- $terminal +new-window
-bind = $mod, J, exec, rofimoji --clipboarder wl-copy --action copy --skin-tone neutral
 
 # Focus bindings
 bind = $mod, h, hy3:movefocus, l
@@ -373,3 +375,7 @@ windowrule {
     match:initial_class = org.mozilla.Thunderbird
 }
 
+# https://wiki.hypr.land/Configuring/Window-Rules/#layer-rules
+
+# Vicinae launcher
+layerrule = dim_around on, match:namespace vicinae
