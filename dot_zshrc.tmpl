@@ -38,6 +38,7 @@ set_env() {
     export DEFAULT_USER="pavle"
     export EDITOR="nvim"
     export VISUAL="nvim"
+    export TERMINAL="ghostty"
     export LANG="en_US.UTF-8"
     export LC_ALL="en_DK.UTF-8"
     export PATH="$HOME/.local/bin:$PATH:$GOBIN:$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin"
@@ -123,7 +124,7 @@ type autopair-init &> /dev/null && autopair-init
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
     # hyprland on tty1
     set_env
-    exec uwsm start hyprland.desktop
+    exec systemctl --user start hyprland-uwsm
 elif [[ $(tty) =~ "/dev/tty[0-9]" ]]; then
     # Enable unicode characters in the tty
     set_env
