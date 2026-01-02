@@ -26,8 +26,9 @@ $animation_speed = 1
 exec-once = hyprpm reload -n
 
 exec-once = uwsm app -- firefox.desktop
-exec-once = uwsm app -- org.telegram.desktop.desktop
 exec-once = uwsm app -- org.mozilla.Thunderbird.desktop
+exec-once = uwsm app -- org.telegram.desktop.desktop
+exec-once = uwsm app -- signal-desktop.desktop
 exec-once = uwsm app -- supersonic-desktop.desktop
 
 # https://wiki.hyprland.org/Configuring/Variables/#general
@@ -49,60 +50,60 @@ general {
 }
 
 plugin {
-  hy3 {
-    # policy controlling what happens when a node is removed from a group,
-    # leaving only a group
-    # 0 = remove the nested group
-    # 1 = keep the nested group
-    # 2 = keep the nested group only if its parent is a tab group
-    node_collapse_policy = 2
+    hy3 {
+        # policy controlling what happens when a node is removed from a group,
+        # leaving only a group
+        # 0 = remove the nested group
+        # 1 = keep the nested group
+        # 2 = keep the nested group only if its parent is a tab group
+        node_collapse_policy = 2
 
-    # offset from group split direction when only one window is in a group
-    group_inset = 10
+        # offset from group split direction when only one window is in a group
+        group_inset = 10
 
-    # if a tab group will automatically be created for the first window spawned in a workspace
-    tab_first_window = false
+        # if a tab group will automatically be created for the first window spawned in a workspace
+        tab_first_window = false
 
-    # tab group settings
-    tabs {
-      # height of the tab bar
-      height = 26
+        # tab group settings
+        tabs {
+          # height of the tab bar
+          height = 26
 
-      # padding between the tab bar and its focused node
-      padding = 0
-      # the tab bar should animate in/out from the top instead of below the window
-      from_top = true
-      radius = 0
-      blur = false
-      no_gaps_when_only = true
+          # padding between the tab bar and its focused node
+          padding = 0
+          # the tab bar should animate in/out from the top instead of below the window
+          from_top = true
+          radius = 0
+          blur = false
+          no_gaps_when_only = true
 
-      # Window title text
-      text_center = false
-      text_font = IosevkaTerm NFP
-      text_height = 14
-      text_padding = 6 # left padding
+          # Window title text
+          text_center = false
+          text_font = IosevkaTerm NFP
+          text_height = 14
+          text_padding = 6 # left padding
 
-      # active tab bar segment colors
-      col.active = $active_bg
-      col.active.border = $active_bg
-      col.active.text = rgba(ebdbb2ff)
+          # active tab bar segment colors
+          col.active = $active_bg
+          col.active.border = $active_bg
+          col.active.text = rgba(ebdbb2ff)
 
-      # focused tab bar segment colors (focused node in unfocused container)
-      col.focused = rgba(504945ff)
-      col.focused.border = rgba(504945ff)
-      col.focused.text = rgba(ebdbb2ff)
+          # focused tab bar segment colors (focused node in unfocused container)
+          col.focused = rgba(504945ff)
+          col.focused.border = rgba(504945ff)
+          col.focused.text = rgba(ebdbb2ff)
 
-      # urgent tab bar segment colors
-      col.urgent = rgba(d79921ff)
-      col.urgent.border = rgba(d79921ff)
-      col.urgent.text = rgba(282828ff)
+          # urgent tab bar segment colors
+          col.urgent = rgba(d79921ff)
+          col.urgent.border = rgba(d79921ff)
+          col.urgent.text = rgba(282828ff)
 
-      # inactive tab bar segment colors
-      col.inactive = $inactive_bg
-      col.inactive.border = $inactive_bg
-      col.inactive.text = rgba(a89984ff)
+          # inactive tab bar segment colors
+          col.inactive = $inactive_bg
+          col.inactive.border = $inactive_bg
+          col.inactive.text = rgba(a89984ff)
+        }
     }
-  }
 }
 
 # https://wiki.hyprland.org/Configuring/Variables/#decoration
@@ -157,6 +158,7 @@ misc {
     swallow_regex = com.mitchellh.ghostty
     mouse_move_enables_dpms = true
     key_press_enables_dpms = true
+    disable_splash_rendering = true
 }
 
 xwayland {
@@ -296,69 +298,78 @@ bind = $mod, Print, exec, pyazo -d
 
 # https://wiki.hyprland.org/Configuring/Window-Rules/
 windowrule {
-  name = windowrule-1
-  border_size = 0
-  rounding = 0
-  match:float = 0
-  match:workspace = w[tv1]
+    name = no-border-workspace-tv1
+    border_size = 0
+    rounding = 0
+    match:float = 0
+    match:workspace = w[tv1]
 }
 
 windowrule {
-  name = windowrule-2
-  border_size = 0
-  rounding = 0
-  match:float = 0
-  match:workspace = f[1]
-}
-
-
-# Ignore maximize requests from apps. You'll probably like this.
-windowrule {
-  name = windowrule-3
-  suppress_event = maximize
-  match:class = .*
-}
-
-# Fix some dragging issues with XWayland
-windowrule {
-  name = windowrule-4
-  no_focus = on
-  match:class = ^$
-  match:title = ^$
-  match:xwayland = 1
-  match:float = 1
-  match:fullscreen = 0
-  match:pin = 0
+    name = no-border-workspace-f1
+    border_size = 0
+    rounding = 0
+    match:float = 0
+    match:workspace = f[1]
 }
 
 
 windowrule {
-  name = windowrule-5
-  tile = on
-  match:title = (Ubisoft Connect)
+    name = suppress-maximize
+    suppress_event = maximize
+    match:class = .*
 }
 
 windowrule {
-  name = windowrule-6
-  workspace = special silent
-  match:title = (Wine System Tray)
+    name = xwayland-drag-fix
+    no_focus = on
+    match:class = ^$
+    match:title = ^$
+    match:xwayland = 1
+    match:float = 1
+    match:fullscreen = 0
+    match:pin = 0
 }
 
 windowrule {
-  name = windowrule-7
-  fullscreen = on
-  match:class = (steam_app*)
+    name = wine-systray-special
+    workspace = special silent
+    match:title = Wine System Tray
 }
 
 windowrule {
-  name = windowrule-8
-  workspace = [10]
-  match:class = (steam)
+    name = steam-games-fullscreen
+    fullscreen = on
+    match:class = steam_app*
 }
 
 windowrule {
-  name = windowrule-9
-  workspace = [11]
-  match:class = (org.telegram.desktop)
+    name = steam-workspace
+    workspace = 10 silent
+    match:class = steam
+}
+
+windowrule {
+    name = firefox-workspace
+    workspace = 11 silent
+    match:class = firefox
+}
+
+windowrule {
+    name = telegram-workspace
+    workspace = 12 silent
+    match:class = org.telegram.desktop
+}
+
+windowrule {
+    name = signal-workspace
+    workspace = 12 silent
+    match:class = signal
+}
+
+windowrule {
+    name = thunderbird-workspace
+    workspace = 13 silent
+    match:initial_class = org.mozilla.Thunderbird
 }
 
