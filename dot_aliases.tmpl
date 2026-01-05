@@ -12,8 +12,10 @@ alias -g dufa=dust
 alias ps=procs
 alias psql=pgcli
 alias drill='dog'
-alias rmdir='trash -d'
-alias rmr='trash -rIf'
+alias rmdir='gtrash put --rm-mode -d'
+alias rmr='gtrash put --rm-mode -rIf'
+alias rm='gtrash put --rm-mode'
+alias trash='gtrash'
 alias su=su-rs
 alias -g sudo=sudo-rs
 alias sudoedit=sudoedit-rs
@@ -29,6 +31,7 @@ alias -g duf='du -sh * | sort -h'
 alias -g dufa='du -sh * .* | sort -h'
 alias rmdir='trash'
 alias rmr='trash'
+alias rm='trash'
 {{- end }}
 
 # General
@@ -70,7 +73,6 @@ alias -g opencode='AWS_PROFILE=default AWS_DEFAULT_REGION=us-east-1 opencode'
 alias qrscan='hyprshot -m region --raw | zbarimg -1 -q - | sed "s/QR-Code://" | wl-copy'
 alias ran=yazi
 alias rcp='rsync -aPv'
-alias rm='trash'
 alias -g rmrf='\rm -rf'
 alias ssh='TERM=xterm-256color ssh'
 alias tailscale='sudo tailscale'
