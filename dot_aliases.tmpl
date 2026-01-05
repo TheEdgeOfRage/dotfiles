@@ -120,3 +120,9 @@ unalias -m '_'
 unalias -m 'please'
 unalias -m 'gg'
 unalias -m 'gsts'
+{{- if hasKey . "aliases" }}
+
+# Additional aliases
+{{ range $alias := .aliases }}{{ $alias }}
+{{ end -}}
+{{- end }}
