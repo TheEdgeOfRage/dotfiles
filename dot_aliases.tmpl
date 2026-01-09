@@ -108,8 +108,8 @@ alias sudisable='systemctl --user disable'
 
 # Terraform aliases
 alias tf='terraform'
-alias tfa='terraform apply'
-alias tfp='terraform plan'
+alias tfa='terraform apply /tmp/tfplan-$(basename $PWD); \rm /tmp/tfplan-$(basename $PWD)'
+alias tfp='terraform plan -out /tmp/tfplan-$(basename $PWD)'
 alias tfs='terraform state'
 
 # Remove non-used  Oh my zsh aliases
