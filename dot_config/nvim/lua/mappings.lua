@@ -45,6 +45,7 @@ vim.keymap.set("n", "<leader>q", vim.cmd.q, opts)
 vim.keymap.set("n", "<leader>Q", ":q!<cr>", opts)
 vim.keymap.set("n", "<leader>wq", vim.cmd.wq, opts)
 vim.keymap.set("n", "<leader>bd", ":bp | bd #<cr>", opts)
+vim.keymap.set("n", "<leader>bD", ":bd!<cr>", opts)
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
 vim.keymap.set("", "\\", ':let @/ = ""<CR>', opts)
 
