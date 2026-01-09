@@ -124,7 +124,7 @@ type autopair-init &> /dev/null && autopair-init
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && [[ $(tty) = /dev/tty1 ]]; then
     # hyprland on tty1
     set_env
-    exec systemctl --user start hyprland-uwsm
+    exec uwsm start -e -D Hyprland hyprland.desktop
 elif [[ $(tty) =~ "/dev/tty[0-9]" ]]; then
     # Enable unicode characters in the tty
     set_env
