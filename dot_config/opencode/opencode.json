@@ -6,5 +6,6 @@
     "webfetch": "ask",
     "doom_loop": "ask",
     "external_directory": "ask"
-  }
+  },
+  "plugin": ["@mohak34/opencode-notifier@latest"]
 }
