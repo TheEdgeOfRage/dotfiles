@@ -44,15 +44,14 @@ set_env() {
     export TERMINAL="ghostty"
     export LANG="en_US.UTF-8"
     export LC_ALL="en_DK.UTF-8"
-    export PATH="$HOME/.local/bin:$PATH:$GOBIN:$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin"
+    export PATH="$HOME/.local/bin:$PATH:$GOBIN:$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.cache/.bun/bin"
     export XDG_CONFIG_HOME="$HOME/.config"
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
-
+{{ if and (hasKey . "zshrc") (kindIs "map" .zshrc) (hasKey .zshrc "env_vars") }}
     # Additional env vars
-    {{ if and (hasKey . "zshrc") (kindIs "map" .zshrc) (hasKey .zshrc "env_vars") }}
-    {{ range $_, $env := .zshrc.env_vars }}export {{ $env.name }}="{{ $env.value }}"
-    {{ end -}}
-    {{- end -}}
+{{ range $_, $env := .zshrc.env_vars }}    export {{ $env.name }}="{{ $env.value }}"
+{{ end -}}
+{{- end -}}
 }
 
 # oh-my-zsh
