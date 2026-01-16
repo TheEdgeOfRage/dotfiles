@@ -80,6 +80,12 @@ source $ZSH/oh-my-zsh.sh
 fpath=( ${CUSTOM}/functions "${fpath[@]}" )
 autoload -Uz ${CUSTOM}/functions/*
 
+# Misc options
+setopt extendedglob notify
+unsetopt beep nomatch
+bindkey -v
+zle_highlight+=(paste:none)
+
 # Copy current prompt to clipboard with CTRL+Y
 if [[ -n ${WAYLAND_DISPLAY} ]]; then
     copy_line_to_x_clipboard() {
@@ -89,13 +95,6 @@ if [[ -n ${WAYLAND_DISPLAY} ]]; then
     zle -N copy_line_to_x_clipboard
     bindkey '^Y' copy_line_to_x_clipboard
 fi
-
-zle_highlight+=(paste:none)
-
-# Misc options
-setopt extendedglob notify
-unsetopt beep nomatch
-bindkey -v
 
 source ${CUSTOM}/completions/*.zsh
 source ~/.aliases
