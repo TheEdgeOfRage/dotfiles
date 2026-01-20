@@ -1,0 +1,11 @@
+[Unit]
+Description=Supersonic Music Player
+After=yubikeyring.service
+Wants=yubikeyring.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/supersonic-desktop
+
+[Install]
+WantedBy=wayland-session-xdg-autostart@hyprland.desktop.target

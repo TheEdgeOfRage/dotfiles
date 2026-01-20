@@ -29,7 +29,7 @@ exec-once = uwsm app -- firefox.desktop
 exec-once = uwsm app -- org.mozilla.Thunderbird.desktop
 exec-once = uwsm app -- org.telegram.desktop.desktop
 exec-once = uwsm app -- signal-desktop.desktop
-exec-once = uwsm app -- supersonic-desktop.desktop
+# exec-once = uwsm app -- supersonic-desktop.desktop
 
 # https://wiki.hyprland.org/Configuring/Variables/#general
 general {
@@ -343,7 +343,7 @@ windowrule {
 windowrule {
     name = steam-games-fullscreen
     fullscreen = on
-    match:class = steam_app*
+    match:class = steam_app_.*
 }
 
 windowrule {
