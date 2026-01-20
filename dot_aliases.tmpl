@@ -83,6 +83,7 @@ alias wifi='nmcli radio wifi'
 alias gdp='g lg $(gtv T -n1)..main | grep -v "<Flux>"'
 alias gt='g tag'
 alias gum='gfa && g branch -f $(git_main_branch) origin/$(git_main_branch)'
+alias gfc="gss | grep '^UU\|^AA\|^DD\|^AU\|^UA\|^DU\|^UD' | cut -c4- | xargs vim"
 
 # Diable ghostscript binary. Useless on the shell and cannot be killed normally
 alias gs=''
