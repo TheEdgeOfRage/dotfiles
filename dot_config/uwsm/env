@@ -1,6 +1,6 @@
 # Localization
 export LANG="en_US.UTF-8"
-export LC_ALL="en_DK.UTF-8"
+export LC_ALL="C.UTF-8"
 
 # System config
 export PATH="$HOME/.local/bin:$PATH:$GOBIN:$HOME/.cargo/bin"
@@ -31,6 +31,3 @@ export CLUTTER_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND="1"
 export MOZ_WEBRENDER="1"
 export MOZ_USE_XINPUT2="1"
-
-# Valve shader compiler
-export RADV_PERFTEST="aco"
