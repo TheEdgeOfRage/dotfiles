@@ -90,4 +90,19 @@ return {
 	"lewis6991/gitsigns.nvim",
 	"sindrets/diffview.nvim",
 	"tpope/vim-fugitive",
+	{
+		"akinsho/git-conflict.nvim",
+		config = function()
+			require("git-conflict").setup({
+				default_mappings = {
+					ours = "ce",
+					theirs = "cn",
+					none = "ch",
+					both = "ci",
+					next = "gk",
+					prev = "gK",
+				},
+			})
+		end,
+	},
 }
