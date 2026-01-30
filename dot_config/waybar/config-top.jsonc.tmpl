@@ -128,7 +128,7 @@
 		}
 	},
 	"mpris": {
-		"interval": 1,
+		"interval": 5,
 		"format": "{player_icon} {dynamic}",
 		"format-paused": "{status_icon} {dynamic}",
 		"dynamic-order": [
@@ -150,7 +150,7 @@
 		"format-icons": ["󰃞","󰃟","󰃠"]
 	},
 	"battery": {
-		"interval": 10,
+		"interval": 60,
 		"states": {
 			"warning": 30,
 			"critical": 10
@@ -171,13 +171,13 @@
 		"tooltip": false
 	},
 	"clock#time": {
-		"interval": 1,
-		"format": "{:%H:%M:%S}",
+		"interval": 60,
+		"format": "{:%H:%M}",
 		"tooltip": false
 	},
 	"clock#date": {
-		"interval": 20,
-		"format": "{:%a %Y-%m-%d}",
+		"interval": 60,
+		"format": "{:%a %d}",
 		"tooltip": true,
 		"tooltip-format": "<tt><small>{calendar}</small></tt>",
 		"calendar": {
@@ -242,7 +242,7 @@
 	},
 	"custom/crypto": {
 		"format": "{}",
-		"interval": 300,
+		"interval": 600,
 		"return-type": "json",
 		"exec": "waybar-crypto",
 		"exec-if": "ping pro-api.coinmarketcap.com -c1"
