@@ -9,6 +9,8 @@
       "find *": "allow",
       "grep *": "allow",
       "head *": "allow",
+      "ls *": "allow",
+      "tree *": "allow",
       "tail *": "allow",
       "git diff *": "allow",
       "git status *": "allow",
