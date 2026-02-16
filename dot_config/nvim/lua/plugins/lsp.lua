@@ -53,11 +53,14 @@ return {
 				rust_analyzer = {
 					settings = {
 						["rust-analyzer"] = {
+							check = {
+								command = "clippy",
+							},
 							diagnostics = {
 								enable = true,
 							},
 							cargo = {
-								allFeatures = false,
+								allFeatures = true,
 							},
 							imports = {
 								granularity = {
