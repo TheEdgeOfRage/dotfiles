@@ -107,6 +107,7 @@ return {
 						},
 					},
 				},
+				jsonnet_ls = {},
 				bashls = {},
 				-- zls = {},
 			}
