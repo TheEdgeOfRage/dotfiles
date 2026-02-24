@@ -11,6 +11,7 @@
       "grep *": "allow",
       "head *": "allow",
       "ls *": "allow",
+      "rg *": "allow",
       "sed *": "allow",
       "sort *": "allow",
       "tail *": "allow",
@@ -37,5 +38,23 @@
     "doom_loop": "ask",
     "external_directory": "ask"
   },
-  "plugin": ["@mohak34/opencode-notifier@latest"]
+  "plugin": ["@mohak34/opencode-notifier@latest"],
+  "provider": {
+    "llama.cpp": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "llama-server (local)",
+      "options": {
+        "baseURL": "http://127.0.0.1:8080/v1"
+      },
+      "models": {
+        "qwen3-coder-30b": {
+          "name": "Qwen3 Coder 30B (local)",
+          "limit": {
+            "context": 65536,
+            "output": 16384
+          }
+        }
+      }
+    }
+  }
 }
