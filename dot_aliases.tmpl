@@ -12,11 +12,9 @@ alias -g dufa=dust
 alias ps=procs
 alias psql=pgcli
 alias drill='dog'
-alias rmdir='gtrash put --rm-mode -d'
-alias rmr='gtrash put --rm-mode -rIf'
-alias rm='gtrash put --rm-mode'
-alias trash='gtrash'
-alias su=su-rs
+alias rmdir='trash-rm'
+alias rmr='trash-rm'
+alias rm='trash-rm'
 {{ else }}
 # Traditional CLI tools
 alias ls='ls --group-directories-first --color=auto --time-style=long-iso'
