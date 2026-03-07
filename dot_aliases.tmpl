@@ -12,9 +12,6 @@ alias -g dufa=dust
 alias ps=procs
 alias psql=pgcli
 alias drill='dog'
-alias rmdir='trash-rm'
-alias rmr='trash-rm'
-alias rm='trash-rm'
 {{ else }}
 # Traditional CLI tools
 alias ls='ls --group-directories-first --color=auto --time-style=long-iso'
@@ -24,9 +21,6 @@ alias df='df -h'
 alias -g du='du -sh'
 alias -g duf='du -sh * | sort -h'
 alias -g dufa='du -sh * .* | sort -h'
-alias rmdir='trash'
-alias rmr='trash'
-alias rm='trash'
 {{- end }}
 
 # General
@@ -68,6 +62,8 @@ alias opencode='AWS_PROFILE=default opencode'
 alias qrscan='hyprshot -m region --raw | zbarimg -1 -q - | sed "s/QR-Code://" | wl-copy'
 alias ran=yazi
 alias rcp='rsync -aPv'
+alias rm='gio trash'
+alias rmr='gio trash'
 alias -g rmrf='\rm -rf'
 alias ssh='TERM=xterm-256color ssh'
 alias tailscale='sudo tailscale'
