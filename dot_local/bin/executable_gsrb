@@ -1,0 +1,61 @@
+#!/bin/sh
+set -e
+
+interactive=""
+while getopts "i" opt; do
+	case $opt in
+		i) interactive="-i" ;;
+		*) echo "usage: gsrb [-i]" >&2; exit 1 ;;
+	esac
+done
+
+main=main
+git rev-parse --verify "$main" >/dev/null 2>&1 || main=master
+
+current=$(git branch --show-current)
+merge_base=$(git merge-base HEAD "$main")
+
+# collect branches in stack order (closest to main first)
+branches=""
+for commit in $(git rev-list --reverse "$merge_base"..HEAD); do
+	for b in $(git branch --points-at "$commit" --format='%(refname:short)'); do
+		case "$b" in main|master) continue ;; esac
+		branches="$branches $b"
+	done
+done
+branches="${branches# }"
+
+if [ -z "$branches" ]; then
+	echo "no branches found in stack"
+	exit 0
+fi
+
+echo "stack: $branches"
+
+# save original tips before any rebase mutates them
+tmpfile=$(mktemp)
+trap 'rm -f "$tmpfile"' EXIT
+for b in $branches; do
+	echo "$b $(git rev-parse "$b")" >> "$tmpfile"
+done
+
+# rebase each branch onto the previous, maintaining the stack
+prev="$main"
+prev_old="$merge_base"
+for b in $branches; do
+	old=$(grep "^$b " "$tmpfile" | cut -d' ' -f2)
+	echo "rebasing $b onto $prev"
+	git rebase $interactive --onto "$prev" "$prev_old" "$b"
+	gitdir=$(git rev-parse --git-dir)
+	if [ -d "$gitdir/rebase-merge" ] || [ -d "$gitdir/rebase-apply" ]; then
+		echo "rebase paused — complete it, then re-run gsrb" >&2
+		exit 1
+	fi
+	prev_old="$old"
+	prev="$b"
+done
+
+# restore original branch
+if [ -n "$current" ] && [ "$current" != "$b" ]; then
+	git checkout "$current"
+fi
