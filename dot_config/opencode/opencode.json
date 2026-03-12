@@ -58,5 +58,37 @@
         }
       }
     }
+  },
+  "mcp": {
+    "Linear": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp",
+      "oauth": {}
+    },
+    "Sentry": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp",
+      "oauth": {}
+    },
+    "Grafana prod": {
+      "enabled": false,
+      "type": "local",
+      "command": ["uvx", "mcp-grafana"],
+      "environment": {
+        "GRAFANA_URL": "https://grafana.prod.internal.dunetech.io/",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/grafana-prod-token}"
+      }
+    },
+    "Grafana dev": {
+      "enabled": false,
+      "type": "local",
+      "command": ["uvx", "mcp-grafana"],
+      "environment": {
+        "GRAFANA_URL": "https://grafana.dev.internal.dunetech.io/",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/grafana-dev-token}"
+      }
+    }
   }
 }
