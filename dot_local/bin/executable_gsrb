@@ -1,16 +1,16 @@
-#!/bin/sh
+#!/bin/zsh
 set -e
 
 interactive=""
 while getopts "i" opt; do
 	case $opt in
 		i) interactive="-i" ;;
-		*) echo "usage: gsrb [-i]" >&2; exit 1 ;;
+		*) echo "usage: gsrb [-i] [base]" >&2; exit 1 ;;
 	esac
 done
+shift $((OPTIND - 1))
 
-main=main
-git rev-parse --verify "$main" >/dev/null 2>&1 || main=master
+main="${1:-$(git_main_branch)}"
 
 current=$(git branch --show-current)
 merge_base=$(git merge-base HEAD "$main")
@@ -19,7 +19,7 @@ merge_base=$(git merge-base HEAD "$main")
 branches=""
 for commit in $(git rev-list --reverse "$merge_base"..HEAD); do
 	for b in $(git branch --points-at "$commit" --format='%(refname:short)'); do
-		case "$b" in main|master) continue ;; esac
+		case "$b" in $main) continue ;; esac
 		branches="$branches $b"
 	done
 done
