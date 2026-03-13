@@ -15,6 +15,7 @@
       "rg *": "allow",
       "sed *": "allow",
       "sort *": "allow",
+      "stat *": "allow",
       "tail *": "allow",
       "tc *": "allow",
       "tree *": "allow",
@@ -49,11 +50,11 @@
         "baseURL": "http://127.0.0.1:8080/v1"
       },
       "models": {
-        "qwen3-coder-30b": {
-          "name": "Qwen3 Coder 30B (local)",
+        "qwen3.5-27b": {
+          "name": "Qwen3.5 27B (local)",
           "limit": {
-            "context": 65536,
-            "output": 16384
+            "context": 262144,
+            "output": 32768
           }
         }
       }
@@ -78,7 +79,7 @@
       "command": ["uvx", "mcp-grafana"],
       "environment": {
         "GRAFANA_URL": "https://grafana.prod.internal.dunetech.io/",
-        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/grafana-prod-token}"
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-prod-token}"
       }
     },
     "Grafana dev": {
@@ -87,7 +88,15 @@
       "command": ["uvx", "mcp-grafana"],
       "environment": {
         "GRAFANA_URL": "https://grafana.dev.internal.dunetech.io/",
-        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/grafana-dev-token}"
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-dev-token}"
+      }
+    },
+    "GitHub": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "{file:~/hfs/mcp/github}"
       }
     }
   }
