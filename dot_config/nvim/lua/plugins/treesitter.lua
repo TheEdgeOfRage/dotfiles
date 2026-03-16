@@ -1,45 +1,26 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
 		version = false,
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile", "VeryLazy" },
 		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = false,
-				},
-				indent = {
-					enable = true,
-				},
-				modules = {},
-				ignore_install = {},
-				auto_install = true,
-				sync_install = false,
-				ensure_installed = {
-					"bash",
-					"go",
-					"javascript",
-					"json",
-					"lua",
-					"luadoc",
-					"luap",
-					"markdown",
-					"markdown_inline",
-					"python",
-					"query",
-					"regex",
-					"terraform",
-					"tsx",
-					"typescript",
-					"vim",
-					"vimdoc",
-					"yaml",
-				},
-			})
-		end,
+		main = "nvim-treesitter",
+		opts = {
+			auto_install = true,
+			ensure_installed = {
+				"bash",
+				"json",
+				"lua",
+				"luadoc",
+				"luap",
+				"markdown",
+				"markdown_inline",
+				"regex",
+				"yaml",
+			},
+		},
 	},
 	"alker0/chezmoi.vim",
 }
