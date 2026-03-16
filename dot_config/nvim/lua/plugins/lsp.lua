@@ -123,7 +123,6 @@ return {
 		"saghen/blink.cmp",
 		version = "1.*",
 		dependencies = {
-			"rafamadriz/friendly-snippets",
 			{
 				"folke/lazydev.nvim",
 				ft = "lua",
@@ -137,7 +136,7 @@ return {
 		opts = {
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 			sources = {
-				default = { "lazydev", "lsp", "snippets", "path" },
+				default = { "lazydev", "lsp", "path" },
 				providers = {
 					lazydev = {
 						name = "LazyDev",
