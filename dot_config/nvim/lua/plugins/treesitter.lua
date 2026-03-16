@@ -6,8 +6,9 @@ return {
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile", "VeryLazy" },
 		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-		main = "nvim-treesitter",
+		main = "nvim-treesitter.configs",
 		opts = {
+			highlight = { enable = true },
 			auto_install = true,
 			ensure_installed = {
 				"bash",
