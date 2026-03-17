@@ -12,6 +12,7 @@ alias -g dufa=dust
 alias ps=procs
 alias psql=pgcli
 alias drill='dog'
+alias ran=yazi
 {{ else }}
 # Traditional CLI tools
 alias ls='ls --group-directories-first --color=auto --time-style=long-iso'
@@ -43,7 +44,6 @@ alias -g clip='wl-copy'
 alias -g vim='nvim'
 alias -g vimdiff='nvim -d'
 alias adb='adb -d'
-alias cal='cal -m'
 alias cdl='cd ~/ && cl'
 alias cl=clear
 alias cz=chezmoi
@@ -55,11 +55,9 @@ alias grep='grep --color=auto'
 alias incus='sudo incus'
 alias kak='kubectl apply -k'
 alias kdk='kubectl diff -k'
-alias mkdir='mkdir -p'
 alias mpv='mpv --ytdl-format="bestvideo[height<=?1440]+bestaudio/best"'
 alias myip='curl -s https://icanhazip.com'
 alias qrscan='hyprshot -m region --raw | zbarimg -1 -q - | sed "s/QR-Code://" | wl-copy'
-alias ran=yazi
 alias rcp='rsync -aPv'
 alias rm='gio trash'
 alias rmr='gio trash'
@@ -67,7 +65,6 @@ alias -g rmrf='\rm -rf'
 alias ssh='TERM=xterm-256color ssh'
 alias tailscale='sudo tailscale'
 alias unbound='cd /opt/docker/unbound; dcrestart; -'
-alias virtualenv='python -m venv'
 alias wgdown='sudo wg-quick down wg-vpn'
 alias wgup='sudo wg-quick up wg-vpn'
 alias wgfdown='sudo wg-quick down wg-forward'
