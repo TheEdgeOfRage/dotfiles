@@ -19,7 +19,7 @@ $inactive_bg = rgba(282828ff)
 {{ end }}
 # https://wiki.hyprland.org/Configuring/Variables/
 $terminal = ghostty
-$menu = vicinae toggle
+$menu = fuzzel "--launch-prefix=uwsm app --"
 $animation_speed = 1
 
 # exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -210,7 +210,7 @@ bind = $mod SHIFT, X, exec, loginctl terminate-session "$XDG_SESSION_ID"
 # Launcher bindings
 bind = $mod, Space, exec, $menu
 bind = $mod, Backspace, exec, $menu
-bind = $mod, j, exec, vicinae vicinae://extensions/vicinae/core/search-emojis
+bind = $mod, j, exec, BEMOJI_PICKER_CMD="fuzzel -d" bemoji
 bind = $mod, d, exec, fuzzel "--launch-prefix=uwsm app --"
 bind = $mod, Return, exec, uwsm app -- $terminal +new-window
 
@@ -383,6 +383,3 @@ windowrule {
 }
 
 # https://wiki.hypr.land/Configuring/Window-Rules/#layer-rules
-
-# Vicinae launcher
-layerrule = dim_around on, match:namespace vicinae
