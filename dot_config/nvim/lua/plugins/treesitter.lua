@@ -4,6 +4,13 @@ return {
 		branch = "main",
 		lazy = false,
 		build = ":TSUpdate",
+		config = function()
+			vim.api.nvim_create_autocmd("BufEnter", {
+				callback = function()
+					pcall(vim.treesitter.start)
+				end,
+			})
+		end,
 	},
 	{
 		"lewis6991/ts-install.nvim",
