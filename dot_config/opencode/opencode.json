@@ -1,105 +1,105 @@
 {
-	"$schema": "https://opencode.ai/config.json",
-	"permission": {
-		"edit": "allow",
-		"bash": {
-			"*": "ask",
-			"awk *": "allow",
-			"cat *": "allow",
-			"echo *": "allow",
-			"find *": "allow",
-			"grep *": "allow",
-			"head *": "allow",
-			"ls *": "allow",
-			"mkdir *": "allow",
-			"rg *": "allow",
-			"sed *": "allow",
-			"sort *": "allow",
-			"stat *": "allow",
-			"tail *": "allow",
-			"tc *": "allow",
-			"tree *": "allow",
-			"uniq *": "allow",
-			"wc *": "allow",
-			"git branch *": "allow",
-			"git describe *": "allow",
-			"git diff *": "allow",
-			"git log *": "allow",
-			"git merge-base *": "allow",
-			"git rev-parse *": "allow",
-			"git show *": "allow",
-			"git status *": "allow",
-			"git tag -l *": "allow",
-			"go vet *": "allow",
-			"mvn test *": "allow",
-			"mvn compile *": "allow",
-			"mvn clean *": "allow",
-			"make ci *": "allow",
-			"make lint *": "allow"
-			"make test *": "allow"
-			"uv run pytest *": "allow"
-		},
-		"webfetch": "ask",
-		"doom_loop": "ask",
-		"external_directory": "ask"
-	},
-	"plugin": ["@mohak34/opencode-notifier@latest"],
-	"provider": {
-		"llama.cpp": {
-			"npm": "@ai-sdk/openai-compatible",
-			"name": "llama-server (local)",
-			"options": {
-				"baseURL": "http://127.0.0.1:8080/v1"
-			},
-			"models": {
-				"qwen3.5-27b": {
-					"name": "Qwen3.5 27B (local)",
-					"limit": {
-						"context": 262144,
-						"output": 32768
-					}
-				}
-			}
-		}
-	},
-	"mcp": {
-		"Linear": {
-			"enabled": false,
-			"type": "remote",
-			"url": "https://mcp.linear.app/mcp",
-			"oauth": {}
-		},
-		"Sentry": {
-			"enabled": false,
-			"type": "remote",
-			"url": "https://mcp.sentry.dev/mcp",
-			"oauth": {}
-		},
-		"Grafana prod": {
-			"enabled": false,
-			"type": "local",
-			"command": ["uvx", "mcp-grafana"],
-			"environment": {
-				"GRAFANA_URL": "https://grafana.prod.internal.dunetech.io/",
-				"GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-prod-token}"
-			}
-		},
-		"Grafana dev": {
-			"enabled": false,
-			"type": "local",
-			"command": ["uvx", "mcp-grafana"],
-			"environment": {
-				"GRAFANA_URL": "https://grafana.dev.internal.dunetech.io/",
-				"GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-dev-token}"
-			}
-		},
-		"GitHub": {
-			"enabled": false,
-			"type": "remote",
-			"url": "https://api.githubcopilot.com/mcp/",
-			"headers": {
-				"Authorization": "{file:~/hfs/mcp/github}"
-			}
-		}
-	}
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "edit": "allow",
+    "bash": {
+      "*": "ask",
+      "awk *": "allow",
+      "cat *": "allow",
+      "echo *": "allow",
+      "find *": "allow",
+      "grep *": "allow",
+      "head *": "allow",
+      "ls *": "allow",
+      "mkdir *": "allow",
+      "rg *": "allow",
+      "sed *": "allow",
+      "sort *": "allow",
+      "stat *": "allow",
+      "tail *": "allow",
+      "tc *": "allow",
+      "tree *": "allow",
+      "uniq *": "allow",
+      "wc *": "allow",
+      "git branch *": "allow",
+      "git describe *": "allow",
+      "git diff *": "allow",
+      "git log *": "allow",
+      "git merge-base *": "allow",
+      "git rev-parse *": "allow",
+      "git show *": "allow",
+      "git status *": "allow",
+      "git tag -l *": "allow",
+      "go vet *": "allow",
+      "mvn test *": "allow",
+      "mvn compile *": "allow",
+      "mvn clean *": "allow",
+      "make ci *": "allow",
+      "make lint *": "allow",
+      "make test *": "allow",
+      "uv run pytest *": "allow"
+    },
+    "webfetch": "ask",
+    "doom_loop": "ask",
+    "external_directory": "ask"
+  },
+  "plugin": ["@mohak34/opencode-notifier@latest"],
+  "provider": {
+    "llama.cpp": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "llama-server (local)",
+      "options": {
+        "baseURL": "http://127.0.0.1:8080/v1"
+      },
+      "models": {
+        "qwen3.5-27b": {
+          "name": "Qwen3.5 27B (local)",
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          }
+        }
+      }
+    }
+  },
+  "mcp": {
+    "Linear": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp",
+      "oauth": {}
+    },
+    "Sentry": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp",
+      "oauth": {}
+    },
+    "Grafana prod": {
+      "enabled": false,
+      "type": "local",
+      "command": ["uvx", "mcp-grafana"],
+      "environment": {
+        "GRAFANA_URL": "https://grafana.prod.internal.dunetech.io/",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-prod-token}"
+      }
+    },
+    "Grafana dev": {
+      "enabled": false,
+      "type": "local",
+      "command": ["uvx", "mcp-grafana"],
+      "environment": {
+        "GRAFANA_URL": "https://grafana.dev.internal.dunetech.io/",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-dev-token}"
+      }
+    },
+    "GitHub": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "{file:~/hfs/mcp/github}"
+      }
+    }
+  }
 }
