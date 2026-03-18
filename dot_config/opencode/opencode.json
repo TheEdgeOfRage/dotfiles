@@ -34,8 +34,10 @@
 			"mvn test *": "allow",
 			"mvn compile *": "allow",
 			"mvn clean *": "allow",
-			"make lint *": "allow",
+			"make ci *": "allow",
+			"make lint *": "allow"
 			"make test *": "allow"
+			"uv run pytest *": "allow"
 		},
 		"webfetch": "ask",
 		"doom_loop": "ask",
