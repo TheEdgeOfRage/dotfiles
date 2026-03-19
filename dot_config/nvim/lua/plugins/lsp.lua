@@ -191,7 +191,6 @@ return {
 					json = { "jsonlint", "prettierd" },
 					javascript = { "prettierd" },
 					typescript = { "prettierd" },
-					svelte = { "prettierd" },
 					go = { "golangci-lint" },
 					templ = { "templ" },
 					html = { "htmlbeautifier", "htmlhint" },
