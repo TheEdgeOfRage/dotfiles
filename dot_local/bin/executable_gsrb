@@ -26,11 +26,13 @@ function git_main_branch() {
 
 interactive=""
 abort=false
-while getopts "ia" opt; do
+push=false
+while getopts "iap" opt; do
 	case $opt in
 		i) interactive="-i" ;;
 		a) abort=true ;;
-		*) echo "usage: gsrb [-i] [-a] [base]" >&2; exit 1 ;;
+		p) push=true ;;
+		*) echo "usage: gsrb [-i] [-a] [-p] [base]" >&2; exit 1 ;;
 	esac
 done
 shift $((OPTIND - 1))
@@ -54,6 +56,7 @@ fi
 
 typeset -A old_tips
 remaining=()
+rebased=()
 
 if [ -f "$statefile" ]; then
 	while IFS=' ' read -r key val; do
@@ -123,11 +126,17 @@ while (( ${#remaining} > 0 )); do
 		exit 1
 	fi
 
+	rebased+=("$b")
 	prev_old="$old"
 	prev="$b"
 done
 
 rm -f "$statefile"
+
+if $push && (( ${#rebased} > 0 )); then
+	echo "pushing ${#rebased} branches"
+	git push --force-with-lease origin "${rebased[@]}"
+fi
 
 if [ -n "$current" ] && [ "$current" != "$b" ]; then
 	git checkout "$current"
