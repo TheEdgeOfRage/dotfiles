@@ -37,7 +37,9 @@
       "make ci *": "allow",
       "make lint *": "allow",
       "make test *": "allow",
-      "uv run pytest *": "allow"
+      "uv run pytest *": "allow",
+      "uv run mypy *": "allow",
+      "uv run ruff *": "allow"
     },
     "webfetch": "ask",
     "doom_loop": "ask",
