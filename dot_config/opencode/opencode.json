@@ -35,11 +35,15 @@
       "mvn compile *": "allow",
       "mvn clean *": "allow",
       "make ci *": "allow",
+      "make *check *": "allow",
       "make lint *": "allow",
+      "make fmt *": "allow",
       "make test *": "allow",
+      "make templ *": "allow",
       "uv run pytest *": "allow",
       "uv run mypy *": "allow",
-      "uv run ruff *": "allow"
+      "uv run ruff *": "allow",
+      "bun *": "allow"
     },
     "webfetch": "ask",
     "doom_loop": "ask",
