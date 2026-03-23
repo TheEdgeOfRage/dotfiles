@@ -17,7 +17,7 @@ gtk-xft-antialias=1
 gtk-xft-hinting=1
 {{- if index (index . "gtk" | default dict) "rgb_hinting" | default false }}
 gtk-xft-hintstyle=hintfull
-{{- else -}}
+{{ else }}
 gtk-xft-hintstyle=hintmedium
 gtk-xft-rgba=none
 {{ end -}}
