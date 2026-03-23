@@ -21,6 +21,8 @@ data:
       size: '14'
       cell_width: -1
       cell_height: 1
+  gtk:
+    rgb_hinting: true
   fuzzel:
     font:
       size: '15'
