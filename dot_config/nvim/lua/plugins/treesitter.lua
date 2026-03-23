@@ -5,9 +5,12 @@ return {
 		lazy = false,
 		build = ":TSUpdate",
 		config = function()
+			local disabled_ft = { zsh = true, csv = true }
 			vim.api.nvim_create_autocmd("BufEnter", {
 				callback = function()
-					pcall(vim.treesitter.start)
+					if not disabled_ft[vim.bo.filetype] then
+						pcall(vim.treesitter.start)
+					end
 				end,
 			})
 		end,
