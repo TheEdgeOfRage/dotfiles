@@ -1,6 +1,6 @@
 ---
 name: qmd
-description: Search markdown knowledge bases, notes, and documentation using QMD. Use when users ask to search notes, find documents, or look up information.
+description: Search markdown knowledge bases, notes, and documentation using QMD. Use when users ask to search notes, find documents, or look up information in local files.
 license: MIT
 compatibility: Requires qmd CLI
 metadata:
