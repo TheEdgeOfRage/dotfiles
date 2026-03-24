@@ -45,9 +45,14 @@
       "uv run ruff *": "allow",
       "bun *": "allow"
     },
+    "external_directory": {
+      "*": "ask",
+      "~/dev/dune/": "allow"
+    },
     "webfetch": "ask",
-    "doom_loop": "ask",
-    "external_directory": "ask"
+    "websearch": "ask",
+    "codesearch": "ask",
+    "doom_loop": "ask"
   },
   "plugin": ["@mohak34/opencode-notifier@latest"],
   "provider": {
