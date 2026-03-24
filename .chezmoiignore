@@ -15,7 +15,7 @@ config_template.yaml
 .config/gtk-4.0
 .config/hypr
 .config/mako
-.config/systemd/user/waybar@.service
+.config/systemd/
 .config/user-dirs.dirs
 .config/uwsm
 .config/waybar
