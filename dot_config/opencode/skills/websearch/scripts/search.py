@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Web search using ddgs. Usage: python search.py <query> [max_results]"""
+"""Web search using ddgs. Usage: uv run -w ddgs python search.py <query> [max_results]"""
 
 import sys
-import json
 from ddgs import DDGS
 
 

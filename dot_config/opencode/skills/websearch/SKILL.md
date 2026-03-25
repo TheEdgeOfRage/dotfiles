@@ -26,12 +26,18 @@ implementation tasks where no external lookup is needed.
 Run the bundled script from this skill's `scripts/` directory:
 
 ```bash
-python <skill_dir>/scripts/search.py "<query>" [max_results]
+uv run -w ddgs python <skill_dir>/scripts/search.py "<query>" [max_results]
 ```
 
 `max_results` defaults to 5. Increase it (up to ~10) for broader topics.
 
-The script prints results as: title, URL, and a snippet per result.
+The script prints results in this format:
+
+```
+{i}. {title}"
+   {href}"
+   {body}"
+```
 
 ## Crafting good queries
 
