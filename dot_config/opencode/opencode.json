@@ -49,8 +49,8 @@
       "bun *": "allow"
     },
     "external_directory": {
-      "*": "ask",
-      "~/dev/dune/": "allow"
+      "/home/pavle/dev/dune/": "allow",
+      "*": "ask"
     },
     "webfetch": "ask",
     "websearch": "ask",
