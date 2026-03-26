@@ -49,7 +49,7 @@
       "bun *": "allow"
     },
     "external_directory": {
-      "/home/pavle/dev/dune/": "allow",
+      "/home/pavle/dev/dune/*": "allow",
       "*": "ask"
     },
     "webfetch": "ask",
