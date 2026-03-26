@@ -114,6 +114,12 @@
       "headers": {
         "Authorization": "{file:~/hfs/mcp/github}"
       }
+    },
+    "Notion": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
+      "oauth": {}
     }
   }
 }
