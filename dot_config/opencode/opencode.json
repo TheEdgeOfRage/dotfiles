@@ -46,6 +46,7 @@
       "* uv run pytest *": "allow",
       "uv run mypy *": "allow",
       "uv run ruff *": "allow",
+      "uv run -w ddgs python *": "allow",
       "bun *": "allow"
     },
     "external_directory": {
