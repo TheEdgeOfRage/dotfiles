@@ -63,7 +63,10 @@
     "codesearch": "ask",
     "doom_loop": "ask"
   },
-  "plugin": ["@mohak34/opencode-notifier@latest"],
+  "plugin": [
+    "@mohak34/opencode-notifier@latest",
+    "@tarquinen/opencode-dcp@latest"
+  ],
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
