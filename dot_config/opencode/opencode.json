@@ -19,6 +19,7 @@
       "tail *": "allow",
       "tc *": "allow",
       "tree *": "allow",
+      "true": "allow",
       "uniq *": "allow",
       "wc *": "allow",
       "git branch *": "allow",
@@ -32,6 +33,7 @@
       "git status *": "allow",
       "git tag -l *": "allow",
       "go env *": "allow",
+      "go list *": "allow",
       "go mod *": "allow",
       "go vet *": "allow",
       "make *check *": "allow",
@@ -40,6 +42,7 @@
       "make lint *": "allow",
       "make templ *": "allow",
       "make test *": "allow",
+      "make gen-mocks *": "allow",
       "mvn clean *": "allow",
       "mvn compile *": "allow",
       "mvn test *": "allow",
@@ -50,8 +53,8 @@
       "bun *": "allow"
     },
     "external_directory": {
-      "~/dev/dune/*": "allow",
-      "~/dev/go/*": "allow",
+      "/home/pavle/dev/dune/*": "allow",
+      "/home/pavle/dev/go/*": "allow",
       "/tmp/*": "allow",
       "*": "ask"
     },
