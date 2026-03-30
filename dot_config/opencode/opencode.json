@@ -35,6 +35,7 @@
       "go env *": "allow",
       "go list *": "allow",
       "go mod *": "allow",
+      "go test *": "allow",
       "go vet *": "allow",
       "make *check *": "allow",
       "make ci *": "allow",
