@@ -58,10 +58,10 @@
       "bun *": "allow"
     },
     "external_directory": {
-      "/home/pavle/dev/dune/**": "allow",
-      "/home/pavle/dev/go/**": "allow",
-      "/tmp/**": "allow",
-      "**": "ask"
+      "~/dev/dune/**": "allow",
+      "~/dev/go/**": "allow",
+      "/tmp/opencode/**": "allow",
+      "*": "ask"
     },
     "webfetch": "ask",
     "websearch": "ask",
