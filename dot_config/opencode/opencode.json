@@ -16,10 +16,7 @@
     "codesearch": "ask",
     "doom_loop": "ask"
   },
-  "plugin": [
-    "@tarquinen/opencode-dcp@latest",
-    "github:duneanalytics/opencode-policy-engine"
-  ],
+  "plugin": ["@tarquinen/opencode-dcp@latest"],
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
