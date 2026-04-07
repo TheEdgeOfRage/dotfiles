@@ -55,19 +55,6 @@ return {
 	"mfussenegger/nvim-dap",
 	"rcarriga/nvim-dap-ui",
 	{
-		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup({
-				default_options = {
-					RGB = true,
-					RRGGBB = true,
-					RRGGBBAA = true,
-					names = false,
-				},
-			})
-		end,
-	},
-	{
 		"numToStr/Comment.nvim",
 		opts = {
 			toggler = {
