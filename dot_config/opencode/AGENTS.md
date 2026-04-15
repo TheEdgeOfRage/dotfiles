@@ -34,6 +34,7 @@ Favor simple, robust solutions over feature-rich ones. When in doubt, do less
 - Types should encode meaning (use Duration, not string; use enums, not magic strings)
 - Build what's needed now, not what might be needed later
 - Implement reproduction tests first when asked to fix bugs
+- Keep branch names very short and simple. Don't append my name or ticket numbers to the branch name
 
 # Security
 
