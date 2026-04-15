@@ -17,7 +17,10 @@
     "codesearch": "ask",
     "doom_loop": "ask"
   },
-  "plugin": ["@tarquinen/opencode-dcp@latest"],
+  "plugin": [
+    "@tarquinen/opencode-dcp@latest",
+    "@theedgeofrage/opencode-telegram@0.2.2"
+  ],
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
