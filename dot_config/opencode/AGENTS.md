@@ -40,8 +40,19 @@ Favor simple, robust solutions over feature-rich ones. When in doubt, do less
 
 - Zero Trust. Least privilege. Never leak secrets.
 - Do not under any circumstance read any secret files into context
-- Never mutate any state without getting asked to, e.g. DBs, Git, OS, K8s, etc.
 - Model risks. Threat model APIs/integrations.
+
+# State Mutation
+
+Never mutate state without explicit user request. This includes Git (commits, checkouts, rebases, restores), databases, OS config, K8s, and any external system.
+
+Before running any command that writes, deletes, or overwrites: ask "does this modify anything on disk, in git, or in an external system?" If yes, it requires explicit permission. Intent ("I'm fixing it") does not override this — the check is mechanical, not judgmental.
+
+Specific footguns:
+- `git checkout -- <file>`, `git restore`: destroys working tree edits silently. The user may have edited files after you wrote them. Never assume the working tree matches your last write.
+- `git commit --amend`, `git rebase`, `git reset --hard`: rewrites history. Never without explicit ask.
+- `git push --force`: destructive to shared state. Warn even if asked.
+- File overwrites via `Write`: if you haven't read the file this session, read it first — the user may have edited it externally.
 
 # Important instructions
 
