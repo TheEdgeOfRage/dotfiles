@@ -176,6 +176,9 @@ return {
 		},
 		config = function()
 			require("go").setup()
+			-- go.nvim incorrectly uses buf_request instead of buf_notify for
+			-- workspace/didChangeWatchedFiles, causing errors on go.mod save
+			vim.api.nvim_create_augroup("gomod_save", { clear = true })
 		end,
 		event = { "CmdlineEnter" },
 		ft = { "go", "gomod" },
