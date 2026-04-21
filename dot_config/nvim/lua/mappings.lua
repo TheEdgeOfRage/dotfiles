@@ -112,6 +112,7 @@ vim.keymap.set("n", "<leader>ei", telescope.diagnostics, opts)
 
 vim.keymap.set("n", "<leader>vc", vim.lsp.buf.code_action, opts)
 vim.keymap.set("n", "<leader>vr", vim.lsp.buf.rename, opts)
+vim.keymap.set("n", "<leader>vl", vim.lsp.codelens.run, opts)
 vim.keymap.set("n", "E", function()
 	vim.lsp.buf.hover({ border = "rounded" })
 end, opts)
