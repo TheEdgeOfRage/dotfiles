@@ -4,7 +4,8 @@
   "permission": {
     "edit": "allow",
     "bash": {
-      "*": "ask"
+      "*": "ask",
+      "*sudo*": "deny"
     },
     "external_directory": {
       "~/dev/dune/**": "allow",
