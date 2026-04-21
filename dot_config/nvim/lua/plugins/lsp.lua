@@ -96,7 +96,12 @@ return {
 				-- gleam = {},
 				buf_ls = {},
 				lua_ls = {},
-				terraformls = {},
+				terraformls = {
+					cmd = {
+						"/home/pavle/dev/terraform-ls/terraform-ls",
+						"serve",
+					},
+				},
 				jsonls = {},
 				yamlls = {
 					settings = {
