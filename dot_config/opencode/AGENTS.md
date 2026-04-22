@@ -35,6 +35,7 @@ Favor simple, robust solutions over feature-rich ones. When in doubt, do less
 - Build what's needed now, not what might be needed later
 - Implement reproduction tests first when asked to fix bugs
 - Keep branch names very short and simple. Don't append my name or ticket numbers to the branch name
+- Use `git switch` (not `git checkout`) when changing or creating branches
 
 # Security
 
@@ -44,14 +45,15 @@ Favor simple, robust solutions over feature-rich ones. When in doubt, do less
 
 # State Mutation
 
-Never mutate state without explicit user request. This includes Git (commits, checkouts, rebases, restores), databases, OS config, K8s, and any external system.
+Never mutate state without explicit user request. This includes Git (checkouts, rebases, restores), databases, OS config, K8s, and any external system.
 
 Before running any command that writes, deletes, or overwrites: ask "does this modify anything on disk, in git, or in an external system?" If yes, it requires explicit permission. Intent ("I'm fixing it") does not override this — the check is mechanical, not judgmental.
 
 Specific footguns:
+
 - `git checkout -- <file>`, `git restore`: destroys working tree edits silently. The user may have edited files after you wrote them. Never assume the working tree matches your last write.
 - `git commit --amend`, `git rebase`, `git reset --hard`: rewrites history. Never without explicit ask.
-- `git push --force`: destructive to shared state. Warn even if asked.
+- `git push --force`: destructive to shared state. Always reject and ask the user to do manually.
 - File overwrites via `Write`: if you haven't read the file this session, read it first — the user may have edited it externally.
 
 # Important instructions
