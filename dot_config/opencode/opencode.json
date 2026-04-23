@@ -10,12 +10,11 @@
     "external_directory": {
       "~/dev/dune/**": "allow",
       "~/dev/go/**": "allow",
-      "/tmp/opencode/**": "allow",
       "*": "ask"
     },
     "webfetch": "ask",
-    "websearch": "ask",
-    "codesearch": "ask",
+    "websearch": "allow",
+    "codesearch": "allow",
     "doom_loop": "ask"
   },
   "plugin": [
