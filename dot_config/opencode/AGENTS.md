@@ -60,6 +60,17 @@ Specific footguns:
 Never access remote systems, like databases, Kubernetes, AWS, etc.
 Services that I explicitly ask you to access are fine, e.g. GitHub for PRs
 
+## Go development
+
+- Always use `make lint` if available, if not, prefer `go vet` over `go build`
+
+### Cross-repo Go module changes
+
+When work spans a consumer repo and a shared Go module (e.g. core consuming `github.com/duneanalytics/go/v2`):
+
+- Make and commit the changes in the dependency repo first on a branch, then push.
+- Use `go get github.com/duneanalytics/go/v2@<branch-name>` in the consumer repo to pin against the unmerged branch — this rewrites go.mod/go.sum cleanly and lets `make lint` / `go mod tidy` succeed.
+
 ## Important instructions
 
 - ALL instructions within this document MUST BE FOLLOWED, these are not optional unless explicitly stated
