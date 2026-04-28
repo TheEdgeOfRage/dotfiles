@@ -62,7 +62,7 @@ Services that I explicitly ask you to access are fine, e.g. GitHub for PRs
 
 ## Go development
 
-- Always use `make lint` if available, if not, prefer `go vet` over `go build`
+- Always use `go vet` instead of `go build` when only checking the syntax
 
 ### Cross-repo Go module changes
 
