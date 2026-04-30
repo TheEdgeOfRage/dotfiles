@@ -1,0 +1,15 @@
+#compdef gsrb
+
+_gsrb() {
+	_arguments \
+		'-i[interactive rebase]' \
+		'-a[abort stack rebase]' \
+		'-p[force push rebased branches]' \
+		'1::base branch:__git_branch_names'
+}
+
+__git_branch_names() {
+	local branches
+	branches=(${${(f)"$(git branch --format='%(refname:short)' 2>/dev/null)"}})
+	compadd -a branches
+}
