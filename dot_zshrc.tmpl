@@ -50,9 +50,13 @@ set_env() {
 {{- end -}}
 }
 
+# Custom functions and completions
+CUSTOM="$HOME/.config/zsh"
+fpath=(${CUSTOM}/functions ${CUSTOM}/completions "${fpath[@]}" )
+autoload -Uz ${CUSTOM}/functions/*
+
 # oh-my-zsh
 export ZSH="$HOME/.config/zsh/oh-my-zsh"
-CUSTOM="$HOME/.config/zsh"
 ZSH_THEME="boban/boban"
 HYPHEN_INSENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
@@ -72,10 +76,6 @@ plugins=(
 )
 source $ZSH/oh-my-zsh.sh
 
-# Custom functions
-fpath=( ${CUSTOM}/functions "${fpath[@]}" )
-autoload -Uz ${CUSTOM}/functions/*
-
 # Misc options
 setopt extendedglob notify
 unsetopt beep nomatch
@@ -92,7 +92,6 @@ if [[ -n ${WAYLAND_DISPLAY} ]]; then
     bindkey '^Y' copy_line_to_x_clipboard
 fi
 
-source ${CUSTOM}/completions/*.zsh
 source ~/.aliases
 source ~/.config/zsh/kc.zsh
 
