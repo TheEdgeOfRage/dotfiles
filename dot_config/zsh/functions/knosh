@@ -1,0 +1,6 @@
+# vim: ft=zsh
+# get a shell on a kubernetes node host via kubectl debug
+
+node=${1}
+shift
+kubectl debug node/${node} -it --image=busybox -- chroot /host "$@"
