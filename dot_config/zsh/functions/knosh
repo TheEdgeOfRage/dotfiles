@@ -1,6 +1,11 @@
 # vim: ft=zsh
 # get a shell on a kubernetes node host via kubectl debug
+# auto-deletes the debug pod on exit
 
 node=${1}
 shift
-kubectl debug node/${node} -it --image=busybox -- chroot /host "$@"
+tmp=$(mktemp)
+kubectl debug node/${node} -it --profile=sysadmin --image=busybox -- chroot /host "$@" 2> >(tee ${tmp} >&2)
+pod=$(grep -oE 'node-debugger-[a-z0-9-]+' ${tmp} | head -1)
+rm -f ${tmp}
+[[ -n ${pod} ]] && kubectl delete pod ${pod} --now --wait=false
