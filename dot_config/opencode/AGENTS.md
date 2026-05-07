@@ -33,9 +33,7 @@ Favor simple, robust solutions over feature-rich ones. When in doubt, do less
 - Minimize comments - only explain non-obvious "why", never "what"
 - Types should encode meaning (use Duration, not string; use enums, not magic strings)
 - Build what's needed now, not what might be needed later
-- Implement reproduction tests first when asked to fix bugs
-- Keep branch names very short and simple. Don't append my name or ticket numbers to the branch name
-- Use `git switch` (not `git checkout`) when changing or creating branches
+- When asked to fix bugs, implement regression tests first that fail, then implement the fix
 
 ## Security
 
@@ -54,6 +52,12 @@ Specific footguns:
 - `git reset --hard`, `git checkout -- <file>`, `git restore`: destroys working tree edits silently. The user may have edited files after you wrote them. Never assume the working tree matches your last write.
 - `git push --force`: destructive to shared state. Always ask for confirmation
 - File overwrites via `Write`: if there is a comflict, read it first and merge your changes, as the user may have edited the file externally.
+
+## Git operations
+
+- Interactive rebase opens `$GIT_EDITOR` and blocks. Run with `GIT_SEQUENCE_EDITOR=: GIT_EDITOR=true git rebase -i <base>`.
+- Use `git switch` (not `git checkout`) when changing or creating branches
+- Keep branch names very short and simple. Don't append my name or ticket numbers to the branch name
 
 ## Remote access
 
