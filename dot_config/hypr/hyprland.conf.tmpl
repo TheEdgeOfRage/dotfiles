@@ -68,42 +68,44 @@ plugin {
 
         # tab group settings
         tabs {
-          # height of the tab bar
-          height = 26
+            # height of the tab bar
+            height = 26
 
-          # padding between the tab bar and its focused node
-          padding = 0
-          # the tab bar should animate in/out from the top instead of below the window
-          from_top = true
-          radius = 0
-          blur = false
-          no_gaps_when_only = true
+            # padding between the tab bar and its focused node
+            padding = 0
+            # the tab bar should animate in/out from the top instead of below the window
+            from_top = true
+            radius = 0
+            blur = false
+            no_gaps_when_only = true
 
-          # Window title text
-          text_center = false
-          text_font = IosevkaTerm NFP
-          text_height = 14
-          text_padding = 6 # left padding
+            # Window title text
+            text_center = false
+            text_font = IosevkaTerm NFP
+            text_height = 14
+            text_padding = 6 # left padding
 
-          # active tab bar segment colors
-          col.active = $active_bg
-          col.active.border = $active_bg
-          col.active.text = rgba(ebdbb2ff)
+            colors {
+                # active tab bar segment colors
+                active = $active_bg
+                active_border = $active_bg
+                active_text = rgba(ebdbb2ff)
 
-          # focused tab bar segment colors (focused node in unfocused container)
-          col.focused = rgba(504945ff)
-          col.focused.border = rgba(504945ff)
-          col.focused.text = rgba(ebdbb2ff)
+                # focused tab bar segment colors (focused node in unfocused container)
+                focused = rgba(504945ff)
+                focused_border = rgba(504945ff)
+                focused_text = rgba(ebdbb2ff)
 
-          # urgent tab bar segment colors
-          col.urgent = rgba(d79921ff)
-          col.urgent.border = rgba(d79921ff)
-          col.urgent.text = rgba(282828ff)
+                # urgent tab bar segment colors
+                urgent = rgba(d79921ff)
+                urgent_border = rgba(d79921ff)
+                urgent_text = rgba(282828ff)
 
-          # inactive tab bar segment colors
-          col.inactive = $inactive_bg
-          col.inactive.border = $inactive_bg
-          col.inactive.text = rgba(a89984ff)
+                # inactive tab bar segment colors
+                inactive = $inactive_bg
+                inactive_border = $inactive_bg
+                inactive_text = rgba(a89984ff)
+            }
         }
     }
 }
@@ -155,7 +157,6 @@ misc {
     font_family = Noto Sans
     force_default_wallpaper = 1
     disable_hyprland_logo = true
-    vfr = true
     enable_swallow = true
     swallow_regex = com.mitchellh.ghostty
     mouse_move_enables_dpms = true
@@ -173,7 +174,6 @@ ecosystem {
 
 render {
     direct_scanout = 2
-    cm_fs_passthrough = 2
     cm_auto_hdr = 2
 }
 
