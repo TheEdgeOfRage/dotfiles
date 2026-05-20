@@ -1,100 +1,100 @@
 {
-	"$schema": "https://opencode.ai/config.json",
-	"autoupdate": false,
-	"permission": {
-		"edit": "allow",
-		"bash": {
-			"*": "ask",
-			"*sudo*": "deny",
-			"*terraform apply*": "deny"
-		},
-		"external_directory": {
-			"~/dev/dune/**": "allow",
-			"~/dev/go/**": "allow",
-			"*": "ask"
-		},
-		"webfetch": "ask",
-		"websearch": "allow",
-		"codesearch": "allow",
-		"doom_loop": "ask"
-	},
-	"plugin": [
-		"@tarquinen/opencode-dcp@latest",
-		"@theedgeofrage/opencode-telegram@0.2.2"
-	],
-	"provider": {
-		"llama.cpp": {
-			"npm": "@ai-sdk/openai-compatible",
-			"name": "llama-server (local)",
-			"options": {
-				"baseURL": "http://127.0.0.1:8080/v1"
-			},
-			"models": {
-				"qwen3.5-27b": {
-					"name": "Qwen3.5 27B (local)",
-					"limit": {
-						"context": 262144,
-						"output": 32768
-					}
-				}
-			}
-		}
-	},
-	"mcp": {
-		"Linear": {
-			"enabled": false,
-			"type": "remote",
-			"url": "https://mcp.linear.app/mcp",
-			"oauth": {}
-		},
-		"Sentry": {
-			"enabled": false,
-			"type": "remote",
-			"url": "https://mcp.sentry.dev/mcp",
-			"oauth": {}
-		},
-		"Grafana prod": {
-			"enabled": false,
-			"type": "local",
-			"command": ["uvx", "mcp-grafana"],
-			"environment": {
-				"GRAFANA_URL": "https://grafana.prod.internal.dunetech.io/",
-				"GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-prod-token}"
-			}
-		},
-		"Grafana dev": {
-			"enabled": false,
-			"type": "local",
-			"command": ["uvx", "mcp-grafana"],
-			"environment": {
-				"GRAFANA_URL": "https://grafana.dev.internal.dunetech.io/",
-				"GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-dev-token}"
-			}
-		},
-		"GitHub": {
-			"enabled": false,
-			"type": "remote",
-			"url": "https://api.githubcopilot.com/mcp/",
-			"headers": {
-				"Authorization": "{file:~/hfs/mcp/github}"
-			}
-		},
-		"Notion": {
-			"enabled": false,
-			"type": "remote",
-			"url": "https://mcp.notion.com/mcp",
-			"oauth": {}
-		},
-		"Dune": {
-			"enabled": false,
-			"type": "remote",
-			"url": "https://api.dune.com/mcp/v1",
-			"oauth": {}
-		}
-	},
-	"formatter": {
-		"clang-format": {
-			"disabled": true
-		}
-	}
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": false,
+  "permission": {
+    "edit": "allow",
+    "bash": {
+      "*": "ask",
+      "*sudo*": "deny",
+      "*terraform apply*": "deny"
+    },
+    "external_directory": {
+      "~/dev/dune/**": "allow",
+      "~/dev/go/**": "allow",
+      "*": "ask"
+    },
+    "webfetch": "ask",
+    "websearch": "allow",
+    "codesearch": "allow",
+    "doom_loop": "ask"
+  },
+  "plugin": [
+    "@tarquinen/opencode-dcp@v3.1.12",
+    "@theedgeofrage/opencode-telegram@0.2.2"
+  ],
+  "provider": {
+    "llama.cpp": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "llama-server (local)",
+      "options": {
+        "baseURL": "http://127.0.0.1:8080/v1"
+      },
+      "models": {
+        "qwen3.5-27b": {
+          "name": "Qwen3.5 27B (local)",
+          "limit": {
+            "context": 262144,
+            "output": 32768
+          }
+        }
+      }
+    }
+  },
+  "mcp": {
+    "Linear": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://mcp.linear.app/mcp",
+      "oauth": {}
+    },
+    "Sentry": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp",
+      "oauth": {}
+    },
+    "Grafana prod": {
+      "enabled": false,
+      "type": "local",
+      "command": ["uvx", "mcp-grafana"],
+      "environment": {
+        "GRAFANA_URL": "https://grafana.prod.internal.dunetech.io/",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-prod-token}"
+      }
+    },
+    "Grafana dev": {
+      "enabled": false,
+      "type": "local",
+      "command": ["uvx", "mcp-grafana"],
+      "environment": {
+        "GRAFANA_URL": "https://grafana.dev.internal.dunetech.io/",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-dev-token}"
+      }
+    },
+    "GitHub": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "{file:~/hfs/mcp/github}"
+      }
+    },
+    "Notion": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
+      "oauth": {}
+    },
+    "Dune": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://api.dune.com/mcp/v1",
+      "oauth": {}
+    }
+  },
+  "formatter": {
+    "clang-format": {
+      "disabled": true
+    }
+  }
 }
