@@ -1,0 +1,9 @@
+[Unit]
+Description=Start ProtonMail Bridge after graphical session startup
+
+[Timer]
+OnActiveSec=1s
+Unit=protonmail-bridge.service
+
+[Install]
+WantedBy=graphical-session.target

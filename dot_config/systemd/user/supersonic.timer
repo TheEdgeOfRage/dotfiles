@@ -1,0 +1,9 @@
+[Unit]
+Description=Start Supersonic after graphical session startup
+
+[Timer]
+OnActiveSec=1s
+Unit=supersonic.service
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=Start Thunderbird after Proton Mail Bridge
+Requires=protonmail-bridge.service
+After=protonmail-bridge.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/uwsm app -- org.mozilla.Thunderbird.desktop

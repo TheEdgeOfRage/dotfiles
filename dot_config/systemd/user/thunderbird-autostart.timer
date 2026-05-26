@@ -1,0 +1,9 @@
+[Unit]
+Description=Start Thunderbird after graphical session startup
+
+[Timer]
+OnActiveSec=1s
+Unit=thunderbird-autostart.service
+
+[Install]
+WantedBy=graphical-session.target

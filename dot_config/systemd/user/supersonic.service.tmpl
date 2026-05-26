@@ -1,7 +1,9 @@
 [Unit]
 Description=Supersonic Music Player
+{{- if (index . "yubikeyring" | default false) }}
 After=yubikeyring.service
 Wants=yubikeyring.service
+{{- end }}
 
 [Service]
 Type=simple

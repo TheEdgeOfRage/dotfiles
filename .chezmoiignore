@@ -6,6 +6,10 @@ us_colemak.patch
 config_template.yaml
 .config/nvim/lazy-lock.json
 
+{{ if not (index . "yubikeyring" | default false) }}
+.config/systemd/user/protonmail-bridge.service.d/
+{{- end }}
+
 {{ if not (index . "gui" | default false) }}
 .config/fontconfig
 .config/fuzzel
