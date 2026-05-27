@@ -26,7 +26,7 @@ The burden of proof is on complexity, not simplicity. Unearned complexity —
 Favor simple, robust solutions over feature-rich ones. When in doubt, do less
 
 - Self-documenting: use clear names for types, fields, variables, functions
-- Minimize comments - only explain non-obvious "why", never "what"
+- Don't write unnecessary comments - only keep them on unexpected code describing "why", never "what"
 - Types should encode meaning (use Duration, not string; use enums, not magic strings)
 - Build what's needed now, not what might be needed later
 - When asked to fix bugs, implement regression tests first that fail, then implement the fix
