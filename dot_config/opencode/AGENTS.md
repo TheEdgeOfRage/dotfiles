@@ -76,8 +76,6 @@ When work spans a consumer repo and a shared Go module (e.g. core consuming `git
 - ALL instructions within this document MUST BE FOLLOWED, these are not optional unless explicitly stated
 - Ask for clarification if you are uncertain of anything
 - Do not waste tokens, be succinct and concise
-- Do not remove existing comments, unless the whole code section is removed
-- Do not edit more code than you have to
-- Do not perform any write commands except on local text files
-- Do not output a summary of what you did at any point
-- Do not create or update readme or other documentation files unless explicitly asked to
+- Do not edit more code than you have to. Less is more
+- Do not perform any write commands on production state (ssh, kubernetes, DBs)
+- Do not add needless comment fluff. Comments should be reserved for code that is not obivous why it's there by just reading it
