@@ -6,7 +6,7 @@
 	"reload_style_on_change": true,
 	"modules-right": [
 		"custom/arrow_left_end_alt",
-		"network#tailscale",
+		"custom/tailscale",
 		"custom/arrow_left_alt",
 		"network",
 		"custom/arrow_left",
@@ -85,11 +85,9 @@
 		"format-alt": "󰩠 {ipaddr}/{cidr}",
 		"tooltip": false
 	},
-	"network#tailscale": {
+	"custom/tailscale": {
+		"exec": "tailscale status --json 2>/dev/null | jq -r 'if .BackendState == \"Running\" then \" 󰖂 \" else \" 󰲜 \" end'",
 		"interval": 5,
-		"interface": "tailscale0",
-		"format": "󰖂",
-		"format-disconnected": "󰲜",
 		"tooltip": false
 	},
 	"custom/arrow_left": {
