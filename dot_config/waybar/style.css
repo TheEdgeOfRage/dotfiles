@@ -83,15 +83,16 @@
 #clock.date,
 #tray,
 #custom-crypto,
-#temperature,
-#network.tailscale,
-#pulseaudio {
+#network,
+#pulseaudio,
+#idle_inhibitor {
 	background: @bg;
 }
 
 #backlight,
-#network,
 #memory,
+#network.tailscale,
+#temperature,
 #language,
 #clock.time,
 #mpris,

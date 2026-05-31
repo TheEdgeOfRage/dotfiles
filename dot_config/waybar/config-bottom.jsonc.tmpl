@@ -5,14 +5,15 @@
 	"position": "bottom",
 	"reload_style_on_change": true,
 	"modules-right": [
-		"custom/arrow_left_end",
+		"custom/arrow_left_end_alt",
 		"network#tailscale",
-		"custom/arrow_left",
-		"network",
 		"custom/arrow_left_alt",
-		"temperature",
+		"network",
 		"custom/arrow_left",
+		"temperature",
+		{{- if not .waybar.top.extra_modules }}
 		"power-profiles-daemon",
+		{{- end }}
 		"custom/arrow_left_alt",
 		"cpu",
 		"custom/arrow_left",
@@ -25,10 +26,10 @@
 		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
 		"tooltip": true,
 		"format-icons": {
-			"default": "",
-			"performance": "",
-			"balanced": "",
-			"power-saver": ""
+			"default": "",
+			"performance": "",
+			"balanced": "",
+			"power-saver": ""
 		}
 	},
 	"cpu": {
@@ -87,8 +88,8 @@
 	"network#tailscale": {
 		"interval": 5,
 		"interface": "tailscale0",
-		"format": "󰖂 {ipaddr}/{cidr}",
-		"format-disconnected": "󰲜 tailscale",
+		"format": "󰖂",
+		"format-disconnected": "󰲜",
 		"tooltip": false
 	},
 	"custom/arrow_left": {

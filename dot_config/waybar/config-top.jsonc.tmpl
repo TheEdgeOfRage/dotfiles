@@ -15,8 +15,7 @@
 		"pulseaudio#mic",
 		"custom/arrow_left_alt",
 		"pulseaudio",
-		{{ .waybar.top.extra_modules }}
-		"custom/arrow_left",
+		{{ if .waybar.top.extra_modules }}{{ .waybar.top.extra_modules }}{{ else }}"custom/arrow_left",{{ end }}
 		"hyprland/language",
 		"custom/arrow_left_alt",
 		"clock#date",
@@ -247,6 +246,24 @@
 		"return-type": "json",
 		"exec": "waybar-crypto",
 		"exec-if": "ping pro-api.coinmarketcap.com -c1"
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "󰛊",
+			"deactivated": "󰾪"
+		}
+	},
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+		"tooltip": true,
+		"format-icons": {
+			"default": "",
+			"performance": "",
+			"balanced": "",
+			"power-saver": ""
+		}
 	},
 	"custom/arrow_left": {
 		"format": "",
