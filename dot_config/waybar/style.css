@@ -69,7 +69,6 @@
 #idle_inhibitor,
 #disk,
 #user,
-#custom-crypto,
 #power-profiles-daemon,
 #mpris {
 	padding-left: 8pt;
@@ -82,7 +81,7 @@
 #privacy,
 #clock.date,
 #tray,
-#custom-crypto,
+#mpris,
 #network,
 #pulseaudio,
 #idle_inhibitor {
@@ -95,7 +94,6 @@
 #temperature,
 #language,
 #clock.time,
-#mpris,
 #power-profiles-daemon,
 #pulseaudio.mic {
 	background: @bg_alt;
