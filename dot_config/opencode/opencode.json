@@ -18,7 +18,11 @@
     "codesearch": "allow",
     "doom_loop": "ask"
   },
-  "plugin": ["@tarquinen/opencode-dcp@v3.1.12"],
+  "plugin": [
+    "@tarquinen/opencode-dcp@v3.1.12",
+    "/home/pavle/dev/dune/opencode-policy-engine/src/index.ts",
+    "/home/pavle/.local/share/opencode/plugins/ponytail/.opencode/plugins/ponytail.mjs"
+  ],
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
