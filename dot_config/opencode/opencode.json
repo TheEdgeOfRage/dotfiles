@@ -18,16 +18,13 @@
     "codesearch": "allow",
     "doom_loop": "ask"
   },
-  "plugin": [
-    "@tarquinen/opencode-dcp@v3.1.12",
-    "@theedgeofrage/opencode-telegram@0.2.2"
-  ],
+  "plugin": ["@tarquinen/opencode-dcp@v3.1.12"],
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "llama-server (local)",
       "options": {
-        "baseURL": "http://127.0.0.1:8080/v1"
+        "baseURL": "http://cuprum.wg:8080/v1"
       },
       "models": {
         "qwen3.6-27b": {
