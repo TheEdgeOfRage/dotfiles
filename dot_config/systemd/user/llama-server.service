@@ -1,0 +1,15 @@
+[Unit]
+Description=llama-server (PKGBUILD reviewer)
+After=network.target
+
+[Service]
+ExecStart=llama-server \
+    --models-preset %h/.config/llama-server/models.ini \
+    --host 127.0.0.1 \
+    --port 8080 \
+    --sleep-idle-seconds 120
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -10,6 +10,12 @@ config_template.yaml
 .config/systemd/user/protonmail-bridge.service.d/
 {{- end }}
 
+{{ if not (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id") (eq .chezmoi.osRelease.id "arch")) }}
+.local/bin/pkgbuild-review
+.config/llama-server/
+.config/systemd/user/llama-server.service
+{{- end }}
+
 {{ if not (index . "gui" | default false) }}
 .config/fontconfig
 .config/fuzzel
