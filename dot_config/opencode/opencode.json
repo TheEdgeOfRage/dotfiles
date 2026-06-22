@@ -20,8 +20,7 @@
   },
   "plugin": [
     "@tarquinen/opencode-dcp@v3.1.13",
-    "/home/pavle/dev/dune/opencode-policy-engine/src/index.ts",
-    "/home/pavle/.local/share/opencode/plugins/ponytail/.opencode/plugins/ponytail.mjs"
+    "/home/pavle/dev/dune/opencode-policy-engine/src/index.ts"
   ],
   "provider": {
     "llama.cpp": {
