@@ -45,9 +45,9 @@ err() { printf 'pkgbuild-review: %s\n' "$*" >&2; }
 
 verdict_color() {
     case "$1" in
-        SAFE)      printf '%s' "$GREEN"  ;;
+        SAFE)       printf '%s' "$GREEN"  ;;
         SUSPICIOUS) printf '%s' "$YELLOW" ;;
-        *)          printf '%s' "$RED"   ;;
+        *)          printf '%s' "$RED"    ;;
     esac
 }
 
@@ -59,98 +59,109 @@ confidence_color() {
     esac
 }
 
-[[ $# -lt 1 ]] && { err "usage: pkgbuild-review <path>"; exit 3; }
-pkgbuild="$1"
+review_one() {
+    local pkgbuild="$1"
 
-# Non-PKGBUILD files (e.g. .SRCINFO): open real editor and exit
-if [[ "$(basename "$pkgbuild")" != "PKGBUILD" ]]; then
-    exec "$REAL_EDITOR" "$pkgbuild"
-fi
+    # Non-PKGBUILD files (e.g. .SRCINFO): open real editor and return
+    if [[ "$(basename "$pkgbuild")" != "PKGBUILD" ]]; then
+        "$REAL_EDITOR" "$pkgbuild"
+        return 0
+    fi
 
-[[ -f "$pkgbuild" ]] || { err "file not found: $pkgbuild"; exit 3; }
+    [[ -f "$pkgbuild" ]] || { err "file not found: $pkgbuild"; return 3; }
 
-pkgname=$(grep -m1 '^pkgname=' "$pkgbuild" | cut -d= -f2 | tr -d '"'"'"' ')
-pkgver=$(grep -m1 '^pkgver=' "$pkgbuild" | cut -d= -f2 | tr -d '"'"'"' ')
-sha=$(sha256sum "$pkgbuild" | cut -d' ' -f1)
-cache_file="$CACHE_DIR/$pkgname.sha256"
+    local pkgname pkgver sha cache_file
+    pkgname=$(grep -m1 '^pkgname=' "$pkgbuild" | cut -d= -f2 | tr -d '"'"'"' ')
+    pkgver=$(grep -m1 '^pkgver=' "$pkgbuild" | cut -d= -f2 | tr -d '"'"'"' ')
+    sha=$(sha256sum "$pkgbuild" | cut -d' ' -f1)
+    cache_file="$CACHE_DIR/$pkgname.sha256"
 
-if [[ -f "$cache_file" ]] && [[ "$(cat "$cache_file")" == "$sha" ]]; then
-    printf '[%s %s] Already reviewed. Proceeding.\n' "$pkgname" "$pkgver"
-    exit 0
-fi
+    if [[ -f "$cache_file" ]] && [[ "$(cat "$cache_file")" == "$sha" ]]; then
+        printf '[%s %s] Already reviewed. Proceeding.\n' "$pkgname" "$pkgver"
+        return 0
+    fi
 
-printf '[%s %s] Sending to LLM for review...\n' "$pkgname" "$pkgver"
+    printf '[%s %s] Sending to LLM for review...\n' "$pkgname" "$pkgver"
 
-payload=$(jq -n \
-    --arg model "$MODEL" \
-    --arg sys "$SYSTEM_PROMPT" \
-    --arg content "$(cat "$pkgbuild")" \
-    '{model: $model, temperature: 0, stream: false,
-      messages: [
-        {role: "system", content: $sys},
-        {role: "user", content: ("Review this PKGBUILD:\n\n<pkgbuild>\n" + $content + "\n</pkgbuild>")}
-      ]}')
+    local payload response content verdict confidence vc cc
+    payload=$(jq -n \
+        --arg model "$MODEL" \
+        --arg sys "$SYSTEM_PROMPT" \
+        --arg content "$(cat "$pkgbuild")" \
+        '{model: $model, temperature: 0, stream: false,
+          messages: [
+            {role: "system", content: $sys},
+            {role: "user", content: ("Review this PKGBUILD:\n\n<pkgbuild>\n" + $content + "\n</pkgbuild>")}
+          ]}')
 
-response=$(curl -sf --max-time 300 \
-    -H "Content-Type: application/json" \
-    -d "$payload" \
-    "$SERVER_URL/v1/chat/completions") || { err "llama-server unreachable or timed out"; exit 2; }
+    response=$(curl -sf --max-time 300 \
+        -H "Content-Type: application/json" \
+        -d "$payload" \
+        "$SERVER_URL/v1/chat/completions") || { err "llama-server unreachable or timed out"; return 2; }
 
-content=$(printf '%s' "$response" | jq -r '.choices[0].message.content // empty')
-[[ -z "$content" ]] && { err "empty response from LLM"; exit 2; }
+    content=$(printf '%s' "$response" | jq -r '.choices[0].message.content // empty')
+    [[ -z "$content" ]] && { err "empty response from LLM"; return 2; }
 
-# Strip <think>...</think> block if present (Qwen3.5 thinking mode)
-content=$(printf '%s' "$content" | sed '/^<think>$/,/^<\/think>$/d')
+    # Strip <think>...</think> block if present (Qwen3.5 thinking mode)
+    content=$(printf '%s' "$content" | sed '/^<think>$/,/^<\/think>$/d')
 
-verdict=$(printf '%s' "$content" | grep '^VERDICT:' | awk '{print $2}' | head -1)
-confidence=$(printf '%s' "$content" | grep '^CONFIDENCE:' | awk '{print $2}' | head -1)
-[[ -z "$verdict" ]] && verdict="UNKNOWN"
+    verdict=$(printf '%s' "$content" | grep '^VERDICT:' | awk '{print $2}' | head -1)
+    confidence=$(printf '%s' "$content" | grep '^CONFIDENCE:' | awk '{print $2}' | head -1)
+    [[ -z "$verdict" ]] && verdict="UNKNOWN"
 
-printf '\n=== PKGBUILD Review: %s %s ===\n' "$pkgname" "$pkgver"
-vc=$(verdict_color "$verdict")
-cc=$(confidence_color "$confidence")
-while IFS= read -r line; do
-    case "$line" in
-        VERDICT:*)    printf "${vc}%s${RESET}\n" "$line" ;;
-        CONFIDENCE:*) printf "${cc}%s${RESET}\n" "$line" ;;
-        *)            printf '%s\n' "$line" ;;
-    esac
-done <<< "$content"
-printf '=== END REVIEW ===\n\n'
+    vc=$(verdict_color "$verdict")
+    cc=$(confidence_color "$confidence")
 
-while true; do
-    case "$verdict" in
-        SAFE) printf "[%s] ${vc}SAFE${RESET} — [C]ontinue / [e]dit / [a]bort: " "$pkgname" ;;
-        *)    printf "[%s] ${vc}%s${RESET} — [c]ontinue / [e]dit / [A]bort: " "$pkgname" "$verdict" ;;
-    esac
+    printf '\n=== PKGBUILD Review: %s %s ===\n' "$pkgname" "$pkgver"
+    while IFS= read -r line; do
+        case "$line" in
+            VERDICT:*)    printf "${vc}%s${RESET}\n" "$line" ;;
+            CONFIDENCE:*) printf "${cc}%s${RESET}\n" "$line" ;;
+            *)            printf '%s\n' "$line" ;;
+        esac
+    done <<< "$content"
+    printf '=== END REVIEW ===\n\n'
 
-    read -r choice
+    while true; do
+        case "$verdict" in
+            SAFE) printf "[%s] ${vc}SAFE${RESET} — [C]ontinue / [e]dit / [a]bort: " "$pkgname" ;;
+            *)    printf "[%s] ${vc}%s${RESET} — [c]ontinue / [e]dit / [A]bort: " "$pkgname" "$verdict" ;;
+        esac
 
-    case "${choice,,}" in
-        c)
-            if [[ "$verdict" != "SAFE" ]]; then
-                printf 'Verdict is %s. Type "yes" to override: ' "$verdict"
-                read -r confirm
-                [[ "$confirm" != "yes" ]] && continue
-            fi
-            mkdir -p "$CACHE_DIR"
-            printf '%s' "$sha" > "$cache_file"
-            exit 0
-            ;;
-        "")
-            if [[ "$verdict" == "SAFE" ]]; then
+        read -r choice
+
+        case "${choice,,}" in
+            c)
+                if [[ "$verdict" != "SAFE" ]]; then
+                    printf 'Verdict is %s. Type "yes" to override: ' "$verdict"
+                    read -r confirm
+                    [[ "$confirm" != "yes" ]] && continue
+                fi
                 mkdir -p "$CACHE_DIR"
                 printf '%s' "$sha" > "$cache_file"
-                exit 0
-            else
-                exit 1
-            fi
-            ;;
-        e)
-            "$REAL_EDITOR" "$pkgbuild"
-            ;;
-        a)
-            exit 1
-            ;;
-    esac
+                return 0
+                ;;
+            "")
+                if [[ "$verdict" == "SAFE" ]]; then
+                    mkdir -p "$CACHE_DIR"
+                    printf '%s' "$sha" > "$cache_file"
+                    return 0
+                else
+                    return 1
+                fi
+                ;;
+            e)
+                "$REAL_EDITOR" "$pkgbuild"
+                ;;
+            a)
+                return 1
+                ;;
+        esac
+    done
+}
+
+[[ $# -lt 1 ]] && { err "usage: pkgbuild-review <path> [path ...]"; exit 3; }
+
+for pkgbuild in "$@"; do
+    review_one "$pkgbuild" || exit $?
 done
