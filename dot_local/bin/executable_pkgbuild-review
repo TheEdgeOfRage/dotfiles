@@ -87,6 +87,10 @@ review_one() {
 
     local pkgname pkgver sha cache_file
     pkgname=$(grep -m1 '^pkgname=' "$pkgbuild" | cut -d= -f2 | tr -d '"'"'"' ')
+    if [[ "$pkgname" == \$* ]]; then
+        local varname="${pkgname#\$}"; varname="${varname#\{}"; varname="${varname%\}}"
+        pkgname=$(grep -m1 "^${varname}=" "$pkgbuild" | cut -d= -f2 | tr -d '"'"'"' ')
+    fi
     pkgver=$(grep -m1 '^pkgver=' "$pkgbuild" | cut -d= -f2 | tr -d '"'"'"' ')
     sha=$(sha256sum "$pkgbuild" | cut -d' ' -f1)
     cache_file="$CACHE_DIR/$pkgname.sha256"
@@ -129,7 +133,7 @@ review_one() {
 
     case "$verdict" in
         SAFE)
-            printf '[%s %s] %sSAFE%s\n' "$pkgname" "$pkgver" "$vc" "$RESET"
+            printf "[%s %s] ${vc}SAFE${RESET}\n" "$pkgname" "$pkgver"
             printf '%s' "$sha" > "$cache_file"
             return 0
             ;;
