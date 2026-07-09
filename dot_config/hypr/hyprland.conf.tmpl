@@ -28,6 +28,7 @@ exec-once = hyprpm reload -n
 exec-once = uwsm app -- firefox.desktop
 exec-once = uwsm app -- org.telegram.desktop.desktop
 exec-once = uwsm app -- signal.desktop
+exec-once = uwsm app -- supersonic-desktop.desktop
 {{- range $_, $app := index .hyprland "additional_autostart" | default list }}
 exec-once = uwsm app -- {{$app}}.desktop
 {{- end }}
