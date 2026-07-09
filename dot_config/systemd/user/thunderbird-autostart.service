@@ -1,10 +1,10 @@
 [Unit]
-Description=Start Thunderbird after Proton Mail Bridge
+Description=Start Thunderbird after Proton Mail Bridge is ready
 Requires=protonmail-bridge.service
 After=protonmail-bridge.service
 
 [Service]
 Type=oneshot
 TimeoutStartSec=60
-ExecStartPre=/usr/bin/bash -c 'for i in {1..60}; do /usr/bin/nc -z -w1 127.0.0.1 1143 && /usr/bin/nc -z -w1 127.0.0.1 1025 && exit 0; sleep 1; done; exit 1'
+ExecStartPre=/usr/bin/bash -c 'for i in {1..60}; do /usr/bin/nc -z -w1 localhost 1143 && exit 0; sleep 1; done; exit 1'
 ExecStart=/usr/bin/uwsm app -- org.mozilla.Thunderbird.desktop
