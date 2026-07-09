@@ -13,7 +13,17 @@
 		"pulseaudio#mic",
 		"custom/arrow_left_alt",
 		"pulseaudio",
-		{{ if .waybar.top.extra_modules }}{{ .waybar.top.extra_modules }}{{ else }}"custom/arrow_left",{{ end }}
+{{- if (index . "laptop" | default false) }}
+		"custom/arrow_left",
+		"backlight",
+		"custom/arrow_left_alt",
+		"battery",
+		"custom/arrow_left",
+		"power-profiles-daemon",
+		"custom/arrow_left_alt",
+		"idle_inhibitor",
+{{ end }}
+		"custom/arrow_left",
 		"hyprland/language",
 		"custom/arrow_left_alt",
 		"clock#date",
