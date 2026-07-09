@@ -91,6 +91,7 @@
 			"class<org.pwmt.zathura>": "",
 			"class<org.qbittorrent.qBittorrent>": "",
 			"class<org.rncbc.qpwgraph>": "󱡫",
+			"class<org.shotcut.Shotcut>": "󰕧",
 			"class<org.telegram.desktop>": "",
 			"class<oversteer>": "󰊗",
 			"class<picard>": "",
@@ -125,7 +126,7 @@
 		}
 	},
 	"mpris": {
-		"interval": 5,
+		"interval": {{ if .laptop }}5{{ else }}1{{ end }},
 		"format": "{player_icon} {dynamic}",
 		"format-paused": "{status_icon} {dynamic}",
 		"dynamic-order": [
@@ -168,8 +169,8 @@
 		"tooltip": false
 	},
 	"clock#time": {
-		"interval": 60,
-		"format": "{:%H:%M}",
+		"interval": {{ if .laptop }}60{{ else }}1{{ end }},
+		"format": "{{ if .laptop }}{:%H:%M}{{ else }}{:%H:%M:%S}{{ end }}",
 		"tooltip": true,
 		"tooltip-format": "{:%H:%M:%S}"
 	},
