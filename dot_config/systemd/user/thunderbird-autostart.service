@@ -4,7 +4,8 @@ Requires=protonmail-bridge.service
 After=protonmail-bridge.service
 
 [Service]
-Type=oneshot
-TimeoutStartSec=60
+Type=exec
+TimeoutStartSec=2min
 ExecStartPre=/usr/bin/bash -c 'for i in {1..60}; do /usr/bin/nc -z -w1 localhost 1143 && exit 0; sleep 1; done; exit 1'
+ExecStartPre=/usr/bin/sleep 10
 ExecStart=/usr/bin/uwsm app -- org.mozilla.Thunderbird.desktop
