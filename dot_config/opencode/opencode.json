@@ -38,15 +38,29 @@
           }
         }
       }
+    },
+    "anthropic": {
+      "options": {
+        "apiKey": "{file:~/.local/share/opencode/vercel-api-key}",
+        "baseURL": "https://ai-gateway.vercel.sh"
+      },
+      "models": {
+        "claude-haiku-4-5": {
+          "id": "anthropic/claude-haiku-4.5"
+        },
+        "claude-sonnet-5": {
+          "id": "anthropic/claude-sonnet-5"
+        },
+        "claude-opus-4-8": {
+          "id": "anthropic/claude-opus-4.8"
+        },
+        "claude-fable-5": {
+          "id": "anthropic/claude-fable-5"
+        }
+      }
     }
   },
   "mcp": {
-    "Sentry": {
-      "enabled": false,
-      "type": "remote",
-      "url": "https://mcp.sentry.dev/mcp",
-      "oauth": {}
-    },
     "Grafana prod": {
       "enabled": false,
       "type": "local",
@@ -65,14 +79,6 @@
         "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-dev-token}"
       }
     },
-    "GitHub": {
-      "enabled": false,
-      "type": "remote",
-      "url": "https://api.githubcopilot.com/mcp/",
-      "headers": {
-        "Authorization": "{file:~/hfs/mcp/github}"
-      }
-    },
     "dune": {
       "enabled": false,
       "type": "remote",
@@ -84,20 +90,15 @@
       "url": "https://mcp.linear.app/mcp",
       "enabled": true
     },
+    "sentry": {
+      "enabled": false,
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp",
+      "oauth": {}
+    },
     "notion": {
       "type": "remote",
       "url": "https://mcp.notion.com/mcp",
-      "enabled": false
-    },
-    "dbt": {
-      "type": "local",
-      "command": ["uvx", "dbt-mcp"],
-      "environment": {
-        "DBT_HOST": "nd058.us1.dbt.com",
-        "DBT_ACCOUNT_ID": "58579",
-        "DBT_PROJECT_IDS": "259299,335774,370651,372284,372518",
-        "DBT_TOKEN": "{env:DBT_TOKEN}"
-      },
       "enabled": false
     },
     "metabase": {
