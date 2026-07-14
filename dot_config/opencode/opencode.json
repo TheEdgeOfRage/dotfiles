@@ -10,7 +10,8 @@
     },
     "external_directory": {
       "/home/pavle/dev/*": "allow",
-      "/home/pavle/.local/share/opencode/*": "allow"
+      "/home/pavle/.local/share/opencode/*": "allow",
+      "/tmp/opencode/*": "allow"
     },
     "webfetch": "ask",
     "websearch": "allow",
