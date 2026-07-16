@@ -38,30 +38,10 @@
           }
         }
       }
-    },
-    "anthropic": {
-      "options": {
-        "apiKey": "{file:~/.local/share/opencode/vercel-api-key}",
-        "baseURL": "https://ai-gateway.vercel.sh"
-      },
-      "models": {
-        "claude-haiku-4-5": {
-          "id": "anthropic/claude-haiku-4.5"
-        },
-        "claude-sonnet-5": {
-          "id": "anthropic/claude-sonnet-5"
-        },
-        "claude-opus-4-8": {
-          "id": "anthropic/claude-opus-4.8"
-        },
-        "claude-fable-5": {
-          "id": "anthropic/claude-fable-5"
-        }
-      }
     }
   },
   "mcp": {
-    "Grafana prod": {
+    "grafana prod": {
       "enabled": false,
       "type": "local",
       "command": ["uvx", "mcp-grafana"],
@@ -70,7 +50,7 @@
         "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-prod-token}"
       }
     },
-    "Grafana dev": {
+    "grafana dev": {
       "enabled": false,
       "type": "local",
       "command": ["uvx", "mcp-grafana"],
@@ -105,6 +85,14 @@
       "type": "remote",
       "url": "https://metabase.prod.internal.dunetech.io/api/mcp",
       "enabled": false
+    },
+    "trino-insights": {
+      "type": "remote",
+      "url": "http://prod-trino-insights-mcp.ayu-decibel.ts.net",
+      "headers": {
+        "Authorization": "Bearer {env:DUNE_TRINO_INSIGHTS_TOKEN}"
+      },
+      "enabled": false
     }
   },
   "formatter": {
@@ -112,10 +100,6 @@
       "disabled": true
     }
   },
-  "model": "openai/gpt-5.6-terra",
-  "small_model": "openai/gpt-5.6-luna",
-  "enabled_providers": ["openai", "anthropic", "vercel"],
-  "disabled_providers": ["amazon-bedrock"],
   "instructions": [
     "/home/pavle/.cache/dune-sietch/sietch/bundles/base/instructions/dune-base.md"
   ]
