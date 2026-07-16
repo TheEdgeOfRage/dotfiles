@@ -1,5 +1,5 @@
 [Unit]
-Description=llama-server (PKGBUILD reviewer)
+Description=llama-server
 After=network.target
 
 [Service]
