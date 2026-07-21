@@ -1,0 +1,257 @@
+-- vim: ft=lua noet
+
+local active_bg = "rgba(504945ff)"
+local inactive_bg = "rgba(282828ff)"
+
+{{ range $output, $settings := .hyprland.monitors }}hl.monitor({
+	output = {{ printf "%q" $output }},
+	mode = {{ printf "%q" $settings.mode }},
+	position = {{ printf "%q" $settings.position }},
+	scale = {{ $settings.scale }},
+	vrr = {{ $settings.vrr }},
+})
+{{ end }}
+
+local terminal = "ghostty"
+local menu = "fuzzel '--launch-prefix=uwsm app --'"
+local animation_speed = 1
+local mod = "SUPER"
+
+hl.config({
+	general = {
+		layout = "hy3",
+		gaps_in = 0,
+		gaps_out = 0,
+		border_size = 2,
+		col = {
+			active_border = active_bg,
+			inactive_border = inactive_bg,
+		},
+		resize_on_border = false,
+		allow_tearing = true,
+	},
+	plugin = {
+		hy3 = {
+			node_collapse_policy = 2,
+			group_inset = 10,
+			tab_first_window = false,
+			tabs = {
+				height = 26,
+				padding = 0,
+				from_top = true,
+				radius = 0,
+				blur = false,
+				text_center = false,
+				text_font = "IosevkaTerm NFP",
+				text_height = 14,
+				text_padding = 6,
+				colors = {
+					active = active_bg,
+					active_border = active_bg,
+					active_text = "rgba(ebdbb2ff)",
+					focused = "rgba(504945ff)",
+					focused_border = "rgba(504945ff)",
+					focused_text = "rgba(ebdbb2ff)",
+					urgent = "rgba(d79921ff)",
+					urgent_border = "rgba(d79921ff)",
+					urgent_text = "rgba(282828ff)",
+					inactive = inactive_bg,
+					inactive_border = inactive_bg,
+					inactive_text = "rgba(a89984ff)",
+				},
+			},
+		},
+	},
+	decoration = {
+		rounding = 0,
+		active_opacity = 1.0,
+		inactive_opacity = 1.0,
+		shadow = { enabled = false },
+		blur = { enabled = false },
+	},
+	animations = { enabled = true },
+	misc = {
+		font_family = "Noto Sans",
+		force_default_wallpaper = 1,
+		disable_hyprland_logo = true,
+		enable_swallow = true,
+		swallow_regex = "com.mitchellh.ghostty",
+		mouse_move_enables_dpms = true,
+		key_press_enables_dpms = true,
+		disable_splash_rendering = true,
+	},
+	xwayland = { force_zero_scaling = true },
+	ecosystem = { no_update_news = true },
+	render = {
+		direct_scanout = 2,
+		cm_auto_hdr = 2,
+	},
+	cursor = { hotspot_padding = 0 },
+	input = {
+		kb_layout = {{ printf "%q" .hyprland.input.keyboard_layouts.layout }},
+		kb_variant = {{ printf "%q" .hyprland.input.keyboard_layouts.variant }},
+		follow_mouse = 1,
+		sensitivity = {{ .hyprland.input.sensitivity }},
+		touchpad = {
+			natural_scroll = false,
+			drag_lock = false,
+		},
+	},
+	gestures = { workspace_swipe_touch = false },
+})
+
+hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
+hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0.05 }, { 0.36, 1 } } })
+hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
+hl.curve("almostLinear", { type = "bezier", points = { { 0.5, 0.5 }, { 0.75, 1 } } })
+hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
+
+hl.animation({ leaf = "global", enabled = true, speed = animation_speed, bezier = "default" })
+hl.animation({ leaf = "border", enabled = true, speed = animation_speed, bezier = "easeOutQuint" })
+hl.animation({ leaf = "windows", enabled = true, speed = animation_speed, bezier = "easeOutQuint" })
+hl.animation({
+	leaf = "windowsIn",
+	enabled = true,
+	speed = animation_speed,
+	bezier = "easeOutQuint",
+	style = "popin 87%",
+})
+hl.animation({ leaf = "windowsOut", enabled = true, speed = animation_speed, bezier = "linear", style = "popin 87%" })
+hl.animation({ leaf = "fadeIn", enabled = true, speed = animation_speed, bezier = "almostLinear" })
+hl.animation({ leaf = "fadeOut", enabled = true, speed = animation_speed, bezier = "almostLinear" })
+hl.animation({ leaf = "fade", enabled = true, speed = animation_speed, bezier = "quick" })
+hl.animation({ leaf = "layers", enabled = true, speed = animation_speed, bezier = "easeOutQuint" })
+hl.animation({ leaf = "layersIn", enabled = true, speed = animation_speed, bezier = "easeOutQuint", style = "fade" })
+hl.animation({ leaf = "layersOut", enabled = true, speed = animation_speed, bezier = "linear", style = "fade" })
+hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = animation_speed, bezier = "almostLinear" })
+hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = animation_speed, bezier = "almostLinear" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = animation_speed, bezier = "almostLinear", style = "fade" })
+hl.animation({ leaf = "workspacesIn", enabled = true, speed = animation_speed, bezier = "almostLinear", style = "fade" })
+hl.animation({
+	leaf = "workspacesOut",
+	enabled = true,
+	speed = animation_speed,
+	bezier = "almostLinear",
+	style = "fade",
+})
+
+hl.on("hyprland.start", function()
+	hl.exec_cmd("hyprpm reload -n")
+	hl.exec_cmd("uwsm app -- firefox.desktop")
+	hl.exec_cmd("uwsm app -- org.telegram.desktop.desktop")
+	hl.exec_cmd("uwsm app -- signal.desktop")
+	hl.exec_cmd("uwsm app -- supersonic-desktop.desktop")
+end)
+
+hl.bind(mod .. " + SHIFT + Q", hl.plugin.hy3.kill_active())
+hl.bind(mod .. " + SHIFT + X", hl.dsp.exec_cmd('loginctl terminate-session "$XDG_SESSION_ID"'))
+
+hl.bind(mod .. " + Space", hl.dsp.exec_cmd(menu))
+hl.bind(mod .. " + BackSpace", hl.dsp.exec_cmd(menu))
+hl.bind(mod .. " + J", hl.dsp.exec_cmd("BEMOJI_PICKER_CMD='fuzzel -d' bemoji"))
+hl.bind(mod .. " + D", hl.dsp.exec_cmd("fuzzel '--launch-prefix=uwsm app --'"))
+hl.bind(mod .. " + Return", hl.dsp.exec_cmd("uwsm app -- " .. terminal .. " +new-window"))
+
+hl.bind(mod .. " + H", hl.plugin.hy3.move_focus("left"))
+hl.bind(mod .. " + I", hl.plugin.hy3.move_focus("right"))
+hl.bind(mod .. " + E", hl.plugin.hy3.move_focus("up"))
+hl.bind(mod .. " + N", hl.plugin.hy3.move_focus("down"))
+
+hl.bind(mod .. " + SHIFT + H", hl.plugin.hy3.move_window("left"))
+hl.bind(mod .. " + SHIFT + I", hl.plugin.hy3.move_window("right"))
+hl.bind(mod .. " + SHIFT + E", hl.plugin.hy3.move_window("up"))
+hl.bind(mod .. " + SHIFT + N", hl.plugin.hy3.move_window("down"))
+
+hl.bind(mod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(mod .. " + SHIFT + Space", hl.dsp.window.float())
+hl.bind(mod .. " + SHIFT + BackSpace", hl.dsp.window.float())
+hl.bind(mod .. " + S", hl.plugin.hy3.change_group("opposite"))
+hl.bind(mod .. " + T", hl.plugin.hy3.change_group("toggletab"))
+hl.bind(mod .. " + V", hl.plugin.hy3.make_group("v", { ephemeral = true }))
+hl.bind(mod .. " + C", hl.plugin.hy3.make_group("h", { ephemeral = true }))
+
+for workspace, key in ipairs({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "W", "P", "M", "O" }) do
+	hl.bind(mod .. " + " .. key, hl.dsp.focus({ workspace = workspace }))
+	hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = workspace }))
+end
+
+hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+hl.bind(
+	"XF86AudioRaiseVolume",
+	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86AudioLowerVolume",
+	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"SHIFT + XF86AudioRaiseVolume",
+	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 8%+"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"SHIFT + XF86AudioLowerVolume",
+	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 8%-"),
+	{ locked = true, repeating = true }
+)
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl-wrapper pause"), { locked = true })
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl-wrapper play-pause"), { locked = true })
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl-wrapper previous"), { locked = true })
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl-wrapper next"), { locked = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("light -A 10"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("light -U 10"), { locked = true, repeating = true })
+hl.bind("SHIFT + XF86MonBrightnessUp", hl.dsp.exec_cmd("light -A 1"), { locked = true, repeating = true })
+hl.bind("SHIFT + XF86MonBrightnessDown", hl.dsp.exec_cmd("light -U 1"), { locked = true, repeating = true })
+
+hl.bind(mod .. " + CTRL + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind("Print", hl.dsp.exec_cmd("hyprshot -z -m region --clipboard-only"))
+hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -z -m region -o /home/pavle/pictures -f screenshot.png"))
+hl.bind(mod .. " + Print", hl.dsp.exec_cmd("pyazo -d"))
+
+hl.window_rule({
+	name = "no-border-workspace-tv1",
+	match = { float = false, workspace = "w[tv1]" },
+	border_size = 0,
+	rounding = 0,
+})
+hl.window_rule({
+	name = "no-border-workspace-f1",
+	match = { float = false, workspace = "f[1]" },
+	border_size = 0,
+	rounding = 0,
+})
+hl.window_rule({
+	name = "suppress-maximize",
+	match = { class = ".*" },
+	suppress_event = "maximize",
+})
+hl.window_rule({
+	name = "xwayland-drag-fix",
+	match = {
+		class = "^$",
+		title = "^$",
+		xwayland = true,
+		float = true,
+		fullscreen = false,
+		pin = false,
+	},
+	no_focus = true,
+})
+hl.window_rule({ name = "wine-systray-special", match = { title = "Wine System Tray" }, workspace = "special silent" })
+hl.window_rule({ name = "steam-games-fullscreen", match = { class = "steam_app_.*" }, fullscreen = true })
+hl.window_rule({ name = "steam-workspace", match = { class = "steam" }, workspace = "10 silent" })
+hl.window_rule({ name = "firefox-workspace", match = { class = "firefox" }, workspace = "11 silent" })
+hl.window_rule({ name = "telegram-workspace", match = { class = "org.telegram.desktop" }, workspace = "12 silent" })
+hl.window_rule({ name = "signal-workspace", match = { class = "signal" }, workspace = "12 silent" })
+hl.window_rule({
+	name = "thunderbird-workspace",
+	match = { initial_class = "org.mozilla.Thunderbird" },
+	workspace = "13 silent",
+})
+hl.window_rule({ name = "supersonic", match = { initial_class = "Supersonic" }, workspace = "14 silent" })

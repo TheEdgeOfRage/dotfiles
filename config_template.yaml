@@ -5,12 +5,16 @@ data:
   yubikeyring: false
   hyprland:
     monitors:
-      identifier: "resolution@refresh_rate, auto, 1, vrr, 0"
+      identifier:
+        mode: "resolution@refresh_rate"
+        position: "auto"
+        scale: 1
+        vrr: 0
     input:
-      keyboard_layouts: |-
-        kb_layout = us,rs,rs,de
-        kb_variant = ,latinunicode,,
-      sensitivity: "1"
+      keyboard_layouts:
+        layout: "us,rs,rs,de"
+        variant: ",latinunicode,,"
+      sensitivity: 1
   waybar:
     top:
       extra_modules: ""
