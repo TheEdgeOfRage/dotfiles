@@ -61,7 +61,6 @@ Before running any command that writes, deletes, or overwrites irreversibly: ask
 Specific footguns:
 
 - `git reset --hard`, `git checkout -- <file>`, `git restore`: destroys working tree edits silently. The user may have edited files after you wrote them. Never assume the working tree matches your last write.
-- `git push --force`: destructive to shared state. Always ask for confirmation
 - File overwrites via `Write`: if there is a comflict, read it first and merge your changes, as the user may have edited the file externally.
 
 ## Git operations
@@ -69,6 +68,7 @@ Specific footguns:
 - Interactive rebase opens `$GIT_EDITOR` and blocks. Run with `GIT_SEQUENCE_EDITOR=: GIT_EDITOR=true git rebase -i <base>`.
 - Use `git switch` (not `git checkout`) when changing or creating branches
 - Keep branch names very short and simple. Don't append my name or ticket numbers to the branch name
+- When pushing feature branches, always use the full push command `git push origin <branch>`
 
 ## Remote access
 
