@@ -11,7 +11,7 @@
     "external_directory": {
       "/home/pavle/dev/*": "allow",
       "/home/pavle/.local/share/opencode/*": "allow",
-      "/tmp/opencode/*": "allow"
+      "/tmp/opencode/*": "allow",
       "/home/pavle/.gradle/*": "allow",
       "/home/pavle/.cache/*": "allow"
     },
