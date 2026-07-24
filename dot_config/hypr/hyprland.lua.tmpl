@@ -172,7 +172,7 @@ hl.bind(mod .. " + C", hl.plugin.hy3.make_group("h", { ephemeral = true }))
 
 for workspace, key in ipairs({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "W", "P", "M", "O" }) do
 	hl.bind(mod .. " + " .. key, hl.dsp.focus({ workspace = workspace }))
-	hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = workspace }))
+	hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = workspace, follow = false }))
 end
 
 hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
