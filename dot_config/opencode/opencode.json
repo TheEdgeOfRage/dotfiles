@@ -11,9 +11,10 @@
     "external_directory": {
       "/home/pavle/dev/*": "allow",
       "/home/pavle/.local/share/opencode/*": "allow",
-      "/tmp/opencode/*": "allow",
+      "/home/pavle/.cache/*": "allow",
+      "/home/pavle/.cargo/*": "allow",
       "/home/pavle/.gradle/*": "allow",
-      "/home/pavle/.cache/*": "allow"
+      "/tmp/opencode/*": "allow"
     },
     "webfetch": "ask",
     "websearch": "allow",
