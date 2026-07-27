@@ -31,7 +31,7 @@ Favor simple, robust solutions over feature-rich ones. When in doubt, do less
 - Self-documenting: use clear names for types, fields, variables, functions
 - Types should encode meaning (use Duration, not string; use enums, not magic strings)
 - Build what's needed now, not what might be needed later
-- When asked to fix bugs, implement regression tests first that fail, then implement the fix
+- When asked to fix bugs, implement regression tests that prove it, but only if the project already uses tests
 - Don't write tests for logs, metrics, or other observability behavior
 
 ### Comments: default to NONE
