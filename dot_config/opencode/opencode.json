@@ -24,7 +24,8 @@
   },
   "plugin": [
     "@tarquinen/opencode-dcp@v3.1.13",
-    "/home/pavle/dev/opencode/policy-engine/src/index.ts"
+    "/home/pavle/dev/opencode/policy-engine/src/index.ts",
+    "file:///home/pavle/.local/lib/node_modules/@rynfar/meridian/plugin/meridian.ts"
   ],
   "provider": {
     "llama.cpp": {
@@ -41,6 +42,12 @@
             "output": 32768
           }
         }
+      }
+    },
+    "anthropic": {
+      "options": {
+        "baseURL": "http://127.0.0.1:3456",
+        "apiKey": "meridian"
       }
     }
   },
