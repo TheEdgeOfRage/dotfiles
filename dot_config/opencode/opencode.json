@@ -14,6 +14,7 @@
       "/home/pavle/.cache/*": "allow",
       "/home/pavle/.cargo/*": "allow",
       "/home/pavle/.gradle/*": "allow",
+      "/home/pavle/.m2/*": "allow",
       "/tmp/opencode/*": "allow"
     },
     "webfetch": "ask",
@@ -50,7 +51,7 @@
       "command": ["uvx", "mcp-grafana"],
       "environment": {
         "GRAFANA_URL": "https://grafana.prod.internal.dunetech.io/",
-        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-prod-token}"
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/.local/share/opencode/grafana-prod-token}"
       }
     },
     "grafana dev": {
@@ -59,7 +60,7 @@
       "command": ["uvx", "mcp-grafana"],
       "environment": {
         "GRAFANA_URL": "https://grafana.dev.internal.dunetech.io/",
-        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/hfs/mcp/grafana-dev-token}"
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "{file:~/.local/share/opencode/grafana-dev-token}"
       }
     },
     "dune": {
