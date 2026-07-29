@@ -36,11 +36,10 @@
       },
       "models": {
         "qwen3.6-27b": {
-          "name": "Qwen3.6 27B (local)",
-          "limit": {
-            "context": 262144,
-            "output": 32768
-          }
+          "name": "Qwen3.6 27B (local)"
+        },
+        "gemma4-26b": {
+          "name": "Gemma 4 26B (local)"
         }
       }
     },
