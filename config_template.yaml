@@ -2,7 +2,8 @@
 data:
   gui: true
   modern_cli: true
-  yubikeyring: false
+  opencode: true
+  laptop: false
   hyprland:
     monitors:
       identifier:

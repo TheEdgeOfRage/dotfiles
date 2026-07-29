@@ -1,5 +1,0 @@
-[Unit]
-{{- if (index . "yubikeyring" | default false) }}
-Requires=yubikeyring.service
-After=yubikeyring.service
-{{ end }}

@@ -6,10 +6,6 @@ us_colemak.patch
 config_template.yaml
 .config/nvim/lazy-lock.json
 
-{{ if not (index . "yubikeyring" | default false) }}
-.config/systemd/user/protonmail-bridge.service.d/
-{{- end }}
-
 {{ if not (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id") (eq .chezmoi.osRelease.id "arch")) }}
 .local/bin/pkgbuild-review
 .config/llama-server/
@@ -31,6 +27,8 @@ config_template.yaml
 .config/waybar
 .config/waybar-crypto
 .icons
-.claude
-.config/opencode
 {{- end }}
+
+{{ if not (index . "opencode" | default false) }}
+.config/opencode
+{{ end}}
