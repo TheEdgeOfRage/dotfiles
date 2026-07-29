@@ -50,6 +50,7 @@
       }
     }
   },
+  {{- if .opencode.mcp }}
   "mcp": {
     "grafana prod": {
       "enabled": false,
@@ -105,6 +106,7 @@
       "enabled": false
     }
   },
+  {{ end -}}
   "formatter": {
     "clang-format": {
       "disabled": true
